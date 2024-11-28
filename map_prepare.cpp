@@ -42,9 +42,8 @@ vector<triangle> read_stl(const string &filename) {
         in.read((char *) &x, sizeof(x));
         in.read((char *) &y, sizeof(y));
         in.read((char *) &z, sizeof(z));
-        if(x!=0 || y!= 0 || z !=0)
-        {
-            cout<<x<<" "<<y<<" "<<z<<'\n';
+        if (x != 0 || y != 0 || z != 0) {
+            cout << x << " " << y << " " << z << '\n';
         }
         triangles[i].setN({x, y, z});
         for (int j = 0; j < 3; ++j) {
@@ -66,12 +65,12 @@ vector<triangle> read_stl(const string &filename) {
             max_z = max(max_z, p.getZ()), min_z = min(min_z, p.getZ());
         }
     }
-    float x_center = (max_x-min_x)/2, y_center = (max_y - min_y)/2, z_center = (max_z - min_z)/2;
+    float x_center = (max_x - min_x) / 2, y_center = (max_y - min_y) / 2, z_center = (max_z - min_z) / 2;
     in.seekg(80, ios_base::beg);
     for (auto &triangle: triangles) {
-        for (auto &p: triangle.getVertices()) {
-            glm::vec3 
-        }
+        vertices = triangle.getVertices();
+        glm::vec3 center_1(vertices[0].getX() - x_center, vertices[0].getY() - y_center, vertices[0].getZ() - z_center);
+        glm::vec3 a(vertices[1].getX() - vertices[0].getX(), vertices[1])
     }
     return triangles;
 }

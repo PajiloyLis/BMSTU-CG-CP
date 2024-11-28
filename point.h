@@ -94,6 +94,8 @@ public:
         return glm::normalize(p.p);
     }
 
+    point operator-(const point &a) const;
+
 private:
     point(glm::vec3 p);
 

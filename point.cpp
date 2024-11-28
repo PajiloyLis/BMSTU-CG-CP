@@ -53,3 +53,7 @@ point::point(glm::vec3 p) {
 void point::normalize() {
     glm::normalize(p);
 }
+
+point point::operator-(const point &a) const {
+    return point()
+}
