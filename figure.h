@@ -6,21 +6,33 @@
 #include <set>
 #include <unordered_set>
 #include "triangle.h"
+#include "conversions.h"
 
 using namespace std;
 
-class figure
-{
+class figure {
 public:
     explicit figure(const vector<triangle> &triangles);
+
     explicit figure(vector<triangle> &&triangles);
+
     figure() = default;
 
-    void rotate(float x_angle=0, float y_angle = 0, float z_angle = 0);
+    [[nodiscard]] point get_center() const;
+
+    [[nodiscard]] array<float, 3> get_size() const;
+
+    void rotate(const rotate_t &rotate);
 
     void scale();
+
 private:
     vector<triangle> triangles;
+public:
+    const vector<triangle> &getTriangles() const;
+
+private:
+    float min_x, max_x, min_y, max_y, min_z, max_z;
 };
 
 #endif //CP_CG_FIGURE_H

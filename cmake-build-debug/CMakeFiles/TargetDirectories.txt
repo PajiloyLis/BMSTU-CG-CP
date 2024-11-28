@@ -1,0 +1,3 @@
+/home/ivan/Study/CompG/cp_cg/cmake-build-debug/CMakeFiles/cp_cg.dir
+/home/ivan/Study/CompG/cp_cg/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/ivan/Study/CompG/cp_cg/cmake-build-debug/CMakeFiles/rebuild_cache.dir

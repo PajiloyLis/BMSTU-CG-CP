@@ -7,6 +7,7 @@
 #include <GL/gl.h>
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
+#include "conversions.h"
 
 class point {
 public:
@@ -78,9 +79,24 @@ public:
 
     point &operator=(const point &p);
 
+    void rotate(const rotate_t &rotate);
 
+    float dot(const point &a);
+
+    void normalize();
+
+    friend point normalize(const point &p) {
+        point cp = const_cast<point &>(p);
+        return glm::normalize(cp.p);
+    }
+
+    friend point normalize(point &&p) {
+        return glm::normalize(p.p);
+    }
 
 private:
+    point(glm::vec3 p);
+
     glm::vec3 p;
 };
 
