@@ -66,13 +66,17 @@ vector<triangle> read_stl(const string &filename) {
         }
     }
     point center((max_x - min_x) / 2, (max_y - min_y) / 2, (max_z - min_z) / 2);
-    in.seekg(80, ios_base::beg);
+    in.close();
+    ofstream out(filename, ios::out|ios::binary);
+    out.seekp(80, ios_base::beg);
     for (auto &triangle: triangles) {
         vertices = triangle.getVertices();
         point center_1 = vertices[0] - center, center_2 = vertices[1] - center, center_3 = vertices[2] - center;
         point a = vertices[1] - vertices[0], b = vertices[2] - vertices[0];
         point n = a.cross(b);
-        if(n.dot(center_1)>0) + bool(n.dot(center_2)>0) + bool)
+        if(bool(n.dot(center_1)>0) + bool(n.dot(center_2)>0) + bool(n.dot(center_3)>0) < 2)
+            n = b.cross(a);
+
     }
     return triangles;
 }
