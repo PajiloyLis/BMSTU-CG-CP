@@ -96,6 +96,8 @@ public:
 
     point operator-(const point &a) const;
 
+    point operator+(const point &a) const;
+
 private:
     point(glm::vec3 p);
 

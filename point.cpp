@@ -55,5 +55,9 @@ void point::normalize() {
 }
 
 point point::operator-(const point &a) const {
-    return point()
+    return {p.x - a.p.x, p.y - a.p.y, p.y - a.p.y};
+}
+
+point point::operator+(const point &a) const {
+    return {p.x + a.p.x, p.y + a.p.y, p.z + a.p.z};
 }
