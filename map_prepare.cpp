@@ -71,7 +71,7 @@ vector<triangle> read_stl(const string &filename) {
         vertices = triangle.getVertices();
         point center_1 = vertices[0] - center, center_2 = vertices[1] - center, center_3 = vertices[2] - center;
         point a = vertices[1] - vertices[0], b = vertices[2] - vertices[0];
-        
+
     }
     return triangles;
 }

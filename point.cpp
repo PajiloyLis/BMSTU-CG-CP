@@ -61,3 +61,7 @@ point point::operator-(const point &a) const {
 point point::operator+(const point &a) const {
     return {p.x + a.p.x, p.y + a.p.y, p.z + a.p.z};
 }
+
+point point::cross(const point &a) {
+    return glm::cross(p, a.p);
+}

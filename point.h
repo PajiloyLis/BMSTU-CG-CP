@@ -83,6 +83,8 @@ public:
 
     float dot(const point &a);
 
+    point cross(const point &a);
+
     void normalize();
 
     friend point normalize(const point &p) {
