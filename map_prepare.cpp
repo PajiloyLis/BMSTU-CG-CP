@@ -65,12 +65,12 @@ vector<triangle> read_stl(const string &filename) {
             max_z = max(max_z, p.getZ()), min_z = min(min_z, p.getZ());
         }
     }
-    float x_center = (max_x - min_x) / 2, y_center = (max_y - min_y) / 2, z_center = (max_z - min_z) / 2;
+    point center((max_x - min_x) / 2, (max_y - min_y) / 2, (max_z - min_z) / 2);
     in.seekg(80, ios_base::beg);
     for (auto &triangle: triangles) {
         vertices = triangle.getVertices();
-        glm::vec3 center_1(vertices[0].getX() - x_center, vertices[0].getY() - y_center, vertices[0].getZ() - z_center);
-        glm::vec3 a(vertices[1].getX() - vertices[0].getX(), vertices[1])
+        point center_1 = vertices[0] - center, center_2 = vertices[1] - center, center_3 = vertices[2] - center;
+        
     }
     return triangles;
 }
