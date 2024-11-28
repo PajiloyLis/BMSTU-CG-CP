@@ -42,7 +42,10 @@ vector<triangle> read_stl(const string &filename) {
         in.read((char *) &x, sizeof(x));
         in.read((char *) &y, sizeof(y));
         in.read((char *) &z, sizeof(z));
-
+        if(x!=0 || y!= 0 || z !=0)
+        {
+            cout<<x<<" "<<y<<" "<<z<<'\n';
+        }
         triangles[i].setN({x, y, z});
         for (int j = 0; j < 3; ++j) {
             in.read((char *) &x, sizeof(x));
