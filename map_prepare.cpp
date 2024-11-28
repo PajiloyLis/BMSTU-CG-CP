@@ -76,7 +76,8 @@ vector<triangle> read_stl(const string &filename) {
         point n = a.cross(b);
         if(bool(n.dot(center_1)>0) + bool(n.dot(center_2)>0) + bool(n.dot(center_3)>0) < 2)
             n = b.cross(a);
-        out.write((char*)&n.getX(), )
+        float n_x = n.getX(), n_y=n.getY(), n_z=n.getZ();
+        out.write((char*)&n_x, )
     }
     return triangles;
 }
