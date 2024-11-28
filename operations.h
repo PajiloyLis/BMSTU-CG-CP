@@ -1,0 +1,4 @@
+#ifndef CP_CG_OPERATIONS_H
+#define CP_CG_OPERATIONS_H
+
+#endif //CP_CG_OPERATIONS_H

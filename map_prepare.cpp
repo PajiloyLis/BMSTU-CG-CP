@@ -29,26 +29,33 @@ vector<point> read_map(const string &map_filename, const string &map_info_file) 
     return map;
 }
 
-vector<vector<point>> read_stl(const string &filename) {
+vector<triangle> read_stl(const string &filename) {
     ifstream in(filename, ios::in | ios::binary);
     uint32_t n;
     in.seekg(80, ios_base::beg);
     in.read((char *) &n, sizeof(n));
     cout << n << '\n';
-    vector<vector<point>> triangles(n, vector<point>(3));
+    vector<triangle> triangles(n);
+    array<point, 3> vertices;
     float x, y, z;
     for (int i = 0; i < n; ++i) {
-        in.seekg(4 * 3, ios_base::cur);
+        in.read((char *) &x, sizeof(x));
+        in.read((char *) &y, sizeof(y));
+        in.read((char *) &z, sizeof(z));
+
+        triangles[i].setN({x, y, z});
         for (int j = 0; j < 3; ++j) {
             in.read((char *) &x, sizeof(x));
             in.read((char *) &y, sizeof(y));
             in.read((char *) &z, sizeof(z));
-            triangles[i][j].setX(x), triangles[i][j].setY(y), triangles[i][j].setZ(z);
+            vertices[j].setX(x), vertices[j].setY(y), vertices[j].setZ(z);
         }
+        triangles[i].setVertices(vertices);
         in.seekg(2, ios_base::cur);
     }
     return triangles;
 }
+
 
 set<set<int>> stupid_delaunay_triangulate(vector<point> &points) {
     set<set<int>> triangles;

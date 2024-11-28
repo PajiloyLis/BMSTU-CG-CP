@@ -3,43 +3,85 @@
 
 #include<cmath>
 #include<fstream>
+#include <compare>
+#include <GL/gl.h>
+#include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
 
 class point {
 public:
+    point(const point &p);
+
+    point(point &p);
+
+    point(point &&p) noexcept;
+
     point(float x, float y, float z);
 
-    point() { x = y = z = 0; }
+    point() { p.x = p.y = p.z = 0; }
 
     float distance(const point &a) const;
 
     friend std::ostream &operator<<(std::ostream &os, point const &m);
 
     float getX() const {
-        return x;
+        return p.x;
     }
 
     float getY() const {
-        return y;
+        return p.y;
     }
 
     float getZ() const {
-        return z;
+        return p.z;
     }
 
     void setX(float _x) {
-        this->x = _x;
+        this->p.x = _x;
     }
 
     void setY(float _y) {
-        this->y = _y;
+        this->p.y = _y;
     }
 
     void setZ(float _z) {
-        this->z = _z;
+        this->p.z = _z;
     }
 
+    bool operator==(const point &p) const {
+        return this->p.x == p.p.x && this->p.y == p.p.y && this->p.z == p.p.z;
+    }
+
+    bool operator!=(const point &p) const {
+        return this->p.x != p.p.x || this->p.y != p.p.y || this->p.z != p.p.z;
+    }
+
+    bool operator<(const point &p) const {
+        return this->p.x < p.p.x || (this->p.x == p.p.x && this->p.y < p.p.y) ||
+               (this->p.x == p.p.x && this->p.y == p.p.y && this->p.z < p.p.z);
+    }
+
+    bool operator<=(const point &p) const {
+        return this->p.x <= p.p.x || (this->p.x == p.p.x && this->p.y <= p.p.y) ||
+               (this->p.x == p.p.x && this->p.y == p.p.y && this->p.z <= p.p.z);
+    }
+
+    bool operator>(const point &p) const {
+        return this->p.x > p.p.x || (this->p.x == p.p.x && this->p.y > p.p.y) ||
+               (this->p.x == p.p.x && this->p.y == p.p.y && this->p.z > p.p.z);
+    }
+
+    bool operator>=(const point &p) const {
+        return this->p.x >= p.p.x || (this->p.x == p.p.x && this->p.y >= p.p.y) ||
+               (this->p.x == p.p.x && this->p.y == p.p.y && this->p.z >= p.p.z);
+    }
+
+    point &operator=(const point &p);
+
+
+
 private:
-    float x, y, z;
+    glm::vec3 p;
 };
 
 
