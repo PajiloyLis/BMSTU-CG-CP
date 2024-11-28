@@ -68,7 +68,11 @@ vector<triangle> read_stl(const string &filename) {
     }
     float x_center = (max_x-min_x)/2, y_center = (max_y - min_y)/2, z_center = (max_z - min_z)/2;
     in.seekg(80, ios_base::beg);
-
+    for (auto &triangle: triangles) {
+        for (auto &p: triangle.getVertices()) {
+            glm::vec3 
+        }
+    }
     return triangles;
 }
 
