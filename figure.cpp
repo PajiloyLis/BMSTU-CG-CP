@@ -34,6 +34,7 @@ void figure::rotate(const rotate_t &rotate) {
         for (auto &p: triangle.getVertices())
             const_cast<point &>(p) = (p - center).rotate(rotate) + center;
     }
+    cout<<"figure_rotated\n";
 }
 
 point figure::get_center() const {

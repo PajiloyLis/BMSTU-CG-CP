@@ -7,6 +7,7 @@
 #include <unordered_set>
 #include "triangle.h"
 #include "conversions.h"
+#include <iostream>
 
 using namespace std;
 
