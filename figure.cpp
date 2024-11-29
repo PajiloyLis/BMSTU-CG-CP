@@ -32,7 +32,7 @@ void figure::rotate(const rotate_t &rotate) {
     for (auto &triangle: triangles) {
         const_cast<point &>(triangle.getN()).rotate(rotate);
         for (auto &p: triangle.getVertices())
-            const_cast<point &>(p) = (p - center).rotate(rotate) + center;
+            const_cast<point &>(p).rotate(rotate);
     }
     cout<<"figure_rotated\n";
 }
