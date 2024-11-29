@@ -56,33 +56,34 @@ vector<triangle> read_stl(const string &filename) {
         in.seekg(2, ios_base::cur);
     }
     in.close();
-//    float max_x, min_x, max_y, min_y, max_z, min_z;
-//    max_x = max_y = max_z = -1e9;
-//    min_x = min_y = min_z = 1e9;
-//    for (auto &triangle: triangles) {
-//        for (auto &p: triangle.getVertices()) {
-//            max_x = max(max_x, p.getX()), min_x = min(min_x, p.getX());
-//            max_y = max(max_y, p.getY()), min_y = min(min_y, p.getY());
-//            max_z = max(max_z, p.getZ()), min_z = min(min_z, p.getZ());
-//        }
-//    }
-//    point center((max_x - min_x) / 2, (max_y - min_y) / 2, (max_z - min_z) / 2);
+    float max_x, min_x, max_y, min_y, max_z, min_z;
+    max_x = max_y = max_z = -1e9;
+    min_x = min_y = min_z = 1e9;
+    for (auto &triangle: triangles) {
+        for (auto &p: triangle.getVertices()) {
+            max_x = max(max_x, p.getX()), min_x = min(min_x, p.getX());
+            max_y = max(max_y, p.getY()), min_y = min(min_y, p.getY());
+            max_z = max(max_z, p.getZ()), min_z = min(min_z, p.getZ());
+        }
+    }
+    point center((max_x - min_x) / 2, (max_y - min_y) / 2, (max_z - min_z) / 2);
 //    in.close();
-//    ofstream out(filename, ios::out | ios::binary);
-//    out.seekp(80, ios_base::beg);
-//    for (auto &triangle: triangles) {
-//        vertices = triangle.getVertices();
-//        point center_1 = vertices[0] - center, center_2 = vertices[1] - center, center_3 = vertices[2] - center;
-//        point a = vertices[1] - vertices[0], b = vertices[2] - vertices[0];
-//        point n = a.cross(b);
-//        if (bool(n.dot(center_1) > 0) + bool(n.dot(center_2) > 0) + bool(n.dot(center_3) > 0) < 2)
-//            n = b.cross(a);
-//        float n_x = n.getX(), n_y = n.getY(), n_z = n.getZ();
-//        out.write((char *) &n_x, sizeof(n_x));
-//        out.write((char *) &n_y, sizeof(n_y));
-//        out.write((char *) &n_z, sizeof(n_z));
-//        out.seekp(3 * 4 * 3 + 2, ios_base::cur);
-//    }
+    ofstream out(filename, ios::out | ios::binary);
+    out.seekp(80, ios_base::beg);
+    for (auto &triangle: triangles) {
+        vertices = triangle.getVertices();
+        point center_1 = vertices[0] - center, center_2 = vertices[1] - center, center_3 = vertices[2] - center;
+        point a = vertices[1] - vertices[0], b = vertices[2] - vertices[0];
+        point n = a.cross(b);
+        if (bool(n.dot(center_1) > 0) + bool(n.dot(center_2) > 0) + bool(n.dot(center_3) > 0) < 2)
+            n = b.cross(a);
+        float n_x = n.getX(), n_y = n.getY(), n_z = n.getZ();
+        out.write((char *) &n_x, sizeof(n_x));
+        out.write((char *) &n_y, sizeof(n_y));
+        out.write((char *) &n_z, sizeof(n_z));
+        out.seekp(3 * 4 * 3 + 2, ios_base::cur);
+    }
+    out.close();
     return triangles;
 }
 
