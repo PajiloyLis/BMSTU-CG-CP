@@ -30,7 +30,7 @@ int main() {
     while (window.isOpen()) {
         sf::Event event;
         while (true) {
-            if(window.pollEvent(event)) {
+            if (window.pollEvent(event)) {
                 if (event.type == sf::Event::Closed)
                     window.close();
                 if (event.type == sf::Event::KeyPressed) {
@@ -50,10 +50,11 @@ int main() {
         for (auto &i: mountain.getTriangles()) {
             index = 0;
             float intensity = light_ray.dot(i.getN());
-            if (intensity > 0 && cam.dot(i.getN()) > 0) {
+            if (intensity >= 0) {
                 for (auto &j: i.getVertices()) {
                     triangle[index] = {sf::Vector2f(j.getY(), -j.getZ() + screen_size.y),
-                                       {static_cast<sf::Uint8>(255 * intensity), static_cast<sf::Uint8>(255 * intensity),
+                                       {static_cast<sf::Uint8>(255 * intensity),
+                                        static_cast<sf::Uint8>(255 * intensity),
                                         static_cast<sf::Uint8>(255 * intensity)}};
                     ++index;
                 }
@@ -62,6 +63,7 @@ int main() {
         }
         window.display();
     }
+
     return 0;
 
 }
