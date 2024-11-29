@@ -76,11 +76,11 @@ vector<triangle> read_stl(const string &filename) {
             vertices = triangle.getVertices();
             point center_1 = vertices[0] - center, center_2 = vertices[1] - center, center_3 = vertices[2] - center;
             point a = vertices[1] - vertices[0], b = vertices[2] - vertices[0];
-            point n = a.cross(b);
-            if (bool(n.dot(center_1) > 0) + bool(n.dot(center_2) > 0) + bool(n.dot(center_3) > 0) < 2)
-                n = b.cross(a);
-            triangle.setN(n);
-            float n_x = n.getX(), n_y = n.getY(), n_z = n.getZ();
+            point v_n = a.cross(b);
+            if (bool(v_n.dot(center_1) > 0) + bool(v_n.dot(center_2) > 0) + bool(v_n.dot(center_3) > 0) < 2)
+                v_n = b.cross(a);
+            triangle.setN(v_n);
+            float n_x = v_n.getX(), n_y = v_n.getY(), n_z = v_n.getZ();
             out.write((char *) &n_x, sizeof(n_x));
             out.write((char *) &n_y, sizeof(n_y));
             out.write((char *) &n_z, sizeof(n_z));
