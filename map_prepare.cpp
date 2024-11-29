@@ -72,7 +72,7 @@ vector<triangle> read_stl(const string &filename) {
         }
         point center((max_x - min_x) / 2, (max_y - min_y) / 2, (max_z - min_z) / 2);
 //    in.close();
-        ofstream out(filename, ios_base::out | ios_base::binary);
+        fstream out(filename, ios_base::out | ios_base::in | ios_base::binary);
         out.seekp(0);
         out.seekp(84, ios_base::beg);
         for (auto &triangle: triangles) {
@@ -92,6 +92,7 @@ vector<triangle> read_stl(const string &filename) {
             out.write((char *) &n_z, sizeof(n_z));
             out.seekp(38, ios_base::cur);
         }
+        out.seekp(0, ios_base::end);
         out.close();
     }
     return triangles;
