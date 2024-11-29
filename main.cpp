@@ -22,7 +22,10 @@ int main() {
             const_cast<point &>(j).setX(j.getX() * k);
         }
     }
-
+    figure_center.setX(figure_center.getX() * k);
+    figure_center.setY(figure_center.getY() * k);
+    figure_center.setZ(figure_center.getZ() * k);
+    mountain.setCenter(figure_center);
     array<sf::Vertex, 3> triangle;
     point light_ray = normalize(point(1, 0, 0.2));
     point cam = normalize(point(1, 0, 0));

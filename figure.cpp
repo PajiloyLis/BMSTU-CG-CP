@@ -50,6 +50,6 @@ const vector<triangle> &figure::getTriangles() const {
 }
 
 void figure::setCenter(const point &center) {
-    figure::center = center;
+    this->center = center;
 }
 
