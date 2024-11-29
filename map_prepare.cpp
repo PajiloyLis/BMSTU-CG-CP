@@ -60,6 +60,7 @@ vector<triangle> read_stl(const string &filename) {
     cout<<"readed "<<cnt<<'\n';
     in.close();
     if (!normal) {
+        cout<<"calculate normals\n";
         float max_x, min_x, max_y, min_y, max_z, min_z;
         max_x = max_y = max_z = -1e9;
         min_x = min_y = min_z = 1e9;
@@ -81,10 +82,9 @@ vector<triangle> read_stl(const string &filename) {
                     center_2 = normalize(vertices[1] - center),
                     center_3 = normalize(vertices[2] - center);
             point a = normalize(vertices[1] - vertices[0]), b = normalize(vertices[2] - vertices[0]);
-            point v_n = a.cross(b);
-//            if (bool(v_n.dot(center_1) > 0) + bool(v_n.dot(center_2) > 0) + bool(v_n.dot(center_3) > 0) < 2)
-//                v_n = b.cross(a);
-            v_n.normalize();
+            point v_n = a.cross(b).normalize();
+            if (bool(v_n.dot(center_1) > 0) + bool(v_n.dot(center_2) > 0) + bool(v_n.dot(center_3) > 0) < 2)
+                v_n = b.cross(a).normalize();
             triangle.setN(v_n);
             float n_x = v_n.getX(), n_y = v_n.getY(), n_z = v_n.getZ();
             out.write((char *) &n_x, sizeof(n_x));

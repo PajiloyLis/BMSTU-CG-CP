@@ -85,7 +85,7 @@ public:
 
     point cross(const point &a);
 
-    void normalize();
+    point normalize();
 
     friend point normalize(const point &p) {
         point cp = const_cast<point &>(p);

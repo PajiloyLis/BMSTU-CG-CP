@@ -51,8 +51,9 @@ point::point(glm::vec3 p) {
     this->p = p;
 }
 
-void point::normalize() {
+point point::normalize() {
     glm::normalize(p);
+    return *this;
 }
 
 point point::operator-(const point &a) const {
