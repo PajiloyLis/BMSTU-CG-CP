@@ -104,6 +104,12 @@ private:
     point(const glm::vec3 &p);
 
     glm::vec3 p;
+
+    void rotate_point_x(const rotate_t &rotate);
+
+    void rotate_point_y(const rotate_t &rotate);
+
+    void rotate_point_z(const rotate_t &rotate);
 };
 
 
