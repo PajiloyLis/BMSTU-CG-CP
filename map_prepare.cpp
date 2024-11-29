@@ -83,7 +83,7 @@ vector<triangle> read_stl(const string &filename) {
                     center_3 = vertices[2] - center;
             point a = vertices[1] - vertices[0], b = vertices[2] - vertices[0];
             point v_n = a.cross(b);
-            if (bool(v_n.dot(center_1) > 0) + bool(v_n.dot(center_2) > 0) + bool(v_n.dot(center_3) > 0) < 2)
+            if (bool(v_n.dot(center_1) > 0) + bool(v_n.dot(center_2) > 0) + bool(v_n.dot(center_3) > 0) > 1)
                 v_n = b.cross(a);
             v_n.normalize();
             triangle.setN(v_n);
