@@ -25,7 +25,7 @@ void figure::rotate(const rotate_t &rotate) {
     }
 }
 
-[[maybe_unused]] point figure::get_center() const {
+point figure::get_center() const {
     return {(max_x - min_x) / 2, (max_y - min_y) / 2, (max_z - min_z) / 2};
 }
 
