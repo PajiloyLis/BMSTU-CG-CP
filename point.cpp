@@ -47,7 +47,7 @@ float point::dot(const point &a) {
     return glm::dot(p, a.p);
 }
 
-point::point(glm::vec3 p) {
+point::point(const glm::vec3 &p) {
     this->p = p;
 }
 
