@@ -71,6 +71,7 @@ vector<triangle> read_stl(const string &filename) {
         point center((max_x - min_x) / 2, (max_y - min_y) / 2, (max_z - min_z) / 2);
 //    in.close();
         ofstream out(filename, ios::out | ios::binary);
+        out.seekp(0);
         out.seekp(84, ios_base::beg);
         for (auto &triangle: triangles) {
             vertices = triangle.getVertices();
