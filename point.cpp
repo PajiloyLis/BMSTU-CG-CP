@@ -67,3 +67,27 @@ point point::operator+(const point &a) const {
 point point::cross(const point &a) {
     return glm::cross(p, a.p);
 }
+
+void RotatePointX(point_t &p, const rotate_t &rotate)
+{
+    double tmp_y = p.y;
+    p.y = std::cos(rotate.angle_x) * p.y - std::sin(rotate.angle_x) * p.z;
+    p.z = std::sin(rotate.angle_x) * tmp_y + std::cos(rotate.angle_x) * p.z;
+    return SUCCESS;
+}
+
+static my_error_t RotatePointY(point_t &p, const rotate_t &rotate)
+{
+    double tmp_x = p.x;
+    p.x = std::cos(rotate.angle_y) * p.x + std::sin(rotate.angle_y) * p.z;
+    p.z = -std::sin(rotate.angle_y) * tmp_x + std::cos(rotate.angle_y) * p.z;
+    return SUCCESS;
+}
+
+static my_error_t RotatePointZ(point_t &p, const rotate_t &rotate)
+{
+    double tmp_x = p.x;
+    p.x = std::cos(rotate.angle_z) * p.x - std::sin(rotate.angle_z) * p.y;
+    p.y = std::sin(rotate.angle_z) * tmp_x + std::cos(rotate.angle_z) * p.y;
+    return SUCCESS;
+}
