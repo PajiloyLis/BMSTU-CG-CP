@@ -78,13 +78,14 @@ vector<triangle> read_stl(const string &filename) {
         out.seekp(84, ios_base::beg);
         for (auto &triangle: triangles) {
             vertices = triangle.getVertices();
-            point center_1 = normalize(vertices[0] - center),
-                    center_2 = normalize(vertices[1] - center),
-                    center_3 = normalize(vertices[2] - center);
-            point a = normalize(vertices[1] - vertices[0]), b = normalize(vertices[2] - vertices[0]);
-            point v_n = a.cross(b).normalize();
+            point center_1 = vertices[0] - center,
+                    center_2 = vertices[1] - center,
+                    center_3 = vertices[2] - center;
+            point a = vertices[1] - vertices[0], b = vertices[2] - vertices[0];
+            point v_n = a.cross(b);
             if (bool(v_n.dot(center_1) > 0) + bool(v_n.dot(center_2) > 0) + bool(v_n.dot(center_3) > 0) < 2)
-                v_n = b.cross(a).normalize();
+                v_n = b.cross(a);
+            v_n.normalize();
             triangle.setN(v_n);
             float n_x = v_n.getX(), n_y = v_n.getY(), n_z = v_n.getZ();
             out.write((char *) &n_x, sizeof(n_x));
