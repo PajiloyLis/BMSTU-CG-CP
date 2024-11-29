@@ -36,13 +36,6 @@ point::point(point &p) {
     this->p = p.p;
 }
 
-point point::rotate(const rotate_t &rotate) {
-    double tmp_x = p.x;
-    p.x = std::cos(rotate.angle_y) * p.x + std::sin(rotate.angle_y) * p.z;
-    p.z = -std::sin(rotate.angle_y) * tmp_x + std::cos(rotate.angle_y) * p.z;
-    return *this;
-}
-
 float point::dot(const point &a) {
     return glm::dot(p, a.p);
 }
@@ -84,4 +77,11 @@ void point::rotate_point_z(const rotate_t &rotate) {
     double tmp_x = p.x;
     p.x = std::cos(rotate.angle_z) * p.x - std::sin(rotate.angle_z) * p.y;
     p.y = std::sin(rotate.angle_z) * tmp_x + std::cos(rotate.angle_z) * p.y;
+}
+
+point point::rotate(const rotate_t &rotate) {
+    rotate_point_x(rotate);
+    rotate_point_y(rotate);
+    rotate_point_z(rotate);
+    return *this;
 }
