@@ -58,3 +58,9 @@
 2	1142	1732844818339535685	CMakeFiles/cp_cg.dir/map_prepare.cpp.o	c1bdb6faf55d2892
 2	1228	1732844818424535682	CMakeFiles/cp_cg.dir/main.cpp.o	e26b6293be1beafb
 1228	1322	1732844818518535679	cp_cg	16ef8fb9bc9783ce
+2	786	1732845212481521196	CMakeFiles/cp_cg.dir/point.cpp.o	64ae4e4e1518d1f8
+2	1213	1732845212907521180	CMakeFiles/cp_cg.dir/triangle.cpp.o	d408b056434e65d5
+1	1350	1732845213043521175	CMakeFiles/cp_cg.dir/map_prepare.cpp.o	c1bdb6faf55d2892
+1	1489	1732845213183521170	CMakeFiles/cp_cg.dir/main.cpp.o	e26b6293be1beafb
+2	1517	1732845213211521169	CMakeFiles/cp_cg.dir/figure.cpp.o	15e101c0500d2205
+1517	1663	1732845213356521164	cp_cg	16ef8fb9bc9783ce

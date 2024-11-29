@@ -36,10 +36,11 @@ point::point(point &p) {
     this->p = p.p;
 }
 
-void point::rotate(const rotate_t &rotate) {
+point point::rotate(const rotate_t &rotate) {
     double tmp_x = p.x;
     p.x = std::cos(rotate.angle_y) * p.x + std::sin(rotate.angle_y) * p.z;
     p.z = -std::sin(rotate.angle_y) * tmp_x + std::cos(rotate.angle_y) * p.z;
+    return *this;
 }
 
 float point::dot(const point &a) {

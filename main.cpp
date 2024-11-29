@@ -47,12 +47,15 @@ int main() {
         while (window.pollEvent(event)) {
             if (event.type == sf::Event::Closed)
                 window.close();
-            if (event.type == sf::Event::KeyPressed)
-            {
-                if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
-                {
-
-                }
+            if (event.type == sf::Event::KeyPressed) {
+                if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
+                    mountain.rotate({0, 0, -M_PI / 90});
+                else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
+                    mountain.rotate({0, 0, M_PI / 90});
+                else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
+                    mountain.rotate({0, -M_PI / 90, 0});
+                else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
+                    mountain.rotate({0, M_PI / 90, 0});
             }
         }
     }

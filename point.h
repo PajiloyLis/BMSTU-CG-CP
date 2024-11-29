@@ -79,7 +79,7 @@ public:
 
     point &operator=(const point &p);
 
-    void rotate(const rotate_t &rotate);
+    point rotate(const rotate_t &rotate);
 
     float dot(const point &a);
 
