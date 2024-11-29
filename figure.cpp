@@ -32,9 +32,9 @@ void figure::rotate(const rotate_t &rotate) {
     for (auto &triangle: triangles) {
         const_cast<point &>(triangle.getN()).rotate(rotate);
         for (auto &p: triangle.getVertices())
-            const_cast<point &>(p).rotate(rotate);
+            const_cast<point &>(p) = (p - center).rotate(rotate) + center;
     }
-    cout<<"figure_rotated\n";
+    cout << "figure_rotated\n";
 }
 
 point figure::get_center() const {
@@ -47,5 +47,9 @@ array<float, 3> figure::get_size() const {
 
 const vector<triangle> &figure::getTriangles() const {
     return triangles;
+}
+
+void figure::setCenter(const point &center) {
+    figure::center = center;
 }
 
