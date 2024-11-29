@@ -24,8 +24,8 @@ int main() {
     }
 
     array<sf::Vertex, 3> triangle;
-    point light_ray = normalize(point(1, 0, 1));
-    point cam = normalize(point(1, 0, 1));
+    point light_ray = normalize(point(1, 0, 0));
+    point cam = normalize(point(1, 0, 0));
     int index;
     while (window.isOpen()) {
         sf::Event event;
