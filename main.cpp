@@ -24,7 +24,7 @@ int main() {
     }
 
     array<sf::Vertex, 3> triangle;
-    point light_ray = normalize(point(1, 0, 0));
+    point light_ray = normalize(point(1, 0, 0.2));
     point cam = normalize(point(1, 0, 0));
     int index;
     while (window.isOpen()) {
@@ -48,16 +48,17 @@ int main() {
         for (auto &i: mountain.getTriangles()) {
             index = 0;
             float intensity = light_ray.dot(i.getN());
-            for (auto &j: i.getVertices()) {
-                triangle[index] = {sf::Vector2f(j.getY(), -j.getZ() + screen_size.y),
-                                   {static_cast<sf::Uint8>(255 * intensity),
-                                    static_cast<sf::Uint8>(255 * intensity),
-                                    static_cast<sf::Uint8>(255 * intensity)}};
-                ++index;
+            if (intensity > 0) {
+                for (auto &j: i.getVertices()) {
+                    triangle[index] = {sf::Vector2f(j.getY(), -j.getZ() + screen_size.y),
+                                       {static_cast<sf::Uint8>(255 * intensity),
+                                        static_cast<sf::Uint8>(255 * intensity),
+                                        static_cast<sf::Uint8>(255 * intensity)}};
+                    ++index;
+                }
+                window.draw(&triangle[0], 3, sf::Triangles);
             }
-            window.draw(&triangle[0], 3, sf::Triangles);
         }
-
         window.display();
     }
 
