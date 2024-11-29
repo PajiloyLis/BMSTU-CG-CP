@@ -53,7 +53,7 @@ int main() {
             float intensity = light_ray.dot(i.getN());
             if (intensity > 0) {
                 for (auto &j: i.getVertices()) {
-                    triangle[index] = {sf::Vector2f(j.getY(), -j.getZ() + screen_size.y),
+                    triangle[index] = {sf::Vector2f(j.getX(), -j.getZ() + screen_size.y),
                                        {static_cast<sf::Uint8>(255 * intensity),
                                         static_cast<sf::Uint8>(255 * intensity),
                                         static_cast<sf::Uint8>(255 * intensity)}};
