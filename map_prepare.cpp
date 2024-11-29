@@ -84,7 +84,7 @@ vector<triangle> read_stl(const string &filename) {
             out.write((char *) &n_x, sizeof(n_x));
             out.write((char *) &n_y, sizeof(n_y));
             out.write((char *) &n_z, sizeof(n_z));
-            out.seekp(3 * 4 * 3 + 2, ios_base::cur);
+            out.seekp(38, ios_base::cur);
         }
         out.close();
     }
