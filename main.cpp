@@ -7,7 +7,6 @@
 
 int main() {
     figure mountain(read_stl("./prepared_srtm/klyuchevskaya.STL"));
-//    vector<point> map = read_map("./prepared_srtm/klyuchevskaya.bin", "./prepared_srtm/klyuchevskaya.hdr");
     point figure_center = mountain.get_center();
     array<float, 3> size = mountain.get_size();
     float delta = max(size[0], max(size[1], size[2]));

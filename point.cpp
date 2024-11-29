@@ -52,7 +52,7 @@ point::point(glm::vec3 p) {
 }
 
 point point::normalize() {
-    glm::normalize(p);
+    this->p = glm::normalize(p);
     return *this;
 }
 
