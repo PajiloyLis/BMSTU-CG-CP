@@ -33,7 +33,7 @@ public:
 
 private:
     float min_x, max_x, min_y, max_y, min_z, max_z;
-    
+    point center;
 };
 
 #endif //CP_CG_FIGURE_H
