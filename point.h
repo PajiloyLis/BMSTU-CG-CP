@@ -88,8 +88,8 @@ public:
     point normalize();
 
     friend point normalize(const point &p) {
-        point cp = const_cast<point &>(p);
-        return glm::normalize(cp.p);
+        const_cast<point &>(p).p = glm::normalize(p.p);
+        return p;
     }
 
     friend point normalize(point &&p) {
