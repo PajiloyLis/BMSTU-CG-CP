@@ -39,7 +39,8 @@ vector<triangle> read_stl(const string &filename) {
     array<point, 3> vertices;
     float x, y, z;
     bool normal = false;
-    for (int i = 0; i < n; ++i) {
+    int cnt = 0;
+    for (int i = 0; i < n; ++i, ++cnt) {
         in.read((char *) &x, sizeof(x));
         in.read((char *) &y, sizeof(y));
         in.read((char *) &z, sizeof(z));
@@ -56,6 +57,7 @@ vector<triangle> read_stl(const string &filename) {
         triangles[i].setVertices(vertices);
         in.seekg(2, ios_base::cur);
     }
+    cout<<"readed "<<cnt<<'\n';
     in.close();
     if (!normal) {
         float max_x, min_x, max_y, min_y, max_z, min_z;
