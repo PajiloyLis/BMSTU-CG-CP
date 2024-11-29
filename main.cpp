@@ -25,23 +25,26 @@ int main() {
     }
 
     array<sf::Vertex, 3> triangle;
-    point light_ray = normalize(point(1, 0, 0.2));
+    point light_ray = normalize(point(1, 0, 1));
     point cam = normalize(point(1, 0, 0));
     int index;
     while (window.isOpen()) {
         sf::Event event;
-        if (window.pollEvent(event)) {
-            if (event.type == sf::Event::Closed)
-                window.close();
-            if (event.type == sf::Event::KeyPressed) {
-                if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
-                    mountain.rotate({-M_PI / 90, 0, 0});
-                else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
-                    mountain.rotate({M_PI / 90, 0, 0});
-                else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
-                    mountain.rotate({0, -M_PI / 90, 0});
-                else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
-                    mountain.rotate({0, M_PI / 90, 0});
+        while (true) {
+            if(window.pollEvent(event)) {
+                if (event.type == sf::Event::Closed)
+                    window.close();
+                if (event.type == sf::Event::KeyPressed) {
+                    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
+                        mountain.rotate({-M_PI / 90, 0, 0});
+                    else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
+                        mountain.rotate({M_PI / 90, 0, 0});
+                    else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
+                        mountain.rotate({0, -M_PI / 90, 0});
+                    else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
+                        mountain.rotate({0, M_PI / 90, 0});
+                }
+                break;
             }
         }
         window.clear(sf::Color{0x87CEEB});
