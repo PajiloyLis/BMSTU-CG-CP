@@ -8,9 +8,11 @@
 #include <vector>
 #include <SFML/Graphics.hpp>
 #include <cmath>
+#include "triangle.h"
 
 using namespace std;
 
-void z_buffer(array<my_vec3f, 3> points, vector<vector<sf::Vertex>> &image, sf::Color color, vector<float> &z_buffer);
+void z_buffer(vector<triangle> &triangles, int start, int stop, vector<vector<sf::Vertex>> &image, sf::Color color,
+              vector<float> &z_buffer);
 
 #endif //CP_CG_OPERATIONS_H
