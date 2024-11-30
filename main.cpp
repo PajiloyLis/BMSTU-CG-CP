@@ -64,7 +64,6 @@ int main() {
                     for (int j = 0; j < image[i].size(); ++j) {
                         image[i][j].position.x = j, image[i][j].position.y =
                                 screen_size.y - i, image[i][j].color = sf::Color{0x87CEEB};
-//                mountain.sort();
                     }
                 }
 
