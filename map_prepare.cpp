@@ -62,6 +62,7 @@ vector<triangle> read_stl(const string &filename) {
     cout << "readed " << cnt << '\n';
     cout << "cnt x " << xs.size() << "\ncnt y " << ys.size() << "\ncnt z " << zs.size() << "\n";
     in.close();
+
     if (!normal) {
         cout << "calculate normals\n";
         float max_x, min_x, max_y, min_y, max_z, min_z;

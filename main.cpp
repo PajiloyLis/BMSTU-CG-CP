@@ -11,8 +11,9 @@ int main() {
     array<float, 3> size = mountain.get_size();
     float delta = max(size[0], max(size[1], size[2]));
     cout << delta << '\n';
-    sf::RenderWindow window(sf::VideoMode(1920, 1080), "kek");
+    sf::RenderWindow window(sf::VideoMode(1850, 1016), "kek");
     sf::Vector2u screen_size = window.getSize();
+    cout<<screen_size.x<<" "<<screen_size.y<<'\n';
     unsigned x_center = screen_size.x / 2, y_center = screen_size.y / 2;
     float k = (delta == size[2] ? screen_size.y / delta : screen_size.x / delta);
     for (auto &triangle: mountain.getTriangles()) {
