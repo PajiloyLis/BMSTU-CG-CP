@@ -1,7 +1,7 @@
 #include "operations.h"
 
 void z_buffer(vector<triangle> &triangles, int start, int stop, vector<vector<sf::Vertex>> &image, sf::Color color,
-              vector<float> &z_buffer) {
+              vector<float> &z_buffer, my_vec3f &light_ray) {
     for (int k = start; k < stop; ++k) {
         array<my_vec3f, 3> points = triangles[k].getVertices();
         if (points[0].getZ() == points[1].getZ() && points[1].getZ() == points[2].getZ()) return;

@@ -64,22 +64,20 @@ int main() {
             }
         }
 //        window.clear(sf::Color{0x87CEEB});
-        for (auto &i: mountain.getTriangles()) {
-//            index = 0;
-            float intensity = light_ray.dot(i.getN());
-            if (intensity > 0) {
-                z_buffer(i.getVertices(), image, sf::Color{static_cast<sf::Uint8>(255 * intensity),
-                                                           static_cast<sf::Uint8>(255 * intensity),
-                                                           static_cast<sf::Uint8>(255 * intensity)}, zbuffer);
-//                for (auto &j: i.getVertices()) {
-//                    triangle[index] = {sf::Vector2f(j.getY(), -j.getZ() + screen_size.y),
-//                                       {static_cast<sf::Uint8>(255 * intensity),
-//                                        static_cast<sf::Uint8>(255 * intensity),
-//                                        static_cast<sf::Uint8>(255 * intensity)}};
-//                    ++index;
-//                }
-//                window.draw(&triangle[0], 3, sf::Triangles);
-            }
+        thread t_1(z_buffer(), ref(ans), 0, n / threads_cnt);
+        thread t_2(is_ok, ref(ans), n / threads_cnt, 2 * n / threads_cnt);
+        thread t_3(is_ok, ref(ans), 2 * n / threads_cnt, 3 * n / threads_cnt);
+        thread t_4(is_ok, ref(ans), 3 * n / threads_cnt, 4 * n / threads_cnt);
+        thread t_5(is_ok, ref(ans), 4 * n / threads_cnt, 5 * n / threads_cnt);
+        thread t_6(is_ok, ref(ans), 5 * n / threads_cnt, 6 * n / threads_cnt);
+        thread t_7(is_ok, ref(ans), 6 * n / threads_cnt, 7 * n / threads_cnt);
+        t_1.join();
+        t_2.join();
+        t_3.join();
+        t_4.join();
+        t_5.join();
+        t_6.join();
+        t_7.join();
         }
         for(auto &line:image)
             window.draw(&line[0], line.size(), sf::Points);
