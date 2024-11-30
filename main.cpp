@@ -69,19 +69,10 @@ int main() {
 //            index = 0;
             float intensity = light_ray.dot(i.getN());
             if (intensity > 0) {
-                sf::Color x_positive_color(255, 0, 0);
-                sf::Color x_negative_color(0, 255, 0);
-                sf::Color y_positive_color(0, 0, 255);
-                sf::Color cur_color = x_positive_color;
-                float max_x = max(i.getVertices()[0].getX(), max(i.getVertices()[1].getX(), i.getVertices()[2].getX())),
-                        max_y = max(i.getVertices()[0].getY(),
-                                    max(i.getVertices()[1].getY(), i.getVertices()[2].getY()));
-                if (max_x < 0)
-                    cur_color = x_negative_color;
-                if (max_x < max_y)
-                    cur_color = y_positive_color;
                 z_buffer(i.getVertices(), image,
-                         sf::Color{cur_color.r * intensity, cur_color.g * intensity, cur_color.b * intensity}, zbuffer);
+                         sf::Color{static_cast<sf::Uint8>(255 * intensity),
+                                   static_cast<sf::Uint8>(255 * intensity),
+                                   static_cast<sf::Uint8>(255 * intensity)}, zbuffer);
 //                for (auto &j: i.getVertices()) {
 //                    triangle[index] = {sf::Vector2f(j.getY(), -j.getZ() + screen_size.y),
 //                                       {static_cast<sf::Uint8>(255 * intensity),
