@@ -36,7 +36,8 @@ int main() {
     vector<vector<sf::Vertex>> image(screen_size.y, vector<sf::Vertex>(screen_size.x));
     for (int i = 0; i < image.size(); ++i) {
         for (int j = 0; j < image[i].size(); ++j) {
-            image[i][j].position.x = j, image[i][j].position.y = screen_size.y-i, image[i][j].color = sf::Color{0x87CEEB};
+            image[i][j].position.x = j, image[i][j].position.y = screen_size.y - i, image[i][j].color = sf::Color{
+                    0x87CEEB};
         }
     }
     vector<float> zbuffer(screen_size.x * screen_size.y, std::numeric_limits<float>::min());
@@ -61,29 +62,20 @@ int main() {
                 fill(zbuffer.begin(), zbuffer.end(), std::numeric_limits<float>::min());
                 for (int i = 0; i < image.size(); ++i) {
                     for (int j = 0; j < image[i].size(); ++j) {
-                        image[i][j].position.x = j, image[i][j].position.y = screen_size.y-i, image[i][j].color = sf::Color{0x87CEEB};
+                        image[i][j].position.x = j, image[i][j].position.y =
+                                screen_size.y - i, image[i][j].color = sf::Color{0x87CEEB};
                     }
                 }
             }
         }
 //        window.clear(sf::Color{0x87CEEB});
 
-        thread t_1(z_buffer, , 0, n / threads_cnt, image, zbuffer,light_ray);
-        thread t_2(is_ok, ref(ans), n / threads_cnt, 2 * n / threads_cnt);
-        thread t_3(is_ok, ref(ans), 2 * n / threads_cnt, 3 * n / threads_cnt);
-        thread t_4(is_ok, ref(ans), 3 * n / threads_cnt, 4 * n / threads_cnt);
-        thread t_5(is_ok, ref(ans), 4 * n / threads_cnt, 5 * n / threads_cnt);
-        thread t_6(is_ok, ref(ans), 5 * n / threads_cnt, 6 * n / threads_cnt);
-        thread t_7(is_ok, ref(ans), 6 * n / threads_cnt, 7 * n / threads_cnt);
-        t_1.join();
-        t_2.join();
-        t_3.join();
-        t_4.join();
-        t_5.join();
-        t_6.join();
-        t_7.join();
+        thread threads[threads_cnt];
+        for (int i = 0; i < threads_cnt; ++i) {
+            threads[i]=thread(z_buffer, ref(triangles), i*n/threads_cnt, (i+1)*n/threads_cnt, ref(image), ref(zbuffer), ref(light_ray));
+            threads[i].join();
         }
-        for(auto &line:image)
+        for (auto &line: image)
             window.draw(&line[0], line.size(), sf::Points);
         window.display();
     }
