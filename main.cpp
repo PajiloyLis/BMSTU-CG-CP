@@ -40,10 +40,10 @@ int main() {
                     0x87CEEB};
         }
     }
-//    vector<float> zbuffer(screen_size.x * screen_size.y, std::numeric_limits<float>::min());
-//    int threads_cnt = thread::hardware_concurrency() - 2;
-//    auto triangles = mountain.getTriangles();
-//    int n = triangles.size();
+    vector<float> zbuffer(screen_size.x * screen_size.y, std::numeric_limits<float>::min());
+    int threads_cnt = thread::hardware_concurrency() - 2;
+    auto triangles = mountain.getTriangles();
+    int n = triangles.size();
     while (window.isOpen()) {
         sf::Event event;
 
@@ -59,44 +59,37 @@ int main() {
                     mountain.rotate({0, -M_PI / 90, 0});
                 else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
                     mountain.rotate({0, M_PI / 90, 0});
-//                fill(zbuffer.begin(), zbuffer.end(), std::numeric_limits<float>::min());
-//                for (int i = 0; i < image.size(); ++i) {
-//                    for (int j = 0; j < image[i].size(); ++j) {
-//                        image[i][j].position.x = j, image[i][j].position.y =
-//                                screen_size.y - i, image[i][j].color = sf::Color{0x87CEEB};
-                mountain.sort();
-            }
-        }
-        window.clear(sf::Color{0x87CEEB});
-        for (auto &i: mountain.getTriangles()) {
-            index = 0;
-            float intensity = light_ray.dot(i.getN());
-            if (intensity > 0) {
-                for (auto &j: i.getVertices()) {
-                    triangle[index] = {sf::Vector2f(j.getY(), -j.getZ() + screen_size.y),
-                                       {static_cast<sf::Uint8>(255 * intensity),
-                                        static_cast<sf::Uint8>(255 * intensity),
-                                        static_cast<sf::Uint8>(255 * intensity)}};
-                    ++index;
+                fill(zbuffer.begin(), zbuffer.end(), std::numeric_limits<float>::min());
+                for (int i = 0; i < image.size(); ++i) {
+                    for (int j = 0; j < image[i].size(); ++j) {
+                        image[i][j].position.x = j, image[i][j].position.y =
+                                screen_size.y - i, image[i][j].color = sf::Color{0x87CEEB};
+//                mountain.sort();
+                    }
                 }
-                window.draw(&triangle[0], 3, sf::Triangles);
-            }
-        }
-
-        window.display();
 //        window.clear(sf::Color{0x87CEEB});
-
-//        thread threads[threads_cnt];
-//        for (int i = 0; i < threads_cnt; ++i) {
-//            threads[i] = thread(z_buffer, ref(triangles), i * n / threads_cnt, (i + 1) * n / threads_cnt, ref(image),
-//                                ref(zbuffer), ref(light_ray));
-//            threads[i].join();
+//        for (auto &i: mountain.getTriangles()) {
+//            index = 0;
+//            float intensity = light_ray.dot(i.getN());
+//            if (intensity > 0) {
+//                for (auto &j: i.getVertices()) {
+//                    triangle[index] = {sf::Vector2f(j.getY(), -j.getZ() + screen_size.y),
+//                                       {static_cast<sf::Uint8>(255 * intensity),
+//                                        static_cast<sf::Uint8>(255 * intensity),
+//                                        static_cast<sf::Uint8>(255 * intensity)}};
+//                    ++index;
+//                }
+//                window.draw(&triangle[0], 3, sf::Triangles);
+//            }
 //        }
-//        for (auto &line: image)
-//            window.draw(&line[0], line.size(), sf::Points);
+//
+//        window.display();
+                z_buffer(mountain.getTriangles(), 0, mountain.getTriangles().size(), image, zbuffer, light_ray);
+                for (auto &line: image)
+                    window.draw(&line[0], line.size(), sf::Points);
 
-    }
+            }
 
-    return 0;
+            return 0;
 
-}
+        }
