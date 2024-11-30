@@ -35,3 +35,12 @@ const array<point, 3> &triangle::getVertices() const {
 const point &triangle::getN() const {
     return n;
 }
+
+triangle &triangle::operator=(const triangle &t) {
+    if(this != &t)
+    {
+        vertices=t.vertices;
+        n=t.n;
+    }
+    return *this;
+}

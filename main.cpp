@@ -45,7 +45,7 @@ int main() {
                     mountain.rotate({0, -M_PI / 90, 0});
                 else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
                     mountain.rotate({0, M_PI / 90, 0});
-                sort(mountain.getTriangles().begin(), mountain.getTriangles().end());
+
             }
         }
         window.clear(sf::Color{0x87CEEB});
@@ -63,7 +63,6 @@ int main() {
             window.draw(&triangle[0], 3, sf::Triangles);
             }
         }
-        window.draw({sf::Vector2()})
         window.display();
     }
 

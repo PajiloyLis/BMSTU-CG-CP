@@ -53,3 +53,8 @@ void figure::setCenter(const point &center) {
     this->center = center;
 }
 
+void figure::sort()
+{
+    sort(triangles.begin(), triangles.end());
+}
+

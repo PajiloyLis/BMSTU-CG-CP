@@ -8,6 +8,7 @@
 #include "triangle.h"
 #include "conversions.h"
 #include <iostream>
+#include <algorithm>
 
 using namespace std;
 
@@ -37,6 +38,8 @@ private:
     point center;
 public:
     void setCenter(const point &center);
+
+    void sort();
 };
 
 #endif //CP_CG_FIGURE_H

@@ -58,6 +58,8 @@ public:
         return !(*this < t);
     }
 
+    triangle &operator=(const triangle &t);
+
 private:
     array<point, 3> vertices;
     point n;
