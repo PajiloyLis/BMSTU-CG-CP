@@ -49,7 +49,7 @@ int main() {
                     mountain.rotate({0, -M_PI / 90, 0});
                 else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
                     mountain.rotate({0, M_PI / 90, 0});
-//                z_buffer.fill(std::numeric_limits<float>::min());
+                z_buffer.fill(std::numeric_limits<float>::min());
             }
         }
         window.clear(sf::Color{0x87CEEB});
