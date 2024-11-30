@@ -32,7 +32,12 @@ int main() {
     my_vec3f light_ray = normalize(my_vec3f(1, 0, 0));
     my_vec3f cam = normalize(my_vec3f(1, 0, 0));
     int index;
-    vector<vector<sf::Color>> image(screen_size.y, vector<sf::Color>(screen_size.x, sf::Color{0x87CEEB}));
+    vector<vector<sf::Vertex>> image(screen_size.y, vector<sf::Vertex>(screen_size.x));
+    for (int i = 0; i < image.size(); ++i) {
+        for (int j = 0; j < image[i].size(); ++j) {
+            image[i][j].position.x = j, image[i][j].position.y = -i, image[i][j].color = sf::Color{0x87CEEB};
+        }
+    }
     vector<float> zbuffer(screen_size.x * screen_size.y, std::numeric_limits<float>::min());
     while (window.isOpen()) {
         sf::Event event;
@@ -53,7 +58,7 @@ int main() {
                 fill(image.begin(), image.end(), vector<sf::Color>(screen_size.x, sf::Color{0x87CEEB});
             }
         }
-        window.clear(sf::Color{0x87CEEB});
+//        window.clear(sf::Color{0x87CEEB});
         for (auto &i: mountain.getTriangles()) {
 //            index = 0;
             float intensity = light_ray.dot(i.getN());
@@ -73,8 +78,7 @@ int main() {
         }
         for (int i = 0; i < image.size(); ++i) {
             for (int j = 0; j < image[i].size(); ++j) {
-                window.draw({sf::Vertex(sf::Vector2f{static_cast<float>(-i), static_cast<float>(j)}, image[i][j]}, 1,
-                            sf::Points);
+
             }
         }
         window.display();
