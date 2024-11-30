@@ -55,6 +55,6 @@ void figure::setCenter(const point &center) {
 
 void figure::sort()
 {
-    sort(triangles.begin(), triangles.end());
+    std::sort(triangles.begin(), triangles.end());
 }
 
