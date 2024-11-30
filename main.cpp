@@ -64,7 +64,8 @@ int main() {
             }
         }
 //        window.clear(sf::Color{0x87CEEB});
-        thread t_1(z_buffer(), ref(ans), 0, n / threads_cnt);
+        
+        thread t_1(z_buffer, mountain.getTriangles(), 0, n / threads_cnt);
         thread t_2(is_ok, ref(ans), n / threads_cnt, 2 * n / threads_cnt);
         thread t_3(is_ok, ref(ans), 2 * n / threads_cnt, 3 * n / threads_cnt);
         thread t_4(is_ok, ref(ans), 3 * n / threads_cnt, 4 * n / threads_cnt);
