@@ -30,6 +30,7 @@ vector<point> read_map(const string &map_filename, const string &map_info_file) 
 }
 
 vector<triangle> read_stl(const string &filename) {
+    set<float> xs, ys, zs;
     ifstream in(filename, ios_base::in | ios_base::binary);
     uint32_t n;
     in.seekg(80, ios_base::beg);
@@ -53,14 +54,16 @@ vector<triangle> read_stl(const string &filename) {
             in.read((char *) &y, sizeof(y));
             in.read((char *) &z, sizeof(z));
             vertices[j].setX(x), vertices[j].setY(y), vertices[j].setZ(z);
+            xs.insert(x), ys.insert(y), zs.insert(z);
         }
         triangles[i].setVertices(vertices);
         in.seekg(2, ios_base::cur);
     }
-    cout<<"readed "<<cnt<<'\n';
+    cout << "readed " << cnt << '\n';
+    cout << "cnt x " << xs.size() << "\ncnt y " << ys.size() << "\ncnt z " << zs.size() << "\n";
     in.close();
     if (!normal) {
-        cout<<"calculate normals\n";
+        cout << "calculate normals\n";
         float max_x, min_x, max_y, min_y, max_z, min_z;
         max_x = max_y = max_z = -1e9;
         min_x = min_y = min_z = 1e9;
