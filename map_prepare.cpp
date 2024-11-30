@@ -99,7 +99,7 @@ vector<triangle> read_stl(const string &filename) {
         out.seekp(0, ios_base::end);
         out.close();
     }
-    sort(triangles.rbegin(), triangles.rend());
+    sort(triangles.begin(), triangles.end());
     return triangles;
 }
 
