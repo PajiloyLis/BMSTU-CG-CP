@@ -20,10 +20,12 @@ void z_buffer(array<my_vec3f, 3> points, vector<vector<sf::Vertex>> &image, sf::
         for (int j = static_cast<int>(round(A.getY())); j <= static_cast<int>(round(B.getY())); j++) {
             float phi = B.getY() == A.getY() ? 1. : (float) (j - A.getY()) / (float) (B.getY() - A.getY());
             my_vec3f P = my_vec3f(A) + my_vec3f(B - A) * phi;
-            int idx = static_cast<int>(round(P.getY() + P.getZ() * image[0].size()));
-            if (z_buffer[idx] < P.getX()) {
-                z_buffer[idx] = P.getX();
-                image[static_cast<int>(P.getZ())][static_cast<int>(round(P.getY()))].color = color;
+            if (P.getZ() >= 0 && P.getY() >= 0) {
+                int idx = static_cast<int>(round(P.getY() + P.getZ() * image[0].size()));
+                if (z_buffer[idx] < P.getX()) {
+                    z_buffer[idx] = P.getX();
+                    image[static_cast<int>(P.getZ())][static_cast<int>(round(P.getY()))].color = color;
+                }
             }
         }
     }
