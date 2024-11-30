@@ -7,3 +7,10 @@
 2	1962	1732930874897269545	CMakeFiles/cp_cg.dir/figure.cpp.o	15e101c0500d2205
 4	3547	1732930507930283036	CMakeFiles/cp_cg.dir/triangle.cpp.o	d408b056434e65d5
 5	4459	1732934543830907146	CMakeFiles/cp_cg.dir/main.cpp.o	e26b6293be1beafb
+4	2133	1732938628230967898	CMakeFiles/cp_cg.dir/triangle.cpp.o	d408b056434e65d5
+2	2543	1732938628638967883	CMakeFiles/cp_cg.dir/my_vec3f.cpp.o	85fdbf9994c4c8f9
+3	3214	1732938629310967858	CMakeFiles/cp_cg.dir/figure.cpp.o	15e101c0500d2205
+2	3630	1732938629726967843	CMakeFiles/cp_cg.dir/map_prepare.cpp.o	c1bdb6faf55d2892
+1	1393	1732938680501965977	CMakeFiles/cp_cg.dir/operations.cpp.o	6c3b7798716b5a0e
+1	1487	1732938735633963950	CMakeFiles/cp_cg.dir/main.cpp.o	e26b6293be1beafb
+1487	1610	1732938735756963945	cp_cg	75cc8ce738970fcc

@@ -1,6 +1,6 @@
 #include "operations.h"
 
-void z_buffer(array<my_vec3f, 3> points, vector<vector<sf::Color>> &image, sf::Color color, vector<float> &z_buffer) {
+void z_buffer(array<my_vec3f, 3> points, vector<vector<sf::Vertex>> &image, sf::Color color, vector<float> &z_buffer) {
     if (points[0].getZ() == points[1].getZ() && points[1].getZ() == points[2].getZ()) return;
     if (points[0].getZ() > points[1].getZ()) std::swap(points[0], points[1]);
     if (points[0].getZ() > points[2].getZ()) std::swap(points[0], points[2]);
@@ -23,7 +23,7 @@ void z_buffer(array<my_vec3f, 3> points, vector<vector<sf::Color>> &image, sf::C
             int idx = static_cast<int>(round(P.getY() + P.getZ() * image[0].size()));
             if (z_buffer[idx] < P.getX()) {
                 z_buffer[idx] = P.getX();
-                image[static_cast<int>(round(P.getY()))][static_cast<int>(P.getZ())] = color;
+                image[static_cast<int>(round(P.getY()))][static_cast<int>(P.getZ())].color = color;
             }
         }
     }
