@@ -35,7 +35,7 @@ int main() {
     vector<vector<sf::Vertex>> image(screen_size.y, vector<sf::Vertex>(screen_size.x));
     for (int i = 0; i < image.size(); ++i) {
         for (int j = 0; j < image[i].size(); ++j) {
-            image[i][j].position.x = j, image[i][j].position.y = -i, image[i][j].color = sf::Color{0x87CEEB};
+            image[i][j].position.x = j, image[i][j].position.y = i, image[i][j].color = sf::Color{0x87CEEB};
         }
     }
     vector<float> zbuffer(screen_size.x * screen_size.y, std::numeric_limits<float>::min());
@@ -57,7 +57,7 @@ int main() {
                 fill(zbuffer.begin(), zbuffer.end(), std::numeric_limits<float>::min());
                 for (int i = 0; i < image.size(); ++i) {
                     for (int j = 0; j < image[i].size(); ++j) {
-                        image[i][j].position.x = j, image[i][j].position.y = -i, image[i][j].color = sf::Color{0x87CEEB};
+                        image[i][j].position.x = j, image[i][j].position.y = i, image[i][j].color = sf::Color{0x87CEEB};
                     }
                 }
             }
