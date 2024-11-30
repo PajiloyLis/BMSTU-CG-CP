@@ -2,7 +2,7 @@
 #define CP_CG_FIGURE_H
 
 #include <vector>
-#include "point.h"
+#include "my_vec3f.h"
 #include <set>
 #include <unordered_set>
 #include "triangle.h"
@@ -20,7 +20,7 @@ public:
 
     figure() = default;
 
-    [[nodiscard]] point get_center() const;
+    [[nodiscard]] my_vec3f get_center() const;
 
     [[nodiscard]] array<float, 3> get_size() const;
 
@@ -35,9 +35,9 @@ public:
 
 private:
     float min_x, max_x, min_y, max_y, min_z, max_z;
-    point center;
+    my_vec3f center;
 public:
-    void setCenter(const point &center);
+    void setCenter(const my_vec3f &center);
 
     void sort();
 };

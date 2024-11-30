@@ -8,30 +8,30 @@
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <vector>
-#include <point.h>
+#include <my_vec3f.h>
 #include <array>
 
 using namespace std;
 
 class triangle {
 public:
-    triangle(const point &normal, const array<point, 3> &points);
+    triangle(const my_vec3f &normal, const array<my_vec3f, 3> &points);
 
     triangle() = default;
 
-    triangle(const point &normal, array<point, 3> &&points);
+    triangle(const my_vec3f &normal, array<my_vec3f, 3> &&points);
 
-    triangle(point &&normal, const array<point, 3> &points);
+    triangle(my_vec3f &&normal, const array<my_vec3f, 3> &points);
 
-    triangle(point &&normal, array<point, 3> &&points);
+    triangle(my_vec3f &&normal, array<my_vec3f, 3> &&points);
 
-    void setVertices(const array<point, 3> &vertices);
+    void setVertices(const array<my_vec3f, 3> &vertices);
 
-    void setN(const point &n);
+    void setN(const my_vec3f &n);
 
-    [[nodiscard]] const array<point, 3> &getVertices() const;
+    [[nodiscard]] const array<my_vec3f, 3> &getVertices() const;
 
-    [[nodiscard]] const point &getN() const;
+    [[nodiscard]] const my_vec3f &getN() const;
 
     bool operator==(const triangle &t) const {
         return vertices[0] == t.vertices[0] && vertices[1] == t.vertices[1] && vertices[2] == t.vertices[2];
@@ -61,8 +61,8 @@ public:
     triangle &operator=(const triangle &t);
 
 private:
-    array<point, 3> vertices;
-    point n;
+    array<my_vec3f, 3> vertices;
+    my_vec3f n;
 
 };
 

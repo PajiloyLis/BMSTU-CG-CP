@@ -1,5 +1,5 @@
-#ifndef CP_CG_POINT_H
-#define CP_CG_POINT_H
+#ifndef CP_CG_MY_VEC3F_H
+#define CP_CG_MY_VEC3F_H
 
 #include<cmath>
 #include<fstream>
@@ -9,21 +9,21 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include "conversions.h"
 
-class point {
+class my_vec3f {
 public:
-    point(const point &p);
+    my_vec3f(const my_vec3f &p);
 
-    point(point &p);
+    my_vec3f(my_vec3f &p);
 
-    point(point &&p) noexcept;
+    my_vec3f(my_vec3f &&p) noexcept;
 
-    point(float x, float y, float z);
+    my_vec3f(float x, float y, float z);
 
-    point() { p.x = p.y = p.z = 0; }
+    my_vec3f() { p.x = p.y = p.z = 0; }
 
-    float distance(const point &a) const;
+    float distance(const my_vec3f &a) const;
 
-    friend std::ostream &operator<<(std::ostream &os, point const &m);
+    friend std::ostream &operator<<(std::ostream &os, my_vec3f const &m);
 
     float getX() const {
         return p.x;
@@ -49,59 +49,63 @@ public:
         this->p.z = _z;
     }
 
-    bool operator==(const point &p) const {
+    bool operator==(const my_vec3f &p) const {
         return this->p.x == p.p.x && this->p.y == p.p.y && this->p.z == p.p.z;
     }
 
-    bool operator!=(const point &p) const {
+    bool operator!=(const my_vec3f &p) const {
         return this->p.x != p.p.x || this->p.y != p.p.y || this->p.z != p.p.z;
     }
 
-    bool operator<(const point &p) const {
+    bool operator<(const my_vec3f &p) const {
         return this->p.x < p.p.x || (this->p.x == p.p.x && this->p.y < p.p.y) ||
                (this->p.x == p.p.x && this->p.y == p.p.y && this->p.z < p.p.z);
     }
 
-    bool operator<=(const point &p) const {
+    bool operator<=(const my_vec3f &p) const {
         return this->p.x <= p.p.x || (this->p.x == p.p.x && this->p.y <= p.p.y) ||
                (this->p.x == p.p.x && this->p.y == p.p.y && this->p.z <= p.p.z);
     }
 
-    bool operator>(const point &p) const {
+    bool operator>(const my_vec3f &p) const {
         return this->p.x > p.p.x || (this->p.x == p.p.x && this->p.y > p.p.y) ||
                (this->p.x == p.p.x && this->p.y == p.p.y && this->p.z > p.p.z);
     }
 
-    bool operator>=(const point &p) const {
+    bool operator>=(const my_vec3f &p) const {
         return this->p.x >= p.p.x || (this->p.x == p.p.x && this->p.y >= p.p.y) ||
                (this->p.x == p.p.x && this->p.y == p.p.y && this->p.z >= p.p.z);
     }
 
-    point &operator=(const point &p);
+    my_vec3f &operator=(const my_vec3f &p);
 
-    point rotate(const rotate_t &rotate);
+    my_vec3f rotate(const rotate_t &rotate);
 
-    float dot(const point &a);
+    float dot(const my_vec3f &a);
 
-    point cross(const point &a);
+    my_vec3f cross(const my_vec3f &a);
 
-    point normalize();
+    my_vec3f normalize();
 
-    friend point normalize(const point &p) {
-        const_cast<point &>(p).p = glm::normalize(p.p);
+    friend my_vec3f normalize(const my_vec3f &p) {
+        const_cast<my_vec3f &>(p).p = glm::normalize(p.p);
         return p;
     }
 
-    friend point normalize(point &&p) {
+    friend my_vec3f normalize(my_vec3f &&p) {
         return glm::normalize(p.p);
     }
 
-    point operator-(const point &a) const;
+    my_vec3f operator-(const my_vec3f &a) const;
 
-    point operator+(const point &a) const;
+    my_vec3f operator+(const my_vec3f &a) const;
+
+    my_vec3f operator*(const float &) const;
+
+    my_vec3f operator*=(const float &) const;
 
 private:
-    point(const glm::vec3 &p);
+    my_vec3f(const glm::vec3 &p);
 
     glm::vec3 p;
 
@@ -113,4 +117,4 @@ private:
 };
 
 
-#endif //CP_CG_POINT_H
+#endif //CP_CG_MY_VEC3F_H

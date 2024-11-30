@@ -4,9 +4,10 @@
 #include <array>
 #include <iostream>
 #include <algorithm>
-#include "point.h"
+#include "my_vec3f.h"
 #include <vector>
 #include <SFML/Graphics.hpp>
+#include <cmath>
 
 using namespace std;
 

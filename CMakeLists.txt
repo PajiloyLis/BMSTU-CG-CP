@@ -9,8 +9,8 @@ add_executable(cp_cg
         main.cpp
         map_prepare.cpp
         map_prepare.h
-        point.cpp
-        point.h
+        my_vec3f.cpp
+        my_vec3f.h
         operations.cpp
         operations.h
         figure.cpp

@@ -63,8 +63,8 @@ build CMakeFiles/cp_cg.dir/map_prepare.cpp.o: CXX_COMPILER__cp_cg_unscanned_Debu
   OBJECT_DIR = CMakeFiles/cp_cg.dir
   OBJECT_FILE_DIR = CMakeFiles/cp_cg.dir
 
-build CMakeFiles/cp_cg.dir/point.cpp.o: CXX_COMPILER__cp_cg_unscanned_Debug /home/ivan/Study/CompG/cp_cg/point.cpp || cmake_object_order_depends_target_cp_cg
-  DEP_FILE = CMakeFiles/cp_cg.dir/point.cpp.o.d
+build CMakeFiles/cp_cg.dir/my_vec3f.cpp.o: CXX_COMPILER__cp_cg_unscanned_Debug /home/ivan/Study/CompG/cp_cg/my_vec3f.cpp || cmake_object_order_depends_target_cp_cg
+  DEP_FILE = CMakeFiles/cp_cg.dir/my_vec3f.cpp.o.d
   FLAGS = -g -std=gnu++20 -fdiagnostics-color=always
   INCLUDES = -I/home/ivan/Study/CompG/cp_cg/.
   OBJECT_DIR = CMakeFiles/cp_cg.dir
@@ -99,7 +99,7 @@ build CMakeFiles/cp_cg.dir/triangle.cpp.o: CXX_COMPILER__cp_cg_unscanned_Debug /
 #############################################
 # Link the executable cp_cg
 
-build cp_cg: CXX_EXECUTABLE_LINKER__cp_cg_Debug CMakeFiles/cp_cg.dir/main.cpp.o CMakeFiles/cp_cg.dir/map_prepare.cpp.o CMakeFiles/cp_cg.dir/point.cpp.o CMakeFiles/cp_cg.dir/operations.cpp.o CMakeFiles/cp_cg.dir/figure.cpp.o CMakeFiles/cp_cg.dir/triangle.cpp.o
+build cp_cg: CXX_EXECUTABLE_LINKER__cp_cg_Debug CMakeFiles/cp_cg.dir/main.cpp.o CMakeFiles/cp_cg.dir/map_prepare.cpp.o CMakeFiles/cp_cg.dir/my_vec3f.cpp.o CMakeFiles/cp_cg.dir/operations.cpp.o CMakeFiles/cp_cg.dir/figure.cpp.o CMakeFiles/cp_cg.dir/triangle.cpp.o
   FLAGS = -g
   LINK_LIBRARIES = -lsfml-graphics  -lsfml-window  -lsfml-system
   OBJECT_DIR = CMakeFiles/cp_cg.dir

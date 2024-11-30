@@ -30,14 +30,14 @@ figure::figure(vector<triangle> &&triangles) {
 
 void figure::rotate(const rotate_t &rotate) {
     for (auto &triangle: triangles) {
-        const_cast<point &>(triangle.getN()).rotate(rotate);
+        const_cast<my_vec3f &>(triangle.getN()).rotate(rotate);
         for (auto &p: triangle.getVertices())
-            const_cast<point &>(p) = (p - center).rotate(rotate) + center;
+            const_cast<my_vec3f &>(p) = (p - center).rotate(rotate) + center;
     }
     cout << "figure_rotated\n";
 }
 
-point figure::get_center() const {
+my_vec3f figure::get_center() const {
     return {(max_x - min_x) / 2, (max_y - min_y) / 2, (max_z - min_z) / 2};
 }
 
@@ -49,7 +49,7 @@ const vector<triangle> &figure::getTriangles() const {
     return triangles;
 }
 
-void figure::setCenter(const point &center) {
+void figure::setCenter(const my_vec3f &center) {
     this->center = center;
 }
 

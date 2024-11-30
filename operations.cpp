@@ -1,27 +1,28 @@
 #include "operations.h"
 
-void z_buffer(array<point, 3> &points, vector<vector<int>> &image, sf::Color color, int *zbuffer) {
-    if (points[0].getZ()==points[1].getZ() && points[1].getZ()==points[2].getZ()) return;
-    point
-    if (t0.y>t1.y) std::swap(t0, t1);
-    if (t0.y>t2.y) std::swap(t0, t2);
-    if (t1.y>t2.y) std::swap(t1, t2);
-    int total_height = t2.y-t0.y;
-    for (int i=0; i<total_height; i++) {
-        bool second_half = i>t1.y-t0.y || t1.y==t0.y;
-        int segment_height = second_half ? t2.y-t1.y : t1.y-t0.y;
-        float alpha = (float)i/total_height;
-        float beta  = (float)(i-(second_half ? t1.y-t0.y : 0))/segment_height; // be careful: with above conditions no division by zero here
-        Vec3i A =               t0 + Vec3f(t2-t0)*alpha;
-        Vec3i B = second_half ? t1 + Vec3f(t2-t1)*beta : t0 + Vec3f(t1-t0)*beta;
-        if (A.x>B.x) std::swap(A, B);
-        for (int j=A.x; j<=B.x; j++) {
-            float phi = B.x==A.x ? 1. : (float)(j-A.x)/(float)(B.x-A.x);
-            Vec3i P = Vec3f(A) + Vec3f(B-A)*phi;
-            int idx = P.x+P.y*width;
-            if (zbuffer[idx]<P.z) {
-                zbuffer[idx] = P.z;
-                image.set(P.x, P.y, color);
+void z_buffer(array<my_vec3f, 3> points, vector<vector<int>> &image, sf::Color color, int *zbuffer) {
+    if (points[0].getZ() == points[1].getZ() && points[1].getZ() == points[2].getZ()) return;
+    if (points[0].getZ() > points[1].getZ()) std::swap(points[0], points[1]);
+    if (points[0].getZ() > points[2].getZ()) std::swap(points[0], points[2]);
+    if (points[1].getZ() > points[2].getZ()) std::swap(points[1], points[2]);
+    int total_height = round(points[2].getZ() - points[0].getZ());
+    for (int i = 0; i < total_height; i++) {
+        bool second_half = i > points[1].getZ() - points[0].getZ() || points[1].getZ() == points[0].getZ();
+        int segment_height = second_half ? points[2].getZ() - points[1].getZ() : points[1].getZ() - points[0].getZ();
+        float alpha = (float) i / total_height;
+        float beta = (float) (i - (second_half ? points[1].getZ() - points[0].getZ() : 0)) /
+                     segment_height; // be careful: with above conditions no division by zero here
+        my_vec3f A = points[0] + my_vec3f(points[2] - points[0]) * alpha;
+        my_vec3f B = second_half ? points[1] + my_vec3f(points[2] - points[1]) * beta : points[0] +
+                                                                                        my_vec3f(points[1] - points[0]) * beta;
+        if (A.getY() > B.getY()) std::swap(A, B);
+        for (int j = A.getY(); j <= B.getY(); j++) {
+            float phi = B.getY() == A.getY() ? 1. : (float) (j - A.getY()) / (float) (B.getY() - A.getY());
+            my_vec3f P = my_vec3f(A) + my_vec3f(B - A) * phi;
+            int idx = P.getY() + P.getZ() * width;
+            if (zbuffer[idx] < P.getX()) {
+                zbuffer[idx] = P.getX();
+                image.set(P.getY(), P.getZ(), color);
             }
         }
     }

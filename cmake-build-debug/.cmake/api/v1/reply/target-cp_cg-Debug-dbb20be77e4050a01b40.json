@@ -166,12 +166,12 @@
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "point.cpp",
+			"path" : "my_vec3f.cpp",
 			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 1,
-			"path" : "point.h",
+			"path" : "my_vec3f.h",
 			"sourceGroupIndex" : 1
 		},
 		{

@@ -3,11 +3,11 @@
 #include "map_prepare.h"
 #include <cmath>
 #include "figure.h"
-#include "point.h"
+#include "my_vec3f.h"
 
 int main() {
     figure mountain(read_stl("./prepared_srtm/klyuchevskaya.STL"));
-    point figure_center = mountain.get_center();
+    my_vec3f figure_center = mountain.get_center();
     array<float, 3> size = mountain.get_size();
     float delta = max(size[0], max(size[1], size[2]));
     cout << delta << '\n';
@@ -18,9 +18,9 @@ int main() {
     float k = (delta == size[2] ? screen_size.y / delta : screen_size.x / delta);
     for (auto &triangle: mountain.getTriangles()) {
         for (auto &j: triangle.getVertices()) {
-            const_cast<point &>(j).setZ(j.getZ() * k);
-            const_cast<point &>(j).setY(j.getY() * k);
-            const_cast<point &>(j).setX(j.getX() * k);
+            const_cast<my_vec3f &>(j).setZ(j.getZ() * k);
+            const_cast<my_vec3f &>(j).setY(j.getY() * k);
+            const_cast<my_vec3f &>(j).setX(j.getX() * k);
         }
     }
     figure_center.setX(figure_center.getX() * k);
@@ -28,8 +28,8 @@ int main() {
     figure_center.setZ(figure_center.getZ() * k);
     mountain.setCenter(figure_center);
     array<sf::Vertex, 3> triangle;
-    point light_ray = normalize(point(1, 0, 0));
-    point cam = normalize(point(1, 0, 0));
+    my_vec3f light_ray = normalize(my_vec3f(1, 0, 0));
+    my_vec3f cam = normalize(my_vec3f(1, 0, 0));
     int index;
     while (window.isOpen()) {
         sf::Event event;

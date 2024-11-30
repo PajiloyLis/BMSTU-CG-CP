@@ -1,8 +1,8 @@
 #include "map_prepare.h"
 
-vector<int> compute_convex_hull(vector<point> &points);
+vector<int> compute_convex_hull(vector<my_vec3f> &points);
 
-vector<point> read_map(const string &map_filename, const string &map_info_file) {
+vector<my_vec3f> read_map(const string &map_filename, const string &map_info_file) {
     ifstream info_in(map_info_file);
     if (!info_in.is_open()) {
         throw exception();
@@ -14,7 +14,7 @@ vector<point> read_map(const string &map_filename, const string &map_info_file) 
     string cnt_rows_str = rows_cnt_string.substr(VALUE_POS), cnt_cols_str = cols_cnt_string.substr(VALUE_POS);
     int cnt_rows = stoi(cnt_rows_str), cnt_cols = stoi(cnt_cols_str);
     cout << cnt_rows << " " << cnt_cols << '\n';
-    vector<point> map(cnt_rows * cnt_cols);
+    vector<my_vec3f> map(cnt_rows * cnt_cols);
     ifstream map_in(map_filename, ios::in | ios::binary);
     if (!map_in.is_open())
         throw exception();
@@ -37,7 +37,7 @@ vector<triangle> read_stl(const string &filename) {
     in.read((char *) &n, sizeof(n));
     cout << n << '\n';
     vector<triangle> triangles(n);
-    array<point, 3> vertices;
+    array<my_vec3f, 3> vertices;
     float x, y, z;
     bool normal = false;
     int cnt = 0;
@@ -75,18 +75,18 @@ vector<triangle> read_stl(const string &filename) {
                 max_z = max(max_z, p.getZ()), min_z = min(min_z, p.getZ());
             }
         }
-        point center((max_x - min_x) / 2, (max_y - min_y) / 2, (max_z - min_z) / 2);
+        my_vec3f center((max_x - min_x) / 2, (max_y - min_y) / 2, (max_z - min_z) / 2);
 //    in.close();
         fstream out(filename, ios_base::out | ios_base::in | ios_base::binary);
         out.seekp(0);
         out.seekp(84, ios_base::beg);
         for (auto &triangle: triangles) {
             vertices = triangle.getVertices();
-            point center_1 = vertices[0] - center,
+            my_vec3f center_1 = vertices[0] - center,
                     center_2 = vertices[1] - center,
                     center_3 = vertices[2] - center;
-            point a = vertices[1] - vertices[0], b = vertices[2] - vertices[0];
-            point v_n = a.cross(b);
+            my_vec3f a = vertices[1] - vertices[0], b = vertices[2] - vertices[0];
+            my_vec3f v_n = a.cross(b);
 //            if (bool(v_n.dot(center_1) > 0) + bool(v_n.dot(center_2) > 0) + bool(v_n.dot(center_3) > 0) < 2)
 //                v_n = b.cross(a);
             v_n.normalize();
@@ -105,7 +105,7 @@ vector<triangle> read_stl(const string &filename) {
 }
 
 
-set<set<int>> stupid_delaunay_triangulate(vector<point> &points) {
+set<set<int>> stupid_delaunay_triangulate(vector<my_vec3f> &points) {
     set<set<int>> triangles;
     for (int i = 0; i < points.size() - 2; ++i) {
         int min_d_ind = i + 1, s_min_d_ind = i + 2;
