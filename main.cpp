@@ -62,6 +62,7 @@ int main() {
             window.draw(&triangle[0], 3, sf::Triangles);
             }
         }
+        window.draw({sf::Vector2()})
         window.display();
     }
 

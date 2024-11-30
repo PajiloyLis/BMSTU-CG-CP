@@ -9,6 +9,8 @@
 #include "point.h"
 #include <set>
 #include "triangle.h"
+#include<algorithm>
+
 using namespace std;
 
 #define ROWS_CNT_STRING 8
@@ -17,7 +19,9 @@ using namespace std;
 #define METERS_PER_POINT 30
 
 vector<point> read_map(const string &map_filename, const string &map_info_file);
+
 vector<triangle> read_stl(const string &filename);
+
 set<set<int>> stupid_delaunay_triangulate(vector<point> &points);
 
 #endif //CP_CG_MAP_PREPARE_H
