@@ -46,19 +46,16 @@ public:
                min(t.vertices[0], min(t.vertices[1], min(t.vertices[2], t.vertices[0])));
     }
 
-    bool operator<=(const point &p) const {
-        return this->p.x <= p.p.x || (this->p.x == p.p.x && this->p.y <= p.p.y) ||
-               (this->p.x == p.p.x && this->p.y == p.p.y && this->p.z <= p.p.z);
+    bool operator<=(const triangle &t) const {
+        return *this < t || *this == t;
     }
 
-    bool operator>(const point &p) const {
-        return this->p.x > p.p.x || (this->p.x == p.p.x && this->p.y > p.p.y) ||
-               (this->p.x == p.p.x && this->p.y == p.p.y && this->p.z > p.p.z);
+    bool operator>(const triangle &t) const {
+        return !(*this <= t);
     }
 
-    bool operator>=(const point &p) const {
-        return this->p.x >= p.p.x || (this->p.x == p.p.x && this->p.y >= p.p.y) ||
-               (this->p.x == p.p.x && this->p.y == p.p.y && this->p.z >= p.p.z);
+    bool operator>=(const triangle &t) const {
+        return !(*this < t);
     }
 
 private:
