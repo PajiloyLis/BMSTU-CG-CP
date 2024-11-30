@@ -86,6 +86,6 @@ my_vec3f my_vec3f::rotate(const rotate_t &rotate) {
     return *this;
 }
 
-my_vec3f my_vec3f::operator*(const float &) const {
-    return 
+my_vec3f my_vec3f::operator*(const float &v) const {
+    return {p.x*v, p.y*v, p.z*v};
 }
