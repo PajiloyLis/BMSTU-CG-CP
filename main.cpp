@@ -55,12 +55,7 @@ int main() {
                 else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
                     mountain.rotate({0, M_PI / 90, 0});
                 fill(zbuffer.begin(), zbuffer.end(), std::numeric_limits<float>::min());
-                for (int i = 0; i < image.size(); ++i) {
-                    for (int j = 0; j < image[i].size(); ++j) {
-                        image[i][j].position.x = j, image[i][j].position.y =
-                                screen_size.y - i, image[i][j].color = sf::Color{0x87CEEB};
-                    }
-                }
+                image.create(screen_size.x, screen_size.y, Color(0x87CEEB));
             }
         }
 //        window.clear(sf::Color{0x87CEEB});
@@ -82,7 +77,8 @@ int main() {
 //                window.draw(&triangle[0], 3, sf::Triangles);
             }
         }
-        for (auto &line: image)
+        for(int i = 0; i < image.getSize().y; ++i)
+            for(int j = 0; j < image.getSize().x; ++j)
             window.draw(&line[0], line.size(), sf::Points);
         window.display();
     }
