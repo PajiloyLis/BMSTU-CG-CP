@@ -51,7 +51,7 @@ int main() {
         for (auto &i: mountain.getTriangles()) {
             index = 0;
             float intensity = light_ray.dot(i.getN());
-//            if (intensity > 0) {
+            if (intensity > 0) {
             for (auto &j: i.getVertices()) {
                 triangle[index] = {sf::Vector2f(j.getY(), -j.getZ() + screen_size.y),
                                    {static_cast<sf::Uint8>(255 * intensity),
@@ -60,7 +60,7 @@ int main() {
                 ++index;
             }
             window.draw(&triangle[0], 3, sf::Triangles);
-//            }
+            }
         }
         window.display();
     }
