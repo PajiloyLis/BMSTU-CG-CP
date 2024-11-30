@@ -32,7 +32,7 @@ int main() {
     my_vec3f light_ray = normalize(my_vec3f(1, 0, 0));
     my_vec3f cam = normalize(my_vec3f(1, 0, 0));
     int index;
-    vector<vector<sf::Vertex>> image(screen_size.y, vector<sf::Vertex>(screen_size.x));
+    sf::Image image(screen_size, 0x87CEEB);
     for (int i = 0; i < image.size(); ++i) {
         for (int j = 0; j < image[i].size(); ++j) {
             image[i][j].position.x = j, image[i][j].position.y = screen_size.y - i, image[i][j].color = sf::Color{
