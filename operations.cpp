@@ -24,7 +24,7 @@ void z_buffer(array<my_vec3f, 3> points, vector<vector<int>> &image, sf::Color c
             int idx = P.getY() + P.getZ() * width;
             if (zbuffer[idx] < P.getX()) {
                 zbuffer[idx] = P.getX();
-                image.P.getY(), P.getZ(), color);
+                image[static_cast<int>(round(P.getY()))][static_cast<int>(P.getZ())] = color;
             }
         }
     }
