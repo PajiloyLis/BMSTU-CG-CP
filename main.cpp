@@ -71,7 +71,13 @@ int main() {
 //                window.draw(&triangle[0], 3, sf::Triangles);
             }
         }
-        for(int i = 0; i < )
+        for(int i = 0; i < image.size(); ++i)
+        {
+            for(int j = 0; j< image[i].size(); ++j)
+            {
+                window.draw(sf::Vector2i{-i, j}, image[i][j], sf::);
+            }
+        }
         window.display();
     }
 
