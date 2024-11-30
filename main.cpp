@@ -40,6 +40,9 @@ int main() {
         }
     }
     vector<float> zbuffer(screen_size.x * screen_size.y, std::numeric_limits<float>::min());
+    int threads_cnt = thread::hardware_concurrency() - 1;
+    auto triangles = mountain.getTriangles();
+    int n = triangles.size();
     while (window.isOpen()) {
         sf::Event event;
 
@@ -64,8 +67,8 @@ int main() {
             }
         }
 //        window.clear(sf::Color{0x87CEEB});
-        
-        thread t_1(z_buffer, mountain.getTriangles(), 0, n / threads_cnt);
+
+        thread t_1(z_buffer, , 0, n / threads_cnt, image, zbuffer,light_ray);
         thread t_2(is_ok, ref(ans), n / threads_cnt, 2 * n / threads_cnt);
         thread t_3(is_ok, ref(ans), 2 * n / threads_cnt, 3 * n / threads_cnt);
         thread t_4(is_ok, ref(ans), 3 * n / threads_cnt, 4 * n / threads_cnt);

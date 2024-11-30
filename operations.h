@@ -12,7 +12,8 @@
 
 using namespace std;
 
-void z_buffer(vector<triangle> &triangles, int start, int stop, vector<vector<sf::Vertex>> &image, sf::Color color,
-              vector<float> &z_buffer, my_vec3f &light_ray);
+void
+z_buffer(vector<triangle> &triangles, int start, int stop, vector<vector<sf::Vertex>> &image, vector<float> &z_buffer,
+         my_vec3f &light_ray);
 
 #endif //CP_CG_OPERATIONS_H
