@@ -33,7 +33,7 @@ int main() {
     my_vec3f cam = normalize(my_vec3f(1, 0, 0));
     int index;
     vector<vector<sf::Color>> image(screen_size.y, vector<sf::Color>(screen_size.x, sf::Color{0x87CEEB}));
-    vector<float> z_buffer(screen_size.x*screen_size.y, std::numeric_limits<float>::min());
+    vector<float> zbuffer(screen_size.x * screen_size.y, std::numeric_limits<float>::min());
     while (window.isOpen()) {
         sf::Event event;
 
@@ -49,24 +49,29 @@ int main() {
                     mountain.rotate({0, -M_PI / 90, 0});
                 else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
                     mountain.rotate({0, M_PI / 90, 0});
-                z_buffer.fill(std::numeric_limits<float>::min());
+                fill(zbuffer.begin(), zbuffer.end(), std::numeric_limits<float>::min());
+                fill(image.begin(), image.end(), vector<sf::Color>(screen_size.x, sf::Color{0x87CEEB});
             }
         }
         window.clear(sf::Color{0x87CEEB});
         for (auto &i: mountain.getTriangles()) {
-            index = 0;
+//            index = 0;
             float intensity = light_ray.dot(i.getN());
             if (intensity > 0) {
-                for (auto &j: i.getVertices()) {
-                    triangle[index] = {sf::Vector2f(j.getY(), -j.getZ() + screen_size.y),
-                                       {static_cast<sf::Uint8>(255 * intensity),
-                                        static_cast<sf::Uint8>(255 * intensity),
-                                        static_cast<sf::Uint8>(255 * intensity)}};
-                    ++index;
-                }
-                window.draw(&triangle[0], 3, sf::Triangles);
+                z_buffer(i.getVertices(), image, sf::Color{static_cast<sf::Uint8>(255 * intensity),
+                                                           static_cast<sf::Uint8>(255 * intensity),
+                                                           static_cast<sf::Uint8>(255 * intensity)}, zbuffer);
+//                for (auto &j: i.getVertices()) {
+//                    triangle[index] = {sf::Vector2f(j.getY(), -j.getZ() + screen_size.y),
+//                                       {static_cast<sf::Uint8>(255 * intensity),
+//                                        static_cast<sf::Uint8>(255 * intensity),
+//                                        static_cast<sf::Uint8>(255 * intensity)}};
+//                    ++index;
+//                }
+//                window.draw(&triangle[0], 3, sf::Triangles);
             }
         }
+        for(int i = 0; i < )
         window.display();
     }
 
