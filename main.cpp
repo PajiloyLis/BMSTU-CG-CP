@@ -5,6 +5,7 @@
 #include "figure.h"
 #include "my_vec3f.h"
 #include "operations.h"
+#include <thread>
 
 int main() {
     figure mountain(read_stl("./prepared_srtm/klyuchevskaya.STL"));
