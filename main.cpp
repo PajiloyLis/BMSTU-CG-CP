@@ -5,7 +5,6 @@
 #include "figure.h"
 #include "my_vec3f.h"
 #include "operations.h"
-#include <thread>
 
 int main() {
     figure mountain(read_stl("./prepared_srtm/klyuchevskaya.STL"));
@@ -36,14 +35,10 @@ int main() {
     vector<vector<sf::Vertex>> image(screen_size.y, vector<sf::Vertex>(screen_size.x));
     for (int i = 0; i < image.size(); ++i) {
         for (int j = 0; j < image[i].size(); ++j) {
-            image[i][j].position.x = j, image[i][j].position.y = screen_size.y - i, image[i][j].color = sf::Color{
-                    0x87CEEB};
+            image[i][j].position.x = j, image[i][j].position.y = screen_size.y-i, image[i][j].color = sf::Color{0x87CEEB};
         }
     }
     vector<float> zbuffer(screen_size.x * screen_size.y, std::numeric_limits<float>::min());
-    int threads_cnt = thread::hardware_concurrency() - 2;
-    auto triangles = mountain.getTriangles();
-    int n = triangles.size();
     while (window.isOpen()) {
         sf::Event event;
 
@@ -62,18 +57,19 @@ int main() {
                 fill(zbuffer.begin(), zbuffer.end(), std::numeric_limits<float>::min());
                 for (int i = 0; i < image.size(); ++i) {
                     for (int j = 0; j < image[i].size(); ++j) {
-                        image[i][j].position.x = j, image[i][j].position.y =
-                                screen_size.y - i, image[i][j].color = sf::Color{0x87CEEB};
+                        image[i][j].position.x = j, image[i][j].position.y = screen_size.y-i, image[i][j].color = sf::Color{0x87CEEB};
                     }
                 }
-
             }
         }
 //        window.clear(sf::Color{0x87CEEB});
-//        for (auto &i: mountain.getTriangles()) {
+        for (auto &i: mountain.getTriangles()) {
 //            index = 0;
-//            float intensity = light_ray.dot(i.getN());
-//            if (intensity > 0) {
+            float intensity = light_ray.dot(i.getN());
+            if (intensity > 0) {
+                z_buffer(i.getVertices(), image, sf::Color{static_cast<sf::Uint8>(255 * intensity),
+                                                           static_cast<sf::Uint8>(255 * intensity),
+                                                           static_cast<sf::Uint8>(255 * intensity)}, zbuffer);
 //                for (auto &j: i.getVertices()) {
 //                    triangle[index] = {sf::Vector2f(j.getY(), -j.getZ() + screen_size.y),
 //                                       {static_cast<sf::Uint8>(255 * intensity),
@@ -82,11 +78,11 @@ int main() {
 //                    ++index;
 //                }
 //                window.draw(&triangle[0], 3, sf::Triangles);
-//            }
-//        }
-//
-//        window.display();
-
+            }
+        }
+        for(auto &line:image)
+            window.draw(&line[0], line.size(), sf::Points);
+        window.display();
     }
 
     return 0;
