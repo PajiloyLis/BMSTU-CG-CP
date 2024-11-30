@@ -67,6 +67,9 @@ int main() {
 //                mountain.sort();
                     }
                 }
+
+            }
+        }
 //        window.clear(sf::Color{0x87CEEB});
 //        for (auto &i: mountain.getTriangles()) {
 //            index = 0;
@@ -84,12 +87,9 @@ int main() {
 //        }
 //
 //        window.display();
-                z_buffer(mountain.getTriangles(), 0, mountain.getTriangles().size(), image, zbuffer, light_ray);
-                for (auto &line: image)
-                    window.draw(&line[0], line.size(), sf::Points);
+        
+    }
 
-            }
+    return 0;
 
-            return 0;
-
-        }
+}
