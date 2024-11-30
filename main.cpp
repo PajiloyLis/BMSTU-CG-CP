@@ -71,11 +71,10 @@ int main() {
 //                window.draw(&triangle[0], 3, sf::Triangles);
             }
         }
-        for(int i = 0; i < image.size(); ++i)
-        {
-            for(int j = 0; j< image[i].size(); ++j)
-            {
-                window.draw(sf::Vector2i{-i, j}, image[i][j], sf::);
+        for (int i = 0; i < image.size(); ++i) {
+            for (int j = 0; j < image[i].size(); ++j) {
+                window.draw({sf::Vertex(sf::Vector2f{static_cast<float>(-i), static_cast<float>(j)}, image[i][j]}, 1,
+                            sf::Points);
             }
         }
         window.display();
