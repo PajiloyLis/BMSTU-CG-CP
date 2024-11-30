@@ -7,10 +7,12 @@
 #include "my_vec3f.h"
 #include <vector>
 #include <SFML/Graphics.hpp>
+#include <SFML/Graphics/Image.hpp>
 #include <cmath>
 
 using namespace std;
+using namespace sf;
 
-void z_buffer(array<my_vec3f, 3> points, vector<vector<sf::Vertex>> &image, sf::Color color, vector<float> &z_buffer);
+void z_buffer(array<my_vec3f, 3> points, const Image &image, sf::Color color, vector<float> &z_buffer);
 
 #endif //CP_CG_OPERATIONS_Hs

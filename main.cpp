@@ -37,13 +37,7 @@ int main() {
     my_vec3f cam = normalize(my_vec3f(1, 0, 0));
     int index;
     Image image;
-    image.create()
-    for (int i = 0; i < image.size(); ++i) {
-        for (int j = 0; j < image[i].size(); ++j) {
-            image[i][j].position.x = j, image[i][j].position.y = screen_size.y - i, image[i][j].color = sf::Color{
-                    0x87CEEB};
-        }
-    }
+    image.create(screen_size.x, screen_size.y, Color(0x87CEEB));
     vector<float> zbuffer(screen_size.x * screen_size.y, std::numeric_limits<float>::min());
     while (window.isOpen()) {
         sf::Event event;

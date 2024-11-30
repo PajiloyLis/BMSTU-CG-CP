@@ -1,6 +1,6 @@
 #include "operations.h"
 
-void z_buffer(array<my_vec3f, 3> points, vector<vector<sf::Vertex>> &image, sf::Color color, vector<float> &z_buffer) {
+void z_buffer(array<my_vec3f, 3> points, const Image &image, sf::Color color, vector<float> &z_buffer) {
     if (points[0].getZ() == points[1].getZ() && points[1].getZ() == points[2].getZ()) return;
     if (points[0].getZ() > points[1].getZ()) std::swap(points[0], points[1]);
     if (points[0].getZ() > points[2].getZ()) std::swap(points[0], points[2]);
@@ -23,7 +23,7 @@ void z_buffer(array<my_vec3f, 3> points, vector<vector<sf::Vertex>> &image, sf::
         for (int j = static_cast<int>(A.getY()); j <= static_cast<int>(B.getY()); j++) {
             float phi = B.getY() == A.getY() ? 1. : (float) (j - A.getY()) / (float) (B.getY() - A.getY());
             my_vec3f P = my_vec3f(A) + my_vec3f(B - A) * phi;
-            if (P.getZ() >= 0 && P.getY() >= 0 && P.getZ() < image.size() && P.getY() < image[0].size()) {
+            if (P.getZ() >= 0 && P.getY() >= 0 && P.getZ() < image.() && P.getY() < image[0].size()) {
                 int idx = static_cast<int>(round(P.getY() + P.getZ() * image[0].size()));
                 if (z_buffer[idx] < P.getX()) {
                     z_buffer[idx] = P.getX();
