@@ -35,7 +35,8 @@ int main() {
     vector<vector<sf::Vertex>> image(screen_size.y, vector<sf::Vertex>(screen_size.x));
     for (int i = 0; i < image.size(); ++i) {
         for (int j = 0; j < image[i].size(); ++j) {
-            image[i][j].position.x = j, image[i][j].position.y = screen_size.y-i, image[i][j].color = sf::Color{0x87CEEB};
+            image[i][j].position.x = j, image[i][j].position.y = screen_size.y - i, image[i][j].color = sf::Color{
+                    0x87CEEB};
         }
     }
     vector<float> zbuffer(screen_size.x * screen_size.y, std::numeric_limits<float>::min());
@@ -57,7 +58,8 @@ int main() {
                 fill(zbuffer.begin(), zbuffer.end(), std::numeric_limits<float>::min());
                 for (int i = 0; i < image.size(); ++i) {
                     for (int j = 0; j < image[i].size(); ++j) {
-                        image[i][j].position.x = j, image[i][j].position.y = screen_size.y-i, image[i][j].color = sf::Color{0x87CEEB};
+                        image[i][j].position.x = j, image[i][j].position.y =
+                                screen_size.y - i, image[i][j].color = sf::Color{0x87CEEB};
                     }
                 }
             }
@@ -67,9 +69,19 @@ int main() {
 //            index = 0;
             float intensity = light_ray.dot(i.getN());
             if (intensity > 0) {
-                z_buffer(i.getVertices(), image, sf::Color{static_cast<sf::Uint8>(255 * intensity),
-                                                           static_cast<sf::Uint8>(255 * intensity),
-                                                           static_cast<sf::Uint8>(255 * intensity)}, zbuffer);
+                sf::Color x_positive_color(255, 0, 0);
+                sf::Color x_negative_color(0, 255, 0);
+                sf::Color y_positive_color(0, 0, 255);
+                sf::Color cur_color = x_positive_color;
+                float max_x = max(i.getVertices()[0].getX(), max(i.getVertices()[1].getX(), i.getVertices()[2].getX())),
+                        max_y = max(i.getVertices()[0].getY(),
+                                    max(i.getVertices()[1].getY(), i.getVertices()[2].getY()));
+                if (max_x < 0)
+                    cur_color = x_negative_color;
+                if (max_x < max_y)
+                    cur_color = y_positive_color;
+                z_buffer(i.getVertices(), image,
+                         sf::Color{cur_color.r * intensity, cur_color.g * intensity, cur_color.b * intensity}, zbuffer);
 //                for (auto &j: i.getVertices()) {
 //                    triangle[index] = {sf::Vector2f(j.getY(), -j.getZ() + screen_size.y),
 //                                       {static_cast<sf::Uint8>(255 * intensity),
@@ -80,7 +92,7 @@ int main() {
 //                window.draw(&triangle[0], 3, sf::Triangles);
             }
         }
-        for(auto &line:image)
+        for (auto &line: image)
             window.draw(&line[0], line.size(), sf::Points);
         window.display();
     }
