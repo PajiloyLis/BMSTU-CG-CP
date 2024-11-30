@@ -1,10 +1,14 @@
 #include <SFML/Window.hpp>
 #include <SFML/Graphics.hpp>
+#include <SFML/Graphics/Image.hpp>
 #include "map_prepare.h"
 #include <cmath>
 #include "figure.h"
 #include "my_vec3f.h"
 #include "operations.h"
+
+using namespace std;
+using namespace sf;
 
 int main() {
     figure mountain(read_stl("./prepared_srtm/klyuchevskaya.STL"));
@@ -32,7 +36,8 @@ int main() {
     my_vec3f light_ray = normalize(my_vec3f(1, 0, 0));
     my_vec3f cam = normalize(my_vec3f(1, 0, 0));
     int index;
-    sf::Image image(screen_size, 0x87CEEB);
+    Image image;
+    image.create()
     for (int i = 0; i < image.size(); ++i) {
         for (int j = 0; j < image[i].size(); ++j) {
             image[i][j].position.x = j, image[i][j].position.y = screen_size.y - i, image[i][j].color = sf::Color{
