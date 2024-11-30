@@ -4,12 +4,12 @@
 #include <iostream>
 #include <fstream>
 #include <array>
-#include<vector>
+#include <vector>
 #include <cmath>
 #include "point.h"
 #include <set>
 #include "triangle.h"
-#include<algorithm>
+#include <algorithm>
 
 using namespace std;
 
