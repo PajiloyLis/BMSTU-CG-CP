@@ -4,6 +4,7 @@
 #include <cmath>
 #include "figure.h"
 #include "my_vec3f.h"
+#include "operations.h"
 
 int main() {
     figure mountain(read_stl("./prepared_srtm/klyuchevskaya.STL"));
@@ -13,7 +14,7 @@ int main() {
     cout << delta << '\n';
     sf::RenderWindow window(sf::VideoMode(1850, 1016), "kek");
     sf::Vector2u screen_size = window.getSize();
-    cout<<screen_size.x<<" "<<screen_size.y<<'\n';
+    cout << screen_size.x << " " << screen_size.y << '\n';
     unsigned x_center = screen_size.x / 2, y_center = screen_size.y / 2;
     float k = (delta == size[2] ? screen_size.y / delta : screen_size.x / delta);
     for (auto &triangle: mountain.getTriangles()) {
@@ -31,6 +32,8 @@ int main() {
     my_vec3f light_ray = normalize(my_vec3f(1, 0, 0));
     my_vec3f cam = normalize(my_vec3f(1, 0, 0));
     int index;
+    vector<vector<sf::Color>> image(screen_size.y, vector<sf::Color>(screen_size.x, sf::Color{0x87CEEB}));
+    vector<float> z_buffer(screen_size.x*screen_size.y, );
     while (window.isOpen()) {
         sf::Event event;
 
@@ -54,14 +57,14 @@ int main() {
             index = 0;
             float intensity = light_ray.dot(i.getN());
             if (intensity > 0) {
-            for (auto &j: i.getVertices()) {
-                triangle[index] = {sf::Vector2f(j.getY(), -j.getZ() + screen_size.y),
-                                   {static_cast<sf::Uint8>(255 * intensity),
-                                    static_cast<sf::Uint8>(255 * intensity),
-                                    static_cast<sf::Uint8>(255 * intensity)}};
-                ++index;
-            }
-            window.draw(&triangle[0], 3, sf::Triangles);
+                for (auto &j: i.getVertices()) {
+                    triangle[index] = {sf::Vector2f(j.getY(), -j.getZ() + screen_size.y),
+                                       {static_cast<sf::Uint8>(255 * intensity),
+                                        static_cast<sf::Uint8>(255 * intensity),
+                                        static_cast<sf::Uint8>(255 * intensity)}};
+                    ++index;
+                }
+                window.draw(&triangle[0], 3, sf::Triangles);
             }
         }
         window.display();
