@@ -30,7 +30,7 @@ void z_buffer(array<my_vec3f, 3> points, Image &image, sf::Color color, vector<f
                 int idx = static_cast<int>(round(P.getY() + P.getZ() * image.getSize().x));
                 if (z_buffer[idx] < P.getX()) {
                     z_buffer[idx] = P.getX();
-                    image.setPixel(static_cast<Uint32>(round(P.getZ())), static_cast<Uint32>(round(P.getY())), color);
+                    image.setPixel(static_cast<Uint32>(round(P.getY())), static_cast<Uint32>(round(P.getZ())), color);
                 }
             }
         }
