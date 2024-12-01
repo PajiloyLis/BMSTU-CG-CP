@@ -62,7 +62,7 @@ int main() {
         for (auto &i: mountain.getTriangles()) {
 //            index = 0;
             float intensity = light_ray.dot(i.getN());
-            if (intensity > 0) {
+            if (cam.dot(i.getN()) > 0) {
                 z_buffer(i.getVertices(), image,
                          sf::Color{static_cast<sf::Uint8>(255 * intensity),
                                    static_cast<sf::Uint8>(255 * intensity),
