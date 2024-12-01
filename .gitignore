@@ -32,3 +32,5 @@
 *.app
 
 *.zip
+
+/cmake-build-debug
