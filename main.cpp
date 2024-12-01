@@ -6,11 +6,13 @@
 #include "figure.h"
 #include "my_vec3f.h"
 #include "operations.h"
+#include <cstdlib>
 
 using namespace std;
 using namespace sf;
 
 int main() {
+    Color snow(255, 0, 0), mount_1(10, 12, 23), mount_2(25, 26, 33);
     figure mountain(read_stl("./prepared_srtm/klyuchevskaya.STL"));
     my_vec3f figure_center = mountain.get_center();
     array<float, 3> size = mountain.get_size();
@@ -38,7 +40,9 @@ int main() {
     int index;
     Image image;
     image.create(screen_size.x, screen_size.y, Color(0x87CEEB));
+
     vector<float> zbuffer(screen_size.x * screen_size.y, std::numeric_limits<float>::min());
+
     while (window.isOpen()) {
         sf::Event event;
 
@@ -77,10 +81,10 @@ int main() {
 //                window.draw(&triangle[0], 3, sf::Triangles);
             }
         }
-        for(int i = 0; i < image.getSize().y; ++i) {
+        for (int i = 0; i < image.getSize().y; ++i) {
             VertexArray line(sf::Points, image.getSize().x);
             for (int j = 0; j < image.getSize().x; ++j)
-                line[j]=Vertex(Vector2f(j, image.getSize().y-i), image.getPixel(j, i));
+                line[j] = Vertex(Vector2f(j, image.getSize().y - i), image.getPixel(j, i));
             window.draw(line);
         }
         window.display();
