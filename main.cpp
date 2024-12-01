@@ -77,9 +77,12 @@ int main() {
 //                window.draw(&triangle[0], 3, sf::Triangles);
             }
         }
-        for(int i = 0; i < image.getSize().y; ++i)
-            for(int j = 0; j < image.getSize().x; ++j)
-            window.draw(&line[0], line.size(), sf::Points);
+        for(int i = 0; i < image.getSize().y; ++i) {
+            VertexArray line(sf::Points, image.getSize().x);
+            for (int j = 0; j < image.getSize().x; ++j)
+                line[j]=Vertex(Vector2f(j, image.getSize().y-i), image.getPixel(j, i));
+            window.draw(line);
+        }
         window.display();
     }
 
