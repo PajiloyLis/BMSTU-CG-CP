@@ -17,8 +17,6 @@ add_executable(cp_cg
         figure.h
         triangle.cpp
         triangle.h
-        conversions.h
-        textured_triangle.cpp
-        textured_triangle.h)
+        conversions.h)
 
 target_link_libraries(cp_cg PUBLIC sfml-graphics sfml-window sfml-system)

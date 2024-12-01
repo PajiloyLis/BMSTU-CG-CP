@@ -65,8 +65,8 @@ int main() {
             if (cam.dot(i.getN()) > 0) {
                 z_buffer(i.getVertices(), image,
                          sf::Color{static_cast<sf::Uint8>(255 * intensity),
-                                   static_cast<sf::Uint8>(255 * intensity),
-                                   static_cast<sf::Uint8>(255 * intensity)}, zbuffer);
+                                   static_cast<sf::Uint8>(250 * intensity),
+                                   static_cast<sf::Uint8>(250 * intensity)}, zbuffer);
 //                for (auto &j: i.getVertices()) {
 //                    triangle[index] = {sf::Vector2f(j.getY(), -j.getZ() + screen_size.y),
 //                                       {static_cast<sf::Uint8>(255 * intensity),

@@ -2,9 +2,10 @@
 9	5712	1732882540606912521	CMakeFiles/cp_cg.dir/point.cpp.o	64ae4e4e1518d1f8
 1	526	1732744445030855502	CMakeFiles/cp_cg.dir/read_binary.cpp.o	a0bec16136d7e5f6
 1	1489	1733011271800494863	CMakeFiles/cp_cg.dir/operations.cpp.o	6c3b7798716b5a0e
-2520	2687	1733063567568919213	cp_cg	75cc8ce738970fcc
+0	16	1733071876083858978	build.ninja	ed19f57dce318c5c
+2	111	1733071851300859889	cp_cg	75cc8ce738970fcc
 2	3630	1732938629726967843	CMakeFiles/cp_cg.dir/map_prepare.cpp.o	c1bdb6faf55d2892
 3	3214	1732938629310967858	CMakeFiles/cp_cg.dir/figure.cpp.o	15e101c0500d2205
 4	2133	1732938628230967898	CMakeFiles/cp_cg.dir/triangle.cpp.o	d408b056434e65d5
-2	2520	1733063567402919219	CMakeFiles/cp_cg.dir/main.cpp.o	e26b6293be1beafb
+1	1719	1733071834471860508	CMakeFiles/cp_cg.dir/main.cpp.o	e26b6293be1beafb
 2	2543	1732938628638967883	CMakeFiles/cp_cg.dir/my_vec3f.cpp.o	85fdbf9994c4c8f9
