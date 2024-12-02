@@ -10,6 +10,8 @@
 #include <set>
 #include "triangle.h"
 #include <algorithm>
+#include "textured_triangle.h"
+#include <SFML/Graphics.hpp>
 
 using namespace std;
 

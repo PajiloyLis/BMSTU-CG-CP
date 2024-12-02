@@ -36,7 +36,7 @@ vector<triangle> read_stl(const string &filename) {
     in.seekg(80, ios_base::beg);
     in.read((char *) &n, sizeof(n));
     cout << n << '\n';
-    vector<> triangles(n);
+    vector<textured_triangle> triangles(n);
     array<my_vec3f, 3> vertices;
     float x, y, z;
     bool normal = false;

@@ -12,6 +12,9 @@ using namespace sf;
 
 class textured_triangle {
 public:
+
+    textured_triangle() = default;
+
     textured_triangle(const my_vec3f &normal, const array<my_vec3f, 3> &vertices, const my_vec3f &n,
                       const Texture &texture);
 
