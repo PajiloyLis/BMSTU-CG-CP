@@ -10,6 +10,7 @@
 #include <vector>
 #include <my_vec3f.h>
 #include <array>
+#include "conversions.h"
 
 using namespace std;
 
@@ -59,6 +60,8 @@ public:
     }
 
     triangle &operator=(const triangle &t);
+
+    void rotate(const rotate_t &rotate);
 
 private:
     array<my_vec3f, 3> vertices;

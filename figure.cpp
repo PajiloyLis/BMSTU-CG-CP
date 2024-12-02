@@ -30,12 +30,7 @@ figure::figure(vector<textured_triangle> &&triangles) {
 
 void figure::rotate(const rotate_t &rotate) {
     for (auto &triangle: triangles) {
-        const_cast<my_vec3f &>(triangle.getT().getN()).rotate(rotate);
-        auto &vertices =  triangle.getT().getVertices();
-        for (int i = 0; i < vertices.size(); ++i) {
-            const_cast<my_vec3f &>(vertices[i]) = (vertices[i] - center).rotate(rotate) + center;
-
-        }
+        triangle.rotate()
     }
     cout << "figure_rotated\n";
 }

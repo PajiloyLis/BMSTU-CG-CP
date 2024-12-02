@@ -44,3 +44,8 @@ triangle &triangle::operator=(const triangle &t) {
     }
     return *this;
 }
+
+void triangle::rotate(const rotate_t &rotate) {
+    for(auto &vertex:vertices)
+        vertex.rotate(rotate);
+}

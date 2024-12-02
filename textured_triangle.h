@@ -16,13 +16,14 @@ class textured_triangle {
 
     textured_triangle(const triangle &other, const Texture &texture);
 
+    void rotate(const rotate_t &rotate);
 
 private:
     triangle t;
 public:
     const triangle &getT() const;
 
-    void setShape(const ConvexShape &shape);
+    void setShape(const triangle &shape);
 
 private:
     ConvexShape shape;

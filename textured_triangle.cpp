@@ -36,12 +36,20 @@ textured_triangle::textured_triangle(const my_vec3f &normal, const array<my_vec3
     shape.setTexture(&texture);
 }
 
-void textured_triangle::setShape(const ConvexShape &shape) {
-    textured_triangle::shape = shape;
+void textured_triangle::setShape(const triangle &shape) {
+
 }
 
 const triangle &textured_triangle::getT() const {
     return t;
+}
+
+void textured_triangle::rotate(const rotate_t &rotate) {
+    t.rotate(rotate);
+    for(int i = 0; i < t.getVertices().size(); ++i)
+    {
+        shape.setPoint(i, {t.getVertices()[i].getY(), t.getVertices()[i].getZ()});
+    }
 }
 
 
