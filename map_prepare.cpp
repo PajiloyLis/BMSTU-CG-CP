@@ -30,17 +30,20 @@ vector<my_vec3f> read_map(const string &map_filename, const string &map_info_fil
 }
 
 vector<textured_triangle> read_stl(const string &filename) {
-    set<float> xs, ys, zs;
+//    set<float> xs, ys, zs;
+
     ifstream in(filename, ios_base::in | ios_base::binary);
     uint32_t n;
     in.seekg(80, ios_base::beg);
     in.read((char *) &n, sizeof(n));
     cout << n << '\n';
+
     vector<textured_triangle> triangles(n);
     array<my_vec3f, 3> vertices;
     float x, y, z;
     bool normal = false;
     int cnt = 0;
+
     for (int i = 0; i < n; ++i, ++cnt) {
         in.read((char *) &x, sizeof(x));
         in.read((char *) &y, sizeof(y));
@@ -48,13 +51,14 @@ vector<textured_triangle> read_stl(const string &filename) {
         if (x != 0 || y != 0 || z != 0) {
             normal = true;
         }
-        const_cast<triangle &>(triangles[i].getT()).setN({x, y, z});
+        triangles[i].t.n = {x, y, z};
+
         for (int j = 0; j < 3; ++j) {
             in.read((char *) &x, sizeof(x));
             in.read((char *) &y, sizeof(y));
             in.read((char *) &z, sizeof(z));
             vertices[j].setX(x), vertices[j].setY(y), vertices[j].setZ(z);
-            xs.insert(x), ys.insert(y), zs.insert(z);
+//            xs.insert(x), ys.insert(y), zs.insert(z);
         }
         const_cast<triangle &>(triangles[i].getT()).setVertices(vertices);
         in.seekg(2, ios_base::cur);
