@@ -5,7 +5,7 @@ figure::figure(const vector<textured_triangle> &triangles) {
     max_x = max_y = max_z = -1e9;
     min_x = min_y = min_z = 1e9;
     for (auto &triangle: triangles) {
-        for (auto &p: triangle.getVertices()) {
+        for (auto &p: triangle.getT().getVertices()) {
             max_x = max(max_x, p.getX()), min_x = min(min_x, p.getX());
             max_y = max(max_y, p.getY()), min_y = min(min_y, p.getY());
             max_z = max(max_z, p.getZ()), min_z = min(min_z, p.getZ());
@@ -19,7 +19,7 @@ figure::figure(vector<textured_triangle> &&triangles) {
     max_x = max_y = max_z = -1e9;
     min_x = min_y = min_z = 1e9;
     for (auto &triangle: triangles) {
-        for (auto &p: triangle.getVertices()) {
+        for (auto &p: triangle.getT().getVertices()) {
             max_x = max(max_x, p.getX()), min_x = min(min_x, p.getX());
             max_y = max(max_y, p.getY()), min_y = min(min_y, p.getY());
             max_z = max(max_z, p.getZ()), min_z = min(min_z, p.getZ());
@@ -30,9 +30,12 @@ figure::figure(vector<textured_triangle> &&triangles) {
 
 void figure::rotate(const rotate_t &rotate) {
     for (auto &triangle: triangles) {
-        const_cast<my_vec3f &>(triangle.getN()).rotate(rotate);
-        for (auto &p: triangle.getVertices())
-            const_cast<my_vec3f &>(p) = (p - center).rotate(rotate) + center;
+        const_cast<my_vec3f &>(triangle.getT().getN()).rotate(rotate);
+        auto &vertices =  triangle.getT().getVertices();
+        for (int i = 0; i < vertices.size(); ++i) {
+            const_cast<my_vec3f &>(vertices[i]) = (vertices[i] - center).rotate(rotate) + center;
+
+        }
     }
     cout << "figure_rotated\n";
 }
@@ -45,7 +48,7 @@ array<float, 3> figure::get_size() const {
     return {max_x - min_x, max_y - min_y, max_z - min_z};
 }
 
-const vector<triangle> &figure::getTriangles() const {
+const vector<textured_triangle> & figure::getTriangles() const {
     return triangles;
 }
 
@@ -53,8 +56,4 @@ void figure::setCenter(const my_vec3f &center) {
     this->center = center;
 }
 
-void figure::sort()
-{
-    std::sort(triangles.begin(), triangles.end());
-}
 

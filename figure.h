@@ -32,15 +32,13 @@ public:
 private:
     vector<textured_triangle> triangles;
 public:
-    [[nodiscard]] const vector<textured_triangle> &getTriangles() const;
+    [[nodiscard]] const vector<textured_triangle> & getTriangles() const;
 
 private:
     float min_x, max_x, min_y, max_y, min_z, max_z;
     my_vec3f center;
 public:
     void setCenter(const my_vec3f &center);
-
-    void sort();
 };
 
 #endif //CP_CG_FIGURE_H

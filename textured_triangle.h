@@ -22,6 +22,8 @@ private:
 public:
     const triangle &getT() const;
 
+    void setShape(const ConvexShape &shape);
+
 private:
     ConvexShape shape;
 };
