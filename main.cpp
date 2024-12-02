@@ -19,7 +19,7 @@ int main() {
         throw exception();
     my_vec3f figure_center = mountain.get_center();
     array<float, 3> size = mountain.get_size();
-    float delta = max(size[0], max(size[1], size[2]));
+    float delta = std::max(size[0], std::max(size[1], size[2]));
     cout << delta << '\n';
     sf::RenderWindow window(sf::VideoMode(1850, 1016), "kek");
     sf::Vector2u screen_size = window.getSize();

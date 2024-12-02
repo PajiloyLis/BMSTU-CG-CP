@@ -6,9 +6,9 @@ figure::figure(const vector<textured_triangle> &triangles) {
     min_x = min_y = min_z = 1e9;
     for (auto &triangle: triangles) {
         for (auto &p: triangle.getT().getVertices()) {
-            max_x = max(max_x, p.getX()), min_x = min(min_x, p.getX());
-            max_y = max(max_y, p.getY()), min_y = min(min_y, p.getY());
-            max_z = max(max_z, p.getZ()), min_z = min(min_z, p.getZ());
+            max_x = std::max(max_x, p.getX()), min_x = std::min(min_x, p.getX());
+            max_y = std::max(max_y, p.getY()), min_y = std::min(min_y, p.getY());
+            max_z = std::max(max_z, p.getZ()), min_z = std::min(min_z, p.getZ());
         }
     }
     center.setX((max_x - min_x) / 2), center.setY((max_y - min_y) / 2), center.setZ((max_z - min_z) / 2);
@@ -20,9 +20,9 @@ figure::figure(vector<textured_triangle> &&triangles) {
     min_x = min_y = min_z = 1e9;
     for (auto &triangle: triangles) {
         for (auto &p: triangle.getT().getVertices()) {
-            max_x = max(max_x, p.getX()), min_x = min(min_x, p.getX());
-            max_y = max(max_y, p.getY()), min_y = min(min_y, p.getY());
-            max_z = max(max_z, p.getZ()), min_z = min(min_z, p.getZ());
+            max_x = std::max(max_x, p.getX()), min_x = std::min(min_x, p.getX());
+            max_y = std::max(max_y, p.getY()), min_y = std::min(min_y, p.getY());
+            max_z = std::max(max_z, p.getZ()), min_z = std::min(min_z, p.getZ());
         }
     }
     center.setX((max_x - min_x) / 2), center.setY((max_y - min_y) / 2), center.setZ((max_z - min_z) / 2);

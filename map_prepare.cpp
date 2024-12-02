@@ -73,12 +73,9 @@ vector<textured_triangle> read_stl(const string &filename) {
         min_x = min_y = min_z = 1e9;
         for (auto &triangle: triangles) {
             for (auto &p: triangle.t.getVertices()) {
-                max_x= (max_x > p.getX() ? max_x : p.getX());
-                min_x = (min_x < p.getX() ? min_x : p.getX());
-                max_y= (max_y > p.getY() ? max_y : p.getY());
-                min_y= (min_y < p.getY() ? min_y : p.getY());
-                max_z= (max_z > p.getZ() ? max_z : p.getZ());
-                max_z= (max_z < p.getZ() ? max_z : p.getZ());
+                max_x = std::max(max_x, p.getX()), min_x = std::min(min_x, p.getX());
+                max_y = std::max(max_y, p.getY()), min_y = std::min(min_y, p.getY());
+                max_z = std::max(max_z, p.getZ()), min_z = std::min(min_z, p.getZ());
             }
         }
         my_vec3f center((max_x - min_x) / 2, (max_y - min_y) / 2, (max_z - min_z) / 2);
