@@ -12,11 +12,17 @@ using namespace sf;
 
 class textured_triangle {
     textured_triangle(const my_vec3f &normal, const array<my_vec3f, 3> &vertices, const my_vec3f &n,
-                      const Texture &texture) ;
+                      const Texture &texture);
+
     textured_triangle(const triangle &other, const Texture &texture);
+
 
 private:
     triangle t;
+public:
+    const triangle &getT() const;
+
+private:
     ConvexShape shape;
 };
 

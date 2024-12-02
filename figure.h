@@ -9,14 +9,15 @@
 #include "conversions.h"
 #include <iostream>
 #include <algorithm>
+#include <textured_triangle.h>
 
 using namespace std;
 
 class figure {
 public:
-    explicit figure(const vector<triangle> &triangles);
+    explicit figure(const vector<textured_triangle> &triangles);
 
-    explicit figure(vector<triangle> &&triangles);
+    explicit figure(vector<textured_triangle> &&triangles);
 
     figure() = default;
 
@@ -26,12 +27,12 @@ public:
 
     void rotate(const rotate_t &rotate);
 
-    void scale();
+//    void scale();
 
 private:
-    vector<triangle> triangles;
+    vector<textured_triangle> triangles;
 public:
-    const vector<triangle> &getTriangles() const;
+    [[nodiscard]] const vector<textured_triangle> &getTriangles() const;
 
 private:
     float min_x, max_x, min_y, max_y, min_z, max_z;

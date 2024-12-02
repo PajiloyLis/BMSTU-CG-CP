@@ -1,6 +1,6 @@
 #include "figure.h"
 
-figure::figure(const vector<triangle> &triangles) {
+figure::figure(const vector<textured_triangle> &triangles) {
     this->triangles = triangles;
     max_x = max_y = max_z = -1e9;
     min_x = min_y = min_z = 1e9;
@@ -14,7 +14,7 @@ figure::figure(const vector<triangle> &triangles) {
     center.setX((max_x - min_x) / 2), center.setY((max_y - min_y) / 2), center.setZ((max_z - min_z) / 2);
 }
 
-figure::figure(vector<triangle> &&triangles) {
+figure::figure(vector<textured_triangle> &&triangles) {
     this->triangles = triangles;
     max_x = max_y = max_z = -1e9;
     min_x = min_y = min_z = 1e9;

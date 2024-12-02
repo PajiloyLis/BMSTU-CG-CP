@@ -36,4 +36,8 @@ textured_triangle::textured_triangle(const my_vec3f &normal, const array<my_vec3
     shape.setTexture(&texture);
 }
 
+const triangle &textured_triangle::getT() const {
+    return t;
+}
+
 
