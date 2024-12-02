@@ -12,6 +12,7 @@ struct move_t {
 };
 
 class rotate_t {
+public:
     rotate_t(const double &x, const double &y, const double &z) :
             x_rotate(1, 0, 0, 0, cos(x), -sin(x), 0, sin(x), cos(x)),
             y_rotate(cos(y), 0, sin(y), 0, 1, 0, -sin(y), 0, cos(y)),
