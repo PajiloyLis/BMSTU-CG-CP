@@ -53,11 +53,16 @@ void textured_triangle::rotate(const rotate_t &rotate) {
 
 void textured_triangle::setTexture(const Texture &texture) {
     shape.setPointCount(t.getVertices().size());
+
     for(int i = 0; i < t.vertices.size(); ++i)
         shape.setPoint(i, {t.vertices[i].getY(), t.vertices[i].getZ()});
+    float max_x = std::max(shape.getPoint(0).x, std::max(shape.getPoint(1).x, shape.getPoint(2).x)),
+            max_y = std::max(shape.getPoint(0).y, std::max(shape.getPoint(1).y, shape.getPoint(2).y)),
+            min_x = std::min(shape.getPoint(0).x, std::min(shape.getPoint(1).x, shape.getPoint(2).x)),
+            min_y = std::min(shape.getPoint(0).y, std::min(shape.getPoint(1).y, shape.getPoint(2).y));
     const_cast<Texture &>(texture).generateMipmap();
     shape.setTextureRect({{0,                                     0},
-                          {static_cast<int>(ceil(t.max_y - t.min_y)), static_cast<int>(ceil(t.max_z - t.min_z))}});
+                          {static_cast<int>(ceil(max_x - min_x)), static_cast<int>(ceil(max_y - min_y))}});
     shape.setTexture(&texture);
 }
 

@@ -66,7 +66,7 @@ int main() {
 //                image.create(screen_size.x, screen_size.y, Color(0x87CEEB));
             }
         }
-//        window.clear(sf::Color{0x87CEEB});
+        window.clear(sf::Color{0x87CEEB});
         for (auto &i: mountain.getTriangles()) {
 //            index = 0;
             float intensity = light_ray.dot(i.getT().getN());
