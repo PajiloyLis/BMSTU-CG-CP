@@ -17,7 +17,6 @@ int main() {
     Texture texture;
     if (!texture.loadFromFile("./textures/snow_rock_2.jpg"))
         throw exception();
-    mountain.addTexture(texture);
     my_vec3f figure_center = mountain.get_center();
     array<float, 3> size = mountain.get_size();
     float delta = max(size[0], max(size[1], size[2]));
@@ -38,6 +37,7 @@ int main() {
     figure_center.setY(figure_center.getY() * k);
     figure_center.setZ(figure_center.getZ() * k);
     mountain.setCenter(figure_center);
+    mountain.addTexture(texture);
     array<sf::Vertex, 3> triangle;
     my_vec3f light_ray = normalize(my_vec3f(1, 0, 0));
     my_vec3f cam = normalize(my_vec3f(1, 0, 0));
