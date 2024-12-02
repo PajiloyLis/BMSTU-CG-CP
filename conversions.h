@@ -2,6 +2,8 @@
 #define CP_CG_CONVERSIONS_H
 
 #include <glm/glm.hpp>
+#include<glm/gtc/matrix_transform.hpp>
+#include <glm/gtc/type_ptr.hpp>
 #include <cmath>
 
 using namespace glm;
