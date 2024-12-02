@@ -24,7 +24,7 @@ int main() {
     unsigned x_center = screen_size.x / 2, y_center = screen_size.y / 2;
     float k = (delta == size[2] ? screen_size.y / delta : screen_size.x / delta);
     for (auto &triangle: mountain.getTriangles()) {
-        for (auto &j: triangle.getVertices()) {
+        for (auto &j: triangle.getT().getVertices()) {
             const_cast<my_vec3f &>(j).setZ(j.getZ() * k);
             const_cast<my_vec3f &>(j).setY(j.getY() * k);
             const_cast<my_vec3f &>(j).setX(j.getX() * k);
@@ -65,12 +65,13 @@ int main() {
 //        window.clear(sf::Color{0x87CEEB});
         for (auto &i: mountain.getTriangles()) {
 //            index = 0;
-            float intensity = light_ray.dot(i.getN());
-            if (cam.dot(i.getN()) > 0) {
-                z_buffer(i.getVertices(), image,
-                         sf::Color{static_cast<sf::Uint8>(255 * intensity),
-                                   static_cast<sf::Uint8>(250 * intensity),
-                                   static_cast<sf::Uint8>(250 * intensity)}, zbuffer);
+            float intensity = light_ray.dot(i.getT().getN());
+            if (cam.dot(i.getT().getN()) > 0) {
+                window.draw(i.shape);
+//                z_buffer(i.getT().getVertices(), image,
+//                         sf::Color{static_cast<sf::Uint8>(255 * intensity),
+//                                   static_cast<sf::Uint8>(250 * intensity),
+//                                   static_cast<sf::Uint8>(250 * intensity)}, zbuffer);
 //                for (auto &j: i.getVertices()) {
 //                    triangle[index] = {sf::Vector2f(j.getY(), -j.getZ() + screen_size.y),
 //                                       {static_cast<sf::Uint8>(255 * intensity),
@@ -81,12 +82,12 @@ int main() {
 //                window.draw(&triangle[0], 3, sf::Triangles);
             }
         }
-        for (int i = 0; i < image.getSize().y; ++i) {
-            VertexArray line(sf::Points, image.getSize().x);
-            for (int j = 0; j < image.getSize().x; ++j)
-                line[j] = Vertex(Vector2f(j, image.getSize().y - i), image.getPixel(j, i));
-            window.draw(line);
-        }
+//        for (int i = 0; i < image.getSize().y; ++i) {
+//            VertexArray line(sf::Points, image.getSize().x);
+//            for (int j = 0; j < image.getSize().x; ++j)
+//                line[j] = Vertex(Vector2f(j, image.getSize().y - i), image.getPixel(j, i));
+//            window.draw(line);
+//        }
         window.display();
     }
 

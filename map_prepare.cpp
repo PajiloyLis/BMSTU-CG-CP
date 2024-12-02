@@ -29,7 +29,7 @@ vector<my_vec3f> read_map(const string &map_filename, const string &map_info_fil
     return map;
 }
 
-vector<triangle> read_stl(const string &filename) {
+vector<textured_triangle> read_stl(const string &filename) {
     set<float> xs, ys, zs;
     ifstream in(filename, ios_base::in | ios_base::binary);
     uint32_t n;
@@ -104,7 +104,6 @@ vector<triangle> read_stl(const string &filename) {
         out.seekp(0, ios_base::end);
         out.close();
     }
-    sort(triangles.begin(), triangles.end());
     return triangles;
 }
 

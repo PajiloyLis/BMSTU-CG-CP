@@ -23,14 +23,14 @@ public:
     void rotate(const rotate_t &rotate);
 
     void setTexture(const Texture &texture);
-private:
+
     triangle t;
-public:
+
     const triangle &getT() const;
+
 
     void setShape(const triangle &shape);
 
-private:
     ConvexShape shape;
 };
 

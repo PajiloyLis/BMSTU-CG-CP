@@ -23,7 +23,7 @@ using namespace sf;
 
 vector<my_vec3f> read_map(const string &map_filename, const string &map_info_file);
 
-vector<triangle> read_stl(const string &filename);
+vector<textured_triangle> read_stl(const string &filename);
 
 set<set<int>> stupid_delaunay_triangulate(vector<my_vec3f> &points);
 
