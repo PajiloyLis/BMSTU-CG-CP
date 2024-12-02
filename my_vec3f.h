@@ -7,6 +7,7 @@
 #include <GL/gl.h>
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtc/type_ptr.hpp>
 #include "conversions.h"
 
 using namespace std;
@@ -109,7 +110,7 @@ public:
 
     my_vec3f(const glm::vec3 &p);
 
-    glm::vec3 p;
+    glm::vec4 p;
 
     void rotate_point_x(const rotate_t &rotate);
 
