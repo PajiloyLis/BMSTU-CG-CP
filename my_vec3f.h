@@ -104,7 +104,6 @@ public:
 
     my_vec3f operator*=(const float &) const;
 
-private:
     my_vec3f(const glm::vec3 &p);
 
     glm::vec3 p;

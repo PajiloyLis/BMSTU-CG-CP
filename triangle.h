@@ -63,7 +63,6 @@ public:
 
     void rotate(const rotate_t &rotate);
 
-private:
     array<my_vec3f, 3> vertices;
     my_vec3f n;
 

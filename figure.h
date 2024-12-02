@@ -27,26 +27,25 @@ public:
 
     void rotate(const rotate_t &rotate);
 
-    void addTexture(const Texture &texture)
-    {
+    void addTexture(const Texture &texture) {
         textures.push_back(texture);
         auto start = clock();
-        for(auto &triangle: triangles)
+        for (auto &triangle: triangles)
             triangle.setTexture(textures.back());
         auto end = clock();
-        cout<<"TEXTURED PER "<<(end-start)/CLOCKS_PER_SEC<<'\n';
+        cout << "TEXTURED PER " << (end - start) / CLOCKS_PER_SEC << '\n';
     }
 //    void scale();
 
+    [[nodiscard]] const vector<textured_triangle> &getTriangles() const;
+
+
+    void setCenter(const my_vec3f &center);
+
     vector<textured_triangle> triangles;
     vector<Texture> textures;
-public:
-    [[nodiscard]] const vector<textured_triangle> & getTriangles() const;
-
     float min_x, max_x, min_y, max_y, min_z, max_z;
     my_vec3f center;
-public:
-    void setCenter(const my_vec3f &center);
 };
 
 #endif //CP_CG_FIGURE_H
