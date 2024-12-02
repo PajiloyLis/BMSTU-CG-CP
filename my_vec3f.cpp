@@ -62,7 +62,7 @@ my_vec3f my_vec3f::cross(const my_vec3f &a) {
 }
 
 void my_vec3f::rotate_point_x(const rotate_t &rotate) {
-    glm::rotate(rotate.x_rotate, )
+    p = glm::cross()
 }
 
 void my_vec3f::rotate_point_y(const rotate_t &rotate) {
