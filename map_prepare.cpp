@@ -60,6 +60,7 @@ vector<triangle> read_stl(const string &filename) {
             xs.insert(x), ys.insert(y), zs.insert(z);
         }
         const_cast<triangle &>(triangles[i].getT()).setVertices(vertices);
+        triangles[i].setTexture(texture);
         in.seekg(2, ios_base::cur);
     }
     cout << "readed " << cnt << '\n';
