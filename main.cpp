@@ -13,7 +13,7 @@ using namespace sf;
 
 int main() {
     Color snow(255, 0, 0), mount_1(10, 12, 23), mount_2(25, 26, 33);
-    figure mountain(read_stl("./prepared_srtm/Model.stl"));
+    figure mountain(read_stl("./prepared_srtm/klyuchevskaya.STL"));
     my_vec3f figure_center = mountain.get_center();
     array<float, 3> size = mountain.get_size();
     float delta = max(size[0], max(size[1], size[2]));
