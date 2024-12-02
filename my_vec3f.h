@@ -9,6 +9,9 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include "conversions.h"
 
+using namespace std;
+using namespace glm;
+
 class my_vec3f {
 public:
     my_vec3f(const my_vec3f &p);
