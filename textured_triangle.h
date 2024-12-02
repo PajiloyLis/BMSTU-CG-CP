@@ -5,13 +5,14 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Graphics/Image.hpp>
 #include <SFML/Graphics/ConvexShape.hpp>
+#include <cmath>
 
 using namespace std;
 using namespace sf;
 
 class textured_triangle {
     textured_triangle(const my_vec3f &normal, const array<my_vec3f, 3> &vertices, const my_vec3f &n,
-                      const Texture texture) {
+                      const Texture &texture) {
         t.setVertices(vertices);
         t.setN(n);
         shape.setPointCount(vertices.size());
@@ -20,11 +21,12 @@ class textured_triangle {
             max_y = vertices[i].getY() > max_y ? vertices[i].getY() : max_y;
             max_z = vertices[i].getZ() > max_y ? vertices[i].getZ() : max_z;
             min_y = vertices[i].getY() < min_y ? vertices[i].getY() : min_y;
-            min_z = vertices[i].getZ() < min_Z ? vertices[i].getZ() : min_z;
+            min_z = vertices[i].getZ() < min_z ? vertices[i].getZ() : min_z;
             shape.setPoint(i, {vertices[i].getY(), vertices[i].getZ()});
         }
-
-        shape.setTextureRect()
+        const_cast<Texture &>(texture).generateMipmap();
+        shape.setTextureRect({{0,                                     0},
+                              {static_cast<int>(ceil(max_y - min_y)), static_cast<int>(ceil(max_z - min_z))}});
     }
 
 private:
