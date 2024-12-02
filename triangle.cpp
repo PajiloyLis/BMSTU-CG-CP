@@ -22,6 +22,7 @@ triangle::triangle(my_vec3f &&normal, array<my_vec3f, 3> &&points) {
 
 void triangle::setVertices(const array<my_vec3f, 3> &vertices) {
     this->vertices = vertices;
+
 }
 
 void triangle::setN(const my_vec3f &n) {

@@ -24,12 +24,11 @@ public:
 
     void setTexture(const Texture &texture);
 
-    triangle t;
-
     const triangle &getT() const;
 
-
     void setShape(const triangle &shape);
+
+    triangle t;
 
     ConvexShape shape;
 };
