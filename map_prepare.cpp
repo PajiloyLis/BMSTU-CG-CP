@@ -51,7 +51,7 @@ vector<textured_triangle> read_stl(const string &filename) {
         if (x != 0 || y != 0 || z != 0) {
             normal = true;
         }
-        triangles[i].t.n = {x, y, z};
+        triangles[i].t.setN({x, y, z});
 
         for (int j = 0; j < 3; ++j) {
             in.read((char *) &x, sizeof(x));
@@ -60,13 +60,12 @@ vector<textured_triangle> read_stl(const string &filename) {
             vertices[j].setX(x), vertices[j].setY(y), vertices[j].setZ(z);
 //            xs.insert(x), ys.insert(y), zs.insert(z);
         }
-        const_cast<triangle &>(triangles[i].getT()).setVertices(vertices);
+        triangles[i].t.setVertices(vertices);
         in.seekg(2, ios_base::cur);
     }
     cout << "readed " << cnt << '\n';
-    cout << "cnt x " << xs.size() << "\ncnt y " << ys.size() << "\ncnt z " << zs.size() << "\n";
+//    cout << "cnt x " << xs.size() << "\ncnt y " << ys.size() << "\ncnt z " << zs.size() << "\n";
     in.close();
-
     if (!normal) {
         cout << "calculate normals\n";
         float max_x, min_x, max_y, min_y, max_z, min_z;
