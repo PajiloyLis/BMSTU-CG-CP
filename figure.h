@@ -30,9 +30,10 @@ public:
     void addTexture(const Texture &texture)
     {
         textures.push_back(texture);
+        for(auto &triangle: triangles)
+            triangle.setTexture(textures.back());
     }
 //    void scale();
-
 
     vector<textured_triangle> triangles;
     vector<Texture> textures;

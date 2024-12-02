@@ -14,6 +14,10 @@ using namespace sf;
 int main() {
     Color snow(255, 0, 0), mount_1(10, 12, 23), mount_2(25, 26, 33);
     figure mountain(read_stl("./prepared_srtm/klyuchevskaya.STL"));
+    Texture texture;
+    if (!texture.loadFromFile("./textures/snow_rock_2.jpg"))
+        throw exception();
+    mountain.addTexture(texture);
     my_vec3f figure_center = mountain.get_center();
     array<float, 3> size = mountain.get_size();
     float delta = max(size[0], max(size[1], size[2]));
@@ -58,8 +62,8 @@ int main() {
                     mountain.rotate({0, -M_PI / 90, 0});
                 else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
                     mountain.rotate({0, M_PI / 90, 0});
-                fill(zbuffer.begin(), zbuffer.end(), std::numeric_limits<float>::min());
-                image.create(screen_size.x, screen_size.y, Color(0x87CEEB));
+//                fill(zbuffer.begin(), zbuffer.end(), std::numeric_limits<float>::min());
+//                image.create(screen_size.x, screen_size.y, Color(0x87CEEB));
             }
         }
 //        window.clear(sf::Color{0x87CEEB});
