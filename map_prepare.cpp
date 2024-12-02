@@ -38,6 +38,9 @@ vector<triangle> read_stl(const string &filename) {
     cout << n << '\n';
     vector<textured_triangle> triangles(n);
     array<my_vec3f, 3> vertices;
+    Texture texture;
+    if(!texture.loadFromFile("./textures/snow_rock_2.png"))
+        throw exception();
     float x, y, z;
     bool normal = false;
     int cnt = 0;
@@ -48,7 +51,7 @@ vector<triangle> read_stl(const string &filename) {
         if (x != 0 || y != 0 || z != 0) {
             normal = true;
         }
-        triangles[i].setN({x, y, z});
+        const_cast<triangle &>(triangles[i].getT()).setN({x, y, z});
         for (int j = 0; j < 3; ++j) {
             in.read((char *) &x, sizeof(x));
             in.read((char *) &y, sizeof(y));
@@ -56,7 +59,7 @@ vector<triangle> read_stl(const string &filename) {
             vertices[j].setX(x), vertices[j].setY(y), vertices[j].setZ(z);
             xs.insert(x), ys.insert(y), zs.insert(z);
         }
-        triangles[i].setVertices(vertices);
+        const_cast<triangle &>(triangles[i].getT()).setVertices(vertices);
         in.seekg(2, ios_base::cur);
     }
     cout << "readed " << cnt << '\n';

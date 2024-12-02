@@ -14,6 +14,7 @@
 #include <SFML/Graphics.hpp>
 
 using namespace std;
+using namespace sf;
 
 #define ROWS_CNT_STRING 8
 #define COLS_CNT_STRING 9
