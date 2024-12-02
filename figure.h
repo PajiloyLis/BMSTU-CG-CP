@@ -30,8 +30,11 @@ public:
     void addTexture(const Texture &texture)
     {
         textures.push_back(texture);
+        auto start = clock();
         for(auto &triangle: triangles)
             triangle.setTexture(textures.back());
+        auto end = clock();
+        cout<<"TEXTURED PER "<<(end-start)/CLOCKS_PER_SEC<<'\n';
     }
 //    void scale();
 
