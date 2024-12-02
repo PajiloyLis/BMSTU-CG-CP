@@ -39,8 +39,9 @@ vector<textured_triangle> read_stl(const string &filename) {
     vector<textured_triangle> triangles(n);
     array<my_vec3f, 3> vertices;
     Texture texture;
-    if(!texture.loadFromFile("./textures/snow_rock_2.png"))
+    if(!texture.loadFromFile("./textures/snow_rock_2.jpg"))
         throw exception();
+    texture.generateMipmap();
     float x, y, z;
     bool normal = false;
     int cnt = 0;
@@ -73,7 +74,7 @@ vector<textured_triangle> read_stl(const string &filename) {
         max_x = max_y = max_z = -1e9;
         min_x = min_y = min_z = 1e9;
         for (auto &triangle: triangles) {
-            for (auto &p: triangle.getVertices()) {
+            for (auto &p: triangle.t.getVertices()) {
                 max_x = max(max_x, p.getX()), min_x = min(min_x, p.getX());
                 max_y = max(max_y, p.getY()), min_y = min(min_y, p.getY());
                 max_z = max(max_z, p.getZ()), min_z = min(min_z, p.getZ());
@@ -85,7 +86,7 @@ vector<textured_triangle> read_stl(const string &filename) {
         out.seekp(0);
         out.seekp(84, ios_base::beg);
         for (auto &triangle: triangles) {
-            vertices = triangle.getVertices();
+            vertices = triangle.t.getVertices();
             my_vec3f center_1 = vertices[0] - center,
                     center_2 = vertices[1] - center,
                     center_3 = vertices[2] - center;
@@ -94,7 +95,7 @@ vector<textured_triangle> read_stl(const string &filename) {
 //            if (bool(v_n.dot(center_1) > 0) + bool(v_n.dot(center_2) > 0) + bool(v_n.dot(center_3) > 0) < 2)
 //                v_n = b.cross(a);
             v_n.normalize();
-            triangle.setN(v_n);
+            triangle.t.setN(v_n);
             float n_x = v_n.getX(), n_y = v_n.getY(), n_z = v_n.getZ();
             out.write((char *) &n_x, sizeof(n_x));
             out.write((char *) &n_y, sizeof(n_y));
