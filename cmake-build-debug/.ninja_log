@@ -40,3 +40,6 @@
 7	4493	1733160681566228627	CMakeFiles/cp_cg.dir/operations.cpp.o	6c3b7798716b5a0e
 3	4238	1733160705508227747	CMakeFiles/cp_cg.dir/triangle.cpp.o	d408b056434e65d5
 3	7314	1733160708580227634	CMakeFiles/cp_cg.dir/textured_triangle.cpp.o	311a007de08fcd20
+2	2058	1733161195051209751	CMakeFiles/cp_cg.dir/my_vec3f.cpp.o	85fdbf9994c4c8f9
+2	2115	1733161195107209748	CMakeFiles/cp_cg.dir/operations.cpp.o	6c3b7798716b5a0e
+3	2141	1733161195134209747	CMakeFiles/cp_cg.dir/triangle.cpp.o	d408b056434e65d5
