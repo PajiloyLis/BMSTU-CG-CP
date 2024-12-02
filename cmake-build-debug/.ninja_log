@@ -49,3 +49,11 @@
 1	2764	1733161277268206728	CMakeFiles/cp_cg.dir/map_prepare.cpp.o	c1bdb6faf55d2892
 1	1674	1733161422036201406	CMakeFiles/cp_cg.dir/figure.cpp.o	15e101c0500d2205
 1674	1822	1733161422183201401	cp_cg	eddc032acd12fdfe
+1	1578	1733161892629184106	CMakeFiles/cp_cg.dir/triangle.cpp.o	d408b056434e65d5
+1	2636	1733161893685184067	CMakeFiles/cp_cg.dir/main.cpp.o	e26b6293be1beafb
+2	2795	1733161893846184062	CMakeFiles/cp_cg.dir/textured_triangle.cpp.o	311a007de08fcd20
+1	2835	1733161893885184060	CMakeFiles/cp_cg.dir/map_prepare.cpp.o	c1bdb6faf55d2892
+1	3259	1733161894309184044	CMakeFiles/cp_cg.dir/figure.cpp.o	15e101c0500d2205
+3259	3413	1733161894464184039	cp_cg	eddc032acd12fdfe
+2	1371	1733162065745177742	CMakeFiles/cp_cg.dir/textured_triangle.cpp.o	311a007de08fcd20
+1371	1509	1733162065882177737	cp_cg	eddc032acd12fdfe

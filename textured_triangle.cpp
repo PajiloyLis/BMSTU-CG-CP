@@ -53,10 +53,11 @@ void textured_triangle::rotate(const rotate_t &rotate) {
 
 void textured_triangle::setTexture(const Texture &texture) {
     shape.setPointCount(t.getVertices().size());
-
+    for(int i = 0; i < t.vertices.size(); ++i)
+        shape.setPoint(i, {t.vertices[i].getY(), t.vertices[i].getZ()});
     const_cast<Texture &>(texture).generateMipmap();
     shape.setTextureRect({{0,                                     0},
-                          {static_cast<int>(ceil(t.ma - min_y)), static_cast<int>(ceil(max_z - min_z))}});
+                          {static_cast<int>(ceil(t.max_y - t.min_y)), static_cast<int>(ceil(t.max_z - t.min_z))}});
     shape.setTexture(&texture);
 }
 
