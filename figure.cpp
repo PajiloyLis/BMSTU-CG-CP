@@ -30,7 +30,7 @@ figure::figure(vector<textured_triangle> &&triangles) {
 
 void figure::rotate(const rotate_t &rotate) {
     for (auto &triangle: triangles) {
-        triangle.rotate()
+        triangle.rotate(rotate);
     }
     cout << "figure_rotated\n";
 }
