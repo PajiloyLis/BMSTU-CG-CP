@@ -18,7 +18,7 @@ public:
             y_rotate(cos(y), 0, sin(y), 0, 1, 0, -sin(y), 0, cos(y)),
             z_rotate(cos(z), -sin(z), 0, sin(z), cos(z), 0, 0, 0, 1) {
     };
-    mat3x3 x_rotate, y_rotate, z_rotate;
+    mat3 x_rotate, y_rotate, z_rotate;
 };
 
 struct scale_t {
