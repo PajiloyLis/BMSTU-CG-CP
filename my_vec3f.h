@@ -60,26 +60,26 @@ public:
     bool operator!=(const my_vec3f &p) const {
         return this->p.x != p.p.x || this->p.y != p.p.y || this->p.z != p.p.z;
     }
-
-    bool operator<(const my_vec3f &p) const {
-        return this->p.x < p.p.x || (this->p.x == p.p.x && this->p.y < p.p.y) ||
-               (this->p.x == p.p.x && this->p.y == p.p.y && this->p.z < p.p.z);
-    }
-
-    bool operator<=(const my_vec3f &p) const {
-        return this->p.x <= p.p.x || (this->p.x == p.p.x && this->p.y <= p.p.y) ||
-               (this->p.x == p.p.x && this->p.y == p.p.y && this->p.z <= p.p.z);
-    }
-
-    bool operator>(const my_vec3f &p) const {
-        return this->p.x > p.p.x || (this->p.x == p.p.x && this->p.y > p.p.y) ||
-               (this->p.x == p.p.x && this->p.y == p.p.y && this->p.z > p.p.z);
-    }
-
-    bool operator>=(const my_vec3f &p) const {
-        return this->p.x >= p.p.x || (this->p.x == p.p.x && this->p.y >= p.p.y) ||
-               (this->p.x == p.p.x && this->p.y == p.p.y && this->p.z >= p.p.z);
-    }
+//
+//    bool operator<(const my_vec3f &p) const {
+//        return this->p.x < p.p.x || (this->p.x == p.p.x && this->p.y < p.p.y) ||
+//               (this->p.x == p.p.x && this->p.y == p.p.y && this->p.z < p.p.z);
+//    }
+//
+//    bool operator<=(const my_vec3f &p) const {
+//        return this->p.x <= p.p.x || (this->p.x == p.p.x && this->p.y <= p.p.y) ||
+//               (this->p.x == p.p.x && this->p.y == p.p.y && this->p.z <= p.p.z);
+//    }
+//
+//    bool operator>(const my_vec3f &p) const {
+//        return this->p.x > p.p.x || (this->p.x == p.p.x && this->p.y > p.p.y) ||
+//               (this->p.x == p.p.x && this->p.y == p.p.y && this->p.z > p.p.z);
+//    }
+//
+//    bool operator>=(const my_vec3f &p) const {
+//        return this->p.x >= p.p.x || (this->p.x == p.p.x && this->p.y >= p.p.y) ||
+//               (this->p.x == p.p.x && this->p.y == p.p.y && this->p.z >= p.p.z);
+//    }
 
     my_vec3f &operator=(const my_vec3f &p);
 
@@ -110,7 +110,7 @@ public:
 
     my_vec3f(const glm::vec3 &p);
 
-    glm::vec4 p;
+    glm::vec3 p;
 
     void rotate_point_x(const rotate_t &rotate);
 

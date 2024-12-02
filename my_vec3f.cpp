@@ -62,7 +62,9 @@ my_vec3f my_vec3f::cross(const my_vec3f &a) {
 }
 
 void my_vec3f::rotate_point_x(const rotate_t &rotate) {
-    p = rotate.x_rotate * p;
+    double tmp_y = p.y;
+    p.y = std::cos(rotate.angle_x) * p.y - std::sin(rotate.angle_x) * p.z;
+    p.z = std::sin(rotate.angle_x) * tmp_y + std::cos(rotate.angle_x) * p.z;
 }
 
 void my_vec3f::rotate_point_y(const rotate_t &rotate) {
@@ -85,5 +87,5 @@ my_vec3f my_vec3f::rotate(const rotate_t &rotate) {
 }
 
 my_vec3f my_vec3f::operator*(const float &v) const {
-    return {p.x * v, p.y * v, p.z * v};
+    return {p.x*v, p.y*v, p.z*v};
 }

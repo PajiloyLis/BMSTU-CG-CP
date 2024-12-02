@@ -42,22 +42,22 @@ public:
         return !(*this == t);
     }
 
-    bool operator<(const triangle &t) const {
-        return min(vertices[0], min(vertices[1], vertices[2])) <
-               min(t.vertices[0], min(t.vertices[1], min(t.vertices[2], t.vertices[0])));
-    }
-
-    bool operator<=(const triangle &t) const {
-        return *this < t || *this == t;
-    }
-
-    bool operator>(const triangle &t) const {
-        return !(*this <= t);
-    }
-
-    bool operator>=(const triangle &t) const {
-        return !(*this < t);
-    }
+//    bool operator<(const triangle &t) const {
+//        return min(vertices[0], min(vertices[1], vertices[2])) <
+//               min(t.vertices[0], min(t.vertices[1], min(t.vertices[2], t.vertices[0])));
+//    }
+//
+//    bool operator<=(const triangle &t) const {
+//        return *this < t || *this == t;
+//    }
+//
+//    bool operator>(const triangle &t) const {
+//        return !(*this <= t);
+//    }
+//
+//    bool operator>=(const triangle &t) const {
+//        return !(*this < t);
+//    }
 
     triangle &operator=(const triangle &t);
 
