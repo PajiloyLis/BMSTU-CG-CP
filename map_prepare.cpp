@@ -31,6 +31,10 @@ vector<my_vec3f> read_map(const string &map_filename, const string &map_info_fil
 
 vector<textured_triangle> read_stl(const string &filename) {
     set<float> xs, ys, zs;
+    Texture texture;
+    if(!texture.loadFromFile("./textures/snow_rock_2.jpg"))
+        throw exception();
+    texture.generateMipmap();
     ifstream in(filename, ios_base::in | ios_base::binary);
     uint32_t n;
     in.seekg(80, ios_base::beg);
@@ -38,10 +42,6 @@ vector<textured_triangle> read_stl(const string &filename) {
     cout << n << '\n';
     vector<textured_triangle> triangles(n);
     array<my_vec3f, 3> vertices;
-    Texture texture;
-    if(!texture.loadFromFile("./textures/snow_rock_2.jpg"))
-        throw exception();
-    texture.generateMipmap();
     float x, y, z;
     bool normal = false;
     int cnt = 0;
