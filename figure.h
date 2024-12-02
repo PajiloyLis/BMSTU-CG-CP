@@ -27,14 +27,18 @@ public:
 
     void rotate(const rotate_t &rotate);
 
+    void addTexture(const Texture &texture)
+    {
+        textures.push_back(texture);
+    }
 //    void scale();
 
-private:
+
     vector<textured_triangle> triangles;
+    vector<Texture> textures;
 public:
     [[nodiscard]] const vector<textured_triangle> & getTriangles() const;
 
-private:
     float min_x, max_x, min_y, max_y, min_z, max_z;
     my_vec3f center;
 public:
