@@ -19,12 +19,12 @@ QSFMLCanvas::QSFMLCanvas(QWidget *parent, const QSize &Size)
 }
 
 void QSFMLCanvas::onInit() {
-//    this->clear(back_color);
+    this->clear(back_color);
     this->display();
 }
 
 void QSFMLCanvas::onUpdate() {
-    this->widgetDraw();
+//    this->widgetDraw();
     display();
 }
 
