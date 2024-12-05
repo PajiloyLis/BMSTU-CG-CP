@@ -50,7 +50,7 @@ private:
 
     void mouseDoubleClickEvent(QMouseEvent *event) override;
 
-    my_vec3f viewport(const my_vec3f &point);
+    my_vec3f viewport(const my_vec3f &point, const my_vec3f &center);
 
     void onInit();
 
