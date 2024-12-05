@@ -24,7 +24,10 @@ void MainWindow::SetBindings() {
     QObject::connect(this->findChild<QAction *>("load_model_action"),
                      &QAction::triggered, this,
                      &MainWindow::LoadModelActionTriggered);
-    QObject::connect(this->findChild<QSFMLCanvas *>("drawer"), &QSFMLCanvas::LeftKeyPressed, this, )
+    QObject::connect(this->findChild<QSFMLCanvas *>("drawer"), &QSFMLCanvas::LeftKeyPressed, this, &MainWindow::RotateCurCameraLeft);
+    QObject::connect(this->findChild<QSFMLCanvas *>("drawer"), &QSFMLCanvas::RightKeyPressed, this, &MainWindow::RotateCurCameraRight);
+    QObject::connect(this->findChild<QSFMLCanvas *>("drawer"), &QSFMLCanvas::DownKeyPressed, this, &MainWindow::RotateCurCameraDown);
+    QObject::connect(this->findChild<QSFMLCanvas *>("drawer"), &QSFMLCanvas::UpKeyPressed, this, &MainWindow::RotateCurCameraUp);
 }
 
 void MainWindow::LoadModelActionTriggered() {
@@ -41,3 +44,20 @@ void MainWindow::RotateCurCameraLeft() {
     handler.RotateCurCameraLeft();
     DrawScene();
 }
+
+void MainWindow::RotateCurCameraRight() {
+    handler.RotateCurCameraRight();
+    DrawScene();
+}
+
+void MainWindow::RotateCurCameraUp() {
+    handler.RotateCurCameraUp();
+    DrawScene();
+}
+
+void MainWindow::RotateCurCameraDown() {
+    handler.RotateCurCameraDown();
+    DrawScene();
+}
+
+

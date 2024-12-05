@@ -38,6 +38,12 @@ public:
 
     void RotateCurCameraLeft();
 
+    void RotateCurCameraRight();
+
+    void RotateCurCameraUp();
+
+    void RotateCurCameraDown();
+
 private:
 
     static vector<triangle> read_stl(const string &filename);

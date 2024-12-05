@@ -96,4 +96,16 @@ void TaskHandler::RotateCurCameraLeft() {
     scene.RotateCurCameraLeft();
 }
 
+void TaskHandler::RotateCurCameraRight() {
+    scene.RotateCurCameraRight();
+}
+
+void TaskHandler::RotateCurCameraUp() {
+    scene.RotateCurCameraUp();
+}
+
+void TaskHandler::RotateCurCameraDown() {
+    scene.RotateCurCameraDown();
+}
+
 
