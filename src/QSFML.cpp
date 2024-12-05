@@ -99,7 +99,7 @@ void QSFMLCanvas::z_buffer(array<my_vec3f, 3> points, Image &image, sf::Color co
                                           : static_cast<int>(points[1].getY() - points[0].getY()));
         float alpha = (float) i / total_height;
         float beta = (float) (i - (second_half ? points[1].getY() - points[0].getY() : 0)) /
-                     segment_height; // be careful: with above conditions no division by zero here
+                     segment_height; 
         my_vec3f A = points[0] + my_vec3f(points[2] - points[0]) * alpha;
         my_vec3f B = second_half ? points[1] + my_vec3f(points[2] - points[1]) * beta :
                      points[0] + my_vec3f(points[1] - points[0]) * beta;
