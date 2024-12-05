@@ -24,7 +24,7 @@ void QSFMLCanvas::onInit() {
 }
 
 void QSFMLCanvas::onUpdate() {
-//    this->widgetDraw();
+    this->widgetDraw();
     display();
 }
 
