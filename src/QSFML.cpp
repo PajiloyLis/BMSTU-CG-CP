@@ -46,21 +46,21 @@ void QSFMLCanvas::paintEvent(QPaintEvent *) {
 }
 
 
-void QSFMLCanvas::mousePressEvent(QMouseEvent *event) {
-    sf::Vector2i mouse_pos = sf::Mouse::getPosition(*this);
-    if (event->button() == Qt::LeftButton) {
-        if (QApplication::keyboardModifiers() == Qt::ShiftModifier) {
-            emit
-            this->ShiftLeftMouseButton(mouse_pos.x, mouse_pos.y);
-        } else {
-            emit
-            this->LeftMouseButton(mouse_pos.x, mouse_pos.y);
-        }
-    } else if (event->button() == Qt::RightButton) {
-        emit
-        this->RightMouseButton();
-    }
-}
+//void QSFMLCanvas::mousePressEvent(QMouseEvent *event) {
+//    sf::Vector2i mouse_pos = sf::Mouse::getPosition(*this);
+//    if (event->button() == Qt::LeftButton) {
+//        if (QApplication::keyboardModifiers() == Qt::ShiftModifier) {
+//            emit
+//            this->ShiftLeftMouseButton(mouse_pos.x, mouse_pos.y);
+//        } else {
+//            emit
+//            this->LeftMouseButton(mouse_pos.x, mouse_pos.y);
+//        }
+//    } else if (event->button() == Qt::RightButton) {
+//        emit
+//        this->RightMouseButton();
+//    }
+//}
 
 void QSFMLCanvas::mouseDoubleClickEvent(QMouseEvent *event) {
     if (event->button() == Qt::LeftButton) {
