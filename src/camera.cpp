@@ -53,4 +53,5 @@ my_vec3f camera::camLookAt(const my_vec3f &point, const my_vec3f &center) const 
 
 void camera::rotate(const rotate_t &rotate) {
     p.rotate(rotate);
+    cout<<"camera rotated\n";
 }
