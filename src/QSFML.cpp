@@ -74,10 +74,16 @@ void QSFMLCanvas::DrawTriangle(const triangle &t, const camera &cam, const my_ve
     float intensity = light_ray.dot(t.n);
     if (cam.p.dot(t.n) > 0) {
         array<my_vec3f, 3> points;
-        for (int i = 0; i < points.size(); ++i)
+        array<sf::Vertex, 3> points_to_render;
+        for (int i = 0; i < points.size(); ++i) {
             points[i] = cam.camLookAt(t.vertices[i], figure_center);
-        z_buffer(points, image, {static_cast<Uint8>(255 * intensity), static_cast<Uint8>(255 * intensity),
-                                 static_cast<Uint8>(255 * intensity)}, zbuffer);
+            points_to_render[i] = Vertex({points[i].getX(), this->size().height() - points[i].getY()},
+                                         sf::Color(static_cast<Uint32>(255 * intensity),
+                                                   static_cast<Uint32>(255 * intensity),
+                                                   static_cast<Uint32>(255 * intensity)))
+//        z_buffer(points, image, {static_cast<Uint8>(255 * intensity), static_cast<Uint8>(255 * intensity),
+//                                 static_cast<Uint8>(255 * intensity)}, zbuffer);
+        }
     }
 }
 
@@ -132,9 +138,9 @@ void QSFMLCanvas::Clear() {
 }
 
 my_vec3f QSFMLCanvas::viewport(const my_vec3f &point, const my_vec3f &center) {
-    mat4 mat(this->size().width()/(2*center.getX()), 0, 0, 0,
-             0, this->size().height() / (2*center.getY()), 0, 0,
-             0, 0, 255/2.f, 0,
+    mat4 mat(this->size().width() / (2 * center.getX()), 0, 0, 0,
+             0, this->size().height() / (2 * center.getY()), 0, 0,
+             0, 0, 255 / 2.f, 0,
              0, 0, 0, 1);
     vec4 res = mat * vec4(point.getX(), point.getY(), point.getZ(), 1);
     return {res.x, res.y, res.z};
