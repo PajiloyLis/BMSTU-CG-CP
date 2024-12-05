@@ -32,3 +32,7 @@ void Scene::AddCamera(const camera &c) {
         cur_camera = 0;
 }
 
+void Scene::RotateCurCameraLeft() {
+    
+}
+
