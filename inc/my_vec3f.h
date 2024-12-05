@@ -83,9 +83,9 @@ public:
 
     my_vec3f &operator=(const my_vec3f &p);
 
-    my_vec3f rotate(const rotate_t &rotate);
+    my_vec3f rotate(const rotate_t &rotate_v);
 
-    float dot(const my_vec3f &a);
+    [[nodiscard]] float dot(const my_vec3f &a) const;
 
     my_vec3f cross(const my_vec3f &a);
 

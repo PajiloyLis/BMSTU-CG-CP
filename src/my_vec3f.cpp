@@ -36,7 +36,7 @@ my_vec3f::my_vec3f(my_vec3f &p) {
     this->p = p.p;
 }
 
-float my_vec3f::dot(const my_vec3f &a) {
+float my_vec3f::dot(const my_vec3f &a) const {
     return glm::dot(p, a.p);
 }
 
@@ -61,31 +61,16 @@ my_vec3f my_vec3f::cross(const my_vec3f &a) {
     return glm::cross(p, a.p);
 }
 
-void my_vec3f::rotate_point_x(const rotate_t &rotate) {
-    double tmp_y = p.y;
-    p.y = std::cos(rotate.angle_x) * p.y - std::sin(rotate.angle_x) * p.z;
-    p.z = std::sin(rotate.angle_x) * tmp_y + std::cos(rotate.angle_x) * p.z;
-}
-
-void my_vec3f::rotate_point_y(const rotate_t &rotate) {
-    double tmp_x = p.x;
-    p.x = std::cos(rotate.angle_y) * p.x + std::sin(rotate.angle_y) * p.z;
-    p.z = -std::sin(rotate.angle_y) * tmp_x + std::cos(rotate.angle_y) * p.z;
-}
-
-void my_vec3f::rotate_point_z(const rotate_t &rotate) {
-    double tmp_x = p.x;
-    p.x = std::cos(rotate.angle_z) * p.x - std::sin(rotate.angle_z) * p.y;
-    p.y = std::sin(rotate.angle_z) * tmp_x + std::cos(rotate.angle_z) * p.y;
-}
-
-my_vec3f my_vec3f::rotate(const rotate_t &rotate) {
-    rotate_point_x(rotate);
-    rotate_point_y(rotate);
-    rotate_point_z(rotate);
+my_vec3f my_vec3f::rotate(const rotate_t &rotate_v) {
+    mat4 transform{1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1};
+    transform = glm::rotate(transform, static_cast<float>(rotate_v.angle_x), {1, 0, 0});
+    transform = glm::rotate(transform, static_cast<float>(rotate_v.angle_y), {0, 1, 0});
+    transform = glm::rotate(transform, static_cast<float>(rotate_v.angle_z), {0, 0, 1});
+    vec4 res = transform * vec4(p.x, p.y, p.z, 1);
+    p.x = res.x, p.y = res.y, p.z = res.z;
     return *this;
 }
 
 my_vec3f my_vec3f::operator*(const float &v) const {
-    return {p.x*v, p.y*v, p.z*v};
+    return {p.x * v, p.y * v, p.z * v};
 }

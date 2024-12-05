@@ -1,5 +1,5 @@
-#ifndef CP_CG_FIGURE_H
-#define CP_CG_FIGURE_H
+#ifndef CP_CG_TEXTURED_FIGURE_H
+#define CP_CG_TEXTURED_FIGURE_H
 
 #include <vector>
 #include "my_vec3f.h"
@@ -9,32 +9,23 @@
 #include "conversions.h"
 #include <iostream>
 #include <algorithm>
-#include <textured_triangle.h>
+#include "textured_triangle.h"
 
 using namespace std;
 
-class figure {
+class textured_figure {
 public:
-    explicit figure(const vector<textured_triangle> &triangles);
+    explicit textured_figure(const vector<textured_triangle> &triangles);
 
-    explicit figure(vector<textured_triangle> &&triangles);
+    explicit textured_figure(vector<textured_triangle> &&triangles);
 
-    figure() = default;
+    textured_figure() = default;
 
     [[nodiscard]] my_vec3f get_center() const;
 
     [[nodiscard]] array<float, 3> get_size() const;
 
     void rotate(const rotate_t &rotate);
-
-    void addTexture(const Texture &texture) {
-        textures.push_back(texture);
-        auto start = clock();
-        for (auto &triangle: triangles)
-            triangle.setTexture(textures.back());
-        auto end = clock();
-        cout << "TEXTURED PER " << (end - start) / CLOCKS_PER_SEC << '\n';
-    }
 //    void scale();
 
     [[nodiscard]] const vector<textured_triangle> &getTriangles() const;
@@ -48,4 +39,4 @@ public:
     my_vec3f center;
 };
 
-#endif //CP_CG_FIGURE_H
+#endif //CP_CG_TEXTURED_FIGURE_H

@@ -2,23 +2,43 @@ cmake_minimum_required(VERSION 3.27)
 project(cp_cg)
 
 set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_AUTOMOC ON)
+set(CMAKE_AUTORCC ON)
+set(CMAKE_AUTOUIC ON)
 
-include_directories(.)
+#qt_standard_project_setup()
+
+find_package(Qt6 COMPONENTS
+        Core
+        Gui
+        Widgets
+        REQUIRED)
+
+include_directories(./inc .)
 
 add_executable(cp_cg
-        main.cpp
-        map_prepare.cpp
-        map_prepare.h
-        my_vec3f.cpp
-        my_vec3f.h
-        operations.cpp
-        operations.h
-        figure.cpp
-        figure.h
-        triangle.cpp
-        triangle.h
-        conversions.h
-        textured_triangle.h
-        textured_triangle.cpp)
+        src/main.cpp
+        src/my_vec3f.cpp
+        inc/my_vec3f.h
+        src/operations.cpp
+        inc/operations.h
+        src/triangle.cpp
+        inc/triangle.h
+        inc/conversions.h
+        src/main_window.cpp
+        inc/main_window.h
+        inc/cp_cg_ui.h
+        src/scene.cpp
+        src/handler.cpp
+        src/QSFML.cpp
+        src/figure.cpp
+        inc/figure.h
+        moc_predefs.h
+moc_QSFML.cpp
+        src/camera.cpp
+        inc/camera.h)
 
-target_link_libraries(cp_cg PUBLIC sfml-graphics sfml-window sfml-system)
+target_link_libraries(cp_cg PUBLIC
+        Qt::Core
+        Qt::Gui
+        Qt::Widgets sfml-graphics sfml-window sfml-system)

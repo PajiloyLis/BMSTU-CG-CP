@@ -1,0 +1,34 @@
+#include "scene.h"
+
+Scene::Scene() : figures() {
+    scene = nullptr;
+    width = height = 0;
+}
+
+Scene::Scene(QSFMLCanvas *&scene, const double &width, const double &height) : figures(), cameras(), cur_camera(0) {
+    this->scene = scene;
+    this->width = width;
+    this->height = height;
+}
+
+
+void Scene::ClearScene() const {
+    scene->Clear();
+}
+
+void Scene::DrawFigures() const {
+    for (auto &figure: figures)
+        for (auto &triangle: figure.triangles)
+            scene->DrawTriangle(triangle, cameras[cur_camera], figure.center);
+}
+
+void Scene::AddFigure(const figure &f) {
+    figures.push_back(f);
+}
+
+void Scene::AddCamera(const camera &c) {
+    cameras.push_back(c);
+    if (cameras.size() == 1)
+        cur_camera = 0;
+}
+

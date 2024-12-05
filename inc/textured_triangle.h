@@ -24,13 +24,11 @@ public:
 
     void setTexture(const Texture &texture);
 
-    const triangle &getT() const;
+    [[nodiscard]] const triangle &getT() const;
 
     void setShape(const triangle &shape);
 
     triangle t;
-
-    ConvexShape shape;
 };
 
 #endif
