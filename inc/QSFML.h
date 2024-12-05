@@ -74,7 +74,7 @@ private:
 
     sf::Color back_color;
 
-    static const my_vec3f light_ray, camera_ray;
+    static const my_vec3f light_ray;
 };
 
 #endif

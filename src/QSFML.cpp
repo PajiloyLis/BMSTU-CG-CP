@@ -1,7 +1,7 @@
 #include "QSFML.h"
 
 const my_vec3f QSFMLCanvas::light_ray = my_vec3f(1, 0, 0);
-const my_vec3f QSFMLCanvas::camera_ray = my_vec3f(1, 0, 0);
+//const my_vec3f QSFMLCanvas::camera_ray = my_vec3f(1, 0, 0);
 
 QSFMLCanvas::QSFMLCanvas(QWidget *parent, const QSize &Size)
         : QWidget(parent),
