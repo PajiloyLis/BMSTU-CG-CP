@@ -74,10 +74,10 @@ void QSFMLCanvas::DrawTriangle(const triangle &t, const camera &cam, const my_ve
     float intensity = light_ray.dot(t.n);
     if (cam.p.dot(t.n) > 0) {
         array<my_vec3f, 3> points;
-        for(int i = 0; i < points.size(); ++i)
-            points[i] = cam.perspective(t.vertices[i]);
+        for (int i = 0; i < points.size(); ++i)
+            points[i] = viewport(cam.perspective(t.vertices[i]));
         z_buffer(points, image, {static_cast<Uint8>(255 * intensity), static_cast<Uint8>(255 * intensity),
-                                     static_cast<Uint8>(255 * intensity)}, zbuffer);
+                                 static_cast<Uint8>(255 * intensity)}, zbuffer);
     }
 }
 
@@ -132,23 +132,10 @@ void QSFMLCanvas::Clear() {
 }
 
 my_vec3f QSFMLCanvas::viewport(const my_vec3f &point) {
-    mat4 mat(this->size().width()/2.f, 0, 0, point.getX(),
-             0, this->size().height()/2.f, 0, point.getY(),
+    mat4 mat(this->size().width() / 2.f, 0, 0, point.getX(),
+             0, this->size().height() / 2.f, 0, point.getY(),
              0, 0, 1, 0,
-             0,0,0,1);
-    
+             0, 0, 0, 1);
+    vec4 res = mat * vec4(point.getX(), point.getY(), point.getZ(), 1);
+    return {res.x, res.y, res.z};
 }
-
-Matrix viewport(int x, int y, int w, int h) {
-
-    m[0][3] = x+w/2.f;
-    m[1][3] = y+h/2.f;
-    m[2][3] = depth/2.f;
-
-    m[0][0] = w/2.f;
-    m[1][1] = h/2.f;
-    m[2][2] = depth/2.f;
-    return m;
-}
-
-
