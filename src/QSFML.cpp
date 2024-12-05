@@ -1,6 +1,6 @@
 #include "QSFML.h"
 
-const my_vec3f QSFMLCanvas::light_ray = my_vec3f(-1, 0, 0);
+const my_vec3f QSFMLCanvas::light_ray = my_vec3f(1, 0, 0);
 //const my_vec3f QSFMLCanvas::camera_ray = my_vec3f(1, 0, 0);
 
 QSFMLCanvas::QSFMLCanvas(QWidget *parent, const QSize &Size)
@@ -139,8 +139,8 @@ void QSFMLCanvas::Clear() {
 }
 
 my_vec3f QSFMLCanvas::viewport(const my_vec3f &point, const my_vec3f &center) {
-    mat4 mat(this->size().width() / (2 * center.getX()), 0, 0, this->size().width()/2.f,
-             0, this->size().height() / (2 * center.getY()), 0, this->size().height()/2.f,
+    mat4 mat(this->size().width() / (2 * center.getX()), 0, this->size().width()/2.f, 0,
+             0, this->size().height() / (2 * center.getY()), this->size().height()/2.f, 0,
              0, 0, 255 / 2.f, 255/2.f,
              0, 0, 0, 1);
     vec4 res = mat * vec4(point.getX(), point.getY(), point.getZ(), 1);
