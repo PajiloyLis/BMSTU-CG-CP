@@ -146,3 +146,9 @@ my_vec3f QSFMLCanvas::viewport(const my_vec3f &point, const my_vec3f &center) {
     vec4 res = mat * vec4(point.getX(), point.getY(), point.getZ(), 1);
     return {res.x, res.y, res.z};
 }
+
+void QSFMLCanvas::keyPressEvent(QKeyEvent *event) {
+    if (event->keyCombination().key() == Qt::Key_Left)
+
+}
+
