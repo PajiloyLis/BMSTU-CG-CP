@@ -3,7 +3,7 @@
 
 #include <my_vec3f.h>
 #include "conversions.h"
-#include <iostream> 
+#include <iostream>
 
 class camera {
 public:
