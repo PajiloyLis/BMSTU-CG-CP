@@ -132,7 +132,11 @@ void QSFMLCanvas::Clear() {
 }
 
 my_vec3f QSFMLCanvas::viewport(const my_vec3f &point) {
-    mat4 mat(this->size().width()/2, 0, 0, point.getX()+)
+    mat4 mat(this->size().width()/2.f, 0, 0, point.getX(),
+             0, this->size().height()/2.f, 0, point.getY(),
+             0, 0, 1, 0,
+             0,0,0,1);
+    
 }
 
 Matrix viewport(int x, int y, int w, int h) {
