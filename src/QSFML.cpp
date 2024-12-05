@@ -75,7 +75,7 @@ void QSFMLCanvas::DrawTriangle(const triangle &t, const camera &cam, const my_ve
     if (cam.p.dot(t.n) > 0) {
         array<my_vec3f, 3> points;
         for (int i = 0; i < points.size(); ++i)
-            points[i] = viewport(cam.perspective(t.vertices[i]));
+            points[i] = cam.perspective(t.vertices[i]);
         z_buffer(points, image, {static_cast<Uint8>(255 * intensity), static_cast<Uint8>(255 * intensity),
                                  static_cast<Uint8>(255 * intensity)}, zbuffer);
     }
@@ -100,13 +100,13 @@ void QSFMLCanvas::z_buffer(array<my_vec3f, 3> points, Image &image, sf::Color co
         float alpha = (float) i / total_height;
         float beta = (float) (i - (second_half ? points[1].getY() - points[0].getY() : 0)) /
                      segment_height;
-        my_vec3f A = points[0] + my_vec3f(points[2] - points[0]) * alpha;
+        my_vec3f A = points[0] + (points[2] - points[0]) * alpha;
         my_vec3f B = second_half ? points[1] + my_vec3f(points[2] - points[1]) * beta :
                      points[0] + my_vec3f(points[1] - points[0]) * beta;
         if (A.getX() > B.getX()) std::swap(A, B);
         for (int j = static_cast<int>(A.getX()); j <= static_cast<int>(B.getX()); j++) {
             float phi = B.getX() == A.getX() ? 1. : (float) (j - A.getX()) / (float) (B.getX() - A.getX());
-            my_vec3f P = my_vec3f(A) + my_vec3f(B - A) * phi;
+            my_vec3f P = A + (B - A) * phi;
             if (P.getX() >= 0 && P.getY() >= 0 && P.getX() < image.getSize().y && P.getY() < image.getSize().x) {
                 int idx = static_cast<int>(round(P.getX() + P.getY() * image.getSize().x));
                 if (z_buffer[idx] < P.getZ()) {
