@@ -24,6 +24,7 @@ public:
 
     void AddFigure(const figure &f);
 
+    void RotateCurCameraLeft();
 
 private:
     QSFMLCanvas *scene;

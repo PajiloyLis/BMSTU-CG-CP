@@ -36,3 +36,8 @@ void MainWindow::LoadModelActionTriggered() {
 void MainWindow::DrawScene() {
     handler.DrawScene();
 }
+
+void MainWindow::RotateCurCameraLeft() {
+    handler.RotateCurCameraLeft();
+    DrawScene();
+}

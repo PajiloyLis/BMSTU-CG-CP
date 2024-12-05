@@ -47,6 +47,8 @@ private slots:
 
     void ShowTime(const double &time);
 
+    void RotateCurCameraLeft();
+
 private:
     static bool NumericFieldCheck(QLineEdit *&field);
 

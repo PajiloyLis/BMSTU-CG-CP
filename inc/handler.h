@@ -36,6 +36,8 @@ public:
 
     void LoadModel(const string &filepath);
 
+    void RotateCurCameraLeft();
+
 private:
 
     static vector<triangle> read_stl(const string &filename);

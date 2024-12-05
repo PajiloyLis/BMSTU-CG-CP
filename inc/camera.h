@@ -2,6 +2,7 @@
 #define CP_CG_CAMERA_H
 
 #include <my_vec3f.h>
+#include "conversions.h"
 
 class camera {
 public:
@@ -20,6 +21,8 @@ public:
     [[nodiscard]] my_vec3f perspective(const my_vec3f &point) const;
 
     my_vec3f camLookAt(const my_vec3f &point, const my_vec3f &center) const;
+
+    void rotate(const rotate_t &rotate);
 
     my_vec3f p; //must
     float near_distance = 10;

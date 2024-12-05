@@ -92,4 +92,8 @@ void TaskHandler::AddCamera(const camera &cam) {
     scene.AddCamera(cam);
 }
 
+void TaskHandler::RotateCurCameraLeft() {
+    scene.RotateCurCameraLeft();
+}
+
 
