@@ -148,7 +148,13 @@ my_vec3f QSFMLCanvas::viewport(const my_vec3f &point, const my_vec3f &center) {
 }
 
 void QSFMLCanvas::keyPressEvent(QKeyEvent *event) {
-    if (event->keyCombination().key() == Qt::Key_Left)
-
+    if (event->key() == Qt::Key_Left)
+            emit this->LeftKeyPressed();
+    else if (event->key() == Qt::Key_Right)
+            emit this->RightKeyPressed();
+    else if (event->key() == Qt::Key_Up)
+            emit this->UpKeyPressed();
+    else if (event->key() == Qt::Key_Down)
+            emit this->DownKeyPressed();
 }
 

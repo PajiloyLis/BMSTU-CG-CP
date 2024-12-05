@@ -24,7 +24,7 @@ using namespace std;
 using namespace sf;
 
 class QSFMLCanvas : public QWidget, public sf::RenderWindow {
-    Q_OBJECT
+Q_OBJECT
 public:
     QSFMLCanvas(QWidget *parent, const QSize &Size);
 
@@ -35,15 +35,36 @@ public:
     void DrawTriangle(const triangle &t, const camera &cam, const my_vec3f &figure_center);
 
 signals:
+
     void LeftMouseButton(const int &x, const int &y);
+
 signals:
+
     void ShiftLeftMouseButton(const int &x, const int &y);
+
 signals:
+
     void RightMouseButton();
+
 signals:
+
     void LeftMouseButtonDouble(const int &x, const int &y);
-    signals:
-    void
+
+signals:
+
+    void LeftKeyPressed();
+
+signals:
+
+    void RightKeyPressed();
+
+signals:
+
+    void UpKeyPressed();
+
+signals:
+
+    void DownKeyPressed();
 
 private:
     void mousePressEvent(QMouseEvent *event) override;
