@@ -75,7 +75,7 @@ void QSFMLCanvas::DrawTriangle(const triangle &t, const camera &cam, const my_ve
     if (cam.p.dot(t.n) > 0) {
         array<my_vec3f, 3> points;
         for (int i = 0; i < points.size(); ++i)
-            points[i] = viewport(cam.perspective(t.vertices[i]));
+            points[i] = viewport(cam.perspective(cam.camLookAt(t.vertices[i], figure_center)));
         z_buffer(points, image, {static_cast<Uint8>(255 * intensity), static_cast<Uint8>(255 * intensity),
                                  static_cast<Uint8>(255 * intensity)}, zbuffer);
     }
