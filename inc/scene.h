@@ -26,6 +26,12 @@ public:
 
     void RotateCurCameraLeft();
 
+    void RotateCurCameraRight();
+
+    void RotateCurCameraUp();
+
+    void RotateCurCameraDown();
+
 private:
     QSFMLCanvas *scene;
     double width, height;

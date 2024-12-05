@@ -49,6 +49,12 @@ private slots:
 
     void RotateCurCameraLeft();
 
+    void RotateCurCameraК();
+
+    void RotateCurCameraLeft();
+
+    void RotateCurCameraLeft();
+
 private:
     static bool NumericFieldCheck(QLineEdit *&field);
 
