@@ -134,7 +134,7 @@ void QSFMLCanvas::Clear() {
 my_vec3f QSFMLCanvas::viewport(const my_vec3f &point) {
     mat4 mat(this->size().width() / 2.f, 0, 0, this->size().width()/2.f,
              0, this->size().height() / 2.f, 0, this->size().height()/2.f,
-             0, 0, 1, 0,
+             0, 0, 255/2.f, 255/2.f,
              0, 0, 0, 1);
     vec4 res = mat * vec4(point.getX(), point.getY(), point.getZ(), 1);
     return {res.x, res.y, res.z};
