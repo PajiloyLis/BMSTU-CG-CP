@@ -50,4 +50,3 @@ my_vec3f camera::camLookAt(const my_vec3f &point, const my_vec3f &center) const 
     vec4 res = proj * vec4(point.getX(), point.getY(), point.getZ(), 1);
     return {res.x, res.y, res.z};
 }
-

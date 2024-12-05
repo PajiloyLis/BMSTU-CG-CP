@@ -16,11 +16,11 @@
 #include <iostream>
 #include <thread>
 #include <SFML/Graphics/Image.hpp>
+#include <glm/glm.hpp>
 #include "triangle.h"
 #include "camera.h"
 
 using namespace std;
-
 using namespace sf;
 
 class QSFMLCanvas : public QWidget, public sf::RenderWindow {
@@ -49,6 +49,8 @@ private:
     static void z_buffer(array<my_vec3f, 3> points, Image &image, sf::Color color, vector<float> &z_buffer);
 
     void mouseDoubleClickEvent(QMouseEvent *event) override;
+
+    my_vec3f viewport(const my_vec3f &point);
 
     void onInit();
 
