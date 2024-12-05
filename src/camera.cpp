@@ -46,7 +46,7 @@ camera &camera::operator=(const camera &c) {
 }
 
 my_vec3f camera::camLookAt(const my_vec3f &point, const my_vec3f &center) const {
-    mat4 proj = glm::lookAt(p.p, center.p, {1, 0, 0});
+    mat4 proj = glm::lookAt(p.p, center.p, {0, 1, 0});
     vec4 res = proj * vec4(point.getX(), point.getY(), point.getZ(), 1);
     return {res.x, res.y, res.z};
 }
