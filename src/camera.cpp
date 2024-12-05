@@ -27,7 +27,7 @@ camera::camera(camera &&c) noexcept {
 }
 
 my_vec3f camera::perspective(const my_vec3f &point) const {
-    mat4 proj = glm::perspective(angle_of_view, relation, near_distance, pos.getZ());
+    mat4 proj = glm::perspective(angle_of_view, relation, near_distance, 500.f);
     vec4 res = proj * vec4(point.getX(), point.getY(), point.getZ(), 1);
     return {res.x, res.y, res.z};
 }
@@ -57,5 +57,5 @@ my_vec3f camera::camLookAt(const my_vec3f &point, const my_vec3f &center) const 
 void camera::rotate(const rotate_t &rotate) {
     pos.rotate(rotate);
     up.rotate(rotate);
-    cout<<"camera rotated\n";
+    cout<<"camera rotated "<<pos;
 }
