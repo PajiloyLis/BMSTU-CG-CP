@@ -76,7 +76,7 @@ void QSFMLCanvas::DrawTriangle(const triangle &t, const camera &cam, const my_ve
         array<my_vec3f, 3> points;
         array<sf::Vertex, 3> points_to_render;
         for (int i = 0; i < points.size(); ++i) {
-            points[i] = cam.camLookAt(t.vertices[i], figure_center);
+            points[i] = viewport(cam.perspective(cam.camLookAt(t.vertices[i], figure_center)), figure_center);
             points_to_render[i] = Vertex({points[i].getX(), this->size().height() - points[i].getY()},
                                          sf::Color(static_cast<Uint8>(255 * intensity),
                                                    static_cast<Uint8>(255 * intensity),
