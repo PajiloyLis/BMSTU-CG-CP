@@ -9,10 +9,10 @@ MainWindow::MainWindow() : QMainWindow(), handler() {
     auto const *menu = this->findChild<QMenuBar *>("menubar");
     auto *drawer = new QSFMLCanvas(this, QSize(grid->size()));
     drawer->setObjectName("drawer");
-    drawer->setGeometry(menu->pos().x(), grid->pos().y()+menu->size().height(),
+    drawer->setGeometry(menu->pos().x(), grid->pos().y() + menu->size().height(),
                         grid->size().width(), grid->size().height());
     drawer->setMouseTracking(true);
-    this->handler.AddCamera({150, 150, 150, static_cast<float>(drawer->size().width())/drawer->size().height()});
+    this->handler.AddCamera({150, 150, 150, static_cast<float>(drawer->size().width()) / drawer->size().height()});
     this->handler.SetScene(
             Scene(drawer, drawer->size().width(), drawer->size().height()));
 
@@ -24,10 +24,14 @@ void MainWindow::SetBindings() {
     QObject::connect(this->findChild<QAction *>("load_model_action"),
                      &QAction::triggered, this,
                      &MainWindow::LoadModelActionTriggered);
-    QObject::connect(this->findChild<QSFMLCanvas *>("drawer"), &QSFMLCanvas::LeftKeyPressed, this, &MainWindow::RotateCurCameraLeft);
-    QObject::connect(this->findChild<QSFMLCanvas *>("drawer"), &QSFMLCanvas::RightKeyPressed, this, &MainWindow::RotateCurCameraRight);
-    QObject::connect(this->findChild<QSFMLCanvas *>("drawer"), &QSFMLCanvas::DownKeyPressed, this, &MainWindow::RotateCurCameraDown);
-    QObject::connect(this->findChild<QSFMLCanvas *>("drawer"), &QSFMLCanvas::UpKeyPressed, this, &MainWindow::RotateCurCameraUp);
+    QObject::connect(this->findChild<QSFMLCanvas *>("drawer"), &QSFMLCanvas::LeftKeyPressed, this,
+                     &MainWindow::RotateCurCameraLeft);
+    QObject::connect(this->findChild<QSFMLCanvas *>("drawer"), &QSFMLCanvas::RightKeyPressed, this,
+                     &MainWindow::RotateCurCameraRight);
+    QObject::connect(this->findChild<QSFMLCanvas *>("drawer"), &QSFMLCanvas::DownKeyPressed, this,
+                     &MainWindow::RotateCurCameraDown);
+    QObject::connect(this->findChild<QSFMLCanvas *>("drawer"), &QSFMLCanvas::UpKeyPressed, this,
+                     &MainWindow::RotateCurCameraUp);
 }
 
 void MainWindow::LoadModelActionTriggered() {
