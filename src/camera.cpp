@@ -58,5 +58,5 @@ void camera::rotate(const rotate_t &rotate) {
 
 void camera::scale(const scale_t &scale)
 {
-
+    
 }
