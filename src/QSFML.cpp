@@ -171,6 +171,7 @@ void QSFMLCanvas::keyPressEvent(QKeyEvent *event) {
 }
 
 void QSFMLCanvas::wheelEvent(QWheelEvent *event) {
-    if(event->)
+    if(event->angleDelta().y() > 0)
+
 }
 

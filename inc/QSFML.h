@@ -66,6 +66,8 @@ signals:
 signals:
 
     void DownKeyPressed();
+    signals:
+    void WhellScrolled
 
 private:
 //    void mousePressEvent(QMouseEvent *event) override;
