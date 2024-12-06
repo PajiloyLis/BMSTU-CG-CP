@@ -1,6 +1,6 @@
 #include "QSFML.h"
 
-const my_vec3f QSFMLCanvas::light_ray = my_vec3f(0, 1, 0);
+const my_vec3f QSFMLCanvas::light_ray = my_vec3f(0, 0, 1);
 //const my_vec3f QSFMLCanvas::camera_ray = my_vec3f(1, 0, 0);
 
 QSFMLCanvas::QSFMLCanvas(QWidget *parent, const QSize &Size)
@@ -24,7 +24,7 @@ void QSFMLCanvas::onInit() {
 }
 
 void QSFMLCanvas::onUpdate() {
-    this->widgetDraw();
+//    this->widgetDraw();
     display();
 }
 
@@ -81,10 +81,10 @@ void QSFMLCanvas::DrawTriangle(const triangle &t, const camera &cam, const my_ve
                                          sf::Color(static_cast<Uint8>(255 * intensity),
                                                    static_cast<Uint8>(255 * intensity),
                                                    static_cast<Uint8>(255 * intensity)));
-        z_buffer(points, image, {static_cast<Uint8>(255 * intensity), static_cast<Uint8>(255 * intensity),
-                                 static_cast<Uint8>(255 * intensity)}, zbuffer);
+//        z_buffer(points, image, {static_cast<Uint8>(255 * intensity), static_cast<Uint8>(255 * intensity),
+//                                 static_cast<Uint8>(255 * intensity)}, zbuffer);
         }
-//        this->draw(&points_to_render[0], points_to_render.size(), sf::Triangles);
+        this->draw(&points_to_render[0], points_to_render.size(), sf::Triangles);
     }
 }
 
