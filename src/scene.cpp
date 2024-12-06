@@ -21,6 +21,7 @@ void Scene::DrawFigures() const {
     for (auto &figure: figures)
         for (auto &triangle: figure.triangles)
             scene->DrawTriangle(triangle, cameras[cur_camera], figure.center);
+    scene->repaint();
 }
 
 void Scene::AddFigure(const figure &f) {
