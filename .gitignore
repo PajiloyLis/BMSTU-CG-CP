@@ -33,4 +33,13 @@
 
 *.zip
 
-/cmake-build-debug
+/cmake-build-debug/
+/unprepared_srtm/
+/prepared_srtm/klyuchevskaya.bin
+/prepared_srtm/klyuchevskaya.hdr
+/prepared_srtm/V2_2_160.64_56.06.tif
+/prepared_srtm/V2_2_160.64_56.06_tile_1_1.STL
+/.qmake.stash
+cp
+/klyuchevskaya.STL
+/cmake-build-release/
