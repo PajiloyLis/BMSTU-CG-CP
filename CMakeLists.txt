@@ -34,7 +34,7 @@ add_executable(cp_cg
         src/figure.cpp
         inc/figure.h
         moc_predefs.h
-moc_QSFML.cpp
+        moc_QSFML.cpp
         src/camera.cpp
         inc/camera.h)
 

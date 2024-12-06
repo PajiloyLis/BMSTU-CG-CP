@@ -82,8 +82,8 @@ void QSFMLCanvas::DrawTriangle(const triangle &t, const camera &cam, const my_ve
                                          sf::Color(static_cast<Uint8>(255 * intensity),
                                                    static_cast<Uint8>(255 * intensity),
                                                    static_cast<Uint8>(255 * intensity)));
-        z_buffer(points, image, {static_cast<Uint8>(255 * intensity), static_cast<Uint8>(255 * intensity),
-                                 static_cast<Uint8>(255 * intensity)}, zbuffer);
+            z_buffer(points, image, {static_cast<Uint8>(255 * intensity), static_cast<Uint8>(255 * intensity),
+                                     static_cast<Uint8>(255 * intensity)}, zbuffer);
         }
 //        this->draw(&points_to_render[0], points_to_render.size(), sf::Triangles);
     }
@@ -136,6 +136,10 @@ void QSFMLCanvas::widgetDraw() {
 }
 
 void QSFMLCanvas::Clear() {
+    for (int i = 0; i < image.getSize().y; ++i) {
+        for (int j = 0; j < image.getSize().x; ++j)
+            image.setPixel(j, i, back_color);
+    }
     this->clear(back_color);
 }
 
@@ -149,9 +153,9 @@ my_vec3f QSFMLCanvas::adapt_coords(const camera &c, const my_vec3f &point, const
 
 mat4 QSFMLCanvas::viewport(const my_vec3f &point, const my_vec3f &center) {
     return {this->size().width() / (2 * center.getX()), 0, 0, this->size().width(),
-                0, -this->size().height() / (2 * center.getY()), 0, this->size().height(),
-                0, 0, 1, 1,
-                0, 0, 0, 1};
+            0, -this->size().height() / (2 * center.getY()), 0, this->size().height(),
+            0, 0, 1, 1,
+            0, 0, 0, 1};
 }
 
 void QSFMLCanvas::keyPressEvent(QKeyEvent *event) {
