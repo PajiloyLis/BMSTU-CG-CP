@@ -30,6 +30,8 @@ public:
     float near_distance = 0.1;
     float relation;
     float angle_of_view;
+
+    void scale(const scale_t &scale);
 };
 
 

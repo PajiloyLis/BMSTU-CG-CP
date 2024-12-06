@@ -74,3 +74,11 @@ my_vec3f &my_vec3f::rotate(const rotate_t &rotate_v) {
 my_vec3f my_vec3f::operator*(const float &v) const {
     return {p.x * v, p.y * v, p.z * v};
 }
+
+my_vec3f &my_vec3f::scale(const scale_t &scale) {
+    mat4 transform = {1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1};
+    transform = glm::scale(transform, vec3(scale.kx, scale.ky, scale.kz));
+    vec4 res = transform * vec4(p.x, p.y, p.z, 1);
+    p.x = res.x, p.y = res.y, p.z = res.z;
+    return *this;
+}

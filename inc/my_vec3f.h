@@ -85,6 +85,8 @@ public:
 
     my_vec3f &rotate(const rotate_t &rotate_v);
 
+    my_vec3f &scale(const scale_t &scale);
+
     [[nodiscard]] float dot(const my_vec3f &a) const;
 
     my_vec3f cross(const my_vec3f &a);
