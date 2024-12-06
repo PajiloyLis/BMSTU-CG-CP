@@ -140,6 +140,7 @@ void QSFMLCanvas::Clear() {
         for (int j = 0; j < image.getSize().x; ++j)
             image.setPixel(j, i, back_color);
     }
+    fill(zbuffer.begin(), zbuffer.end(), std::numeric_limits<float>::min());
     this->clear(back_color);
 }
 
