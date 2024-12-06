@@ -17,6 +17,7 @@ void Scene::ClearScene() const {
 }
 
 void Scene::DrawFigures() const {
+    ClearScene();
     for (auto &figure: figures)
         for (auto &triangle: figure.triangles)
             scene->DrawTriangle(triangle, cameras[cur_camera], figure.center);
