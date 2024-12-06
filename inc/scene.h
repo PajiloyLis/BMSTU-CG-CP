@@ -32,6 +32,8 @@ public:
 
     void RotateCurCameraDown();
 
+    void ScaleCamera(float &k);
+
 private:
     QSFMLCanvas *scene;
     double width, height;

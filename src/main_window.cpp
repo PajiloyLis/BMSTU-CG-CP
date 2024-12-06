@@ -65,4 +65,8 @@ void MainWindow::RotateCurCameraDown() {
     DrawScene();
 }
 
+void MainWindow::ScaleCurCameraBackward() {
+    ha
+}
+
 

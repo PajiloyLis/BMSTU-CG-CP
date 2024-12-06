@@ -44,6 +44,8 @@ public:
 
     void RotateCurCameraDown();
 
+    void ScaleCamera(float &k);
+
 private:
 
     static vector<triangle> read_stl(const string &filename);

@@ -50,6 +50,11 @@ void Scene::RotateCurCameraDown() {
     cameras[cur_camera].rotate({0, M_PI/90, 0});
 }
 
+void Scene::ScaleCamera(float &k)
+{
+    cameras[cur_camera].scale({k, k, k});
+}
+
 
 
 
