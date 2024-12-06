@@ -47,7 +47,7 @@ camera &camera::operator=(const camera &c) {
 }
 
 mat4 camera::camLookAt(const my_vec3f &point, const my_vec3f &center) const {
-    return glm::lookAt(pos.p, center.p, up.p);
+    return glm::lookAt(pos.p, {0, 0, 0}, up.p);
 }
 
 void camera::rotate(const rotate_t &rotate) {
