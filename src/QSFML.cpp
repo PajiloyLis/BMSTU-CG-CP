@@ -176,6 +176,5 @@ void QSFMLCanvas::wheelEvent(QWheelEvent *event) {
             emit WheelScrolledUp(1 - event->angleDelta().y() / (8. * 180.));
     else
             emit WheelScrolledDown(1 + event->angleDelta().y() / (8. * 180.));
-
 }
 
