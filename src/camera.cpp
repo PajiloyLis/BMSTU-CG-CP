@@ -4,7 +4,7 @@ camera::camera(float _x, float _y, float _z, float relation, float angle) {
     pos.setX(_x), pos.setY(_y), pos.setZ(_z);
     angle_of_view = angle;
     this->relation = relation;
-    pos.normalize();
+//    pos.normalize();
     up={0, 0, 1};
 }
 
@@ -13,7 +13,7 @@ camera::camera(const camera &c) {
     angle_of_view = c.angle_of_view;
     relation = c.relation;
     near_distance = c.near_distance;
-    pos.normalize();
+//    pos.normalize();
     up={0, 0, 1};
 }
 
@@ -22,7 +22,7 @@ camera::camera(camera &&c) noexcept {
     angle_of_view = c.angle_of_view;
     relation = c.relation;
     near_distance = c.near_distance;
-    pos.normalize();
+//    pos.normalize();
     up={0, 0, 1};
 }
 
@@ -36,7 +36,7 @@ camera::camera(float _x, float _y, float _z, float width, float height, float an
     pos.setX(_x), pos.setY(_y), pos.setZ(_z);
     angle_of_view = angle;
     this->relation = width / height;
-    pos.normalize();
+//    pos.normalize();
 }
 
 camera &camera::operator=(const camera &c) {
@@ -44,7 +44,7 @@ camera &camera::operator=(const camera &c) {
     angle_of_view = c.angle_of_view;
     relation = c.relation;
     near_distance = c.near_distance;
-    pos.normalize();
+//    pos.normalize();
     return *this;
 }
 
