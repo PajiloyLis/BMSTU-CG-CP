@@ -170,3 +170,7 @@ void QSFMLCanvas::keyPressEvent(QKeyEvent *event) {
             emit this->DownKeyPressed();
 }
 
+void QSFMLCanvas::wheelEvent(QWheelEvent *event) {
+    if(event->)
+}
+
