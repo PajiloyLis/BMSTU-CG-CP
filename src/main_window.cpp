@@ -32,7 +32,8 @@ void MainWindow::SetBindings() {
                      &MainWindow::RotateCurCameraDown);
     QObject::connect(this->findChild<QSFMLCanvas *>("drawer"), &QSFMLCanvas::UpKeyPressed, this,
                      &MainWindow::RotateCurCameraUp);
-    QObject::connect(this->findChild<QSFMLCanvas*>("drawer"), &QSFMLCanvas::WheelScrolledDown, this, )
+    QObject::connect(this->findChild<QSFMLCanvas *>("drawer"), &QSFMLCanvas::WheelScrolledDown, this,
+                     &MainWindow::ScaleCurCamera);
 }
 
 void MainWindow::LoadModelActionTriggered() {
