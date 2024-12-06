@@ -76,8 +76,8 @@ void QSFMLCanvas::DrawTriangle(const triangle &t, const camera &cam, const my_ve
         array<my_vec3f, 3> points;
         array<sf::Vertex, 3> points_to_render;
         for (int i = 0; i < points.size(); ++i) {
-            points[i] = cam.perspective(cam.camLookAt(t.vertices[i], figure_center));
-            points_to_render[i] = Vertex({points[i].getX(), this->size().height() - points[i].getY()},
+            points[i] = adapt_coords(cam, t.vertices[i], figure_center);
+            points_to_render[i] = Vertex({points[i].getX(), points[i].getY()},
                                          sf::Color(static_cast<Uint8>(255 * intensity),
                                                    static_cast<Uint8>(255 * intensity),
                                                    static_cast<Uint8>(255 * intensity)));
@@ -142,13 +142,13 @@ my_vec3f QSFMLCanvas::adapt_coords(const camera &c, const my_vec3f &point, const
     mat4 trans = viewport(point, center);
     trans *= c.perspective(point);
     trans *= c.camLookAt(point, center);
-    vec3 res = trans * vec4(point.getX(), point.getY(), point.getZ(), 1);
+    vec4 res = trans * vec4(point.getX(), point.getY(), point.getZ(), 1);
     return {res.x, res.y, res.z};
 }
 
 mat4 QSFMLCanvas::viewport(const my_vec3f &point, const my_vec3f &center) {
-    return mat4(this->size().width() / (2 * center.getX()), 0, 0, point.getX() + this->size().width() / 2.f,
-                0, this->size().height() / (2 * center.getY()), 0, point.getY() + this->size().height() / 2.f,
+    return mat4(this->size().width() / (2 * center.getX()), 0, 0, point.getX() + this->size().width(),
+                0, -this->size().height() / (2 * center.getY()), 0, point.getY() + 1.5*this->size().height(),
                 0, 0, 255 / 2.f, 255 / 2.f,
                 0, 0, 0, 1);
 }
