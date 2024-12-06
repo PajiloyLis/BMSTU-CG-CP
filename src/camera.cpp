@@ -53,5 +53,5 @@ mat4 camera::camLookAt(const my_vec3f &point, const my_vec3f &center) const {
 void camera::rotate(const rotate_t &rotate) {
     pos.rotate(rotate);
     up.rotate(rotate);
-    cout<<"camera rotated "<<pos;
+    cout<<"camera rotated "<<pos<<'\n';
 }
