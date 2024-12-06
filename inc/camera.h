@@ -27,7 +27,7 @@ public:
 
     my_vec3f pos; //must
     my_vec3f up;
-    float near_distance = 10;
+    float near_distance = 0.1;
     float relation;
     float angle_of_view;
 };
