@@ -75,7 +75,7 @@ private:
 
     void keyPressEvent(QKeyEvent *event) override;
 
-    my_vec3f viewport(const my_vec3f &point, const my_vec3f &center);
+    mat4 viewport(const my_vec3f &point, const my_vec3f &center);
 
     void onInit();
 
@@ -100,6 +100,8 @@ private:
     sf::Color back_color;
 
     static const my_vec3f light_ray;
+
+    my_vec3f adapt_coords(const camera &c, const my_vec3f &point, const my_vec3f &center);
 };
 
 #endif

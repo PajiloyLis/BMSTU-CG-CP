@@ -19,9 +19,9 @@ public:
 
     camera(camera &&c) noexcept;
 
-    [[nodiscard]] my_vec3f perspective(const my_vec3f &point) const;
+    [[nodiscard]] mat4 perspective(const my_vec3f &point) const;
 
-    my_vec3f camLookAt(const my_vec3f &point, const my_vec3f &center) const;
+    mat4 camLookAt(const my_vec3f &point, const my_vec3f &center) const;
 
     void rotate(const rotate_t &rotate);
 

@@ -138,15 +138,19 @@ void QSFMLCanvas::Clear() {
     this->clear(back_color);
 }
 
-my_vec3f QSFMLCanvas::ad
-
-my_vec3f QSFMLCanvas::viewport(const my_vec3f &point, const my_vec3f &center) {
-    mat4 mat(this->size().width() / (2 * center.getX()), 0, 0, point.getX() + this->size().width() / 2.f,
-             0, this->size().height() / (2 * center.getY()), 0, point.getY() + this->size().height() / 2.f,
-             0, 0, 255 / 2.f, 255 / 2.f,
-             0, 0, 0, 1);
-    vec4 res = mat * vec4(point.getX(), point.getY(), point.getZ(), 1);
+my_vec3f QSFMLCanvas::adapt_coords(const camera &c, const my_vec3f &point, const my_vec3f &center) {
+    mat4 trans = viewport(point, center);
+    trans *= c.perspective(point);
+    trans *= c.camLookAt(point, center);
+    vec3 res = trans * vec4(point.getX(), point.getY(), point.getZ(), 1);
     return {res.x, res.y, res.z};
+}
+
+mat4 QSFMLCanvas::viewport(const my_vec3f &point, const my_vec3f &center) {
+    return mat4(this->size().width() / (2 * center.getX()), 0, 0, point.getX() + this->size().width() / 2.f,
+                0, this->size().height() / (2 * center.getY()), 0, point.getY() + this->size().height() / 2.f,
+                0, 0, 255 / 2.f, 255 / 2.f,
+                0, 0, 0, 1);
 }
 
 void QSFMLCanvas::keyPressEvent(QKeyEvent *event) {
