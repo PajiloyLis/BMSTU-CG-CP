@@ -66,8 +66,14 @@ signals:
 signals:
 
     void DownKeyPressed();
-    signals:
-    void WhellScrolled
+
+signals:
+
+    void WheelScrolledUp(float k);
+
+signals:
+
+    void WheelScrolledDown(float k);
 
 private:
 //    void mousePressEvent(QMouseEvent *event) override;

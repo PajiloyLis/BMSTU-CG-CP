@@ -172,6 +172,8 @@ void QSFMLCanvas::keyPressEvent(QKeyEvent *event) {
 
 void QSFMLCanvas::wheelEvent(QWheelEvent *event) {
     if(event->angleDelta().y() > 0)
+        emit WheelScrolledUp(event->angleDelta().x() / 8. / 20.);
+    else
 
 }
 
