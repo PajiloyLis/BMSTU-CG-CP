@@ -65,8 +65,9 @@ void MainWindow::RotateCurCameraDown() {
     DrawScene();
 }
 
-void MainWindow::ScaleCurCameraBackward() {
-    ha
+void MainWindow::ScaleCurCamera(float k) {
+    handler.ScaleCamera(k);
+    DrawScene();
 }
 
 

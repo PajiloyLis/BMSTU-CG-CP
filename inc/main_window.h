@@ -55,7 +55,7 @@ private slots:
 
     void RotateCurCameraDown();
 
-    void ScaleCurCameraBackward();
+    void ScaleCurCamera(float k);
 private:
     static bool NumericFieldCheck(QLineEdit *&field);
 
