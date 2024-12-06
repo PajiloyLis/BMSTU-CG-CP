@@ -29,7 +29,7 @@ camera::camera(camera &&c) noexcept {
 my_vec3f camera::perspective(const my_vec3f &point) const {
     mat4 proj = glm::perspective(angle_of_view, relation, near_distance, 500.f);
     vec4 res = proj * vec4(point.getX(), point.getY(), point.getZ(), 1);
-    return {res.x, res.y, res.z};
+    return {res.x, res.y, res.z/};
 }
 
 camera::camera(float _x, float _y, float _z, float width, float height, float angle) {
