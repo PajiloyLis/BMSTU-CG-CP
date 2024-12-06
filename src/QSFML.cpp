@@ -34,6 +34,7 @@ QPaintEngine *QSFMLCanvas::paintEngine() const {
 
 void QSFMLCanvas::showEvent(QShowEvent *) {
     if (!m_initialized) {
+//        XFlush(QX11Info::display());
         RenderWindow::create(winId());
         onInit();
         m_initialized = true;
@@ -42,7 +43,7 @@ void QSFMLCanvas::showEvent(QShowEvent *) {
 
 void QSFMLCanvas::paintEvent(QPaintEvent *) {
     onUpdate();
-    display();
+    this->display();
 }
 
 
