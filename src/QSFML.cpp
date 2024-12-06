@@ -147,10 +147,10 @@ my_vec3f QSFMLCanvas::adapt_coords(const camera &c, const my_vec3f &point, const
 }
 
 mat4 QSFMLCanvas::viewport(const my_vec3f &point, const my_vec3f &center) {
-    return mat4(this->size().width() / (2 * center.getX()), 0, 0, point.getX() + this->size().width(),
-                0, -this->size().height() / (2 * center.getY()), 0, point.getY() + 1.5*this->size().height(),
+    return {this->size().width() / (2 * center.getX()), 0, 0, this->size().width(),
+                0, -this->size().height() / (2 * center.getY()), 0, this->size().height(),
                 0, 0, 255 / 2.f, 255 / 2.f,
-                0, 0, 0, 1);
+                0, 0, 0, 1};
 }
 
 void QSFMLCanvas::keyPressEvent(QKeyEvent *event) {
