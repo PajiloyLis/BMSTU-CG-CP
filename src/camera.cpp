@@ -3,9 +3,9 @@
 camera::camera(const my_vec3f &pos, const my_vec3f &pov, const my_vec3f &global_up, float relation) {
     this->pos = pos;
     this->relation = relation;
-    this->front = (pos-pov);
-    this->right = global_up.cross((pos - pov).normalize()).normalize();
-    this->up = ((pos - pov).normalize().cross(right)).normalize();
+    this->front = (pos-pov).normalize();
+    this->right = global_up.cross(front).normalize();
+    this->up = (front.cross(right)).normalize();
     cout << "pos " << this->pos << "\npov " << this->front << "\nright " << right << "\nup " << up << '\n';
 }
 
@@ -34,10 +34,11 @@ mat4 camera::perspective() const {
 
 camera::camera(const my_vec3f &pos, const my_vec3f &pov, const my_vec3f &global_up, float width, float height) {
     this->pos = pos;
-    this->relation = width / height;
-    this->front = pov;
-    this->right = global_up.cross((pos - pov).normalize()).normalize();
-    this->up = ((pos - pov).normalize().cross(right)).normalize();
+    this->relation = width/height;
+    this->front = (pos-pov).normalize();
+    this->right = global_up.cross(front).normalize();
+    this->up = (front.cross(right)).normalize();
+    cout << "pos " << this->pos << "\npov " << this->front << "\nright " << right << "\nup " << up << '\n';
 }
 
 camera &camera::operator=(const camera &c) {
@@ -51,7 +52,7 @@ camera &camera::operator=(const camera &c) {
 }
 
 mat4 camera::camLookAt() const {
-    return glm::lookAt(pos.p, front.p, up.p);
+    return glm::lookAt(pos.p, (pos+front).p, up.p);
 }
 
 void camera::rotate(const rotate_t &rotate) {
