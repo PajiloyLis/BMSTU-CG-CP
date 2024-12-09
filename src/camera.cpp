@@ -52,23 +52,23 @@ camera &camera::operator=(const camera &c) {
 }
 
 mat4 camera::camLookAt() const {
-    return glm::lookAt(pos.p, (pos+front).p, up.p);
+    return glm::lookAt(pos.p, (pos-front).p, up.p);
 }
 
 void camera::rotate(const rotate_t &rotate) {
-    front = (front - pos).rotate(rotate) + pos;
+    front.rotate(rotate).normalize();
     up.rotate(rotate).normalize();
     right.rotate(rotate).normalize();
     cout << "camera rotated\npos " << pos << "\npov " << front << '\n';
 }
 
 void camera::move(const move_t &move) {
-    my_vec3f tmp = pos;
-    pos += (pos - front).normalize() * move.dz;
+//    my_vec3f tmp = pos;
+    pos += front * move.dz;
     pos += right * move.dx;
     pos += up * move.dy;
-    front += right * move.dx;
-    front += up * move.dy;
+//    front += right * move.dx;
+//    front += up * move.dy;
 //    near_distance+=move.dz/near_distance;
 //    far_distance+=move.dz/far_distance;
     cout << "camera moved \npos " << pos << "\npov " << front << '\n';
