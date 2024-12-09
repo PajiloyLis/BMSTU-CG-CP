@@ -5,7 +5,7 @@ camera::camera(const my_vec3f &pos, const my_vec3f &pov, const my_vec3f &global_
     this->relation = relation;
     this->pov = pov;
     this->right = global_up.cross((pos - pov).normalize()).normalize();
-    this->up = ((pos - pos).normalize().cross(right)).normalize();
+    this->up = ((pos - pov).normalize().cross(right)).normalize();
     cout<<"pos "<<this->pos<<"\npov "<<this->pov<<"\nright "<<right<<"\nup "<<up<<'\n';
 }
 
@@ -36,7 +36,7 @@ camera::camera(const my_vec3f &pos, const my_vec3f &pov, const my_vec3f &global_
     this->relation = width / height;
     this->pov = pov;
     this->right = global_up.cross((pos - pov).normalize()).normalize();
-    this->up = ((pos - pos).normalize().cross(right)).normalize();
+    this->up = ((pos - pov).normalize().cross(right)).normalize();
 }
 
 camera &camera::operator=(const camera &c) {
