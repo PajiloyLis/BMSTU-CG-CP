@@ -67,10 +67,6 @@ void camera::move(const move_t &move) {
     pos += front * move.dz;
     pos += right * move.dx;
     pos += up * move.dy;
-//    front += right * move.dx;
-//    front += up * move.dy;
-//    near_distance+=move.dz/near_distance;
-//    far_distance+=move.dz/far_distance;
     cout << "camera moved \npos " << pos << "\npov " << front << '\n';
 }
 
