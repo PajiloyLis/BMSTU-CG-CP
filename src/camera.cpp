@@ -55,17 +55,18 @@ mat4 camera::camLookAt() const {
 }
 
 void camera::rotate(const rotate_t &rotate) {
-    pov = (pov - pos).normalize().  rotate(rotate)+pos;
+    pov = (pov - pos).normalize().rotate(rotate)+pos;
     up.rotate(rotate).normalize();
     right.rotate(rotate).normalize();
-    cout << "camera rotated \npos " << pos << "\npov " << pov << '\n';
 }
 
 void camera::move(const move_t &move) {
     pos += (pos - pov).normalize() * move.dz;
     pos += right * move.dx;
     pos += up * move.dy;
+    pov += (pos - pov).normalize() * move.dz;
     pov += right * move.dx;
     pov += up * move.dy;
+    cout << "camera moved \npos " << pos << "\npov " << pov << '\n';
 }
 
