@@ -46,6 +46,8 @@ public:
 
     void MoveCamera(const move_t &move);
 
+    void ScaleCamera(float &k);
+
 private:
 
     static vector<triangle> read_stl(const string &filename);

@@ -25,6 +25,8 @@ camera(const my_vec3f &pos, const my_vec3f &pov, const my_vec3f &global_up, floa
 
     void rotate(const rotate_t &rotate);
 
+    void scale(const scale_t &scale);
+
     my_vec3f pos, front, up, right;
     float near_distance = 0.1;
     float relation;

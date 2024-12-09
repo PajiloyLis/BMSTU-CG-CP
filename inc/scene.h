@@ -34,6 +34,8 @@ public:
 
     void MoveCamera(const move_t &move);
 
+    void ScaleCamera(float &k);
+
 private:
     QSFMLCanvas *scene;
     double width, height;

@@ -108,8 +108,11 @@ void TaskHandler::RotateCurCameraDown() {
     scene.RotateCurCameraDown();
 }
 
-void TaskHandler::MoveCamera(const move_t &move)
-{
+void TaskHandler::MoveCamera(const move_t &move) {
     scene.MoveCamera(move);
+}
+
+void TaskHandler::ScaleCamera(float &k) {
+    scene.ScaleCamera(k);
 }
 
