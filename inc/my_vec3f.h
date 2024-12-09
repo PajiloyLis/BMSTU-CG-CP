@@ -89,7 +89,7 @@ public:
 
     [[nodiscard]] float dot(const my_vec3f &a) const;
 
-    my_vec3f cross(const my_vec3f &a) сonst;
+    my_vec3f cross(const my_vec3f &a) const;
 
     my_vec3f normalize();
 

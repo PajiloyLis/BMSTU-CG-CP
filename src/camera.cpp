@@ -1,48 +1,50 @@
 #include "camera.h"
 
-camera::camera(float _x, float _y, float _z, float relation, float angle) {
-    pos.setX(_x), pos.setY(_y), pos.setZ(_z);
-    angle_of_view = angle;
+camera::camera(const my_vec3f &pos, const my_vec3f &pov, const my_vec3f &global_up, float relation) {
+    this->pos = normalize(pos);
     this->relation = relation;
-//    pos.normalize();
-    up={0, 0, 1};
+    this->pov = normalize(pov);
+    this->right = global_up.cross((pos - pov).normalize()).normalize();
+    this->up = ((pos - pos).normalize().cross(right)).normalize();
 }
+
 
 camera::camera(const camera &c) {
     pos = c.pos;
-    angle_of_view = c.angle_of_view;
+    pov = c.pov;
+    right = c.right;
+    up = c.up;
     relation = c.relation;
     near_distance = c.near_distance;
-//    pos.normalize();
-    up={0, 0, 1};
 }
 
 camera::camera(camera &&c) noexcept {
     pos = c.pos;
-    angle_of_view = c.angle_of_view;
+    pov = c.pov;
+    right = c.right;
+    up = c.up;
     relation = c.relation;
     near_distance = c.near_distance;
-//    pos.normalize();
-    up={0, 0, 1};
 }
-
 mat4 camera::perspective(const my_vec3f &point) const {
     return glm::perspective(angle_of_view, relation, near_distance, 500.f);
 }
 
-camera::camera(float _x, float _y, float _z, float width, float height, float angle) {
-    pos.setX(_x), pos.setY(_y), pos.setZ(_z);
-    angle_of_view = angle;
+camera::camera(const my_vec3f &pos, const my_vec3f &pov, const my_vec3f &global_up, float width, float height) {
+    this->pos = normalize(pos);
     this->relation = width / height;
-//    pos.normalize();
+    this->pov = normalize(pov);
+    this->right = global_up.cross((pos - pov).normalize()).normalize();
+    this->up = ((pos - pos).normalize().cross(right)).normalize();
 }
 
 camera &camera::operator=(const camera &c) {
     pos = c.pos;
-    angle_of_view = c.angle_of_view;
+    pov = c.pov;
+    right = c.right;
+    up = c.up;
     relation = c.relation;
     near_distance = c.near_distance;
-//    pos.normalize();
     return *this;
 }
 
@@ -51,8 +53,9 @@ mat4 camera::camLookAt(const my_vec3f &point, const my_vec3f &center) const {
 }
 
 void camera::rotate(const rotate_t &rotate) {
-    pos.rotate(rotate);
+    pov.rotate(rotate);
     up.rotate(rotate);
+    right.rotate(rotate);
     cout<<"camera rotated "<<pos<<'\n';
 }
 

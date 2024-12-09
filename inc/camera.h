@@ -9,9 +9,9 @@ class camera {
 public:
     camera() = default;
 
-    camera(float _x, float _y, float _z, float relation, float angle = 45 * M_PI / 180);
+camera(const my_vec3f &pos, const my_vec3f &pov, const my_vec3f &global_up, float relation);
 
-    camera(float _x, float _y, float _z, float width, float height, float angle);
+    camera(const my_vec3f &pos, const my_vec3f &pov, const my_vec3f &global_up, float width, float height);
 
     camera(const camera &c);
 
@@ -25,11 +25,10 @@ public:
 
     void rotate(const rotate_t &rotate);
 
-    my_vec3f pos; //must
-    my_vec3f up;
-    float near_distance = 0.1;
+    my_vec3f pos, pov, up, right;
+    float near_distance = 10;
     float relation;
-    float angle_of_view;
+    float angle_of_view=45;
 
     void scale(const scale_t &scale);
 };
