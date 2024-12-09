@@ -66,7 +66,6 @@ void camera::move(const move_t &move) {
     pos += (tmp - pov).normalize() * move.dz;
     pos += right * move.dx;
     pos += up * move.dy;
-    pov += (tmp - pov).normalize() * move.dz;
     pov += right * move.dx;
     pov += up * move.dy;
     cout << "camera moved \npos " << pos << "\npov " << pov << '\n';
