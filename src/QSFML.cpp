@@ -146,7 +146,7 @@ void QSFMLCanvas::Clear() {
 
 my_vec3f QSFMLCanvas::adapt_coords(const camera &c, const my_vec3f &point, const my_vec3f &center) {
     mat4 trans = viewport(point, center);
-    trans *= c.perspective();
+//    trans *= c.perspective();
     trans *= c.camLookAt();
     vec4 res = trans * vec4(point.getX(), point.getY(), point.getZ(), 1);
     return {res.x, res.y, res.z};
