@@ -73,7 +73,7 @@ void QSFMLCanvas::paintEvent(QPaintEvent *) {
 
 void QSFMLCanvas::DrawTriangle(const triangle &t, const camera &cam, const my_vec3f &figure_center) {
     float intensity = light_ray.dot(t.n);
-    if ((cam.pos - cam.pov).normalize().dot(t.n) > 0) {
+    if ((cam.pos - cam.front).normalize().dot(t.n) > 0) {
         array<my_vec3f, 3> points;
         array<sf::Vertex, 3> points_to_render;
         for (int i = 0; i < points.size(); ++i) {
