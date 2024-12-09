@@ -52,13 +52,13 @@ camera &camera::operator=(const camera &c) {
 }
 
 mat4 camera::camLookAt() const {
-    mat4 trans(right.getX(), right.getY(), right.getZ(),
-               -right.getX() * pos.getX() - right.getY() * pos.getY() - right.getZ() * pos.getZ(),
-               up.getX(), up.getY(), up.getZ(),
-               -up.getX() * pos.getX() - up.getY() * pos.getY() - up.getZ() * pos.getZ(), -front.getX(), -front.getY(),
-               front.getZ(), 0, 0, 0, 0, 1);
-    trans*
-    return glm::lookAt(pos.p, (pos - front).p, up.p);
+    return {right.getX(), right.getY(), right.getZ(),
+                -right.getX() * pos.getX() - right.getY() * pos.getY() - right.getZ() * pos.getZ(),
+                up.getX(), up.getY(), up.getZ(),
+                -up.getX() * pos.getX() - up.getY() * pos.getY() - up.getZ() * pos.getZ(),
+                -front.getX(), -front.getY(), front.getZ(),
+                front.getX() * pos.getX() + front.getY() * pos.getY() + front.getZ() * pos.getZ(),
+                0, 0, 0, 1};
 }
 
 void camera::rotate(const rotate_t &rotate) {
