@@ -57,6 +57,10 @@ my_vec3f my_vec3f::operator+(const my_vec3f &a) const {
     return {p.x + a.p.x, p.y + a.p.y, p.z + a.p.z};
 }
 
+my_vec3f my_vec3f::operator-() const {
+    return {-p};
+}
+
 my_vec3f my_vec3f::cross(const my_vec3f &a) {
     return glm::cross(p, a.p);
 }
