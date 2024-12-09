@@ -56,7 +56,7 @@ void camera::rotate(const rotate_t &rotate) {
     pov.rotate(rotate);
     up.rotate(rotate);
     right.rotate(rotate);
-    cout<<"camera rotated "<<pos<<'\n';
+    cout<<"camera rotated \npos "<<pos<<"\npov "<<pov<<'\n';
 }
 
 void camera::scale(const scale_t &scale)
