@@ -6,7 +6,7 @@ camera::camera(const my_vec3f &pos, const my_vec3f &pov, const my_vec3f &global_
     this->pov = pov;
     this->right = global_up.cross((pos - pov).normalize()).normalize();
     this->up = ((pos - pos).normalize().cross(right)).normalize();
-    cout<<"pos "<<pos<<"\npov "<<pov<<"\nright "<<right<<"\nup "<<up<<'\n';
+    cout<<"pos "<<this->pos<<"\npov "<<this->pov<<"\nright "<<right<<"\nup "<<up<<'\n';
 }
 
 
