@@ -30,7 +30,7 @@ public:
 
     friend std::ostream &operator<<(std::ostream &os, my_vec3f const &m);
 
-    [[nodiscard]] float getX() const {
+    float getX() const {
         return p.x;
     }
 

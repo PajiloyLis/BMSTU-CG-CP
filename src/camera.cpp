@@ -52,6 +52,7 @@ camera &camera::operator=(const camera &c) {
 }
 
 mat4 camera::camLookAt() const {
+    mat4 trans(right.getX(), right.getY(), right.getZ(), 0, up.getX(), up.getY(), up.getZ(), 0, -front.getX(), -front.getY(), front.getZ(), 0, 0, 0, 0, 1);
     return glm::lookAt(pos.p, (pos - front).p, up.p);
 }
 
