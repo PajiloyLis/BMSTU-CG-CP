@@ -44,7 +44,7 @@ public:
 
     void RotateCurCameraDown();
 
-    void ScaleCamera(float &k);
+    void MoveCamera();
 
 private:
 

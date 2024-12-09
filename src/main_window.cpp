@@ -12,7 +12,8 @@ MainWindow::MainWindow() : QMainWindow(), handler() {
     drawer->setGeometry(menu->pos().x(), grid->pos().y() + menu->size().height(),
                         grid->size().width(), grid->size().height());
     drawer->setMouseTracking(true);
-    this->handler.AddCamera({{400, 0, 100}, {0, 0, 0}, {0, 0, 1}, static_cast<float>(drawer->width())/drawer->height()});
+    this->handler.AddCamera(
+            {{400, 0, 100}, {0, 0, 0}, {0, 0, 1}, static_cast<float>(drawer->width()) / drawer->height()});
     this->handler.SetScene(
             Scene(drawer, drawer->size().width(), drawer->size().height()));
 
@@ -32,10 +33,14 @@ void MainWindow::SetBindings() {
                      &MainWindow::RotateCurCameraDown);
     QObject::connect(this->findChild<QSFMLCanvas *>("drawer"), &QSFMLCanvas::UpKeyPressed, this,
                      &MainWindow::RotateCurCameraUp);
-    QObject::connect(this->findChild<QSFMLCanvas *>("drawer"), &QSFMLCanvas::WheelScrolledDown, this,
-                     &MainWindow::ScaleCurCamera);
-    QObject::connect(this->findChild<QSFMLCanvas *>("drawer"), &QSFMLCanvas::WheelScrolledUp, this,
-                     &MainWindow::ScaleCurCamera);
+    QObject::connect(this->findChild<QSFMLCanvas *>("drawer"), &QSFMLCanvas::WKeyPressed, this,
+                     &MainWindow::MoveCurCamera);
+    QObject::connect(this->findChild<QSFMLCanvas *>("drawer"), &QSFMLCanvas::AKeyPressed, this,
+                     &MainWindow::MoveCurCamera);
+    QObject::connect(this->findChild<QSFMLCanvas *>("drawer"), &QSFMLCanvas::SKeyPressed, this,
+                     &MainWindow::MoveCurCamera);
+    QObject::connect(this->findChild<QSFMLCanvas *>("drawer"), &QSFMLCanvas::DKeyPressed, this,
+                     &MainWindow::MoveCurCamera);
 }
 
 void MainWindow::LoadModelActionTriggered() {
@@ -68,8 +73,8 @@ void MainWindow::RotateCurCameraDown() {
     DrawScene();
 }
 
-void MainWindow::ScaleCurCamera(float k) {
-    handler.ScaleCamera(k);
+void MainWindow::MoveCurCamera() {
+    handler.MoveCamera();
     DrawScene();
 }
 

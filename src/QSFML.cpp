@@ -169,7 +169,7 @@ void QSFMLCanvas::keyPressEvent(QKeyEvent *event) {
     else if (event->key() == Qt::Key_Down)
             emit this->DownKeyPressed();
     else if (event->key() == Qt::Key_W)
-            emit this->WKeyPress();
+            emit this->WKeyPressed();
     else if (event->key() == Qt::Key_A)
             emit this->AKeyPressed();
     else if (event->key() == Qt::Key_S)

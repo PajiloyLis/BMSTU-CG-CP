@@ -69,7 +69,7 @@ signals:
 
 signals:
 
-    void WKeyPress();
+    void WKeyPressed();
 
 signals:
 
