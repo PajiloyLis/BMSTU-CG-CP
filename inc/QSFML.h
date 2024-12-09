@@ -85,6 +85,10 @@ signals:
 
 signals:
 
+    void WheelScrolledUp(float k);
+
+signals:
+
     void WheelScrolledDown(float k);
 
 private:

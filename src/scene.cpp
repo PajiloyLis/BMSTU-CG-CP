@@ -52,7 +52,7 @@ void Scene::RotateCurCameraDown() {
 
 void Scene::ScaleCamera(float &k)
 {
-    cameras[cur_camera].scale({k, k, k});
+    cameras[cur_camera].scale(k);
 }
 
 void Scene::MoveCamera(const move_t &move)
