@@ -73,7 +73,7 @@ void QSFMLCanvas::paintEvent(QPaintEvent *) {
 
 void QSFMLCanvas::DrawTriangle(const triangle &t, const camera &cam, const my_vec3f &figure_center) {
     float intensity = light_ray.dot(t.n);
-    if ((cam.pos - cam.front).normalize().dot(t.n) > 0) {
+    if (cam.front.dot(t.n) > 0) {
         array<my_vec3f, 3> points;
         array<sf::Vertex, 3> points_to_render;
         for (int i = 0; i < points.size(); ++i) {
@@ -146,7 +146,7 @@ void QSFMLCanvas::Clear() {
 
 my_vec3f QSFMLCanvas::adapt_coords(const camera &c, const my_vec3f &point, const my_vec3f &center) {
     mat4 trans(1.0f);
-//    trans = viewport(point, center);
+    trans = viewport(point, center);
     trans *= c.perspective();
     trans *= c.camLookAt();
     vec4 res = trans * vec4(point.getX(), point.getY(), point.getZ(), 1);
