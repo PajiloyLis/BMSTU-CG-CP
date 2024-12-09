@@ -25,7 +25,7 @@ void QSFMLCanvas::onInit() {
 
 void QSFMLCanvas::onUpdate() {
 //    this->widgetDraw();
-    this->display();
+//    this->display();
 }
 
 QPaintEngine *QSFMLCanvas::paintEngine() const {
@@ -42,8 +42,8 @@ void QSFMLCanvas::showEvent(QShowEvent *) {
 }
 
 void QSFMLCanvas::paintEvent(QPaintEvent *) {
-    onUpdate();
-//    this->display();
+//    onUpdate();
+    this->display();
 }
 
 
