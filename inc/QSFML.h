@@ -69,19 +69,19 @@ signals:
 
 signals:
 
-    void WKeyPressed();
+    void WKeyPressed(const move_t &move);
 
 signals:
 
-    void AKeyPressed();
+    void AKeyPressed(const move_t &move);
 
 signals:
 
-    void SKeyPressed();
+    void SKeyPressed(const move_t &move);
 
 signals:
 
-    void DKeyPressed();
+    void DKeyPressed(const move_t &move);
 
 private:
 //    void mousePressEvent(QMouseEvent *event) override;

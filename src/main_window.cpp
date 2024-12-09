@@ -73,7 +73,7 @@ void MainWindow::RotateCurCameraDown() {
     DrawScene();
 }
 
-void MainWindow::MoveCurCamera() {
+void MainWindow::MoveCurCamera(const move_t &move) {
     handler.MoveCamera();
     DrawScene();
 }
