@@ -72,6 +72,7 @@ my_vec3f &my_vec3f::rotate(const rotate_t &rotate_v) {
     transform = glm::rotate(transform, static_cast<float>(rotate_v.angle_z), {0, 0, 1});
     vec4 res = transform * vec4(p.x, p.y, p.z, 1);
     p.x = res.x, p.y = res.y, p.z = res.z;
+    cout<<"in rotate function"<<*this<<'\n';
     return *this;
 }
 

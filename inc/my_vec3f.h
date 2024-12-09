@@ -3,6 +3,7 @@
 
 #include<cmath>
 #include<fstream>
+#include <iostream>
 #include <compare>
 #include <GL/gl.h>
 #include <glm/glm.hpp>
