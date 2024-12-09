@@ -62,14 +62,14 @@ void camera::rotate(const rotate_t &rotate) {
 }
 
 void camera::move(const move_t &move) {
-//    my_vec3f tmp = pos;
-//    pos += (pos - pov).normalize() * move.dz;
+    my_vec3f tmp = pos;
+    pos += (pos - pov).normalize() * move.dz;
     pos += right * move.dx;
     pos += up * move.dy;
-    pov += right * move.dx;
-    pov += up * move.dy;
-    near_distance+=move.dz/near_distance;
-    far_distance+=move.dz/far_distance;
+//    pov += right * move.dx;
+//    pov += up * move.dy;
+//    near_distance+=move.dz/near_distance;
+//    far_distance+=move.dz/far_distance;
     cout << "camera moved \npos " << pos << "\npov " << pov << '\n';
 }
 
