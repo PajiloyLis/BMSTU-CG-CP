@@ -61,10 +61,11 @@ void camera::rotate(const rotate_t &rotate) {
 }
 
 void camera::move(const move_t &move) {
-    pos += (pos - pov).normalize() * move.dz;
+    my_vec3f tmp = pos;
+    pos += (tmp - pov).normalize() * move.dz;
     pos += right * move.dx;
     pos += up * move.dy;
-    pov += (pos - pov).normalize() * move.dz;
+    pov += (tmp - pov).normalize() * move.dz;
     pov += right * move.dx;
     pov += up * move.dy;
     cout << "camera moved \npos " << pos << "\npov " << pov << '\n';
