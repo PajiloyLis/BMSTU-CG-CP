@@ -6,7 +6,7 @@ camera::camera(const my_vec3f &pos, const my_vec3f &pov, const my_vec3f &global_
     this->pov = pov;
     this->right = global_up.cross((pos - pov).normalize()).normalize();
     this->up = ((pos - pov).normalize().cross(right)).normalize();
-    cout<<"pos "<<this->pos<<"\npov "<<this->pov<<"\nright "<<right<<"\nup "<<up<<'\n';
+    cout << "pos " << this->pos << "\npov " << this->pov << "\nright " << right << "\nup " << up << '\n';
 }
 
 
@@ -27,6 +27,7 @@ camera::camera(camera &&c) noexcept {
     relation = c.relation;
     near_distance = c.near_distance;
 }
+
 mat4 camera::perspective() const {
     return glm::perspective(angle_of_view, relation, near_distance, 500.f);
 }
@@ -54,14 +55,15 @@ mat4 camera::camLookAt() const {
 }
 
 void camera::rotate(const rotate_t &rotate) {
-    pov = (pov-pos).rotate(rotate)+pos;
+    pov += (pov - pos).rotate(rotate);
     up.rotate(rotate);
     right.rotate(rotate);
-    cout<<"camera rotated \npos "<<pos<<"\npov "<<pov<<'\n';
+    cout << "camera rotated \npos " << pos << "\npov " << pov << '\n';
 }
 
 void camera::move(const move_t &move) {
-    pos += (pos-pov).normalize()*move.dz;
-
+    pos += (pos - pov).normalize() * move.dz;
+    pos += right * move.dx;
+    pos += up * move.dy;
 }
 

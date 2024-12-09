@@ -22,8 +22,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_QSFMLCanvas_t {
-    const uint offsetsAndSize[30];
-    char stringdata0[188];
+    const uint offsetsAndSize[36];
+    char stringdata0[212];
 };
 #define QT_MOC_LITERAL(ofs, len) \
     uint(offsetof(qt_meta_stringdata_QSFMLCanvas_t, stringdata0) + ofs), len 
@@ -41,17 +41,20 @@ QT_MOC_LITERAL(93, 14), // "LeftKeyPressed"
 QT_MOC_LITERAL(108, 15), // "RightKeyPressed"
 QT_MOC_LITERAL(124, 12), // "UpKeyPressed"
 QT_MOC_LITERAL(137, 14), // "DownKeyPressed"
-QT_MOC_LITERAL(152, 15), // "WheelScrolledUp"
-QT_MOC_LITERAL(168, 1), // "k"
-QT_MOC_LITERAL(170, 17) // "WheelScrolledDown"
+QT_MOC_LITERAL(152, 11), // "WKeyPressed"
+QT_MOC_LITERAL(164, 6), // "move_t"
+QT_MOC_LITERAL(171, 4), // "move"
+QT_MOC_LITERAL(176, 11), // "AKeyPressed"
+QT_MOC_LITERAL(188, 11), // "SKeyPressed"
+QT_MOC_LITERAL(200, 11) // "DKeyPressed"
 
     },
     "QSFMLCanvas\0LeftMouseButton\0\0x\0y\0"
     "ShiftLeftMouseButton\0RightMouseButton\0"
     "LeftMouseButtonDouble\0LeftKeyPressed\0"
     "RightKeyPressed\0UpKeyPressed\0"
-    "DownKeyPressed\0WheelScrolledUp\0k\0"
-    "WheelScrolledDown"
+    "DownKeyPressed\0WKeyPressed\0move_t\0"
+    "move\0AKeyPressed\0SKeyPressed\0DKeyPressed"
 };
 #undef QT_MOC_LITERAL
 
@@ -61,24 +64,26 @@ static const uint qt_meta_data_QSFMLCanvas[] = {
       10,       // revision
        0,       // classname
        0,    0, // classinfo
-      10,   14, // methods
+      12,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
        0,       // flags
-      10,       // signalCount
+      12,       // signalCount
 
  // signals: name, argc, parameters, tag, flags, initial metatype offsets
-       1,    2,   74,    2, 0x06,    1 /* Public */,
-       5,    2,   79,    2, 0x06,    4 /* Public */,
-       6,    0,   84,    2, 0x06,    7 /* Public */,
-       7,    2,   85,    2, 0x06,    8 /* Public */,
-       8,    0,   90,    2, 0x06,   11 /* Public */,
-       9,    0,   91,    2, 0x06,   12 /* Public */,
-      10,    0,   92,    2, 0x06,   13 /* Public */,
-      11,    0,   93,    2, 0x06,   14 /* Public */,
-      12,    1,   94,    2, 0x06,   15 /* Public */,
-      14,    1,   97,    2, 0x06,   17 /* Public */,
+       1,    2,   86,    2, 0x06,    1 /* Public */,
+       5,    2,   91,    2, 0x06,    4 /* Public */,
+       6,    0,   96,    2, 0x06,    7 /* Public */,
+       7,    2,   97,    2, 0x06,    8 /* Public */,
+       8,    0,  102,    2, 0x06,   11 /* Public */,
+       9,    0,  103,    2, 0x06,   12 /* Public */,
+      10,    0,  104,    2, 0x06,   13 /* Public */,
+      11,    0,  105,    2, 0x06,   14 /* Public */,
+      12,    1,  106,    2, 0x06,   15 /* Public */,
+      15,    1,  109,    2, 0x06,   17 /* Public */,
+      16,    1,  112,    2, 0x06,   19 /* Public */,
+      17,    1,  115,    2, 0x06,   21 /* Public */,
 
  // signals: parameters
     QMetaType::Void, QMetaType::Int, QMetaType::Int,    3,    4,
@@ -89,8 +94,10 @@ static const uint qt_meta_data_QSFMLCanvas[] = {
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
-    QMetaType::Void, QMetaType::Float,   13,
-    QMetaType::Void, QMetaType::Float,   13,
+    QMetaType::Void, 0x80000000 | 13,   14,
+    QMetaType::Void, 0x80000000 | 13,   14,
+    QMetaType::Void, 0x80000000 | 13,   14,
+    QMetaType::Void, 0x80000000 | 13,   14,
 
        0        // eod
 };
@@ -109,8 +116,10 @@ void QSFMLCanvas::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id,
         case 5: _t->RightKeyPressed(); break;
         case 6: _t->UpKeyPressed(); break;
         case 7: _t->DownKeyPressed(); break;
-        case 8: _t->WheelScrolledUp((*reinterpret_cast< std::add_pointer_t<float>>(_a[1]))); break;
-        case 9: _t->WheelScrolledDown((*reinterpret_cast< std::add_pointer_t<float>>(_a[1]))); break;
+        case 8: _t->WKeyPressed((*reinterpret_cast< std::add_pointer_t<move_t>>(_a[1]))); break;
+        case 9: _t->AKeyPressed((*reinterpret_cast< std::add_pointer_t<move_t>>(_a[1]))); break;
+        case 10: _t->SKeyPressed((*reinterpret_cast< std::add_pointer_t<move_t>>(_a[1]))); break;
+        case 11: _t->DKeyPressed((*reinterpret_cast< std::add_pointer_t<move_t>>(_a[1]))); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
@@ -172,16 +181,30 @@ void QSFMLCanvas::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id,
             }
         }
         {
-            using _t = void (QSFMLCanvas::*)(float );
-            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&QSFMLCanvas::WheelScrolledUp)) {
+            using _t = void (QSFMLCanvas::*)(const move_t & );
+            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&QSFMLCanvas::WKeyPressed)) {
                 *result = 8;
                 return;
             }
         }
         {
-            using _t = void (QSFMLCanvas::*)(float );
-            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&QSFMLCanvas::WheelScrolledDown)) {
+            using _t = void (QSFMLCanvas::*)(const move_t & );
+            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&QSFMLCanvas::AKeyPressed)) {
                 *result = 9;
+                return;
+            }
+        }
+        {
+            using _t = void (QSFMLCanvas::*)(const move_t & );
+            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&QSFMLCanvas::SKeyPressed)) {
+                *result = 10;
+                return;
+            }
+        }
+        {
+            using _t = void (QSFMLCanvas::*)(const move_t & );
+            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&QSFMLCanvas::DKeyPressed)) {
+                *result = 11;
                 return;
             }
         }
@@ -195,7 +218,7 @@ const QMetaObject QSFMLCanvas::staticMetaObject = { {
     qt_static_metacall,
     nullptr,
 qt_incomplete_metaTypeArray<qt_meta_stringdata_QSFMLCanvas_t
-, QtPrivate::TypeAndForceComplete<QSFMLCanvas, std::true_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<const int &, std::false_type>, QtPrivate::TypeAndForceComplete<const int &, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<const int &, std::false_type>, QtPrivate::TypeAndForceComplete<const int &, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<const int &, std::false_type>, QtPrivate::TypeAndForceComplete<const int &, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<float, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<float, std::false_type>
+, QtPrivate::TypeAndForceComplete<QSFMLCanvas, std::true_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<const int &, std::false_type>, QtPrivate::TypeAndForceComplete<const int &, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<const int &, std::false_type>, QtPrivate::TypeAndForceComplete<const int &, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<const int &, std::false_type>, QtPrivate::TypeAndForceComplete<const int &, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<const move_t &, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<const move_t &, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<const move_t &, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<const move_t &, std::false_type>
 
 
 
@@ -225,13 +248,13 @@ int QSFMLCanvas::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 10)
+        if (_id < 12)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 10;
+        _id -= 12;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 10)
+        if (_id < 12)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 10;
+        _id -= 12;
     }
     return _id;
 }
@@ -288,17 +311,31 @@ void QSFMLCanvas::DownKeyPressed()
 }
 
 // SIGNAL 8
-void QSFMLCanvas::WheelScrolledUp(float _t1)
+void QSFMLCanvas::WKeyPressed(const move_t & _t1)
 {
     void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t1))) };
     QMetaObject::activate(this, &staticMetaObject, 8, _a);
 }
 
 // SIGNAL 9
-void QSFMLCanvas::WheelScrolledDown(float _t1)
+void QSFMLCanvas::AKeyPressed(const move_t & _t1)
 {
     void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t1))) };
     QMetaObject::activate(this, &staticMetaObject, 9, _a);
+}
+
+// SIGNAL 10
+void QSFMLCanvas::SKeyPressed(const move_t & _t1)
+{
+    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t1))) };
+    QMetaObject::activate(this, &staticMetaObject, 10, _a);
+}
+
+// SIGNAL 11
+void QSFMLCanvas::DKeyPressed(const move_t & _t1)
+{
+    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t1))) };
+    QMetaObject::activate(this, &staticMetaObject, 11, _a);
 }
 QT_WARNING_POP
 QT_END_MOC_NAMESPACE

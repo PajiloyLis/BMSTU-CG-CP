@@ -107,7 +107,7 @@ public:
 
     my_vec3f operator*(const float &) const;
 
-    my_vec3f operator+=(const my_vec3f &) const;
+    my_vec3f &operator+=(const my_vec3f &a);
 
     my_vec3f operator*=(const float &) const;
 

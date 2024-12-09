@@ -87,7 +87,8 @@ my_vec3f my_vec3f::move_point(const move_t &move) {
     return *this;
 }
 
-my_vec3f my_vec3f::operator+=(const my_vec3f &a) const {
-    return p + a.p;
+my_vec3f &my_vec3f::operator+=(const my_vec3f &a) {
+    p = p + a.p;
+    return *this;
 }
 

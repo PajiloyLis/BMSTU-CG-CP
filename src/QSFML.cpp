@@ -63,12 +63,12 @@ void QSFMLCanvas::paintEvent(QPaintEvent *) {
 //    }
 //}
 
-void QSFMLCanvas::mouseDoubleClickEvent(QMouseEvent *event) {
-    if (event->button() == Qt::LeftButton) {
-        sf::Vector2i mouse_pos = sf::Mouse::getPosition(*this);
-        emit this->LeftMouseButtonDouble(mouse_pos.x, mouse_pos.y);
-    }
-}
+//void QSFMLCanvas::mouseDoubleClickEvent(QMouseEvent *event) {
+//    if (event->button() == Qt::LeftButton) {
+//        sf::Vector2i mouse_pos = sf::Mouse::getPosition(*this);
+//        emit this->LeftMouseButtonDouble(mouse_pos.x, mouse_pos.y);
+//    }
+//}
 
 
 void QSFMLCanvas::DrawTriangle(const triangle &t, const camera &cam, const my_vec3f &figure_center) {
