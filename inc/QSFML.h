@@ -83,6 +83,10 @@ signals:
 
     void DKeyPressed(const move_t &move);
 
+signals:
+
+    void WheelScrolledDown(float k);
+
 private:
 //    void mousePressEvent(QMouseEvent *event) override;
 
@@ -90,7 +94,7 @@ private:
 
     void keyPressEvent(QKeyEvent *event) override;
 
-//    void wheelEvent(QWheelEvent *event) override;
+    void wheelEvent(QWheelEvent *event) override;
 
     mat4 viewport(const my_vec3f &point, const my_vec3f &center);
 

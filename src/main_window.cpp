@@ -41,6 +41,10 @@ void MainWindow::SetBindings() {
                      &MainWindow::MoveCurCamera);
     QObject::connect(this->findChild<QSFMLCanvas *>("drawer"), &QSFMLCanvas::DKeyPressed, this,
                      &MainWindow::MoveCurCamera);
+    QObject::connect(this->findChild<QSFMLCanvas *>("drawer"), &QSFMLCanvas::WheelScrolledDown, this,
+                     &MainWindow::ScaleCurCamera);
+    QObject::connect(this->findChild<QSFMLCanvas *>("drawer"), &QSFMLCanvas::WheelScrolledUp, this,
+                     &MainWindow::ScaleCurCamera);
 }
 
 void MainWindow::LoadModelActionTriggered() {
@@ -78,4 +82,7 @@ void MainWindow::MoveCurCamera(const move_t &move) {
     DrawScene();
 }
 
-
+void MainWindow::ScaleCurCamera(float k) {
+    handler.ScaleCamera(k);
+    DrawScene();
+}
