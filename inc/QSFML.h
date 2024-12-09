@@ -100,7 +100,7 @@ private:
 
     void wheelEvent(QWheelEvent *event) override;
 
-    mat4 viewport(const my_vec3f &point, const my_vec3f &center);
+    mat4 viewport(const my_vec3f &center);
 
     void onInit();
 
