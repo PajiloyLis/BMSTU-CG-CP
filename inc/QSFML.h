@@ -69,18 +69,24 @@ signals:
 
 signals:
 
-    void WheelScrolledUp(float k);
+    void WKeyPress();
 
 signals:
 
-    void WheelScrolledDown(float k);
+    void AKeyPressed();
+
+signals:
+
+    void SKeyPressed();
+
+signals:
+
+    void DKeyPressed();
 
 private:
 //    void mousePressEvent(QMouseEvent *event) override;
 
     static void z_buffer(array<my_vec3f, 3> points, Image &image, sf::Color color, vector<float> &z_buffer);
-
-    void mouseDoubleClickEvent(QMouseEvent *event) override;
 
     void keyPressEvent(QKeyEvent *event) override;
 

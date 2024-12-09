@@ -168,16 +168,13 @@ void QSFMLCanvas::keyPressEvent(QKeyEvent *event) {
             emit this->UpKeyPressed();
     else if (event->key() == Qt::Key_Down)
             emit this->DownKeyPressed();
-}
-
-void QSFMLCanvas::wheelEvent(QWheelEvent *event) {
-    if (event->angleDelta().y() > 0)
-            emit WheelScrolledUp(1 - event->angleDelta().y() / (8. * 90.));
-    else
-            emit WheelScrolledDown(1 + event->angleDelta().y() / (8. * 90.));
-    if (event->angleDelta().x() > 0)
-        emit WheelScrolledUp(1 - event->angleDelta().y() / (8. * 90.));
-    else
-        emit WheelScrolledDown(1 + event->angleDelta().y() / (8. * 90.));
+    else if (event->key() == Qt::Key_W)
+            emit this->WKeyPress();
+    else if (event->key() == Qt::Key_A)
+            emit this->AKeyPressed();
+    else if (event->key() == Qt::Key_S)
+            emit this->SKeyPressed();
+    else if (event->key() == Qt::Key_D)
+            emit this->DKeyPressed();
 }
 

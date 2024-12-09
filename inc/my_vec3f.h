@@ -121,7 +121,7 @@ public:
 
     void rotate_point_z(const rotate_t &rotate);
 
-    void move_point(const move_t &move);
+    my_vec3f move_point(const move_t &move);
 };
 
 
