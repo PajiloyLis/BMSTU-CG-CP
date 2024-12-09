@@ -60,3 +60,8 @@ void camera::rotate(const rotate_t &rotate) {
     cout<<"camera rotated \npos "<<pos<<"\npov "<<pov<<'\n';
 }
 
+void camera::move(const move_t &move) {
+    pos += (pos-pov).normalize();
+
+}
+

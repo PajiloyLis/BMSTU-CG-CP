@@ -30,7 +30,7 @@ camera(const my_vec3f &pos, const my_vec3f &pov, const my_vec3f &global_up, floa
     float relation;
     float angle_of_view=45;
 
-    void scale(const scale_t &scale);
+    void move(const move_t &move);
 };
 
 

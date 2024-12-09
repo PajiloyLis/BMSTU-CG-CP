@@ -32,7 +32,7 @@ public:
 
     void RotateCurCameraDown();
 
-    void MoveCamera();
+    void MoveCamera(const move_t &move);
 
 private:
     QSFMLCanvas *scene;
