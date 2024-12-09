@@ -71,7 +71,7 @@ void camera::move(const move_t &move) {
 }
 
 void camera::scale(float &scale) {
-    angle_of_view *= scale;
+    angle_of_view += scale;
     if (angle_of_view < 1.0f)
         angle_of_view = 1.0f;
     if (angle_of_view > 90.0f)
