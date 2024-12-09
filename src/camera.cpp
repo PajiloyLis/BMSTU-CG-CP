@@ -1,9 +1,9 @@
 #include "camera.h"
 
 camera::camera(const my_vec3f &pos, const my_vec3f &pov, const my_vec3f &global_up, float relation) {
-    this->pos = normalize(pos);
+    this->pos = pos;
     this->relation = relation;
-    this->pov = normalize(pov);
+    this->pov = pov;
     this->right = global_up.cross((pos - pov).normalize()).normalize();
     this->up = ((pos - pos).normalize().cross(right)).normalize();
 }
@@ -26,14 +26,14 @@ camera::camera(camera &&c) noexcept {
     relation = c.relation;
     near_distance = c.near_distance;
 }
-mat4 camera::perspective(const my_vec3f &point) const {
+mat4 camera::perspective() const {
     return glm::perspective(angle_of_view, relation, near_distance, 500.f);
 }
 
 camera::camera(const my_vec3f &pos, const my_vec3f &pov, const my_vec3f &global_up, float width, float height) {
-    this->pos = normalize(pos);
+    this->pos = pos;
     this->relation = width / height;
-    this->pov = normalize(pov);
+    this->pov = pov;
     this->right = global_up.cross((pos - pov).normalize()).normalize();
     this->up = ((pos - pos).normalize().cross(right)).normalize();
 }
@@ -48,8 +48,8 @@ camera &camera::operator=(const camera &c) {
     return *this;
 }
 
-mat4 camera::camLookAt(const my_vec3f &point, const my_vec3f &center) const {
-    return glm::lookAt(pos.p, {0, 0, 0}, up.p);
+mat4 camera::camLookAt() const {
+    return glm::lookAt(pos.p, pov.p, up.p);
 }
 
 void camera::rotate(const rotate_t &rotate) {

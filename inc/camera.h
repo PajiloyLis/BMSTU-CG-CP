@@ -19,9 +19,9 @@ camera(const my_vec3f &pos, const my_vec3f &pov, const my_vec3f &global_up, floa
 
     camera(camera &&c) noexcept;
 
-    [[nodiscard]] mat4 perspective(const my_vec3f &point) const;
+    [[nodiscard]] mat4 perspective() const;
 
-    mat4 camLookAt(const my_vec3f &point, const my_vec3f &center) const;
+    mat4 camLookAt() const;
 
     void rotate(const rotate_t &rotate);
 
