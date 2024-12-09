@@ -61,7 +61,7 @@ void camera::rotate(const rotate_t &rotate) {
 }
 
 void camera::move(const move_t &move) {
-    pos += (pos-pov).normalize();
+    pos += (pos-pov).normalize()*move.dz;
 
 }
 
