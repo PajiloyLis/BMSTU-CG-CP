@@ -114,7 +114,7 @@ void QSFMLCanvas::z_buffer(array<my_vec3f, 3> points, Image &image, sf::Color co
         if (a.getX() > b.getX()) std::swap(a, b);
         for (int j = static_cast<int>(a.getX()); j <= static_cast<int>(b.getX()); j++) {
             float phi = (b.getX() == a.getX() ? 1.f : (float) (j - a.getX()) / (float) (b.getX() - a.getX()));
-            my_vec3f P = a + (b - a) * phi;
+            my_vec3f P = a + ((b - a) * phi);
             if (P.getX() >= 0 && P.getY() >= 0 && P.getX() < image.getSize().y && P.getY() < image.getSize().x) {
                 int idx = static_cast<int>(round(P.getX() + P.getY() * image.getSize().x));
                 if (z_buffer[idx] < P.getZ()) {
