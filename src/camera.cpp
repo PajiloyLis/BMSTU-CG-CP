@@ -32,7 +32,7 @@ camera::camera(camera &&c) noexcept {
 }
 
 mat4 camera::perspective() const {
-    return glm::perspective(angle_of_view, relation, near_distance, far_distance);
+    return glm::perspective(radians(angle_of_view), relation, near_distance, far_distance);
 }
 
 camera::camera(const my_vec3f &pos, const my_vec3f &pov, const my_vec3f &global_up, float width, float height) {
