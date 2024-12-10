@@ -170,11 +170,11 @@ void QSFMLCanvas::keyPressEvent(QKeyEvent *event) {
     else if (event->key() == Qt::Key_Down)
             emit this->DownKeyPressed();
     else if (event->key() == Qt::Key_W)
-            emit this->WKeyPressed({0, 0, -2});
+            emit this->WKeyPressed({0, 2, 0});
     else if (event->key() == Qt::Key_A)
             emit this->AKeyPressed({-2, 0, 0});
     else if (event->key() == Qt::Key_S)
-            emit this->SKeyPressed({0, 0, 2});
+            emit this->SKeyPressed({0, -2, 0});
     else if (event->key() == Qt::Key_D)
             emit this->DKeyPressed({2, 0, 0});
 }

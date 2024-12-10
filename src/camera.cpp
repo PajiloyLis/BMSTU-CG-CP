@@ -6,6 +6,7 @@ camera::camera(const my_vec3f &pos, const my_vec3f &pov, const my_vec3f &global_
     this->front = (pos - pov).normalize();
     this->right = global_up.cross(front).normalize();
     this->up = (front.cross(right)).normalize();
+    this->global_up = global_up;
     cout << "pos " << this->pos << "\npov " << this->front << "\nright " << right << "\nup " << up << '\n';
 }
 
@@ -16,6 +17,7 @@ camera::camera(const camera &c) {
     right = c.right;
     up = c.up;
     relation = c.relation;
+    global_up = c.global_up;
     near_distance = c.near_distance;
 }
 
@@ -25,6 +27,7 @@ camera::camera(camera &&c) noexcept {
     right = c.right;
     up = c.up;
     relation = c.relation;
+    global_up = c.global_up;
     near_distance = c.near_distance;
 }
 
@@ -38,6 +41,7 @@ camera::camera(const my_vec3f &pos, const my_vec3f &pov, const my_vec3f &global_
     this->front = (pos - pov).normalize();
     this->right = global_up.cross(front).normalize();
     this->up = (front.cross(right)).normalize();
+    this->global_up = global_up;
     cout << "pos " << this->pos << "\npov " << this->front << "\nright " << right << "\nup " << up << '\n';
 }
 
@@ -47,6 +51,7 @@ camera &camera::operator=(const camera &c) {
     right = c.right;
     up = c.up;
     relation = c.relation;
+    global_up = c.global_up;
     near_distance = c.near_distance;
     return *this;
 }
