@@ -62,8 +62,8 @@ mat4 camera::camLookAt() const {
 
 void camera::rotate(const rotate_t &rotate) {
     front.rotate(rotate).normalize();
-    right = global_up.cross(front).normalize();
-    up = front.cross(right).normalize();
+    right = (global_up.cross(front)).normalize();
+    up = (front.cross(right)).normalize();
     cout << "camera rotated\npos " << pos << "\npov " << front << '\n';
 }
 

@@ -31,7 +31,7 @@ camera(const my_vec3f &pos, const my_vec3f &pov, const my_vec3f &global_up, floa
     float near_distance = 0.1;
     float relation;
     float angle_of_view=45;
-    float far_distance = 500;
+    float far_distance = 100;
 
     void move(const move_t &move);
 };
