@@ -13,7 +13,7 @@ MainWindow::MainWindow() : QMainWindow(), handler() {
                         grid->size().width(), grid->size().height());
     drawer->setMouseTracking(true);
     this->handler.AddCamera(
-            {{150, 0, 100}, {0, 0, 0}, {0, 0, 1}, static_cast<float>(drawer->width()) / drawer->height()});
+            {{150, 0, 50}, {0, 0, 0}, {0, 0, 1}, static_cast<float>(drawer->width()) / drawer->height()});
     this->handler.SetScene(
             Scene(drawer, drawer->size().width(), drawer->size().height()));
 
