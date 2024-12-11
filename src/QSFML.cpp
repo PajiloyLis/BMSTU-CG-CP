@@ -162,7 +162,7 @@ mat4 QSFMLCanvas::viewport(const my_vec3f &center) {
     float k = std::min(this->width()/(2*center.getX()), this->height()/(2*center.getY()));
     return {k, 0, 0, 0,
             0, k, 0, 0,
-            0, 0, k, 0,
+            0, 0, 1, 0,
             0, 0, 0, 1};
 }
 

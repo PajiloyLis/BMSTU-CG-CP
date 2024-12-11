@@ -20,7 +20,9 @@ void Scene::DrawFigures() const {
     ClearScene();
     for (auto &figure: figures)
         for (auto &triangle: figure.triangles)
-            scene->DrawTriangle(triangle, cameras[cur_camera], figure.center);
+            scene->DrawTriangle(triangle, cameras[cur_camera],
+                                my_vec3f((figure.max_x - figure.min_x) / 2, (figure.max_y - figure.min_y) / 2,
+                                         (figure.max_z - figure.min_z) / 2));
     scene->repaint();
 }
 
@@ -35,28 +37,26 @@ void Scene::AddCamera(const camera &c) {
 }
 
 void Scene::RotateCurCameraLeft() {
-    cameras[cur_camera].rotate({0, 0, M_PI/360});
+    cameras[cur_camera].rotate({0, 0, M_PI / 360});
 }
 
 void Scene::RotateCurCameraRight() {
-    cameras[cur_camera].rotate({0, 0, -M_PI/360});
+    cameras[cur_camera].rotate({0, 0, -M_PI / 360});
 }
 
 void Scene::RotateCurCameraUp() {
-    cameras[cur_camera].rotate({0, M_PI/360, 0});
+    cameras[cur_camera].rotate({0, M_PI / 360, 0});
 }
 
 void Scene::RotateCurCameraDown() {
-    cameras[cur_camera].rotate({0, -M_PI/360, 0});
+    cameras[cur_camera].rotate({0, -M_PI / 360, 0});
 }
 
-void Scene::ScaleCamera(float &k)
-{
+void Scene::ScaleCamera(float &k) {
     cameras[cur_camera].scale(k);
 }
 
-void Scene::MoveCamera(const move_t &move)
-{
+void Scene::MoveCamera(const move_t &move) {
     cameras[cur_camera].move(move);
 }
 
