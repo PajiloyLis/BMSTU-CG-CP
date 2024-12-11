@@ -152,13 +152,13 @@ my_vec3f QSFMLCanvas::adapt_coords(const camera &c, const my_vec3f &point, const
     trans = viewport(center);
     trans *= c.perspective();
     trans *= c.camLookAt();
-    res = trans * vec4(point.getX(), point.getY(), point.getZ(), 1);
+    vec4 res = trans * vec4(point.getX(), point.getY(), point.getZ(), 1);
     return {res.x, res.y, res.z};
 }
 
 mat4 QSFMLCanvas::viewport(const my_vec3f &center) {
-    return {this->size().width() / (2 * center.getX()), 0, 0, 0,
-            0, this->size().height() / (2 * center.getY()), 0, 0,
+    return {1, 0, 0, 0,
+            0, 1, 0, 0,
             0, 0, 1, 1,
             0, 0, 0, 1};
 }
