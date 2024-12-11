@@ -86,7 +86,7 @@ void QSFMLCanvas::DrawTriangle(const triangle &t, const camera &cam, const my_ve
                                                    static_cast<Uint8>(250 * intensity)));
         }
         z_buffer(points_, image, {static_cast<Uint8>(255 * intensity), static_cast<Uint8>(255 * intensity),
-                                 static_cast<Uint8>(250 * intensity)}, zbuffer);
+                                  static_cast<Uint8>(250 * intensity)}, zbuffer);
 //        this->draw(&points_to_render[0], points_to_render.size(), sf::Triangles);
     }
 }
@@ -148,11 +148,13 @@ void QSFMLCanvas::Clear() {
 
 my_vec3f QSFMLCanvas::adapt_coords(const camera &c, const my_vec3f &point, const my_vec3f &center) {
     mat4 trans(1.0f);
-    if (on_load)
-        trans = viewport(center);
+//    if (on_load)
+    vec4 res = c.perspective() * c.camLookAt() * vec4(center.getX(), center.getY(), center.getZ(), 1);
+    my_vec3f modified_center(res.x, res.y, res.z);
+    trans = viewport(modified_center);
     trans *= c.perspective();
     trans *= c.camLookAt();
-    vec4 res = trans * vec4(point.getX(), point.getY(), point.getZ(), 1);
+    res = trans * vec4(point.getX(), point.getY(), point.getZ(), 1);
     return {res.x, res.y, res.z};
 }
 
