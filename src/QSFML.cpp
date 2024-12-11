@@ -74,52 +74,52 @@ void QSFMLCanvas::paintEvent(QPaintEvent *) {
 void QSFMLCanvas::DrawTriangle(const triangle &t, const camera &cam, const my_vec3f &figure_center) {
     float intensity = light_ray.dot(t.n);
     if (cam.front.dot(t.n) > 0) {
-        array<my_vec3f, 3> points;
+        array<my_vec3f, 3> points_;
         array<sf::Vertex, 3> points_to_render;
-        for (int i = 0; i < points.size(); ++i) {
-            points[i] = adapt_coords(cam, t.vertices[i], figure_center);
-            points_to_render[i] = Vertex({points[i].getX(), points[i].getY()},
+        for (int i = 0; i < points_.size(); ++i) {
+            points_[i] = adapt_coords(cam, t.vertices[i], figure_center);
+            points_to_render[i] = Vertex({points_[i].getX(), points_[i].getY()},
                                          sf::Color(static_cast<Uint8>(255 * intensity),
                                                    static_cast<Uint8>(255 * intensity),
                                                    static_cast<Uint8>(250 * intensity)));
         }
-        z_buffer(points, image, {static_cast<Uint8>(255 * intensity), static_cast<Uint8>(255 * intensity),
+        z_buffer(points_, image, {static_cast<Uint8>(255 * intensity), static_cast<Uint8>(255 * intensity),
                                  static_cast<Uint8>(250 * intensity)}, zbuffer);
 //        this->draw(&points_to_render[0], points_to_render.size(), sf::Triangles);
     }
 }
 
-void QSFMLCanvas::z_buffer(array<my_vec3f, 3> points, Image &image, sf::Color color, vector<float> &z_buffer) {
-    if (points[0].getY() == points[1].getY() && points[1].getY() == points[2].getY()) return;
-    if (points[0].getY() > points[1].getY()) std::swap(points[0], points[1]);
-    if (points[0].getY() > points[2].getY()) std::swap(points[0], points[2]);
-    if (points[1].getY() > points[2].getY()) std::swap(points[1], points[2]);
-    points[0].setZ(ceil(points[0].getZ())), points[0].setX(ceil(points[0].getX())), points[0].setY(
-            ceil(points[0].getY()));
-    points[1].setZ(ceil(points[1].getZ())), points[1].setX(ceil(points[1].getX())), points[1].setY(
-            ceil(points[1].getY()));
-    points[2].setZ(ceil(points[2].getZ())), points[2].setX(ceil(points[2].getX())), points[2].setY(
-            ceil(points[2].getY()));
-    int total_height = (int) (points[2].getY() - points[0].getY());
+void QSFMLCanvas::z_buffer(array<my_vec3f, 3> points_, Image &image, sf::Color color_, vector<float> &zbuffer) {
+    if (points_[0].getY() == points_[1].getY() && points_[1].getY() == points_[2].getY()) return;
+    if (points_[0].getY() > points_[1].getY()) std::swap(points_[0], points_[1]);
+    if (points_[0].getY() > points_[2].getY()) std::swap(points_[0], points_[2]);
+    if (points_[1].getY() > points_[2].getY()) std::swap(points_[1], points_[2]);
+    points_[0].setZ(ceil(points_[0].getZ())), points_[0].setX(ceil(points_[0].getX())), points_[0].setY(
+            ceil(points_[0].getY()));
+    points_[1].setZ(ceil(points_[1].getZ())), points_[1].setX(ceil(points_[1].getX())), points_[1].setY(
+            ceil(points_[1].getY()));
+    points_[2].setZ(ceil(points_[2].getZ())), points_[2].setX(ceil(points_[2].getX())), points_[2].setY(
+            ceil(points_[2].getY()));
+    int total_height = (int) (points_[2].getY() - points_[0].getY());
     for (int i = 0; i < total_height; i++) {
-        bool second_half = i > points[1].getY() - points[0].getY() || points[1].getY() == points[0].getY();
-        int segment_height = (second_half ? static_cast<int>(points[2].getY() - points[1].getY())
-                                          : static_cast<int>(points[1].getY() - points[0].getY()));
+        bool second_half = i > points_[1].getY() - points_[0].getY() || points_[1].getY() == points_[0].getY();
+        int segment_height = (second_half ? static_cast<int>(points_[2].getY() - points_[1].getY())
+                                          : static_cast<int>(points_[1].getY() - points_[0].getY()));
         float alpha = (float) i / total_height;
-        float beta = (float) (i - (second_half ? points[1].getY() - points[0].getY() : 0)) /
+        float beta = (float) (i - (second_half ? points_[1].getY() - points_[0].getY() : 0)) /
                      segment_height;
-        my_vec3f a = points[0] + (points[2] - points[0]) * alpha;
-        my_vec3f b = second_half ? points[1] + (points[2] - points[1]) * beta :
-                     points[0] + (points[1] - points[0]) * beta;
+        my_vec3f a = points_[0] + (points_[2] - points_[0]) * alpha;
+        my_vec3f b = second_half ? points_[1] + (points_[2] - points_[1]) * beta :
+                     points_[0] + (points_[1] - points_[0]) * beta;
         if (a.getX() > b.getX()) std::swap(a, b);
         for (int j = static_cast<int>(a.getX()); j <= static_cast<int>(b.getX()); j++) {
             float phi = (b.getX() == a.getX() ? 1.f : (float) (j - a.getX()) / (float) (b.getX() - a.getX()));
             my_vec3f P = a + ((b - a) * phi);
             if (P.getX() >= 0 && P.getY() >= 0 && P.getX() < image.getSize().y && P.getY() < image.getSize().x) {
                 int idx = static_cast<int>(round(P.getX() + P.getY() * image.getSize().x));
-                if (z_buffer[idx] < P.getZ()) {
-                    z_buffer[idx] = P.getZ();
-                    image.setPixel(static_cast<Uint32>(round(P.getX())), static_cast<Uint32>(round(P.getY())), color);
+                if (zbuffer[idx] < P.getZ()) {
+                    zbuffer[idx] = P.getZ();
+                    image.setPixel(static_cast<Uint32>(round(P.getX())), static_cast<Uint32>(round(P.getY())), color_);
                 }
             }
         }

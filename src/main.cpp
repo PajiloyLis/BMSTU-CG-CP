@@ -82,7 +82,7 @@ signed main(int argc, char *argv[])
 ////            float intensity = light_ray.dot(i.getT().getN());
 ////            if (cam.dot(i.getT().getN()) > 0) {
 ////                window.draw(i.shape);
-//////                z_buffer(i.getT().getVertices(), image,
+//////                zbuffer(i.getT().getVertices(), image,
 //////                         sf::Color{static_cast<sf::Uint8>(255 * intensity),
 //////                                   static_cast<sf::Uint8>(250 * intensity),
 //////                                   static_cast<sf::Uint8>(250 * intensity)}, zbuffer);
