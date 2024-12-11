@@ -154,8 +154,8 @@ my_vec3f QSFMLCanvas::adapt_coords(const camera &c, const my_vec3f &point, const
 }
 
 mat4 QSFMLCanvas::viewport(const my_vec3f &center) {
-    return {1, 0, 0, this->size().width(),
-            0, -1, 0, this->size().height(),
+    return {this->size().width() / (2 * center.getX()), 0, 0, 0,
+            0, this->size().height() / (2 * center.getY()), 0, 0,
             0, 0, 1, 1,
             0, 0, 0, 1};
 }
