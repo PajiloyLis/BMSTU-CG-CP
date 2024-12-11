@@ -48,9 +48,11 @@ void MainWindow::SetBindings() {
 }
 
 void MainWindow::LoadModelActionTriggered() {
+    on_load = true;
     string file_path = QFileDialog::getOpenFileName(nullptr, "Выберите STL файл", ".", "*.STL").toStdString();
     handler.LoadModel(file_path);
     DrawScene();
+    on_load = false;
 }
 
 void MainWindow::DrawScene() {
