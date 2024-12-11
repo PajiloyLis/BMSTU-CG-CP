@@ -42,7 +42,7 @@ void QSFMLCanvas::showEvent(QShowEvent *) {
 }
 
 void QSFMLCanvas::paintEvent(QPaintEvent *) {
-//    this->widgetDraw();
+    this->widgetDraw();
     this->display();
 }
 
@@ -83,9 +83,9 @@ void QSFMLCanvas::DrawTriangle(const triangle &t, const camera &cam, const my_ve
                                                    static_cast<Uint8>(255 * intensity),
                                                    static_cast<Uint8>(250 * intensity)));
         }
-//        z_buffer(points_, image, {static_cast<Uint8>(255 * intensity), static_cast<Uint8>(255 * intensity),
-//                                 static_cast<Uint8>(250 * intensity)}, zbuffer);
-        this->draw(&points_to_render[0], points_to_render.size(), sf::Triangles);
+        z_buffer(points_, image, {static_cast<Uint8>(255 * intensity), static_cast<Uint8>(255 * intensity),
+                                 static_cast<Uint8>(250 * intensity)}, zbuffer);
+//        this->draw(&points_to_render[0], points_to_render.size(), sf::Triangles);
     }
 }
 
@@ -117,7 +117,7 @@ void QSFMLCanvas::z_buffer(array<my_vec3f, 3> points_, Image &image, sf::Color c
             my_vec3f P = a + ((b - a) * phi);
             if (P.getX() >= 0 && P.getY() >= 0 && P.getX() < image.getSize().y && P.getY() < image.getSize().x) {
                 int idx = static_cast<int>(round(P.getX() + P.getY() * image.getSize().x));
-                if (zbuffer[idx] < P.getZ()) {
+                if (zbuffer[idx] > P.getZ()) {
                     zbuffer[idx] = P.getZ();
                     image.setPixel(static_cast<Uint32>(round(P.getX())), static_cast<Uint32>(round(P.getY())), color_);
                 }
@@ -140,7 +140,7 @@ void QSFMLCanvas::Clear() {
         for (int j = 0; j < image.getSize().x; ++j)
             image.setPixel(j, i, back_color);
     }
-    fill(zbuffer.begin(), zbuffer.end(), std::numeric_limits<float>::min());
+    fill(zbuffer.begin(), zbuffer.end(), std::numeric_limits<float>::max());
     this->clear(back_color);
 }
 
