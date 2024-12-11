@@ -160,8 +160,8 @@ my_vec3f QSFMLCanvas::adapt_coords(const camera &c, const my_vec3f &point, const
 
 mat4 QSFMLCanvas::viewport(const my_vec3f &center) {
     float k = std::min(this->width()/(2*center.getX()), this->height()/(2*center.getY()));
-    return {k, 0, 0, 0,
-            0, k, 0, 0,
+    return {k, 0, 0, this->width(),
+            0, k, 0, this->height(),
             0, 0, 1, 0,
             0, 0, 0, 1};
 }
