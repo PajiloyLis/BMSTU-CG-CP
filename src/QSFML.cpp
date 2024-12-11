@@ -289,28 +289,28 @@ mat4 QSFMLCanvas::viewport(const my_vec3f &center) {
 void QSFMLCanvas::keyPressEvent(QKeyEvent *event) {
     if (event->key() == Qt::Key_Left)
         emit
-    this->LeftKeyPressed();
+        this->LeftKeyPressed();
     else if (event->key() == Qt::Key_Right)
         emit
-    this->RightKeyPressed();
+        this->RightKeyPressed();
     else if (event->key() == Qt::Key_Up)
         emit
-    this->UpKeyPressed();
+        this->UpKeyPressed();
     else if (event->key() == Qt::Key_Down)
         emit
-    this->DownKeyPressed();
+        this->DownKeyPressed();
     else if (event->key() == Qt::Key_W)
         emit
-    this->WKeyPressed({0, 0, -2});
+        this->WKeyPressed({0, 0, -2});
     else if (event->key() == Qt::Key_A)
         emit
-    this->AKeyPressed({-2, 0, 0});
+        this->AKeyPressed({-2, 0, 0});
     else if (event->key() == Qt::Key_S)
         emit
-    this->SKeyPressed({0, 0, 2});
+        this->SKeyPressed({0, 0, 2});
     else if (event->key() == Qt::Key_D)
         emit
-    this->DKeyPressed({2, 0, 0});
+        this->DKeyPressed({2, 0, 0});
 }
 
 void QSFMLCanvas::wheelEvent(QWheelEvent *event) {
