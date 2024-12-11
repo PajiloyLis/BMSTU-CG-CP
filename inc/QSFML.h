@@ -24,7 +24,7 @@
 using namespace std;
 using namespace sf;
 
-bool on_load = false;
+
 
 class QSFMLCanvas : public QWidget, public sf::RenderWindow {
 Q_OBJECT

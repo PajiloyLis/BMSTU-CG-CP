@@ -1,5 +1,7 @@
 #include "main_window.h"
 
+extern bool on_load;
+
 MainWindow::MainWindow() : QMainWindow(), handler() {
     std::setlocale(LC_ALL, "");
     Ui::MainWindow ui;
