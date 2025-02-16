@@ -44,7 +44,8 @@ public:
         this->front = glm::normalize(front);
 
         // Also re-calculate the Right and Up vector
-        right = glm::normalize(glm::cross(this->front, up));  // Normalize the vectors, because their length gets closer to 0 the more you look up or down which results in slower movement.
+        right = glm::normalize(glm::cross(this->front,
+                                          up));  // Normalize the vectors, because their length gets closer to 0 the more you look up or down which results in slower movement.
         up = glm::normalize(glm::cross(right, this->front));
     }
 
@@ -83,6 +84,15 @@ public:
     // Получение матрицы вида
     glm::mat4 getViewMatrix() {
         return glm::lookAt(position, position + front, up);
+    }
+
+    void scale(float &scale) {
+        angle_of_view += scale;
+        if (angle_of_view < 1.0f)
+            angle_of_view = 1.0f;
+        if (angle_of_view > 45.0f)
+            angle_of_view = 45.0f;
+        cout << "camera scaled " << angle_of_view << '\n';
     }
 };
 
