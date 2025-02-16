@@ -130,6 +130,8 @@ void QSFMLCanvas::z_buffer(array<my_vec3f, 3> points_, Image &image, sf::Color c
 }
 
 void QSFMLCanvas::widgetDraw() {
+    sf::CircleShape crater_pos(50);
+    
     for (int i = 0; i < image.getSize().y; ++i) {
         VertexArray line(sf::Points, image.getSize().x);
         for (int j = 0; j < image.getSize().x; ++j)
