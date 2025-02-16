@@ -35,7 +35,7 @@ void textured_figure::rotate(const rotate_t &rotate) {
     cout << "figure_rotated\n";
 }
 
-my_vec3f textured_figure::get_center() const {
+glm::vec3 textured_figure::get_center() const {
     return {(max_x - min_x) / 2, (max_y - min_y) / 2, (max_z - min_z) / 2};
 }
 
@@ -47,7 +47,7 @@ const vector<textured_triangle> & textured_figure::getTriangles() const {
     return triangles;
 }
 
-void textured_figure::setCenter(const my_vec3f &center) {
+void textured_figure::setCenter(const glm::vec3 &center) {
     this->center = center;
 }
 

@@ -15,7 +15,7 @@ public:
 
     textured_triangle() = default;
 
-    textured_triangle(const my_vec3f &normal, const array<my_vec3f, 3> &vertices, const my_vec3f &n,
+    textured_triangle(const glm::vec3 &normal, const array<glm::vec3, 3> &vertices, const glm::vec3 &n,
                       const Texture &texture);
 
     textured_triangle(const triangle &other, const Texture &texture);

@@ -1,6 +1,6 @@
 #include "triangle.h"
 
-triangle::triangle(const my_vec3f &normal, const array<my_vec3f, 3> &points) {
+triangle::triangle(const glm::vec3 &normal, const array<glm::vec3, 3> &points) {
     n = normal;
     vertices = points;
     max_x = std::max(vertices[0].getX(), std::max(vertices[1].getX(), vertices[2].getX()));
@@ -12,7 +12,7 @@ triangle::triangle(const my_vec3f &normal, const array<my_vec3f, 3> &points) {
     min_z = std::min(vertices[0].getZ(), std::min(vertices[1].getZ(), vertices[2].getZ()));
 }
 
-triangle::triangle(const my_vec3f &normal, array<my_vec3f, 3> &&points) {
+triangle::triangle(const glm::vec3 &normal, array<glm::vec3, 3> &&points) {
     n = normal;
     vertices = points;
     max_x = std::max(vertices[0].getX(), std::max(vertices[1].getX(), vertices[2].getX()));
@@ -24,7 +24,7 @@ triangle::triangle(const my_vec3f &normal, array<my_vec3f, 3> &&points) {
     min_z = std::min(vertices[0].getZ(), std::min(vertices[1].getZ(), vertices[2].getZ()));
 }
 
-triangle::triangle(my_vec3f &&normal, const array<my_vec3f, 3> &points) {
+triangle::triangle(glm::vec3 &&normal, const array<glm::vec3, 3> &points) {
     n = normal;
     vertices = points;
     max_x = std::max(vertices[0].getX(), std::max(vertices[1].getX(), vertices[2].getX()));
@@ -36,7 +36,7 @@ triangle::triangle(my_vec3f &&normal, const array<my_vec3f, 3> &points) {
     min_z = std::min(vertices[0].getZ(), std::min(vertices[1].getZ(), vertices[2].getZ()));
 }
 
-triangle::triangle(my_vec3f &&normal, array<my_vec3f, 3> &&points) {
+triangle::triangle(glm::vec3 &&normal, array<glm::vec3, 3> &&points) {
     n = normal;
     vertices = points;
     max_x = std::max(vertices[0].getX(), std::max(vertices[1].getX(), vertices[2].getX()));
@@ -48,7 +48,7 @@ triangle::triangle(my_vec3f &&normal, array<my_vec3f, 3> &&points) {
     min_z = std::min(vertices[0].getZ(), std::min(vertices[1].getZ(), vertices[2].getZ()));
 }
 
-void triangle::setVertices(const array<my_vec3f, 3> &vertices) {
+void triangle::setVertices(const array<glm::vec3, 3> &vertices) {
     this->vertices = vertices;
     max_x = std::max(vertices[0].getX(), std::max(vertices[1].getX(), vertices[2].getX()));
     max_y = std::max(vertices[0].getY(), std::max(vertices[1].getY(), vertices[2].getY()));
@@ -59,15 +59,15 @@ void triangle::setVertices(const array<my_vec3f, 3> &vertices) {
     min_z = std::min(vertices[0].getZ(), std::min(vertices[1].getZ(), vertices[2].getZ()));
 }
 
-void triangle::setN(const my_vec3f &n) {
+void triangle::setN(const glm::vec3 &n) {
     this->n = n;
 }
 
-const array<my_vec3f, 3> &triangle::getVertices() const {
+const array<glm::vec3, 3> &triangle::getVertices() const {
     return vertices;
 }
 
-const my_vec3f &triangle::getN() const {
+const glm::vec3 &triangle::getN() const {
     return n;
 }
 

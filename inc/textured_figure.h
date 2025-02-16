@@ -21,7 +21,7 @@ public:
 
     textured_figure() = default;
 
-    [[nodiscard]] my_vec3f get_center() const;
+    [[nodiscard]] glm::vec3 get_center() const;
 
     [[nodiscard]] array<float, 3> get_size() const;
 
@@ -31,12 +31,12 @@ public:
     [[nodiscard]] const vector<textured_triangle> &getTriangles() const;
 
 
-    void setCenter(const my_vec3f &center);
+    void setCenter(const glm::vec3 &center);
 
     vector<textured_triangle> triangles;
     vector<Texture> textures;
     float min_x, max_x, min_y, max_y, min_z, max_z;
-    my_vec3f center;
+    glm::vec3 center;
 };
 
 #endif //CP_CG_TEXTURED_FIGURE_H

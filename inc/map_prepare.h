@@ -22,10 +22,10 @@ using namespace sf;
 #define VALUE_POS 25
 #define METERS_PER_POINT 30
 
-vector<my_vec3f> read_map(const string &map_filename, const string &map_info_file);
+vector<glm::vec3> read_map(const string &map_filename, const string &map_info_file);
 
 vector<textured_triangle> read_stl(const string &filename);
 
-set<set<int>> stupid_delaunay_triangulate(vector<my_vec3f> &points);
+set<set<int>> stupid_delaunay_triangulate(vector<glm::vec3> &points);
 
 #endif //CP_CG_MAP_PREPARE_H

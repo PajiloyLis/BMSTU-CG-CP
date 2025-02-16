@@ -21,13 +21,13 @@ void Scene::DrawFigures() const {
     for (auto &figure: figures)
         for (auto &triangle: figure.triangles)
             scene->DrawTriangle(triangle, cameras[cur_camera],
-                                my_vec3f((figure.max_x - figure.min_x) / 2, (figure.max_y - figure.min_y) / 2,
+                                glm::vec3((figure.max_x - figure.min_x) / 2, (figure.max_y - figure.min_y) / 2,
                                          (figure.max_z - figure.min_z) / 2), {255, 255, 250});
     scene->repaint();
     if (figures.size() > 0) {
         sf::CircleShape crater_pos(5);
         crater_pos.setFillColor(sf::Color::Red);
-        my_vec3f possible_pos = scene->adapt_coords(cameras[cur_camera], {50, 43.55, 37.96},
+        glm::vec3 possible_pos = scene->adapt_coords(cameras[cur_camera], {50, 43.55, 37.96},
                                                     figures[0].get_center());
         crater_pos.setPosition({possible_pos.getX(), possible_pos.getY()});
         scene->draw(crater_pos);

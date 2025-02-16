@@ -1,6 +1,6 @@
 #include "operations.h"
 
-void z_buffer(array<my_vec3f, 3> points, Image &image, sf::Color color, vector<float> &z_buffer) {
+void z_buffer(array<glm::vec3, 3> points, Image &image, sf::Color color, vector<float> &z_buffer) {
     if (points[0].getZ() == points[1].getZ() && points[1].getZ() == points[2].getZ()) return;
     if (points[0].getZ() > points[1].getZ()) std::swap(points[0], points[1]);
     if (points[0].getZ() > points[2].getZ()) std::swap(points[0], points[2]);
@@ -19,13 +19,13 @@ void z_buffer(array<my_vec3f, 3> points, Image &image, sf::Color color, vector<f
         float alpha = (float) i / total_height;
         float beta = (float) (i - (second_half ? points[1].getZ() - points[0].getZ() : 0)) /
                      segment_height; // be careful: with above conditions no division by zero here
-        my_vec3f A = points[0] + my_vec3f(points[2] - points[0]) * alpha;
-        my_vec3f B = second_half ? points[1] + my_vec3f(points[2] - points[1]) * beta :
-                     points[0] + my_vec3f(points[1] - points[0]) * beta;
+        glm::vec3 A = points[0] + glm::vec3(points[2] - points[0]) * alpha;
+        glm::vec3 B = second_half ? points[1] + glm::vec3(points[2] - points[1]) * beta :
+                     points[0] + glm::vec3(points[1] - points[0]) * beta;
         if (A.getY() > B.getY()) std::swap(A, B);
         for (int j = static_cast<int>(A.getY()); j <= static_cast<int>(B.getY()); j++) {
             float phi = B.getY() == A.getY() ? 1. : (float) (j - A.getY()) / (float) (B.getY() - A.getY());
-            my_vec3f P = my_vec3f(A) + my_vec3f(B - A) * phi;
+            glm::vec3 P = glm::vec3(A) + glm::vec3(B - A) * phi;
             if (P.getZ() >= 0 && P.getY() >= 0 && P.getZ() < image.getSize().y && P.getY() < image.getSize().x) {
                 int idx = static_cast<int>(round(P.getY() + P.getZ() * image.getSize().x));
                 if (z_buffer[idx] < P.getX()) {
