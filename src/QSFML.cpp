@@ -197,3 +197,22 @@ void QSFMLCanvas::wheelEvent(QWheelEvent *event) {
             emit WheelScrolledDown(event->angleDelta().y() / (8.f * 180));
 }
 
+void QSFMLCanvas::mousePressEvent(QMouseEvent *event) {
+    if (event->button() == Qt::LeftButton) {
+        mouse_left_press_pos = event->pos();
+        mouse_left_pressed = true;
+    }
+}
+
+void QSFMLCanvas::mouseMoveEvent(QMouseEvent *event) {
+    if (mouse_left_pressed) {
+        QPoint currentPos = event->pos();
+        // Вы можете добавить логику здесь для обработки перемещения
+        // Например, рисование, перемещение объектов и т.д.
+        // В этом примере просто будем отображать координаты
+        qDebug() << "Dragging: " << currentPos;
+        update(); // Обновляем виджет для перерисовки, если нужно
+    }
+
+}
+

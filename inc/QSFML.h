@@ -101,6 +101,8 @@ private:
 
     void wheelEvent(QWheelEvent *event) override;
 
+    void mousePressEvent(QMouseEvent *event) override;
+
     glm::mat4 viewport(const glm::vec3 &center);
 
     void onInit();
@@ -126,6 +128,13 @@ private:
     sf::Color back_color;
 
     static const glm::vec3 light_ray;
+
+    bool mouse_left_pressed;
+
+    QPoint mouse_left_press_pos;
+
+    void mouseMoveEvent(QMouseEvent *event) override;
+
 
 public:
 

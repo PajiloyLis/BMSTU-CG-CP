@@ -67,10 +67,7 @@ void Scene::ScaleCamera(float &k) {
 }
 
 void Scene::MoveCamera(const Camera_Movement &move) {
-    cur_frame_time = time(nullptr);
-    float delta_time = cur_frame_time - last_frame_time;
-    last_frame_time = cur_frame_time;
-    cameras[cur_camera].move(move, delta_time);
+    cameras[cur_camera].move(move);
 }
 
 
