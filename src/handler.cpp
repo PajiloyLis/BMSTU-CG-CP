@@ -102,7 +102,7 @@ void TaskHandler::AddCamera(const camera &cam) {
 }
 
 void TaskHandler::RotateCurCamera(const float &dx, const float &dy) {
-    scene.RotateCurCamera(<#initializer#>, <#initializer#>);
+    scene.RotateCurCamera(dx, dy);
 }
 
 
