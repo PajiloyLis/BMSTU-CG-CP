@@ -10,12 +10,12 @@ figure::figure(const vector<triangle> &triangles) {
     min_x = min_y = min_z = 1e9;
     for (auto &triangle: triangles) {
         for (auto &p: triangle.vertices) {
-            max_x = std::max(max_x, p.xx), min_x = std::min(min_x, p.getX());
-            max_y = std::max(max_y, p.getY()), min_y = std::min(min_y, p.getY());
-            max_z = std::max(max_z, p.getZ()), min_z = std::min(min_z, p.getZ());
+            max_x = std::max(max_x, p.x), min_x = std::min(min_x, p.x);
+            max_y = std::max(max_y, p.y), min_y = std::min(min_y, p.y);
+            max_z = std::max(max_z, p.z), min_z = std::min(min_z, p.z);
         }
     }
-    center.setX((max_x - min_x) / 2), center.setY((max_y - min_y) / 2), center.setZ((max_z - min_z) / 2);
+    center.x = (max_x - min_x) / 2, center.setY((max_y - min_y) / 2), center.setZ((max_z - min_z) / 2);
 }
 
 figure::figure(vector<triangle> &&triangles) {
@@ -24,9 +24,9 @@ figure::figure(vector<triangle> &&triangles) {
     min_x = min_y = min_z = 1e9;
     for (auto &triangle: triangles) {
         for (auto &p: triangle.vertices) {
-            max_x = std::max(max_x, p.getX()), min_x = std::min(min_x, p.getX());
-            max_y = std::max(max_y, p.getY()), min_y = std::min(min_y, p.getY());
-            max_z = std::max(max_z, p.getZ()), min_z = std::min(min_z, p.getZ());
+            max_x = std::max(max_x, p.x), min_x = std::min(min_x, p.x);
+            max_y = std::max(max_y, p.y), min_y = std::min(min_y, p.y);
+            max_z = std::max(max_z, p.z), min_z = std::min(min_z, p.z);
         }
     }
     center.setX((max_x - min_x) / 2), center.setY((max_y - min_y) / 2), center.setZ((max_z - min_z) / 2);
