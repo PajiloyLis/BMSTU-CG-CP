@@ -15,8 +15,6 @@ void TaskHandler::ClearScene() const {
 }
 
 void TaskHandler::LoadModel(const string &filepath) {
-    scene.AddFigure(figure({triangle(my_vec3f(1, 0, 0), {my_vec3f(50, 43.55, 37.96),
-                                         my_vec3f(50, 43.55, 37.96), my_vec3f(50, 43.55, 37.96)})}));
     scene.AddFigure(figure(read_stl(filepath)));
 }
 
@@ -53,30 +51,30 @@ vector<triangle> TaskHandler::read_stl(const string &filename) {
     }
     cout << "readed " << cnt << '\n';
     in.close();
-    float max_x, min_x, max_y, min_y, max_z, min_z;
-    max_x = max_y = max_z = -1e9;
-    min_x = min_y = min_z = 1e9;
-    for (auto &triangle: triangles) {
-        for (auto &p: triangle.getVertices()) {
-            max_x = std::max(max_x, p.getX()), min_x = std::min(min_x, p.getX());
-            max_y = std::max(max_y, p.getY()), min_y = std::min(min_y, p.getY());
-            max_z = std::max(max_z, p.getZ()), min_z = std::min(min_z, p.getZ());
-        }
-    }
-    cout << max_x << " " << max_y << " " << max_z << " " << min_x << " " << min_y << " " << min_z << '\n';
+//    float max_x, min_x, max_y, min_y, max_z, min_z;
+//    max_x = max_y = max_z = -1e9;
+//    min_x = min_y = min_z = 1e9;
+//    for (auto &triangle: triangles) {
+//        for (auto &p: triangle.getVertices()) {
+//            max_x = std::max(max_x, p.getX()), min_x = std::min(min_x, p.getX());
+//            max_y = std::max(max_y, p.getY()), min_y = std::min(min_y, p.getY());
+//            max_z = std::max(max_z, p.getZ()), min_z = std::min(min_z, p.getZ());
+//        }
+//    }
+//    cout << max_x << " " << max_y << " " << max_z << " " << min_x << " " << min_y << " " << min_z << '\n';
     if (!normal) {
         cout << "calculate normals\n";
-//        float max_x, min_x, max_y, min_y, max_z, min_z;
-//        max_x = max_y = max_z = -1e9;
-//        min_x = min_y = min_z = 1e9;
-//        for (auto &triangle: triangles) {
-//            for (auto &p: triangle.getVertices()) {
-//                max_x = std::max(max_x, p.getX()), min_x = std::min(min_x, p.getX());
-//                max_y = std::max(max_y, p.getY()), min_y = std::min(min_y, p.getY());
-//                max_z = std::max(max_z, p.getZ()), min_z = std::min(min_z, p.getZ());
-//            }
-//        }
-//        cout << max_x << " " << max_y << " " << max_z << " " << min_x << " " << min_y << " " << min_z << '\n';
+        float max_x, min_x, max_y, min_y, max_z, min_z;
+        max_x = max_y = max_z = -1e9;
+        min_x = min_y = min_z = 1e9;
+        for (auto &triangle: triangles) {
+            for (auto &p: triangle.getVertices()) {
+                max_x = std::max(max_x, p.getX()), min_x = std::min(min_x, p.getX());
+                max_y = std::max(max_y, p.getY()), min_y = std::min(min_y, p.getY());
+                max_z = std::max(max_z, p.getZ()), min_z = std::min(min_z, p.getZ());
+            }
+        }
+        cout << max_x << " " << max_y << " " << max_z << " " << min_x << " " << min_y << " " << min_z << '\n';
         my_vec3f center((max_x - min_x) / 2, (max_y - min_y) / 2, (max_z - min_z) / 2);
         fstream out(filename, ios_base::out | ios_base::in | ios_base::binary);
         out.seekp(0);

@@ -19,12 +19,10 @@ void Scene::ClearScene() const {
 void Scene::DrawFigures() const {
     ClearScene();
     for (auto &figure: figures)
-        if (figure.triangles.size() == 1)
-            scene->draw()
-    for (auto &triangle: figure.triangles)
-        scene->DrawTriangle(triangle, cameras[cur_camera],
-                            my_vec3f((figure.max_x - figure.min_x) / 2, (figure.max_y - figure.min_y) / 2,
-                                     (figure.max_z - figure.min_z) / 2), {255, 255, 250});
+        for (auto &triangle: figure.triangles)
+            scene->DrawTriangle(triangle, cameras[cur_camera],
+                                my_vec3f((figure.max_x - figure.min_x) / 2, (figure.max_y - figure.min_y) / 2,
+                                         (figure.max_z - figure.min_z) / 2), {255, 255, 250});
     scene->repaint();
 }
 
