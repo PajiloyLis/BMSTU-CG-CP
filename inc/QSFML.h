@@ -91,6 +91,10 @@ private:
 
     void mousePressEvent(QMouseEvent *event) override;
 
+    void mouseMoveEvent(QMouseEvent *event) override;
+
+    void mouseReleaseEvent(QMouseEvent *event) override;
+
     glm::mat4 viewport(const glm::vec3 &center);
 
     void onInit();
@@ -120,9 +124,6 @@ private:
     bool mouse_left_pressed;
 
     QPoint mouse_left_press_pos;
-
-    void mouseMoveEvent(QMouseEvent *event) override;
-
 
 public:
 

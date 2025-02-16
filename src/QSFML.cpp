@@ -203,8 +203,16 @@ void QSFMLCanvas::mouseMoveEvent(QMouseEvent *event) {
         // В этом примере просто будем отображать координаты
         QPoint currentPos = event->pos();
         emit MouseMove(currentPos.x() - mouse_left_press_pos.x(), currentPos.y() - mouse_left_press_pos.y());
-        update(); // Обновляем виджет для перерисовки, если нужно
     }
-
 }
+
+void QSFMLCanvas::mouseReleaseEvent(QMouseEvent *event) {
+    if (event->button() == Qt::LeftButton) {
+        // Завершаем перетаскивание
+        mouse_left_pressed = false;
+        QPoint currentPos = event->pos();
+        emit MouseMove(currentPos.x() - mouse_left_press_pos.x(), currentPos.y() - mouse_left_press_pos.y());
+    }
+}
+
 
