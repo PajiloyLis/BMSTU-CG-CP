@@ -5,6 +5,7 @@
 #include "textured_figure.h"
 #include "figure.h"
 #include "camera.h"
+#include <GL/gl.h>
 
 class Scene {
 public:

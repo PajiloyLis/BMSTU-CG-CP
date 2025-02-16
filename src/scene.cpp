@@ -67,7 +67,7 @@ void Scene::ScaleCamera(float &k) {
 }
 
 void Scene::MoveCamera(const Camera_Movement &move) {
-    cur_frame_time = glm::
+    cur_frame_time = time();
     cameras[cur_camera].move(move);
 }
 
