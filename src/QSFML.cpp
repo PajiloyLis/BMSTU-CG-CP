@@ -3,7 +3,6 @@
 bool on_load = false;
 
 const glm::vec3 QSFMLCanvas::light_ray = glm::vec3(0, 0, 1);
-//const my_vec3f QSFMLCanvas::camera_ray = my_vec3f(1, 0, 0);
 
 QSFMLCanvas::QSFMLCanvas(QWidget *parent, const QSize &Size)
         : QWidget(parent),
@@ -92,7 +91,7 @@ QSFMLCanvas::DrawTriangle(const triangle &t, const camera &cam, const glm::vec3 
     }
 }
 
-void QSFMLCanvas::z_buffer(array<, 3> points_, Image &image, sf::Color color_, vector<float> &zbuffer) {
+void QSFMLCanvas::z_buffer(array<glm::vec3, 3> points_, Image &image, sf::Color color_, vector<float> &zbuffer) {
     if (points_[0].getY() == points_[1].getY() && points_[1].getY() == points_[2].getY()) return;
     if (points_[0].getY() > points_[1].getY()) std::swap(points_[0], points_[1]);
     if (points_[0].getY() > points_[2].getY()) std::swap(points_[0], points_[2]);
@@ -111,13 +110,13 @@ void QSFMLCanvas::z_buffer(array<, 3> points_, Image &image, sf::Color color_, v
         float alpha = (float) i / total_height;
         float beta = (float) (i - (second_half ? points_[1].getY() - points_[0].getY() : 0)) /
                      segment_height;
-        my_vec3f a = points_[0] + (points_[2] - points_[0]) * alpha;
-        my_vec3f b = second_half ? points_[1] + (points_[2] - points_[1]) * beta :
+        glm::vec3 a = points_[0] + (points_[2] - points_[0]) * alpha;
+        glm::vec3 b = second_half ? points_[1] + (points_[2] - points_[1]) * beta :
                      points_[0] + (points_[1] - points_[0]) * beta;
         if (a.getX() > b.getX()) std::swap(a, b);
         for (int j = static_cast<int>(a.getX()); j <= static_cast<int>(b.getX()); j++) {
             float phi = (b.getX() == a.getX() ? 1.f : (float) (j - a.getX()) / (float) (b.getX() - a.getX()));
-            my_vec3f P = a + ((b - a) * phi);
+            glm::vec3 P = a + ((b - a) * phi);
             if (P.getX() >= 0 && P.getY() >= 0 && P.getX() < image.getSize().x && P.getY() < image.getSize().y) {
                 int idx = static_cast<int>(round(P.getX() + P.getY() * image.getSize().x));
                 if (zbuffer[idx] > P.getZ()) {
@@ -147,7 +146,7 @@ void QSFMLCanvas::Clear() {
     this->clear(back_color);
 }
 
-my_vec3f QSFMLCanvas::adapt_coords(const camera &c, const my_vec3f &point, const my_vec3f &center) {
+glm::vec3 QSFMLCanvas::adapt_coords(const camera &c, const glm::vec3 &point, const glm::vec3 &center) {
     mat4 trans(1.0f);
 //    if (on_load)
 //    vec4 res_1 = c.perspective() * c.camLookAt() * vec4(center.getX(), center.getY(), center.getZ(), 1);
@@ -159,7 +158,7 @@ my_vec3f QSFMLCanvas::adapt_coords(const camera &c, const my_vec3f &point, const
     return {res.x, res.y, res.z};
 }
 
-mat4 QSFMLCanvas::viewport(const my_vec3f &center) {
+mat4 QSFMLCanvas::viewport(const glm::vec3 &center) {
     float k = std::min(this->width() / (2 * center.getX()), this->height() / (2 * center.getY()));
     return {k, 0, 0, this->width(),
             0, k, 0, this->height(),

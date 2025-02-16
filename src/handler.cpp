@@ -26,7 +26,7 @@ vector<triangle> TaskHandler::read_stl(const string &filename) {
     cout << n << '\n';
 
     vector<triangle> triangles(n);
-    array<my_vec3f, 3> vertices;
+    array<glm::vec3, 3> vertices;
     float x, y, z;
     bool normal = false;
     int cnt = 0;
@@ -75,17 +75,14 @@ vector<triangle> TaskHandler::read_stl(const string &filename) {
             }
         }
         cout << max_x << " " << max_y << " " << max_z << " " << min_x << " " << min_y << " " << min_z << '\n';
-        my_vec3f center((max_x - min_x) / 2, (max_y - min_y) / 2, (max_z - min_z) / 2);
+        glm::vec3 center((max_x - min_x) / 2, (max_y - min_y) / 2, (max_z - min_z) / 2);
         fstream out(filename, ios_base::out | ios_base::in | ios_base::binary);
         out.seekp(0);
         out.seekp(84, ios_base::beg);
         for (auto &triangle: triangles) {
             vertices = triangle.getVertices();
-//            my_vec3f center_1 = vertices[0] - center,
-//                    center_2 = vertices[1] - center,
-//                    center_3 = vertices[2] - center;
-            my_vec3f a = vertices[1] - vertices[0], b = vertices[2] - vertices[0];
-            my_vec3f v_n = a.cross(b);
+            glm::vec3 a = vertices[1] - vertices[0], b = vertices[2] - vertices[0];
+            glm::vec3 v_n = a.cross(b);
             v_n.normalize();
             triangle.setN(v_n);
             float n_x = v_n.getX(), n_y = v_n.getY(), n_z = v_n.getZ();

@@ -34,7 +34,7 @@ public:
 
     void Clear();
 
-    void DrawTriangle(const triangle &t, const camera &cam, const my_vec3f &figure_center, const sf::Color &color);
+    void DrawTriangle(const triangle &t, const camera &cam, const glm::vec33f &figure_center, const sf::Color &color);
 
 signals:
 
@@ -95,13 +95,13 @@ signals:
 private:
 //    void mousePressEvent(QMouseEvent *event) override;
 
-    static void z_buffer(array<my_vec3f, 3> points_, Image &image, sf::Color color_, vector<float> &zbuffer);
+    static void z_buffer(array<glm::vec33f, 3> points_, Image &image, sf::Color color_, vector<float> &zbuffer);
 
     void keyPressEvent(QKeyEvent *event) override;
 
     void wheelEvent(QWheelEvent *event) override;
 
-    mat4 viewport(const my_vec3f &center);
+    mat4 viewport(const glm::vec3 &center);
 
     void onInit();
 
@@ -129,7 +129,7 @@ private:
 
 public:
 
-    my_vec3f adapt_coords(const camera &c, const my_vec3f &point, const my_vec3f &center);
+    glm::vec3 adapt_coords(const camera &c, const glm::vec3 &point, const glm::vec3 &center);
 };
 
 #endif

@@ -39,7 +39,7 @@ void figure::rotate(const rotate_t &rotate) {
     cout << "figure_rotated\n";
 }
 
-my_vec3f figure::get_center() const {
+glm::vec3 figure::get_center() const {
     return {(max_x - min_x) / 2, (max_y - min_y) / 2, (max_z - min_z) / 2};
 }
 
@@ -47,6 +47,6 @@ array<float, 3> figure::get_size() const {
     return {max_x - min_x, max_y - min_y, max_z - min_z};
 }
 
-void figure::setCenter(const my_vec3f &center) {
+void figure::setCenter(const glm::vec3 &center) {
     this->center = center;
 }
