@@ -5,6 +5,7 @@
 #include <iostream>
 #include <SFML/Graphics.hpp>
 #include <SFML/Graphics/Texture.hpp>
+#include <glm/glm.hpp>
 #include "triangle.h"
 
 using namespace std;

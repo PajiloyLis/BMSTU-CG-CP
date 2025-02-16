@@ -8,7 +8,6 @@
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <vector>
-#include "my_vec3f.h"
 #include <array>
 #include "conversions.h"
 

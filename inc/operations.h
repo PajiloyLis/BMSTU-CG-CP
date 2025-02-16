@@ -4,7 +4,7 @@
 #include <array>
 #include <iostream>
 #include <algorithm>
-#include "my_vec3f.h"
+#include <glm/glm.hpp>
 #include <vector>
 #include <SFML/Graphics.hpp>
 #include <SFML/Graphics/Image.hpp>

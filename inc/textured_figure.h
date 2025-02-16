@@ -2,7 +2,7 @@
 #define CP_CG_TEXTURED_FIGURE_H
 
 #include <vector>
-#include "my_vec3f.h"
+#include <glm/glm.hpp>
 #include <set>
 #include <unordered_set>
 #include "triangle.h"

@@ -10,7 +10,7 @@ figure::figure(const vector<triangle> &triangles) {
     min_x = min_y = min_z = 1e9;
     for (auto &triangle: triangles) {
         for (auto &p: triangle.vertices) {
-            max_x = std::max(max_x, p.getX()), min_x = std::min(min_x, p.getX());
+            max_x = std::max(max_x, p.xx), min_x = std::min(min_x, p.getX());
             max_y = std::max(max_y, p.getY()), min_y = std::min(min_y, p.getY());
             max_z = std::max(max_z, p.getZ()), min_z = std::min(min_z, p.getZ());
         }
