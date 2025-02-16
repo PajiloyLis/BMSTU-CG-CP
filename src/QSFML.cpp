@@ -76,7 +76,7 @@ void
 QSFMLCanvas::DrawTriangle(const triangle &t, const camera &cam, const glm::vec3 &figure_center,
                           const sf::Color &color) {
     float intensity = glm::dot(light_ray, t.n);
-    if (cam.front.dot(t.n) > 0) {
+    if (dot(cam.Front, t.n) > 0) {
         array<glm::vec3, 3> points_;
         array<sf::Vertex, 3> points_to_render;
         for (int i = 0; i < points_.size(); ++i) {

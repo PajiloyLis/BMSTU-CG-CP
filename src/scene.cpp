@@ -9,7 +9,7 @@ Scene::Scene(QSFMLCanvas *&scene, const double &width, const double &height) : f
     this->scene = scene;
     this->width = width;
     this->height = height;
-    last_frame_time = cur_frame_time=0;
+    last_frame_time = cur_frame_time = 0;
 }
 
 
@@ -23,13 +23,13 @@ void Scene::DrawFigures() const {
         for (auto &triangle: figure.triangles)
             scene->DrawTriangle(triangle, cameras[cur_camera],
                                 glm::vec3((figure.max_x - figure.min_x) / 2, (figure.max_y - figure.min_y) / 2,
-                                         (figure.max_z - figure.min_z) / 2), {255, 255, 250});
+                                          (figure.max_z - figure.min_z) / 2), {255, 255, 250});
     scene->repaint();
     if (figures.size() > 0) {
         sf::CircleShape crater_pos(5);
         crater_pos.setFillColor(sf::Color::Red);
         glm::vec3 possible_pos = scene->adapt_coords(cameras[cur_camera], {50, 43.55, 37.96},
-                                                    figures[0].get_center());
+                                                     figures[0].get_center());
         crater_pos.setPosition({possible_pos.x, possible_pos.y});
         scene->draw(crater_pos);
         scene->display();
@@ -47,19 +47,19 @@ void Scene::AddCamera(const camera &c) {
 }
 
 void Scene::RotateCurCameraLeft() {
-    cameras[cur_camera].rotate({0, 0, M_PI / 360});
+    cameras[cur_camera].rotate(-M_PI / 360, 0);
 }
 
 void Scene::RotateCurCameraRight() {
-    cameras[cur_camera].rotate({0, 0, -M_PI / 360});
+    cameras[cur_camera].rotate(M_PI / 360, 0);
 }
 
 void Scene::RotateCurCameraUp() {
-    cameras[cur_camera].rotate({0, M_PI / 360, 0});
+    cameras[cur_camera].rotate(0, -M_PI / 360);
 }
 
 void Scene::RotateCurCameraDown() {
-    cameras[cur_camera].rotate({0, -M_PI / 360, 0});
+    cameras[cur_camera].rotate(0, M_PI / 360);
 }
 
 void Scene::ScaleCamera(float &k) {
@@ -67,8 +67,10 @@ void Scene::ScaleCamera(float &k) {
 }
 
 void Scene::MoveCamera(const Camera_Movement &move) {
-    cur_frame_time = time();
-    cameras[cur_camera].move(move);
+    cur_frame_time = time(nullptr);
+    float delta_time = cur_frame_time - last_frame_time;
+    last_frame_time = cur_frame_time;
+    cameras[cur_camera].move(move, delta_time);
 }
 
 
