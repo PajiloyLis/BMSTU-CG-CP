@@ -168,15 +168,7 @@ glm::mat4 QSFMLCanvas::viewport(const glm::vec3 &center) {
 }
 
 void QSFMLCanvas::keyPressEvent(QKeyEvent *event) {
-    if (event->key() == Qt::Key_Left)
-            emit this->LeftKeyPressed();
-    else if (event->key() == Qt::Key_Right)
-            emit this->RightKeyPressed();
-    else if (event->key() == Qt::Key_Up)
-            emit this->UpKeyPressed();
-    else if (event->key() == Qt::Key_Down)
-            emit this->DownKeyPressed();
-    else if (event->key() == Qt::Key_W)
+    if (event->key() == Qt::Key_W)
             emit this->WKeyPressed(FORWARD);
     else if (event->key() == Qt::Key_A)
             emit this->AKeyPressed(LEFT);
@@ -206,11 +198,11 @@ void QSFMLCanvas::mousePressEvent(QMouseEvent *event) {
 
 void QSFMLCanvas::mouseMoveEvent(QMouseEvent *event) {
     if (mouse_left_pressed) {
-        QPoint currentPos = event->pos();
         // Вы можете добавить логику здесь для обработки перемещения
         // Например, рисование, перемещение объектов и т.д.
         // В этом примере просто будем отображать координаты
-        qDebug() << "Dragging: " << currentPos;
+        QPoint currentPos = event->pos();
+        emit MouseMove(currentPos.x() - mouse_left_press_pos.x(), currentPos.y() - mouse_left_press_pos.y());
         update(); // Обновляем виджет для перерисовки, если нужно
     }
 

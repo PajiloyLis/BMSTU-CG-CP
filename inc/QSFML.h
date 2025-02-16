@@ -54,22 +54,6 @@ signals:
 
 signals:
 
-    void LeftKeyPressed();
-
-signals:
-
-    void RightKeyPressed();
-
-signals:
-
-    void UpKeyPressed();
-
-signals:
-
-    void DownKeyPressed();
-
-signals:
-
     void WKeyPressed(const Camera_Movement &move);
 
 signals:
@@ -91,6 +75,10 @@ signals:
 signals:
 
     void WheelScrolledDown(float k);
+
+signals:
+
+    void MouseMove(float dx, float dy);
 
 private:
 //    void mousePressEvent(QMouseEvent *event) override;
