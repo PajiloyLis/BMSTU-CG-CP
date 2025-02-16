@@ -36,7 +36,8 @@ add_executable(cp_cg
         moc_predefs.h
         moc_QSFML.cpp
         src/camera.cpp
-        inc/camera.h)
+        inc/camera.h
+        src/conversions.cpp)
 
 target_link_libraries(cp_cg PUBLIC
         Qt::Core

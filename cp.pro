@@ -19,6 +19,7 @@ CONFIG(debug, debug|release){
 }
 
 SOURCES += \
+    ./src/conversions.cpp \
     ./src/figure.cpp \
     ./src/handler.cpp \
     ./src/main.cpp \

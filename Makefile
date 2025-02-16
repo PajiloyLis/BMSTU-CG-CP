@@ -52,7 +52,8 @@ OBJECTS_DIR   = ./
 
 ####### Files
 
-SOURCES       = src/figure.cpp \
+SOURCES       = src/conversions.cpp \
+		src/figure.cpp \
 		src/handler.cpp \
 		src/main.cpp \
 		src/main_window.cpp \
@@ -61,7 +62,8 @@ SOURCES       = src/figure.cpp \
 		src/scene.cpp \
 		src/triangle.cpp \
 		src/camera.cpp moc_QSFML.cpp
-OBJECTS       = figure.o \
+OBJECTS       = conversions.o \
+		figure.o \
 		handler.o \
 		main.o \
 		main_window.o \
@@ -145,7 +147,8 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt6/mkspecs/features/spec_pre.prf \
 		inc/QSFML.h \
 		inc/scene.h \
 		inc/triangle.h \
-		inc/camera.h src/figure.cpp \
+		inc/camera.h src/conversions.cpp \
+		src/figure.cpp \
 		src/handler.cpp \
 		src/main.cpp \
 		src/main_window.cpp \
@@ -320,7 +323,7 @@ distdir: FORCE
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents /usr/lib/x86_64-linux-gnu/qt6/mkspecs/features/data/dummy.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents inc/conversions.h inc/cp_cg_ui.h inc/figure.h inc/handler.h inc/main_window.h inc/operations.h inc/QSFML.h inc/scene.h inc/triangle.h inc/camera.h $(DISTDIR)/
-	$(COPY_FILE) --parents src/figure.cpp src/handler.cpp src/main.cpp src/main_window.cpp src/operations.cpp src/QSFML.cpp src/scene.cpp src/triangle.cpp src/camera.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents src/conversions.cpp src/figure.cpp src/handler.cpp src/main.cpp src/main_window.cpp src/operations.cpp src/QSFML.cpp src/scene.cpp src/triangle.cpp src/camera.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents inc/main_window.ui $(DISTDIR)/
 
 
@@ -384,6 +387,9 @@ compiler_lex_clean:
 compiler_clean: compiler_moc_predefs_clean compiler_moc_header_clean compiler_uic_clean 
 
 ####### Compile
+
+conversions.o: src/conversions.cpp inc/conversions.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o conversions.o src/conversions.cpp
 
 figure.o: src/figure.cpp inc/figure.h \
 		inc/triangle.h \
