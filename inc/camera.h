@@ -6,6 +6,9 @@
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
+#include <iostream>
+
+using namespace std;
 
 enum Camera_Movement {
     FORWARD,
@@ -44,7 +47,7 @@ public:
     // constructor with vectors
     camera(glm::vec3 position = glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3 up = glm::vec3(0.0f, 1.0f, 0.0f),
            float yaw = YAW, float pitch = PITCH) : Front(glm::vec3(0.0f, 0.0f, -1.0f)), MovementSpeed(SPEED),
-                                                   MouseSensitivity(SENSITIVITY), Zoom(ZOOM), relation(3.f / 4){
+                                                   MouseSensitivity(SENSITIVITY), Zoom(ZOOM), relation(3.f / 4) {
         Position = position;
         WorldUp = up;
         Yaw = yaw;
@@ -54,7 +57,8 @@ public:
 
     // constructor with scalar values
     camera(float posX, float posY, float posZ, float upX, float upY, float upZ, float yaw, float pitch) : Front(
-            glm::vec3(0.0f, 0.0f, -1.0f)), MovementSpeed(SPEED), MouseSensitivity(SENSITIVITY), Zoom(ZOOM), relation(3.f / 4) {
+            glm::vec3(0.0f, 0.0f, -1.0f)), MovementSpeed(SPEED), MouseSensitivity(SENSITIVITY), Zoom(ZOOM), relation(
+            3.f / 4) {
         Position = glm::vec3(posX, posY, posZ);
         WorldUp = glm::vec3(upX, upY, upZ);
         Yaw = yaw;
@@ -78,6 +82,8 @@ public:
             Position -= Right * velocity;
         if (direction == RIGHT)
             Position += Right * velocity;
+        cout << "camera moved \npos " << Position.x << " " << Position.y << " " << Position.z << "\npov " << Front.x
+             << " " << Front.y << " " << Front.z << '\n';
     }
 
     // processes input received from a mouse input system. Expects the offset value in both the x and y direction.
@@ -98,6 +104,9 @@ public:
 
         // update Front, Right and Up Vectors using the updated Euler angles
         updateCameraVectors();
+
+        cout << "camera rotated \npos " << Position.x << " " << Position.y << " " << Position.z << "\npov " << Front.x
+             << " " << Front.y << " " << Front.z << '\n';
     }
 
     [[nodiscard]] glm::mat4 perspective() const {
