@@ -58,7 +58,7 @@ vector<triangle> TaskHandler::read_stl(const string &filename) {
 //        for (auto &p: triangle.getVertices()) {
 //            max_x = std::max(max_x, p.x), min_x = std::min(min_x, p.x);
 //            max_y = std::max(max_y, p.y), min_y = std::min(min_y, p.y);
-//            max_z = std::max(max_z, p.getZ()), min_z = std::min(min_z, p.getZ());
+//            max_z = std::max(max_z, p.z), min_z = std::min(min_z, p.z);
 //        }
 //    }
 //    cout << max_x << " " << max_y << " " << max_z << " " << min_x << " " << min_y << " " << min_z << '\n';
@@ -71,7 +71,7 @@ vector<triangle> TaskHandler::read_stl(const string &filename) {
             for (auto &p: triangle.getVertices()) {
                 max_x = std::max(max_x, p.x), min_x = std::min(min_x, p.x);
                 max_y = std::max(max_y, p.y), min_y = std::min(min_y, p.y);
-                max_z = std::max(max_z, p.getZ()), min_z = std::min(min_z, p.getZ());
+                max_z = std::max(max_z, p.z), min_z = std::min(min_z, p.z);
             }
         }
         cout << max_x << " " << max_y << " " << max_z << " " << min_x << " " << min_y << " " << min_z << '\n';
@@ -82,10 +82,10 @@ vector<triangle> TaskHandler::read_stl(const string &filename) {
         for (auto &triangle: triangles) {
             vertices = triangle.getVertices();
             glm::vec3 a = vertices[1] - vertices[0], b = vertices[2] - vertices[0];
-            glm::vec3 v_n = a.cross(b);
-            v_n.normalize();
+            glm::vec3 v_n = glm::cross(a, b);
+            v_n = glm::normalize(v_n);
             triangle.setN(v_n);
-            float n_x = v_n.x, n_y = v_n.y, n_z = v_n.getZ();
+            float n_x = v_n.x, n_y = v_n.y, n_z = v_n.z;
             out.write((char *) &n_x, sizeof(n_x));
             out.write((char *) &n_y, sizeof(n_y));
             out.write((char *) &n_z, sizeof(n_z));
