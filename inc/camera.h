@@ -98,6 +98,9 @@ public:
         updateCameraVectors();
     }
 
+    glm::mat4 perspective() const {
+        return glm::perspective(radians(angle_of_view), relation, near_distance, far_distance);
+    }
     // processes input received from a mouse scroll-wheel event. Only requires input on the vertical wheel-axis
     void ProcessMouseScroll(float yoffset) {
         Zoom -= (float) yoffset;
