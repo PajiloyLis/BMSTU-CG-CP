@@ -1,7 +1,6 @@
 #ifndef CP_CG_CAMERA_H
 #define CP_CG_CAMERA_H
 
-#include <my_vec3f.h>
 #include "conversions.h"
 #include <iostream>
 #include <glm/glm.hpp>
