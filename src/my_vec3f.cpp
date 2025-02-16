@@ -65,16 +65,7 @@ my_vec3f my_vec3f::cross(const my_vec3f &a) const {
     return glm::cross(p, a.p);
 }
 
-my_vec3f &my_vec3f::rotate(const rotate_t &rotate_v) {
-    mat4 transform = {1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1};
-    transform = glm::rotate(transform, static_cast<float>(rotate_v.angle_x), {1, 0, 0});
-    transform = glm::rotate(transform, static_cast<float>(rotate_v.angle_y), {0, 1, 0});
-    transform = glm::rotate(transform, static_cast<float>(rotate_v.angle_z), {0, 0, 1});
-    vec4 res = transform * vec4(p.x, p.y, p.z, 1);
-    p.x = res.x, p.y = res.y, p.z = res.z;
-//    cout << "in rotate function" << *this << '\n';
-    return *this;
-}
+
 
 my_vec3f my_vec3f::operator*(const float &v) const {
     return {p.x * v, p.y * v, p.z * v};

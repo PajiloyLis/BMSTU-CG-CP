@@ -60,7 +60,7 @@ public:
 
     triangle &operator=(const triangle &t);
 
-    void rotate(const rotate_t &rotate);
+    void rotate(const rotate_t &rotate_data);
 
     array<glm::vec3, 3> vertices;
     glm::vec3 n;

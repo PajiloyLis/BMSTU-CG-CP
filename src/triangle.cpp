@@ -72,16 +72,14 @@ const glm::vec3 &triangle::getN() const {
 }
 
 triangle &triangle::operator=(const triangle &t) {
-    if(this != &t)
-    {
-        vertices=t.vertices;
-        n=t.n;
+    if (this != &t) {
+        vertices = t.vertices;
+        n = t.n;
     }
     return *this;
 }
 
-void triangle::rotate(const rotate_t &rotate) {
-    for(auto &vertex:vertices)
-        glm::rotate()
-        vertex.rotate(rotate);
+void triangle::rotate(const rotate_t &rotate_data) {
+    for (auto &vertex: vertices)
+        rotate(rotate_data, vertex);
 }
