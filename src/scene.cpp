@@ -20,7 +20,7 @@ void Scene::DrawFigures() const {
     ClearScene();
     sf::CircleShape crater_pos(5);
     crater_pos.setFillColor(sf::Color::Red);
-    my_vec3f possible_pos = scene->adapt_coords(cameras[cur_camera], );
+    my_vec3f possible_pos = scene->adapt_coords(cameras[cur_camera], {50, 43.55, 38}, figures[0].center);
     crater_pos.setPosition()
     for (auto &figure: figures)
         for (auto &triangle: figure.triangles)
