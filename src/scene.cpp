@@ -9,6 +9,7 @@ Scene::Scene(QSFMLCanvas *&scene, const double &width, const double &height) : f
     this->scene = scene;
     this->width = width;
     this->height = height;
+    last_frame_time = cur_frame_time=0;
 }
 
 
@@ -66,6 +67,7 @@ void Scene::ScaleCamera(float &k) {
 }
 
 void Scene::MoveCamera(const Camera_Movement &move) {
+    cur_frame_time = glm::
     cameras[cur_camera].move(move);
 }
 

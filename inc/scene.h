@@ -42,6 +42,7 @@ private:
     vector<figure> figures;
     vector<camera> cameras;
     int cur_camera;
+    float cur_frame_time, last_frame_time;
 };
 
 #endif

@@ -44,7 +44,7 @@ public:
     // constructor with vectors
     camera(glm::vec3 position = glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3 up = glm::vec3(0.0f, 1.0f, 0.0f),
            float yaw = YAW, float pitch = PITCH) : Front(glm::vec3(0.0f, 0.0f, -1.0f)), MovementSpeed(SPEED),
-                                                   MouseSensitivity(SENSITIVITY), Zoom(ZOOM) {
+                                                   MouseSensitivity(SENSITIVITY), Zoom(ZOOM), relation(3.f / 4){
         Position = position;
         WorldUp = up;
         Yaw = yaw;
@@ -54,7 +54,7 @@ public:
 
     // constructor with scalar values
     camera(float posX, float posY, float posZ, float upX, float upY, float upZ, float yaw, float pitch) : Front(
-            glm::vec3(0.0f, 0.0f, -1.0f)), MovementSpeed(SPEED), MouseSensitivity(SENSITIVITY), Zoom(ZOOM) {
+            glm::vec3(0.0f, 0.0f, -1.0f)), MovementSpeed(SPEED), MouseSensitivity(SENSITIVITY), Zoom(ZOOM), relation(3.f / 4) {
         Position = glm::vec3(posX, posY, posZ);
         WorldUp = glm::vec3(upX, upY, upZ);
         Yaw = yaw;
@@ -101,8 +101,9 @@ public:
     }
 
     [[nodiscard]] glm::mat4 perspective() const {
-        return glm::perspective(glm::radians(Zoom), 3.f/4, 0.1f, 100.f);
+        return glm::perspective(glm::radians(Zoom), relation, 0.1f, 100.f);
     }
+
     // processes input received from a mouse scroll-wheel event. Only requires input on the vertical wheel-axis
     void ProcessMouseScroll(float yoffset) {
         Zoom -= (float) yoffset;
