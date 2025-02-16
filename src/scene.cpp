@@ -18,17 +18,18 @@ void Scene::ClearScene() const {
 
 void Scene::DrawFigures() const {
     ClearScene();
-    sf::CircleShape crater_pos(5);
-    crater_pos.setFillColor(sf::Color::Red);
-    my_vec3f possible_pos = scene->adapt_coords(cameras[cur_camera], {50, 43.55, 38}, figures[0].center);
-    crater_pos.setPosition({possible_pos.getX(), possible_pos.getY()});
-    scene->draw(crater_pos);
     for (auto &figure: figures)
         for (auto &triangle: figure.triangles)
             scene->DrawTriangle(triangle, cameras[cur_camera],
                                 my_vec3f((figure.max_x - figure.min_x) / 2, (figure.max_y - figure.min_y) / 2,
                                          (figure.max_z - figure.min_z) / 2), {255, 255, 250});
     scene->repaint();
+    sf::CircleShape crater_pos(5);
+    crater_pos.setFillColor(sf::Color::Red);
+    my_vec3f possible_pos = scene->adapt_coords(cameras[cur_camera], {50, 43.55, 38}, figures[0].center);
+    crater_pos.setPosition({possible_pos.getX(), possible_pos.getY()});
+    scene->draw(crater_pos);
+    scene->display();
 }
 
 void Scene::AddFigure(const figure &f) {
