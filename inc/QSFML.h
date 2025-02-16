@@ -25,7 +25,6 @@ using namespace std;
 using namespace sf;
 
 
-
 class QSFMLCanvas : public QWidget, public sf::RenderWindow {
 Q_OBJECT
 public:
@@ -127,6 +126,8 @@ private:
     sf::Color back_color;
 
     static const my_vec3f light_ray;
+
+public:
 
     my_vec3f adapt_coords(const camera &c, const my_vec3f &point, const my_vec3f &center);
 };
