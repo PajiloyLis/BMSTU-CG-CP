@@ -74,10 +74,10 @@ void QSFMLCanvas::paintEvent(QPaintEvent *) {
 
 
 void
-QSFMLCanvas::DrawTriangle(const triangle &t, const camera &cam, const my_vec3f &figure_center, const sf::Color &color) {
+QSFMLCanvas::DrawTriangle(const triangle &t, const camera &cam, const glm::vec3 &figure_center, const sf::Color &color) {
     float intensity = light_ray.dot(t.n);
     if (cam.front.dot(t.n) > 0) {
-        array<my_vec3f, 3> points_;
+        array<glm::vec3, 3> points_;
         array<sf::Vertex, 3> points_to_render;
         for (int i = 0; i < points_.size(); ++i) {
             points_[i] = adapt_coords(cam, t.vertices[i], figure_center);
@@ -92,7 +92,7 @@ QSFMLCanvas::DrawTriangle(const triangle &t, const camera &cam, const my_vec3f &
     }
 }
 
-void QSFMLCanvas::z_buffer(array<my_vec3f, 3> points_, Image &image, sf::Color color_, vector<float> &zbuffer) {
+void QSFMLCanvas::z_buffer(array<, 3> points_, Image &image, sf::Color color_, vector<float> &zbuffer) {
     if (points_[0].getY() == points_[1].getY() && points_[1].getY() == points_[2].getY()) return;
     if (points_[0].getY() > points_[1].getY()) std::swap(points_[0], points_[1]);
     if (points_[0].getY() > points_[2].getY()) std::swap(points_[0], points_[2]);
