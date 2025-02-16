@@ -73,7 +73,7 @@ public:
 
     // processes input received from any keyboard-like input system. Accepts input parameter in the form of camera defined ENUM (to abstract it from windowing systems)
     void move(Camera_Movement direction, float deltaTime) {
-        float velocity = MovementSpeed * deltaTime;
+        float velocity = MovementSpeed * 1;
         if (direction == FORWARD)
             Position += Front * velocity;
         if (direction == BACKWARD)
