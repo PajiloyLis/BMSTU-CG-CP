@@ -65,7 +65,7 @@ void Scene::ScaleCamera(float &k) {
     cameras[cur_camera].scale(k);
 }
 
-void Scene::MoveCamera(const move_t &move) {
+void Scene::MoveCamera(const Camera_Movement &move) {
     cameras[cur_camera].move(move);
 }
 
