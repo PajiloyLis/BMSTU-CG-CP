@@ -23,7 +23,7 @@ const float ZOOM = 45.0f;
 
 
 // An abstract camera class that processes input and calculates the corresponding Euler Angles, Vectors and Matrices for use in OpenGL
-class Camera {
+class camera {
 public:
     // camera Attributes
     glm::vec3 Position;
@@ -39,8 +39,10 @@ public:
     float MouseSensitivity;
     float Zoom;
 
+    float relation;
+
     // constructor with vectors
-    Camera(glm::vec3 position = glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3 up = glm::vec3(0.0f, 1.0f, 0.0f),
+    camera(glm::vec3 position = glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3 up = glm::vec3(0.0f, 1.0f, 0.0f),
            float yaw = YAW, float pitch = PITCH) : Front(glm::vec3(0.0f, 0.0f, -1.0f)), MovementSpeed(SPEED),
                                                    MouseSensitivity(SENSITIVITY), Zoom(ZOOM) {
         Position = position;
@@ -51,7 +53,7 @@ public:
     }
 
     // constructor with scalar values
-    Camera(float posX, float posY, float posZ, float upX, float upY, float upZ, float yaw, float pitch) : Front(
+    camera(float posX, float posY, float posZ, float upX, float upY, float upZ, float yaw, float pitch) : Front(
             glm::vec3(0.0f, 0.0f, -1.0f)), MovementSpeed(SPEED), MouseSensitivity(SENSITIVITY), Zoom(ZOOM) {
         Position = glm::vec3(posX, posY, posZ);
         WorldUp = glm::vec3(upX, upY, upZ);
@@ -61,7 +63,7 @@ public:
     }
 
     // returns the view matrix calculated using Euler Angles and the LookAt Matrix
-    glm::mat4 camLookAt() {
+    [[nodiscard]] glm::mat4 camLookAt() const {
         return glm::lookAt(Position, Position + Front, Up);
     }
 
@@ -98,8 +100,8 @@ public:
         updateCameraVectors();
     }
 
-    glm::mat4 perspective() const {
-        return glm::perspective(radians(angle_of_view), relation, near_distance, far_distance);
+    [[nodiscard]] glm::mat4 perspective() const {
+        return glm::perspective(glm::radians(Zoom), 3.f/4, 0.1f, 100.f);
     }
     // processes input received from a mouse scroll-wheel event. Only requires input on the vertical wheel-axis
     void ProcessMouseScroll(float yoffset) {
@@ -111,7 +113,7 @@ public:
     }
 
 private:
-    // calculates the front vector from the Camera's (updated) Euler Angles
+    // calculates the front vector from the camera's (updated) Euler Angles
     void updateCameraVectors() {
         // calculate the new Front vector
         glm::vec3 front;
