@@ -44,7 +44,7 @@ vector<triangle> TaskHandler::read_stl(const string &filename) {
             in.read((char *) &x, sizeof(x));
             in.read((char *) &y, sizeof(y));
             in.read((char *) &z, sizeof(z));
-            vertices[j].setX(x), vertices[j].setY(y), vertices[j].setZ(z);
+            vertices[j].x =x, vertices[j].y=y, vertices[j].z=z;
         }
         triangles[i].setVertices(vertices);
         in.seekg(2, ios_base::cur);
@@ -56,8 +56,8 @@ vector<triangle> TaskHandler::read_stl(const string &filename) {
 //    min_x = min_y = min_z = 1e9;
 //    for (auto &triangle: triangles) {
 //        for (auto &p: triangle.getVertices()) {
-//            max_x = std::max(max_x, p.getX()), min_x = std::min(min_x, p.getX());
-//            max_y = std::max(max_y, p.getY()), min_y = std::min(min_y, p.getY());
+//            max_x = std::max(max_x, p.x), min_x = std::min(min_x, p.x);
+//            max_y = std::max(max_y, p.y), min_y = std::min(min_y, p.y);
 //            max_z = std::max(max_z, p.getZ()), min_z = std::min(min_z, p.getZ());
 //        }
 //    }
@@ -69,8 +69,8 @@ vector<triangle> TaskHandler::read_stl(const string &filename) {
         min_x = min_y = min_z = 1e9;
         for (auto &triangle: triangles) {
             for (auto &p: triangle.getVertices()) {
-                max_x = std::max(max_x, p.getX()), min_x = std::min(min_x, p.getX());
-                max_y = std::max(max_y, p.getY()), min_y = std::min(min_y, p.getY());
+                max_x = std::max(max_x, p.x), min_x = std::min(min_x, p.x);
+                max_y = std::max(max_y, p.y), min_y = std::min(min_y, p.y);
                 max_z = std::max(max_z, p.getZ()), min_z = std::min(min_z, p.getZ());
             }
         }
@@ -85,7 +85,7 @@ vector<triangle> TaskHandler::read_stl(const string &filename) {
             glm::vec3 v_n = a.cross(b);
             v_n.normalize();
             triangle.setN(v_n);
-            float n_x = v_n.getX(), n_y = v_n.getY(), n_z = v_n.getZ();
+            float n_x = v_n.x, n_y = v_n.y, n_z = v_n.getZ();
             out.write((char *) &n_x, sizeof(n_x));
             out.write((char *) &n_y, sizeof(n_y));
             out.write((char *) &n_z, sizeof(n_z));

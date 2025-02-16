@@ -15,7 +15,7 @@ figure::figure(const vector<triangle> &triangles) {
             max_z = std::max(max_z, p.z), min_z = std::min(min_z, p.z);
         }
     }
-    center.x = (max_x - min_x) / 2, center.setY((max_y - min_y) / 2), center.setZ((max_z - min_z) / 2);
+    center.x = (max_x - min_x) / 2, center.y = (max_y - min_y) / 2, center.z = (max_z - min_z) / 2;
 }
 
 figure::figure(vector<triangle> &&triangles) {
@@ -29,7 +29,7 @@ figure::figure(vector<triangle> &&triangles) {
             max_z = std::max(max_z, p.z), min_z = std::min(min_z, p.z);
         }
     }
-    center.setX((max_x - min_x) / 2), center.setY((max_y - min_y) / 2), center.setZ((max_z - min_z) / 2);
+    center.x = (max_x - min_x) / 2, center.y = (max_y - min_y) / 2, center.z = (max_z - min_z) / 2;
 }
 
 void figure::rotate(const rotate_t &rotate) {
