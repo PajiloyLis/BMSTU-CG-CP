@@ -46,20 +46,8 @@ void Scene::AddCamera(const camera &c) {
         cur_camera = 0;
 }
 
-void Scene::RotateCurCameraLeft() {
-    cameras[cur_camera].rotate(-M_PI / 360, 0);
-}
-
-void Scene::RotateCurCameraRight() {
-    cameras[cur_camera].rotate(M_PI / 360, 0);
-}
-
-void Scene::RotateCurCameraUp() {
-    cameras[cur_camera].rotate(0, -M_PI / 360);
-}
-
-void Scene::RotateCurCameraDown() {
-    cameras[cur_camera].rotate(0, M_PI / 360);
+void Scene::RotateCurCamera(const float &dx, const float &dy) {
+    cameras[cur_camera].rotate(dx, dy);
 }
 
 void Scene::ScaleCamera(float &k) {

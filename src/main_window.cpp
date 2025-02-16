@@ -56,7 +56,7 @@ void MainWindow::DrawScene() {
 }
 
 void MainWindow::RotateCurCamera(float dx, float dy) {
-    handler.RotateCurCameraLeft();
+    handler.RotateCurCamera(<#initializer#>, <#initializer#>);
     DrawScene();
 }
 

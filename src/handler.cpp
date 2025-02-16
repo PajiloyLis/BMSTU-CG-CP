@@ -101,21 +101,10 @@ void TaskHandler::AddCamera(const camera &cam) {
     scene.AddCamera(cam);
 }
 
-void TaskHandler::RotateCurCameraLeft() {
-    scene.RotateCurCameraLeft();
+void TaskHandler::RotateCurCamera(const float &dx, const float &dy) {
+    scene.RotateCurCamera(<#initializer#>, <#initializer#>);
 }
 
-void TaskHandler::RotateCurCameraRight() {
-    scene.RotateCurCameraRight();
-}
-
-void TaskHandler::RotateCurCameraUp() {
-    scene.RotateCurCameraUp();
-}
-
-void TaskHandler::RotateCurCameraDown() {
-    scene.RotateCurCameraDown();
-}
 
 void TaskHandler::MoveCamera(const Camera_Movement &move) {
     scene.MoveCamera(move);

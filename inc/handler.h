@@ -36,13 +36,7 @@ public:
 
     void LoadModel(const string &filepath);
 
-    void RotateCurCameraLeft();
-
-    void RotateCurCameraRight();
-
-    void RotateCurCameraUp();
-
-    void RotateCurCameraDown();
+    void RotateCurCamera(const float &dx, const float &dy);
 
     void MoveCamera(const Camera_Movement &move);
 
