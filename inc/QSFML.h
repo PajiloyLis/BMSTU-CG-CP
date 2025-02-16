@@ -3,7 +3,7 @@
 
 #include <SFML/Graphics.hpp>
 #include <qt6/QtWidgets/QWidget>
-//#include <Qt/qtimer.h>
+#include <glm/glm.hpp>
 #include <vector>
 #include <QMouseEvent>
 #include <QKeyEvent>
@@ -125,7 +125,7 @@ private:
 
     sf::Color back_color;
 
-    static const my_vec3f light_ray;
+    static const glm::vec3 light_ray;
 
 public:
 

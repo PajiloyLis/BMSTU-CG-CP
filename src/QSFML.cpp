@@ -2,7 +2,7 @@
 
 bool on_load = false;
 
-const glm:: QSFMLCanvas::light_ray = my_vec3f(0, 0, 1);
+const glm::vec3 QSFMLCanvas::light_ray = glm::vec3(0, 0, 1);
 //const my_vec3f QSFMLCanvas::camera_ray = my_vec3f(1, 0, 0);
 
 QSFMLCanvas::QSFMLCanvas(QWidget *parent, const QSize &Size)
@@ -160,7 +160,7 @@ my_vec3f QSFMLCanvas::adapt_coords(const camera &c, const my_vec3f &point, const
 }
 
 mat4 QSFMLCanvas::viewport(const my_vec3f &center) {
-    float k = std::min(this->width()/(2*center.getX()), this->height()/(2*center.getY()));
+    float k = std::min(this->width() / (2 * center.getX()), this->height() / (2 * center.getY()));
     return {k, 0, 0, this->width(),
             0, k, 0, this->height(),
             0, 0, 1, 0,
