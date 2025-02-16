@@ -70,19 +70,19 @@ signals:
 
 signals:
 
-    void WKeyPressed(const move_t &move);
+    void WKeyPressed(const Camera_Movement &move);
 
 signals:
 
-    void AKeyPressed(const move_t &move);
+    void AKeyPressed(const Camera_Movement &move);
 
 signals:
 
-    void SKeyPressed(const move_t &move);
+    void SKeyPressed(const Camera_Movement &move);
 
 signals:
 
-    void DKeyPressed(const move_t &move);
+    void DKeyPressed(const Camera_Movement &move);
 
 signals:
 
