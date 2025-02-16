@@ -81,5 +81,5 @@ triangle &triangle::operator=(const triangle &t) {
 
 void triangle::rotate(const rotate_t &rotate_data) {
     for (auto &vertex: vertices)
-        rotate(rotate_data, vertex);
+        ::rotate(rotate_data, vertex);
 }

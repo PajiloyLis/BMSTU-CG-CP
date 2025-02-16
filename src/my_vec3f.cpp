@@ -71,12 +71,7 @@ my_vec3f my_vec3f::operator*(const float &v) const {
     return {p.x * v, p.y * v, p.z * v};
 }
 
-my_vec3f my_vec3f::move_point(const move_t &move) {
-    mat4 transform = {1, 0, 0, move.dx, 0, 1, 0, move.dy, 0, 0, 1, move.dz, 0, 0, 0, 1};
-    vec4 res = transform * vec4(p.x, p.y, p.z, 1);
-    p.x = res.x, p.y = res.y, p.z = res.z;
-    return *this;
-}
+
 
 my_vec3f &my_vec3f::operator+=(const my_vec3f &a) {
     p = p + a.p;
