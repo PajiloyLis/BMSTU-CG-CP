@@ -29,7 +29,7 @@ void Scene::DrawFigures() const {
         crater_pos.setFillColor(sf::Color::Red);
         glm::vec3 possible_pos = scene->adapt_coords(cameras[cur_camera], {50, 43.55, 37.96},
                                                     figures[0].get_center());
-        crater_pos.setPosition({possible_pos.getX(), possible_pos.getY()});
+        crater_pos.setPosition({possible_pos.x, possible_pos.y});
         scene->draw(crater_pos);
         scene->display();
     }

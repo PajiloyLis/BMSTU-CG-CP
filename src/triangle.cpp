@@ -3,60 +3,60 @@
 triangle::triangle(const glm::vec3 &normal, const array<glm::vec3, 3> &points) {
     n = normal;
     vertices = points;
-    max_x = std::max(vertices[0].getX(), std::max(vertices[1].getX(), vertices[2].getX()));
-    max_y = std::max(vertices[0].getY(), std::max(vertices[1].getY(), vertices[2].getY()));
-    max_z = std::max(vertices[0].getZ(), std::max(vertices[1].getZ(), vertices[2].getZ()));
+    max_x = std::max(vertices[0].x, std::max(vertices[1].x, vertices[2].x));
+    max_y = std::max(vertices[0].y, std::max(vertices[1].y, vertices[2].y));
+    max_z = std::max(vertices[0].z, std::max(vertices[1].z, vertices[2].z));
 
-    min_x = std::min(vertices[0].getX(), std::min(vertices[1].getX(), vertices[2].getX()));
-    min_y = std::min(vertices[0].getY(), std::min(vertices[1].getY(), vertices[2].getY()));
-    min_z = std::min(vertices[0].getZ(), std::min(vertices[1].getZ(), vertices[2].getZ()));
+    min_x = std::min(vertices[0].x, std::min(vertices[1].x, vertices[2].x));
+    min_y = std::min(vertices[0].y, std::min(vertices[1].y, vertices[2].y));
+    min_z = std::min(vertices[0].z, std::min(vertices[1].z, vertices[2].z));
 }
 
 triangle::triangle(const glm::vec3 &normal, array<glm::vec3, 3> &&points) {
     n = normal;
     vertices = points;
-    max_x = std::max(vertices[0].getX(), std::max(vertices[1].getX(), vertices[2].getX()));
-    max_y = std::max(vertices[0].getY(), std::max(vertices[1].getY(), vertices[2].getY()));
-    max_z = std::max(vertices[0].getZ(), std::max(vertices[1].getZ(), vertices[2].getZ()));
+    max_x = std::max(vertices[0].x, std::max(vertices[1].x, vertices[2].x));
+    max_y = std::max(vertices[0].y, std::max(vertices[1].y, vertices[2].y));
+    max_z = std::max(vertices[0].z, std::max(vertices[1].z, vertices[2].z));
 
-    min_x = std::min(vertices[0].getX(), std::min(vertices[1].getX(), vertices[2].getX()));
-    min_y = std::min(vertices[0].getY(), std::min(vertices[1].getY(), vertices[2].getY()));
-    min_z = std::min(vertices[0].getZ(), std::min(vertices[1].getZ(), vertices[2].getZ()));
+    min_x = std::min(vertices[0].x, std::min(vertices[1].x, vertices[2].x));
+    min_y = std::min(vertices[0].y, std::min(vertices[1].y, vertices[2].y));
+    min_z = std::min(vertices[0].z, std::min(vertices[1].z, vertices[2].z));
 }
 
 triangle::triangle(glm::vec3 &&normal, const array<glm::vec3, 3> &points) {
     n = normal;
     vertices = points;
-    max_x = std::max(vertices[0].getX(), std::max(vertices[1].getX(), vertices[2].getX()));
-    max_y = std::max(vertices[0].getY(), std::max(vertices[1].getY(), vertices[2].getY()));
-    max_z = std::max(vertices[0].getZ(), std::max(vertices[1].getZ(), vertices[2].getZ()));
+    max_x = std::max(vertices[0].x, std::max(vertices[1].x, vertices[2].x));
+    max_y = std::max(vertices[0].y, std::max(vertices[1].y, vertices[2].y));
+    max_z = std::max(vertices[0].z, std::max(vertices[1].z, vertices[2].z));
 
-    min_x = std::min(vertices[0].getX(), std::min(vertices[1].getX(), vertices[2].getX()));
-    min_y = std::min(vertices[0].getY(), std::min(vertices[1].getY(), vertices[2].getY()));
-    min_z = std::min(vertices[0].getZ(), std::min(vertices[1].getZ(), vertices[2].getZ()));
+    min_x = std::min(vertices[0].x, std::min(vertices[1].x, vertices[2].x));
+    min_y = std::min(vertices[0].y, std::min(vertices[1].y, vertices[2].y));
+    min_z = std::min(vertices[0].z, std::min(vertices[1].z, vertices[2].z));
 }
 
 triangle::triangle(glm::vec3 &&normal, array<glm::vec3, 3> &&points) {
     n = normal;
     vertices = points;
-    max_x = std::max(vertices[0].getX(), std::max(vertices[1].getX(), vertices[2].getX()));
-    max_y = std::max(vertices[0].getY(), std::max(vertices[1].getY(), vertices[2].getY()));
-    max_z = std::max(vertices[0].getZ(), std::max(vertices[1].getZ(), vertices[2].getZ()));
+    max_x = std::max(vertices[0].x, std::max(vertices[1].x, vertices[2].x));
+    max_y = std::max(vertices[0].y, std::max(vertices[1].y, vertices[2].y));
+    max_z = std::max(vertices[0].z, std::max(vertices[1].z, vertices[2].z));
 
-    min_x = std::min(vertices[0].getX(), std::min(vertices[1].getX(), vertices[2].getX()));
-    min_y = std::min(vertices[0].getY(), std::min(vertices[1].getY(), vertices[2].getY()));
-    min_z = std::min(vertices[0].getZ(), std::min(vertices[1].getZ(), vertices[2].getZ()));
+    min_x = std::min(vertices[0].x, std::min(vertices[1].x, vertices[2].x));
+    min_y = std::min(vertices[0].y, std::min(vertices[1].y, vertices[2].y));
+    min_z = std::min(vertices[0].z, std::min(vertices[1].z, vertices[2].z));
 }
 
 void triangle::setVertices(const array<glm::vec3, 3> &vertices) {
     this->vertices = vertices;
-    max_x = std::max(vertices[0].getX(), std::max(vertices[1].getX(), vertices[2].getX()));
-    max_y = std::max(vertices[0].getY(), std::max(vertices[1].getY(), vertices[2].getY()));
-    max_z = std::max(vertices[0].getZ(), std::max(vertices[1].getZ(), vertices[2].getZ()));
+    max_x = std::max(vertices[0].x, std::max(vertices[1].x, vertices[2].x));
+    max_y = std::max(vertices[0].y, std::max(vertices[1].y, vertices[2].y));
+    max_z = std::max(vertices[0].z, std::max(vertices[1].z, vertices[2].z));
 
-    min_x = std::min(vertices[0].getX(), std::min(vertices[1].getX(), vertices[2].getX()));
-    min_y = std::min(vertices[0].getY(), std::min(vertices[1].getY(), vertices[2].getY()));
-    min_z = std::min(vertices[0].getZ(), std::min(vertices[1].getZ(), vertices[2].getZ()));
+    min_x = std::min(vertices[0].x, std::min(vertices[1].x, vertices[2].x));
+    min_y = std::min(vertices[0].y, std::min(vertices[1].y, vertices[2].y));
+    min_z = std::min(vertices[0].z, std::min(vertices[1].z, vertices[2].z));
 }
 
 void triangle::setN(const glm::vec3 &n) {
@@ -82,5 +82,6 @@ triangle &triangle::operator=(const triangle &t) {
 
 void triangle::rotate(const rotate_t &rotate) {
     for(auto &vertex:vertices)
+        glm::rotate()
         vertex.rotate(rotate);
 }

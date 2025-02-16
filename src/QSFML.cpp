@@ -73,14 +73,15 @@ void QSFMLCanvas::paintEvent(QPaintEvent *) {
 
 
 void
-QSFMLCanvas::DrawTriangle(const triangle &t, const camera &cam, const glm::vec3 &figure_center, const sf::Color &color) {
-    float intensity = glm::dot() light_ray.dot(t.n);
+QSFMLCanvas::DrawTriangle(const triangle &t, const camera &cam, const glm::vec3 &figure_center,
+                          const sf::Color &color) {
+    float intensity = glm::dot(light_ray, t.n);
     if (cam.front.dot(t.n) > 0) {
         array<glm::vec3, 3> points_;
         array<sf::Vertex, 3> points_to_render;
         for (int i = 0; i < points_.size(); ++i) {
             points_[i] = adapt_coords(cam, t.vertices[i], figure_center);
-            points_to_render[i] = Vertex({points_[i].getX(), points_[i].getY()},
+            points_to_render[i] = Vertex({points_[i].x, points_[i].y},
                                          sf::Color(static_cast<Uint8>(255 * intensity),
                                                    static_cast<Uint8>(255 * intensity),
                                                    static_cast<Uint8>(250 * intensity)));
@@ -92,36 +93,36 @@ QSFMLCanvas::DrawTriangle(const triangle &t, const camera &cam, const glm::vec3 
 }
 
 void QSFMLCanvas::z_buffer(array<glm::vec3, 3> points_, Image &image, sf::Color color_, vector<float> &zbuffer) {
-    if (points_[0].getY() == points_[1].getY() && points_[1].getY() == points_[2].getY()) return;
-    if (points_[0].getY() > points_[1].getY()) std::swap(points_[0], points_[1]);
-    if (points_[0].getY() > points_[2].getY()) std::swap(points_[0], points_[2]);
-    if (points_[1].getY() > points_[2].getY()) std::swap(points_[1], points_[2]);
-    points_[0].setZ(ceil(points_[0].getZ())), points_[0].setX(ceil(points_[0].getX())), points_[0].setY(
-            ceil(points_[0].getY()));
-    points_[1].setZ(ceil(points_[1].getZ())), points_[1].setX(ceil(points_[1].getX())), points_[1].setY(
-            ceil(points_[1].getY()));
-    points_[2].setZ(ceil(points_[2].getZ())), points_[2].setX(ceil(points_[2].getX())), points_[2].setY(
-            ceil(points_[2].getY()));
-    int total_height = (int) (points_[2].getY() - points_[0].getY());
+    if (points_[0].y == points_[1].y && points_[1].y == points_[2].y) return;
+    if (points_[0].y > points_[1].y) std::swap(points_[0], points_[1]);
+    if (points_[0].y > points_[2].y) std::swap(points_[0], points_[2]);
+    if (points_[1].y > points_[2].y) std::swap(points_[1], points_[2]);
+    points_[0].z = (ceil(points_[0].z)), points_[0].x = (ceil(points_[0].x)), points_[0].y = (
+            ceil(points_[0].y));
+    points_[1].z = (ceil(points_[1].z)), points_[1].x = (ceil(points_[1].x)), points_[1].y = (
+            ceil(points_[1].y));
+    points_[2].z = (ceil(points_[2].z)), points_[2].x = (ceil(points_[2].x)), points_[2].y = (
+            ceil(points_[2].y));
+    int total_height = (int) (points_[2].y - points_[0].y);
     for (int i = 0; i < total_height; i++) {
-        bool second_half = i > points_[1].getY() - points_[0].getY() || points_[1].getY() == points_[0].getY();
-        int segment_height = (second_half ? static_cast<int>(points_[2].getY() - points_[1].getY())
-                                          : static_cast<int>(points_[1].getY() - points_[0].getY()));
+        bool second_half = i > points_[1].y - points_[0].y || points_[1].y == points_[0].y;
+        int segment_height = (second_half ? static_cast<int>(points_[2].y - points_[1].y)
+                                          : static_cast<int>(points_[1].y - points_[0].y));
         float alpha = (float) i / total_height;
-        float beta = (float) (i - (second_half ? points_[1].getY() - points_[0].getY() : 0)) /
+        float beta = (float) (i - (second_half ? points_[1].y - points_[0].y : 0)) /
                      segment_height;
         glm::vec3 a = points_[0] + (points_[2] - points_[0]) * alpha;
         glm::vec3 b = second_half ? points_[1] + (points_[2] - points_[1]) * beta :
-                     points_[0] + (points_[1] - points_[0]) * beta;
-        if (a.getX() > b.getX()) std::swap(a, b);
-        for (int j = static_cast<int>(a.getX()); j <= static_cast<int>(b.getX()); j++) {
-            float phi = (b.getX() == a.getX() ? 1.f : (float) (j - a.getX()) / (float) (b.getX() - a.getX()));
+                      points_[0] + (points_[1] - points_[0]) * beta;
+        if (a.x > b.x) std::swap(a, b);
+        for (int j = static_cast<int>(a.x ); j <= static_cast<int>(b.x ); j++) {
+            float phi = (b.x == a.x ? 1.f : (float) (j - a.x) / (float) (b.x - a.x));
             glm::vec3 P = a + ((b - a) * phi);
-            if (P.getX() >= 0 && P.getY() >= 0 && P.getX() < image.getSize().x && P.getY() < image.getSize().y) {
-                int idx = static_cast<int>(round(P.getX() + P.getY() * image.getSize().x));
-                if (zbuffer[idx] > P.getZ()) {
-                    zbuffer[idx] = P.getZ();
-                    image.setPixel(static_cast<Uint32>(round(P.getX())), static_cast<Uint32>(round(P.getY())), color_);
+            if (P.x >= 0 && P.y >= 0 && P.x < image.getSize().x && P.y < image.getSize().y) {
+                int idx = static_cast<int>(round(P.x + P.y * image.getSize().x));
+                if (zbuffer[idx] > P.z) {
+                    zbuffer[idx] = P.z;
+                    image.setPixel(static_cast<Uint32>(round(P.x)), static_cast<Uint32>(round(P.y)), color_);
                 }
             }
         }
@@ -147,19 +148,19 @@ void QSFMLCanvas::Clear() {
 }
 
 glm::vec3 QSFMLCanvas::adapt_coords(const camera &c, const glm::vec3 &point, const glm::vec3 &center) {
-    mat4 trans(1.0f);
+    glm::mat4 trans(1.0f);
 //    if (on_load)
-//    vec4 res_1 = c.perspective() * c.camLookAt() * vec4(center.getX(), center.getY(), center.getZ(), 1);
+//    vec4 res_1 = c.perspective() * c.camLookAt() * vec4(center.x , center.y, center.z, 1);
 
     trans = viewport(center);
     trans *= c.perspective();
     trans *= c.camLookAt();
-    vec4 res = trans * vec4(point.getX(), point.getY(), point.getZ(), 1);
+    glm::vec4 res = trans * glm::vec4(point.x, point.y, point.z, 1);
     return {res.x, res.y, res.z};
 }
 
-mat4 QSFMLCanvas::viewport(const glm::vec3 &center) {
-    float k = std::min(this->width() / (2 * center.getX()), this->height() / (2 * center.getY()));
+glm::mat4 QSFMLCanvas::viewport(const glm::vec3 &center) {
+    float k = std::min(this->width() / (2 * center.x), this->height() / (2 * center.y));
     return {k, 0, 0, this->width(),
             0, k, 0, this->height(),
             0, 0, 1, 0,
