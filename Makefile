@@ -362,7 +362,6 @@ compiler_moc_header_clean:
 	-$(DEL_FILE) moc_QSFML.cpp
 moc_QSFML.cpp: inc/QSFML.h \
 		inc/triangle.h \
-		inc/my_vec3f.h \
 		inc/conversions.h \
 		inc/camera.h \
 		moc_predefs.h \
@@ -392,15 +391,13 @@ compiler_clean: compiler_moc_predefs_clean compiler_moc_header_clean compiler_ui
 
 figure.o: src/figure.cpp inc/figure.h \
 		inc/triangle.h \
-		inc/my_vec3f.h \
 		inc/conversions.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o figure.o src/figure.cpp
 
 handler.o: src/handler.cpp inc/handler.h \
 		inc/textured_figure.h \
-		inc/my_vec3f.h \
-		inc/conversions.h \
 		inc/triangle.h \
+		inc/conversions.h \
 		inc/textured_triangle.h \
 		inc/scene.h \
 		inc/QSFML.h \
@@ -411,7 +408,6 @@ handler.o: src/handler.cpp inc/handler.h \
 main.o: src/main.cpp inc/main_window.h \
 		inc/QSFML.h \
 		inc/triangle.h \
-		inc/my_vec3f.h \
 		inc/conversions.h \
 		inc/camera.h \
 		inc/handler.h \
@@ -425,7 +421,6 @@ main.o: src/main.cpp inc/main_window.h \
 main_window.o: src/main_window.cpp inc/main_window.h \
 		inc/QSFML.h \
 		inc/triangle.h \
-		inc/my_vec3f.h \
 		inc/conversions.h \
 		inc/camera.h \
 		inc/handler.h \
@@ -440,14 +435,11 @@ my_vec3f.o: src/my_vec3f.cpp inc/my_vec3f.h \
 		inc/conversions.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o my_vec3f.o src/my_vec3f.cpp
 
-operations.o: src/operations.cpp inc/operations.h \
-		inc/my_vec3f.h \
-		inc/conversions.h
+operations.o: src/operations.cpp inc/operations.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o operations.o src/operations.cpp
 
 QSFML.o: src/QSFML.cpp inc/QSFML.h \
 		inc/triangle.h \
-		inc/my_vec3f.h \
 		inc/conversions.h \
 		inc/camera.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o QSFML.o src/QSFML.cpp
@@ -455,7 +447,6 @@ QSFML.o: src/QSFML.cpp inc/QSFML.h \
 scene.o: src/scene.cpp inc/scene.h \
 		inc/QSFML.h \
 		inc/triangle.h \
-		inc/my_vec3f.h \
 		inc/conversions.h \
 		inc/camera.h \
 		inc/textured_figure.h \
@@ -464,12 +455,10 @@ scene.o: src/scene.cpp inc/scene.h \
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o scene.o src/scene.cpp
 
 triangle.o: src/triangle.cpp inc/triangle.h \
-		inc/my_vec3f.h \
 		inc/conversions.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o triangle.o src/triangle.cpp
 
 camera.o: src/camera.cpp inc/camera.h \
-		inc/my_vec3f.h \
 		inc/conversions.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o camera.o src/camera.cpp
 
