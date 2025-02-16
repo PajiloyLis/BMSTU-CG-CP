@@ -27,7 +27,7 @@ void Scene::DrawFigures() const {
     if (figures.size() > 0) {
         sf::CircleShape crater_pos(5);
         crater_pos.setFillColor(sf::Color::Red);
-        my_vec3f possible_pos = scene->adapt_coords(cameras[cur_camera], {50, 43.55, 38},
+        my_vec3f possible_pos = scene->adapt_coords(cameras[cur_camera], {50, 43.55, 37.96},
                                                     figures[0].get_center());
         crater_pos.setPosition({possible_pos.getX(), possible_pos.getY()});
         scene->draw(crater_pos);
