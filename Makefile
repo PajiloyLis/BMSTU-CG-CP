@@ -56,7 +56,6 @@ SOURCES       = src/figure.cpp \
 		src/handler.cpp \
 		src/main.cpp \
 		src/main_window.cpp \
-		src/my_vec3f.cpp \
 		src/operations.cpp \
 		src/QSFML.cpp \
 		src/scene.cpp \
@@ -66,7 +65,6 @@ OBJECTS       = figure.o \
 		handler.o \
 		main.o \
 		main_window.o \
-		my_vec3f.o \
 		operations.o \
 		QSFML.o \
 		scene.o \
@@ -143,7 +141,6 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt6/mkspecs/features/spec_pre.prf \
 		inc/figure.h \
 		inc/handler.h \
 		inc/main_window.h \
-		inc/my_vec3f.h \
 		inc/operations.h \
 		inc/QSFML.h \
 		inc/scene.h \
@@ -152,7 +149,6 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt6/mkspecs/features/spec_pre.prf \
 		src/handler.cpp \
 		src/main.cpp \
 		src/main_window.cpp \
-		src/my_vec3f.cpp \
 		src/operations.cpp \
 		src/QSFML.cpp \
 		src/scene.cpp \
@@ -323,8 +319,8 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents /usr/lib/x86_64-linux-gnu/qt6/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents inc/conversions.h inc/cp_cg_ui.h inc/figure.h inc/handler.h inc/main_window.h inc/my_vec3f.h inc/operations.h inc/QSFML.h inc/scene.h inc/triangle.h inc/camera.h $(DISTDIR)/
-	$(COPY_FILE) --parents src/figure.cpp src/handler.cpp src/main.cpp src/main_window.cpp src/my_vec3f.cpp src/operations.cpp src/QSFML.cpp src/scene.cpp src/triangle.cpp src/camera.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents inc/conversions.h inc/cp_cg_ui.h inc/figure.h inc/handler.h inc/main_window.h inc/operations.h inc/QSFML.h inc/scene.h inc/triangle.h inc/camera.h $(DISTDIR)/
+	$(COPY_FILE) --parents src/figure.cpp src/handler.cpp src/main.cpp src/main_window.cpp src/operations.cpp src/QSFML.cpp src/scene.cpp src/triangle.cpp src/camera.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents inc/main_window.ui $(DISTDIR)/
 
 
@@ -430,10 +426,6 @@ main_window.o: src/main_window.cpp inc/main_window.h \
 		inc/figure.h \
 		inc/cp_cg_ui.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main_window.o src/main_window.cpp
-
-my_vec3f.o: src/my_vec3f.cpp inc/my_vec3f.h \
-		inc/conversions.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o my_vec3f.o src/my_vec3f.cpp
 
 operations.o: src/operations.cpp inc/operations.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o operations.o src/operations.cpp

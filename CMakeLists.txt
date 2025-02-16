@@ -18,8 +18,8 @@ include_directories(./inc .)
 
 add_executable(cp_cg
         src/main.cpp
-        src/my_vec3f.cpp
-        inc/my_vec3f.h
+#        src/my_vec3f.cpp
+#        inc/my_vec3f.h
         src/operations.cpp
         inc/operations.h
         src/triangle.cpp

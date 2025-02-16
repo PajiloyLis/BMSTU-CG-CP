@@ -23,7 +23,6 @@ SOURCES += \
     ./src/handler.cpp \
     ./src/main.cpp \
     ./src/main_window.cpp \
-    ./src/my_vec3f.cpp \
     ./src/operations.cpp \
     ./src/QSFML.cpp \
     ./src/scene.cpp \
@@ -36,7 +35,6 @@ HEADERS += \
     ./inc/figure.h \
     ./inc/handler.h \
     ./inc/main_window.h \
-    ./inc/my_vec3f.h \
     ./inc/operations.h \
     ./inc/QSFML.h \
     ./inc/scene.h \
