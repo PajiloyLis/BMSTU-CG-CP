@@ -15,6 +15,7 @@ void TaskHandler::ClearScene() const {
 }
 
 void TaskHandler::LoadModel(const string &filepath) {
+    scene.AddFigure(figure({}))
     scene.AddFigure(figure(read_stl(filepath)));
 }
 
