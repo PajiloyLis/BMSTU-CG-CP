@@ -47,13 +47,7 @@ private slots:
 
     void ShowTime(const double &time);
 
-    void RotateCurCameraLeft();
-
-    void RotateCurCameraRight();
-
-    void RotateCurCameraUp();
-
-    void RotateCurCameraDown();
+    void RotateCurCamera(float dx, float dy);
 
     void MoveCurCamera(const Camera_Movement &move);
 

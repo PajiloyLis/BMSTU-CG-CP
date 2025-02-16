@@ -27,14 +27,6 @@ void MainWindow::SetBindings() {
     QObject::connect(this->findChild<QAction *>("load_model_action"),
                      &QAction::triggered, this,
                      &MainWindow::LoadModelActionTriggered);
-    QObject::connect(this->findChild<QSFMLCanvas *>("drawer"), &QSFMLCanvas::LeftKeyPressed, this,
-                     &MainWindow::RotateCurCameraLeft);
-    QObject::connect(this->findChild<QSFMLCanvas *>("drawer"), &QSFMLCanvas::RightKeyPressed, this,
-                     &MainWindow::RotateCurCameraRight);
-    QObject::connect(this->findChild<QSFMLCanvas *>("drawer"), &QSFMLCanvas::DownKeyPressed, this,
-                     &MainWindow::RotateCurCameraDown);
-    QObject::connect(this->findChild<QSFMLCanvas *>("drawer"), &QSFMLCanvas::UpKeyPressed, this,
-                     &MainWindow::RotateCurCameraUp);
     QObject::connect(this->findChild<QSFMLCanvas *>("drawer"), &QSFMLCanvas::WKeyPressed, this,
                      &MainWindow::MoveCurCamera);
     QObject::connect(this->findChild<QSFMLCanvas *>("drawer"), &QSFMLCanvas::AKeyPressed, this,
@@ -47,6 +39,8 @@ void MainWindow::SetBindings() {
                      &MainWindow::ScaleCurCamera);
     QObject::connect(this->findChild<QSFMLCanvas *>("drawer"), &QSFMLCanvas::WheelScrolledUp, this,
                      &MainWindow::ScaleCurCamera);
+    QObject::connect(this->findChild<QSFMLCanvas *>("drawer"), &QSFMLCanvas::MouseMove, this,
+                     &MainWindow::RotateCurCamera);
 }
 
 void MainWindow::LoadModelActionTriggered() {
@@ -61,23 +55,8 @@ void MainWindow::DrawScene() {
     handler.DrawScene();
 }
 
-void MainWindow::RotateCurCameraLeft() {
+void MainWindow::RotateCurCamera(float dx, float dy) {
     handler.RotateCurCameraLeft();
-    DrawScene();
-}
-
-void MainWindow::RotateCurCameraRight() {
-    handler.RotateCurCameraRight();
-    DrawScene();
-}
-
-void MainWindow::RotateCurCameraUp() {
-    handler.RotateCurCameraUp();
-    DrawScene();
-}
-
-void MainWindow::RotateCurCameraDown() {
-    handler.RotateCurCameraDown();
     DrawScene();
 }
 
