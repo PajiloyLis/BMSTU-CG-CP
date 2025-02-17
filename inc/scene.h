@@ -19,6 +19,8 @@ public:
 
     void DrawParticlesSystems() const;
 
+    void AddParticlesSystem(const glm::vec3 &spawn, const int &count);
+
     void ClearScene() const;
 
     void AddCamera(const camera &c);

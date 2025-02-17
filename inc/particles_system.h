@@ -24,12 +24,13 @@ public:
 
 class particles_system {
 public:
-    
-    vector<particle> particles;
 
+    particles_system(const int & start_count, const glm::vec3 & spawn);
+
+    vector<particle> particles;
+    glm::vec3 spawn;
 
 };
-
 
 
 #endif //CP_CG_PARTICLES_SYSTEM_H

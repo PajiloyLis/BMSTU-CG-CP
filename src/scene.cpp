@@ -60,6 +60,16 @@ void Scene::MoveCamera(const Camera_Movement &move, float &delta_time) {
 
 
 
+void Scene::DrawParticlesSystems() const {
+
+}
+
+void Scene::AddParticlesSystem(const glm::vec3 &spawn, const int &count) {
+
+}
+
+
+
 
 
 
