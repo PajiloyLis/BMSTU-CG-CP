@@ -215,4 +215,13 @@ void QSFMLCanvas::mouseReleaseEvent(QMouseEvent *event) {
     }
 }
 
+void QSFMLCanvas::keyReleaseEvent(QKeyEvent *event) {
+    {
+        if (event->key() == Qt::Key_A) {
+            is_a_pressed = false; // Сбрасываем состояние
+        }
+        QWidget::keyReleaseEvent(event);
+    }
+}
+
 

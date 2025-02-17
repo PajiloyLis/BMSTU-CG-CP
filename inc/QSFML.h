@@ -87,6 +87,17 @@ private:
 
     void keyPressEvent(QKeyEvent *event) override;
 
+    void keyReleaseEvent(QKeyEvent *event) override;
+
+    void timerEvent(QTimerEvent *event) override {
+        Q_UNUSED(event);
+        if (is_a_pressed) {
+            qDebug() << "Клавиша 'A' зажата!";
+        } else {
+            qDebug() << "Клавиша 'A' не зажата.";
+        }
+    }
+
     void wheelEvent(QWheelEvent *event) override;
 
     void mousePressEvent(QMouseEvent *event) override;
@@ -124,6 +135,8 @@ private:
     bool mouse_left_pressed;
 
     QPoint mouse_left_press_pos;
+
+    ищщд
 
 public:
 
