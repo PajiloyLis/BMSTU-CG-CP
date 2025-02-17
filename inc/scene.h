@@ -6,7 +6,7 @@
 #include "figure.h"
 #include "camera.h"
 #include <GL/gl.h>
-
+#include "particles_system.h"
 class Scene {
 public:
     Scene();
@@ -35,6 +35,7 @@ private:
     QSFMLCanvas *scene;
     double width, height;
     vector<figure> figures;
+    vector<particles_s
     vector<camera> cameras;
     int cur_camera;
     float cur_frame_time, last_frame_time;
