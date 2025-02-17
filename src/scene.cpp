@@ -10,6 +10,7 @@ Scene::Scene(QSFMLCanvas *&scene, const double &width, const double &height) : f
     this->width = width;
     this->height = height;
     last_frame_time = cur_frame_time = 0;
+    wind = {3, 10, 2};
 }
 
 
@@ -59,13 +60,13 @@ void Scene::MoveCamera(const Camera_Movement &move, float &delta_time) {
 }
 
 
-
 void Scene::DrawParticlesSystems() const {
 
 }
 
-void Scene::AddParticlesSystem(const glm::vec3 &spawn, const int &count) {
-
+void
+Scene::AddParticlesSystem(const glm::vec3 &spawn, const int &count, const sf::Color &color, const glm::vec3 &speed) {
+    p_systems.push_back({count, spawn, color, speed + {0, 0, 7}});
 }
 
 

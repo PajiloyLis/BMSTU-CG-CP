@@ -19,7 +19,7 @@ public:
 
     void DrawParticlesSystems() const;
 
-    void AddParticlesSystem(const glm::vec3 &spawn, const int &count);
+    void AddParticlesSystem(const glm::vec3 &spawn, const int &count, const sf::Color &color, const glm::vec3 &speed);
 
     void ClearScene() const;
 
@@ -43,6 +43,7 @@ private:
     vector<camera> cameras;
     int cur_camera;
     float cur_frame_time, last_frame_time;
+    glm::vec3 wind;
 };
 
 #endif
