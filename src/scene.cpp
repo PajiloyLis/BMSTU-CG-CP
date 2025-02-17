@@ -66,7 +66,7 @@ void Scene::DrawParticlesSystems() const {
 
 void
 Scene::AddParticlesSystem(const glm::vec3 &spawn, const int &count, const sf::Color &color, const glm::vec3 &speed) {
-    p_systems.push_back({count, spawn, color, speed + {0, 0, 7}});
+    p_systems.push_back(particles_system(count, spawn, color, speed + glm::vec3(0, 0, 7)));
 }
 
 
