@@ -202,7 +202,7 @@ void QSFMLCanvas::mouseMoveEvent(QMouseEvent *event) {
         // Например, рисование, перемещение объектов и т.д.
         // В этом примере просто будем отображать координаты
         QPoint currentPos = event->pos();
-        emit MouseMove(currentPos.x() - mouse_left_press_pos.x(), currentPos.y() - mouse_left_press_pos.y());
+        emit MouseMove(currentPos.y() - mouse_left_press_pos.y(), currentPos.x() - mouse_left_press_pos.x());
     }
 }
 
@@ -211,7 +211,7 @@ void QSFMLCanvas::mouseReleaseEvent(QMouseEvent *event) {
         // Завершаем перетаскивание
         mouse_left_pressed = false;
         QPoint currentPos = event->pos();
-        emit MouseMove(currentPos.x() - mouse_left_press_pos.x(), currentPos.y() - mouse_left_press_pos.y());
+        emit MouseMove(currentPos.y() - mouse_left_press_pos.y(), currentPos.x() - mouse_left_press_pos.x());
     }
 }
 
