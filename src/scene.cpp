@@ -5,7 +5,8 @@ Scene::Scene() : figures() {
     width = height = 0;
 }
 
-Scene::Scene(QSFMLCanvas *&scene, const double &width, const double &height) : figures(), cameras(), cur_camera(0) {
+Scene::Scene(QSFMLCanvas *&scene, const double &width, const double &height)
+        : figures(), p_systems(), cameras(), cur_camera(0) {
     this->scene = scene;
     this->width = width;
     this->height = height;
@@ -65,8 +66,8 @@ void Scene::DrawParticlesSystems() const {
 }
 
 void
-Scene::AddParticlesSystem(const glm::vec3 &spawn, const int &count, const sf::Color &color, const glm::vec3 &speed) {
-    p_systems.push_back(particles_system(count, spawn, color, speed + glm::vec3(0, 0, 7)));
+Scene::AddParticlesSystem(const particles_system &system) {
+    p_systems.push_back(system);
 }
 
 

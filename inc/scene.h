@@ -19,7 +19,7 @@ public:
 
     void DrawParticlesSystems() const;
 
-    void AddParticlesSystem(const glm::vec3 &spawn, const int &count, const sf::Color &color, const glm::vec3 &speed);
+    void AddParticlesSystem(const particles_system &system);
 
     void ClearScene() const;
 

@@ -18,7 +18,7 @@ void TaskHandler::LoadModel(const string &filepath) {
     // Add mount
     scene.AddFigure(figure(read_stl(filepath)));
     // Add smoke
-    scene.AddParticlesSystem({50, 43.5, 38}, 100,  {198, 195, 181},  glm::vec3(0, 0, 7));
+    scene.AddParticlesSystem(particles_system(100, {50, 43.5, 38}, {198, 195, 181}, {0, 0, 7} + scene.wind));
 }
 
 vector<triangle> TaskHandler::read_stl(const string &filename) {
@@ -47,7 +47,7 @@ vector<triangle> TaskHandler::read_stl(const string &filename) {
             in.read((char *) &x, sizeof(x));
             in.read((char *) &y, sizeof(y));
             in.read((char *) &z, sizeof(z));
-            vertices[j].x =x, vertices[j].y=y, vertices[j].z=z;
+            vertices[j].x = x, vertices[j].y = y, vertices[j].z = z;
         }
         triangles[i].setVertices(vertices);
         in.seekg(2, ios_base::cur);
