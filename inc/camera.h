@@ -75,9 +75,9 @@ public:
     void move(Camera_Movement direction, float delta_time) {
         float velocity = MovementSpeed;
         if (direction == FORWARD)
-            Position += Front * velocity;
+            Position += Up * velocity;
         if (direction == BACKWARD)
-            Position -= Front * velocity;
+            Position -= Up * velocity;
         if (direction == LEFT)
             Position -= Right * velocity;
         if (direction == RIGHT)
