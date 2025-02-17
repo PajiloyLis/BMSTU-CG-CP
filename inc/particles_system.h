@@ -17,6 +17,9 @@ class particle {
 public:
     particle() = default;
 
+    particle(const glm::vec3 &pos = {0, 0, 0}, const float &r = 1.f, const glm::vec3 &sp = {0, 0, 0},
+             const sf::Color &c = {255, 255, 255}) : position(pos), radius(r), speed(sp), color(c) {};
+
     glm::vec3 position;
     float radius;
     glm::vec3 speed;
@@ -26,7 +29,7 @@ public:
 class particles_system {
 public:
 
-    particles_system(const int & start_count, const glm::vec3 & spawn);
+    particles_system(const int &start_count, const glm::vec3 &spawn, const sf::Color &color);
 
     vector<particle> particles;
     glm::vec3 spawn;
