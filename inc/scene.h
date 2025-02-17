@@ -35,6 +35,7 @@ public:
 
     void ScaleCamera(float &k);
 
+    glm::vec3 wind;
 private:
     QSFMLCanvas *scene;
     double width, height;
@@ -43,7 +44,6 @@ private:
     vector<camera> cameras;
     int cur_camera;
     float cur_frame_time, last_frame_time;
-    glm::vec3 wind;
 };
 
 #endif

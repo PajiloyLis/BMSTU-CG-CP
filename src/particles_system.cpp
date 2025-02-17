@@ -16,3 +16,9 @@ particles_system::particles_system(const int &start_count, const glm::vec3 &spaw
 
 }
 
+particles_system::particles_system(const particles_system &system) {
+    particles = system.particles;
+    spawn = system.spawn;
+    gen = system.gen;
+}
+
