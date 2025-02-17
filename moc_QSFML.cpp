@@ -22,8 +22,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_QSFMLCanvas_t {
-    const uint offsetsAndSize[40];
-    char stringdata0[214];
+    const uint offsetsAndSize[42];
+    char stringdata0[225];
 };
 #define QT_MOC_LITERAL(ofs, len) \
     uint(offsetof(qt_meta_stringdata_QSFMLCanvas_t, stringdata0) + ofs), len 
@@ -40,23 +40,25 @@ QT_MOC_LITERAL(71, 21), // "LeftMouseButtonDouble"
 QT_MOC_LITERAL(93, 11), // "WKeyPressed"
 QT_MOC_LITERAL(105, 15), // "Camera_Movement"
 QT_MOC_LITERAL(121, 4), // "move"
-QT_MOC_LITERAL(126, 11), // "AKeyPressed"
-QT_MOC_LITERAL(138, 11), // "SKeyPressed"
-QT_MOC_LITERAL(150, 11), // "DKeyPressed"
-QT_MOC_LITERAL(162, 15), // "WheelScrolledUp"
-QT_MOC_LITERAL(178, 1), // "k"
-QT_MOC_LITERAL(180, 17), // "WheelScrolledDown"
-QT_MOC_LITERAL(198, 9), // "MouseMove"
-QT_MOC_LITERAL(208, 2), // "dx"
-QT_MOC_LITERAL(211, 2) // "dy"
+QT_MOC_LITERAL(126, 10), // "delta_time"
+QT_MOC_LITERAL(137, 11), // "AKeyPressed"
+QT_MOC_LITERAL(149, 11), // "SKeyPressed"
+QT_MOC_LITERAL(161, 11), // "DKeyPressed"
+QT_MOC_LITERAL(173, 15), // "WheelScrolledUp"
+QT_MOC_LITERAL(189, 1), // "k"
+QT_MOC_LITERAL(191, 17), // "WheelScrolledDown"
+QT_MOC_LITERAL(209, 9), // "MouseMove"
+QT_MOC_LITERAL(219, 2), // "dx"
+QT_MOC_LITERAL(222, 2) // "dy"
 
     },
     "QSFMLCanvas\0LeftMouseButton\0\0x\0y\0"
     "ShiftLeftMouseButton\0RightMouseButton\0"
     "LeftMouseButtonDouble\0WKeyPressed\0"
-    "Camera_Movement\0move\0AKeyPressed\0"
-    "SKeyPressed\0DKeyPressed\0WheelScrolledUp\0"
-    "k\0WheelScrolledDown\0MouseMove\0dx\0dy"
+    "Camera_Movement\0move\0delta_time\0"
+    "AKeyPressed\0SKeyPressed\0DKeyPressed\0"
+    "WheelScrolledUp\0k\0WheelScrolledDown\0"
+    "MouseMove\0dx\0dy"
 };
 #undef QT_MOC_LITERAL
 
@@ -78,26 +80,26 @@ static const uint qt_meta_data_QSFMLCanvas[] = {
        5,    2,   85,    2, 0x06,    4 /* Public */,
        6,    0,   90,    2, 0x06,    7 /* Public */,
        7,    2,   91,    2, 0x06,    8 /* Public */,
-       8,    1,   96,    2, 0x06,   11 /* Public */,
-      11,    1,   99,    2, 0x06,   13 /* Public */,
-      12,    1,  102,    2, 0x06,   15 /* Public */,
-      13,    1,  105,    2, 0x06,   17 /* Public */,
-      14,    1,  108,    2, 0x06,   19 /* Public */,
-      16,    1,  111,    2, 0x06,   21 /* Public */,
-      17,    2,  114,    2, 0x06,   23 /* Public */,
+       8,    2,   96,    2, 0x06,   11 /* Public */,
+      12,    2,  101,    2, 0x06,   14 /* Public */,
+      13,    2,  106,    2, 0x06,   17 /* Public */,
+      14,    2,  111,    2, 0x06,   20 /* Public */,
+      15,    1,  116,    2, 0x06,   23 /* Public */,
+      17,    1,  119,    2, 0x06,   25 /* Public */,
+      18,    2,  122,    2, 0x06,   27 /* Public */,
 
  // signals: parameters
     QMetaType::Void, QMetaType::Int, QMetaType::Int,    3,    4,
     QMetaType::Void, QMetaType::Int, QMetaType::Int,    3,    4,
     QMetaType::Void,
     QMetaType::Void, QMetaType::Int, QMetaType::Int,    3,    4,
-    QMetaType::Void, 0x80000000 | 9,   10,
-    QMetaType::Void, 0x80000000 | 9,   10,
-    QMetaType::Void, 0x80000000 | 9,   10,
-    QMetaType::Void, 0x80000000 | 9,   10,
-    QMetaType::Void, QMetaType::Float,   15,
-    QMetaType::Void, QMetaType::Float,   15,
-    QMetaType::Void, QMetaType::Float, QMetaType::Float,   18,   19,
+    QMetaType::Void, 0x80000000 | 9, QMetaType::Float,   10,   11,
+    QMetaType::Void, 0x80000000 | 9, QMetaType::Float,   10,   11,
+    QMetaType::Void, 0x80000000 | 9, QMetaType::Float,   10,   11,
+    QMetaType::Void, 0x80000000 | 9, QMetaType::Float,   10,   11,
+    QMetaType::Void, QMetaType::Float,   16,
+    QMetaType::Void, QMetaType::Float,   16,
+    QMetaType::Void, QMetaType::Float, QMetaType::Float,   19,   20,
 
        0        // eod
 };
@@ -112,10 +114,10 @@ void QSFMLCanvas::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id,
         case 1: _t->ShiftLeftMouseButton((*reinterpret_cast< std::add_pointer_t<int>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<int>>(_a[2]))); break;
         case 2: _t->RightMouseButton(); break;
         case 3: _t->LeftMouseButtonDouble((*reinterpret_cast< std::add_pointer_t<int>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<int>>(_a[2]))); break;
-        case 4: _t->WKeyPressed((*reinterpret_cast< std::add_pointer_t<Camera_Movement>>(_a[1]))); break;
-        case 5: _t->AKeyPressed((*reinterpret_cast< std::add_pointer_t<Camera_Movement>>(_a[1]))); break;
-        case 6: _t->SKeyPressed((*reinterpret_cast< std::add_pointer_t<Camera_Movement>>(_a[1]))); break;
-        case 7: _t->DKeyPressed((*reinterpret_cast< std::add_pointer_t<Camera_Movement>>(_a[1]))); break;
+        case 4: _t->WKeyPressed((*reinterpret_cast< std::add_pointer_t<Camera_Movement>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<float>>(_a[2]))); break;
+        case 5: _t->AKeyPressed((*reinterpret_cast< std::add_pointer_t<Camera_Movement>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<float>>(_a[2]))); break;
+        case 6: _t->SKeyPressed((*reinterpret_cast< std::add_pointer_t<Camera_Movement>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<float>>(_a[2]))); break;
+        case 7: _t->DKeyPressed((*reinterpret_cast< std::add_pointer_t<Camera_Movement>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<float>>(_a[2]))); break;
         case 8: _t->WheelScrolledUp((*reinterpret_cast< std::add_pointer_t<float>>(_a[1]))); break;
         case 9: _t->WheelScrolledDown((*reinterpret_cast< std::add_pointer_t<float>>(_a[1]))); break;
         case 10: _t->MouseMove((*reinterpret_cast< std::add_pointer_t<float>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<float>>(_a[2]))); break;
@@ -152,28 +154,28 @@ void QSFMLCanvas::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id,
             }
         }
         {
-            using _t = void (QSFMLCanvas::*)(const Camera_Movement & );
+            using _t = void (QSFMLCanvas::*)(const Camera_Movement & , float );
             if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&QSFMLCanvas::WKeyPressed)) {
                 *result = 4;
                 return;
             }
         }
         {
-            using _t = void (QSFMLCanvas::*)(const Camera_Movement & );
+            using _t = void (QSFMLCanvas::*)(const Camera_Movement & , float );
             if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&QSFMLCanvas::AKeyPressed)) {
                 *result = 5;
                 return;
             }
         }
         {
-            using _t = void (QSFMLCanvas::*)(const Camera_Movement & );
+            using _t = void (QSFMLCanvas::*)(const Camera_Movement & , float );
             if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&QSFMLCanvas::SKeyPressed)) {
                 *result = 6;
                 return;
             }
         }
         {
-            using _t = void (QSFMLCanvas::*)(const Camera_Movement & );
+            using _t = void (QSFMLCanvas::*)(const Camera_Movement & , float );
             if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&QSFMLCanvas::DKeyPressed)) {
                 *result = 7;
                 return;
@@ -210,7 +212,7 @@ const QMetaObject QSFMLCanvas::staticMetaObject = { {
     qt_static_metacall,
     nullptr,
 qt_incomplete_metaTypeArray<qt_meta_stringdata_QSFMLCanvas_t
-, QtPrivate::TypeAndForceComplete<QSFMLCanvas, std::true_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<const int &, std::false_type>, QtPrivate::TypeAndForceComplete<const int &, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<const int &, std::false_type>, QtPrivate::TypeAndForceComplete<const int &, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<const int &, std::false_type>, QtPrivate::TypeAndForceComplete<const int &, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<const Camera_Movement &, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<const Camera_Movement &, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<const Camera_Movement &, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<const Camera_Movement &, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<float, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<float, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<float, std::false_type>, QtPrivate::TypeAndForceComplete<float, std::false_type>
+, QtPrivate::TypeAndForceComplete<QSFMLCanvas, std::true_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<const int &, std::false_type>, QtPrivate::TypeAndForceComplete<const int &, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<const int &, std::false_type>, QtPrivate::TypeAndForceComplete<const int &, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<const int &, std::false_type>, QtPrivate::TypeAndForceComplete<const int &, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<const Camera_Movement &, std::false_type>, QtPrivate::TypeAndForceComplete<float, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<const Camera_Movement &, std::false_type>, QtPrivate::TypeAndForceComplete<float, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<const Camera_Movement &, std::false_type>, QtPrivate::TypeAndForceComplete<float, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<const Camera_Movement &, std::false_type>, QtPrivate::TypeAndForceComplete<float, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<float, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<float, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<float, std::false_type>, QtPrivate::TypeAndForceComplete<float, std::false_type>
 
 
 
@@ -279,30 +281,30 @@ void QSFMLCanvas::LeftMouseButtonDouble(const int & _t1, const int & _t2)
 }
 
 // SIGNAL 4
-void QSFMLCanvas::WKeyPressed(const Camera_Movement & _t1)
+void QSFMLCanvas::WKeyPressed(const Camera_Movement & _t1, float _t2)
 {
-    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t1))) };
+    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t1))), const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t2))) };
     QMetaObject::activate(this, &staticMetaObject, 4, _a);
 }
 
 // SIGNAL 5
-void QSFMLCanvas::AKeyPressed(const Camera_Movement & _t1)
+void QSFMLCanvas::AKeyPressed(const Camera_Movement & _t1, float _t2)
 {
-    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t1))) };
+    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t1))), const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t2))) };
     QMetaObject::activate(this, &staticMetaObject, 5, _a);
 }
 
 // SIGNAL 6
-void QSFMLCanvas::SKeyPressed(const Camera_Movement & _t1)
+void QSFMLCanvas::SKeyPressed(const Camera_Movement & _t1, float _t2)
 {
-    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t1))) };
+    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t1))), const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t2))) };
     QMetaObject::activate(this, &staticMetaObject, 6, _a);
 }
 
 // SIGNAL 7
-void QSFMLCanvas::DKeyPressed(const Camera_Movement & _t1)
+void QSFMLCanvas::DKeyPressed(const Camera_Movement & _t1, float _t2)
 {
-    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t1))) };
+    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t1))), const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t2))) };
     QMetaObject::activate(this, &staticMetaObject, 7, _a);
 }
 
