@@ -152,7 +152,8 @@ glm::vec3 QSFMLCanvas::adapt_coords(const camera &c, const glm::vec3 &point, con
     glm::mat4 trans(1.0f);
 //    if (on_load)
 //    vec4 res_1 = c.perspective() * c.camLookAt() * vec4(center.x , center.y, center.z, 1);
-    trans = model(c.Position, point);
+
+//    trans *= model(c.Position, point);
     trans *= viewport(center, c.Position, point);
     trans *= c.perspective();
     trans *= c.camLookAt();
