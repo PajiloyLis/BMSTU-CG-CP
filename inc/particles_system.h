@@ -9,6 +9,7 @@
 #include <vector>
 #include <iostream>
 #include <SFML/Graphics.hpp>
+#include <random>
 
 using namespace std;
 
@@ -29,7 +30,8 @@ public:
 
     vector<particle> particles;
     glm::vec3 spawn;
-
+    std::random_device rd;
+    std::mt19937 gen;
 };
 
 

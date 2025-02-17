@@ -5,5 +5,6 @@
 #include "particles_system.h"
 
 particles_system::particles_system(const int &start_count, const glm::vec3 &spawn) {
-    
+    gen = mt19937(rd());
+    particles.resize(start_count)
 }
