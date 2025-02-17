@@ -169,13 +169,13 @@ glm::mat4 QSFMLCanvas::viewport(const glm::vec3 &center) {
 
 void QSFMLCanvas::keyPressEvent(QKeyEvent *event) {
     if (event->key() == Qt::Key_W)
-            emit this->WKeyPressed(FORWARD);
+            w_pressed = true;
     else if (event->key() == Qt::Key_A)
-            emit this->AKeyPressed(LEFT);
+            a_pressed =true;
     else if (event->key() == Qt::Key_S)
-            emit this->SKeyPressed(BACKWARD);
+            s_pressed = true;
     else if (event->key() == Qt::Key_D)
-            emit this->DKeyPressed(RIGHT);
+            d_pressed = true;
 }
 
 void QSFMLCanvas::wheelEvent(QWheelEvent *event) {
@@ -217,8 +217,8 @@ void QSFMLCanvas::mouseReleaseEvent(QMouseEvent *event) {
 
 void QSFMLCanvas::keyReleaseEvent(QKeyEvent *event) {
     {
-        if (event->key() == Qt::Key_A) {
-            is_a_pressed = false; // Сбрасываем состояние
+        if (event->key() == Qt::Key_W) {
+            w_pressed = false; // Сбрасываем состояние
         }
         QWidget::keyReleaseEvent(event);
     }

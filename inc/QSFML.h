@@ -136,7 +136,9 @@ private:
 
     QPoint mouse_left_press_pos;
 
-    ищщд
+    bool w_pressed, a_pressed, s_pressed, d_pressed;
+
+    float last
 
 public:
 
