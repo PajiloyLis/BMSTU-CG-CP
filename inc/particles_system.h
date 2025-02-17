@@ -8,6 +8,7 @@
 #include <glm/glm.hpp>
 #include <vector>
 #include <iostream>
+#include <SFML/Graphics.hpp>
 
 using namespace std;
 
@@ -18,10 +19,12 @@ public:
     glm::vec3 position;
     float radius;
     glm::vec3 speed;
+    sf::Color color;
 };
 
 class particles_system {
 public:
+    
     vector<particle> particles;
 
 

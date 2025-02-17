@@ -17,6 +17,8 @@ public:
 
     void DrawFigures() const;
 
+    void DrawParticlesSystems() const;
+
     void ClearScene() const;
 
     void AddCamera(const camera &c);
@@ -35,7 +37,7 @@ private:
     QSFMLCanvas *scene;
     double width, height;
     vector<figure> figures;
-    vector<particles_s
+    vector<particles_system> p_systems;
     vector<camera> cameras;
     int cur_camera;
     float cur_frame_time, last_frame_time;
