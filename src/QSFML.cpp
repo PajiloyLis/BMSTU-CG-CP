@@ -10,7 +10,8 @@ QSFMLCanvas::QSFMLCanvas(QWidget *parent, const QSize &Size)
                            sf::Style::Default),
           zbuffer(Size.width() * Size.height(), std::numeric_limits<float>::min()),
           m_initialized(false),
-          back_color(sf::Color(0x87CEEB)) {
+          back_color(sf::Color(0x87CEEB)), mouse_left_pressed(false), w_pressed(false), a_pressed(false),
+          s_pressed(false), d_pressed(false) {
     image.create(Size.width(), Size.height(), back_color);
     setAttribute(Qt::WA_PaintOnScreen);
     setAttribute(Qt::WA_OpaquePaintEvent);
@@ -169,13 +170,13 @@ glm::mat4 QSFMLCanvas::viewport(const glm::vec3 &center) {
 
 void QSFMLCanvas::keyPressEvent(QKeyEvent *event) {
     if (event->key() == Qt::Key_W)
-            w_pressed = true;
+        w_pressed = true;
     else if (event->key() == Qt::Key_A)
-            a_pressed =true;
+        a_pressed = true;
     else if (event->key() == Qt::Key_S)
-            s_pressed = true;
+        s_pressed = true;
     else if (event->key() == Qt::Key_D)
-            d_pressed = true;
+        d_pressed = true;
 }
 
 void QSFMLCanvas::wheelEvent(QWheelEvent *event) {
@@ -217,10 +218,25 @@ void QSFMLCanvas::mouseReleaseEvent(QMouseEvent *event) {
 
 void QSFMLCanvas::keyReleaseEvent(QKeyEvent *event) {
     {
-        if (event->key() == Qt::Key_W) {
-            w_pressed = false; // Сбрасываем состояние
+        if (event->key() == Qt::Key_W)
+            w_pressed = false;
+        else if (event->key() == Qt::Key_A)
+            a_pressed = false;
+        else if (event->key() == Qt::Key_S)
+            s_pressed = false;
+        else if (event->key() == Qt::Key_D)
+            d_pressed = false;
+    }
+}
+
+void QSFMLCanvas::timerEvent(QTimerEvent *event) {
+    {
+        Q_UNUSED(event);
+        if (w_pressed) {
+            emit;
+        } else {
+            qDebug() << "Клавиша 'A' не зажата.";
         }
-        QWidget::keyReleaseEvent(event);
     }
 }
 

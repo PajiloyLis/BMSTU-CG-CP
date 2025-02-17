@@ -89,14 +89,7 @@ private:
 
     void keyReleaseEvent(QKeyEvent *event) override;
 
-    void timerEvent(QTimerEvent *event) override {
-        Q_UNUSED(event);
-        if (is_a_pressed) {
-            qDebug() << "Клавиша 'A' зажата!";
-        } else {
-            qDebug() << "Клавиша 'A' не зажата.";
-        }
-    }
+    void timerEvent(QTimerEvent *event) override;
 
     void wheelEvent(QWheelEvent *event) override;
 
@@ -138,7 +131,7 @@ private:
 
     bool w_pressed, a_pressed, s_pressed, d_pressed;
 
-    float last
+    float last_motion_time, now_time;
 
 public:
 
