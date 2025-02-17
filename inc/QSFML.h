@@ -99,8 +99,9 @@ private:
 
     void mouseReleaseEvent(QMouseEvent *event) override;
 
-    glm::mat4 viewport(const glm::vec3 &center);
+    glm::mat4 viewport(const glm::vec3 &center, const glm::vec3 &cam_pos, const glm::vec3 &point);
 
+    glm::mat4 model(const glm::vec3 &cam_pos, const glm::vec3 &point);
     void onInit();
 
     void onUpdate();
