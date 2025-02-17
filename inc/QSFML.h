@@ -54,19 +54,19 @@ signals:
 
 signals:
 
-    void WKeyPressed(const Camera_Movement &move);
+    void WKeyPressed(const Camera_Movement &move, float delta_time);
 
 signals:
 
-    void AKeyPressed(const Camera_Movement &move);
+    void AKeyPressed(const Camera_Movement &move, float delta_time);
 
 signals:
 
-    void SKeyPressed(const Camera_Movement &move);
+    void SKeyPressed(const Camera_Movement &move, float delta_time);
 
 signals:
 
-    void DKeyPressed(const Camera_Movement &move);
+    void DKeyPressed(const Camera_Movement &move, float delta_time);
 
 signals:
 

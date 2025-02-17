@@ -169,6 +169,7 @@ glm::mat4 QSFMLCanvas::viewport(const glm::vec3 &center) {
 }
 
 void QSFMLCanvas::keyPressEvent(QKeyEvent *event) {
+    last_motion_time = time(nullptr);
     if (event->key() == Qt::Key_W)
         w_pressed = true;
     else if (event->key() == Qt::Key_A)
@@ -199,9 +200,6 @@ void QSFMLCanvas::mousePressEvent(QMouseEvent *event) {
 
 void QSFMLCanvas::mouseMoveEvent(QMouseEvent *event) {
     if (mouse_left_pressed) {
-        // Вы можете добавить логику здесь для обработки перемещения
-        // Например, рисование, перемещение объектов и т.д.
-        // В этом примере просто будем отображать координаты
         QPoint currentPos = event->pos();
         emit MouseMove(currentPos.y() - mouse_left_press_pos.y(), currentPos.x() - mouse_left_press_pos.x());
     }
@@ -217,26 +215,33 @@ void QSFMLCanvas::mouseReleaseEvent(QMouseEvent *event) {
 }
 
 void QSFMLCanvas::keyReleaseEvent(QKeyEvent *event) {
-    {
-        if (event->key() == Qt::Key_W)
-            w_pressed = false;
-        else if (event->key() == Qt::Key_A)
-            a_pressed = false;
-        else if (event->key() == Qt::Key_S)
-            s_pressed = false;
-        else if (event->key() == Qt::Key_D)
-            d_pressed = false;
+    now_time = time(nullptr);
+    float delta = now_time - last_motion_time;
+    last_motion_time = now_time;
+    if (event->key() == Qt::Key_W) {
+        w_pressed = false;
+        emit WKeyPressed(FORWARD, delta);
+    } else if (event->key() == Qt::Key_A) {
+        a_pressed = false;
+        emit AKeyPressed(LEFT, delta);
+    } else if (event->key() == Qt::Key_S) {
+        s_pressed = false;
+        emit SKeyPressed(BACKWARD, delta);
+    } else if (event->key() == Qt::Key_D) {
+        d_pressed = false;
+        emit DKeyPressed(RIGHT, delta);
     }
 }
 
 void QSFMLCanvas::timerEvent(QTimerEvent *event) {
-    {
-        Q_UNUSED(event);
-        if (w_pressed) {
-            emit;
-        } else {
-            qDebug() << "Клавиша 'A' не зажата.";
-        }
+    now_time = time(nullptr);
+    float delta = now_time - last_motion_time;
+    last_motion_time = now_time;
+    Q_UNUSED(event);
+    if (w_pressed) {
+        emit WKeyPressed();
+    } else {
+        qDebug() << "Клавиша 'A' не зажата.";
     }
 }
 
