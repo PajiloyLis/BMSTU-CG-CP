@@ -60,8 +60,8 @@ void MainWindow::RotateCurCamera(float dx, float dy) {
     DrawScene();
 }
 
-void MainWindow::MoveCurCamera(const Camera_Movement &move) {
-    handler.MoveCamera(move);
+void MainWindow::MoveCurCamera(const Camera_Movement &move, float delta_time) {
+    handler.MoveCamera(move, <#initializer#>);
     DrawScene();
 }
 

@@ -239,9 +239,13 @@ void QSFMLCanvas::timerEvent(QTimerEvent *event) {
     last_motion_time = now_time;
     Q_UNUSED(event);
     if (w_pressed) {
-        emit WKeyPressed();
-    } else {
-        qDebug() << "Клавиша 'A' не зажата.";
+        emit WKeyPressed(FORWARD, delta);
+    } else if (a_pressed) {
+        emit AKeyPressed(LEFT, delta);
+    } else if (s_pressed) {
+        emit SKeyPressed(BACKWARD, delta);
+    } else if (d_pressed) {
+        emit DKeyPressed(RIGHT, delta);
     }
 }
 

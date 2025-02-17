@@ -49,7 +49,7 @@ private slots:
 
     void RotateCurCamera(float dx, float dy);
 
-    void MoveCurCamera(const Camera_Movement &move);
+    void MoveCurCamera(const Camera_Movement &move, float delta_time);
 
     void ScaleCurCamera(float k);
 private:

@@ -38,7 +38,7 @@ public:
 
     void RotateCurCamera(const float &dx, const float &dy);
 
-    void MoveCamera(const Camera_Movement &move);
+    void MoveCamera(const Camera_Movement &move, float &delta_time);
 
     void ScaleCamera(float &k);
 
