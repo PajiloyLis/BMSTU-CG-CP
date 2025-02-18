@@ -18,6 +18,8 @@ QSFMLCanvas::QSFMLCanvas(QWidget *parent, const QSize &Size)
     setAttribute(Qt::WA_NoSystemBackground);
 
     setFocusPolicy(Qt::StrongFocus);
+    timers[KEYBOARD] = 0;
+    timers[SMOKE] = 0;
 }
 
 void QSFMLCanvas::onInit() {
@@ -44,7 +46,7 @@ void QSFMLCanvas::showEvent(QShowEvent *) {
 }
 
 void QSFMLCanvas::paintEvent(QPaintEvent *) {
-    cout<<"KEK"<<'\n';
+    cout << "KEK" << '\n';
     this->widgetDraw();
     this->display();
 }
@@ -233,14 +235,17 @@ void QSFMLCanvas::keyReleaseEvent(QKeyEvent *event) {
         d_pressed = false;
         emit DKeyPressed(RIGHT, delta);
     }
-    this->killTimer()
+    if (timers[KEYBOARD]) {
+        cout<<"THIS MUTHERFUCKER MUST DIE\n";
+        this->killTimer(timers[KEYBOARD]);
+    }
 }
 
 void QSFMLCanvas::timerEvent(QTimerEvent *event) {
     now_time = time(nullptr);
     float delta = now_time - last_motion_time;
     last_motion_time = now_time;
-    cout<<"TIMER KEK"<<'\n';
+    cout << "TIMER KEK" << '\n';
     Q_UNUSED(event);
     if (w_pressed) {
         emit WKeyPressed(FORWARD, delta);

@@ -25,6 +25,11 @@
 using namespace std;
 using namespace sf;
 
+enum TIMERS
+{
+    KEYBOARD,
+    SMOKE
+};
 
 class QSFMLCanvas : public QWidget, public sf::RenderWindow {
 Q_OBJECT
@@ -137,7 +142,7 @@ private:
 
     float last_motion_time, now_time;
 
-    
+    map<int, int> timers;
 
 public:
 
