@@ -82,13 +82,13 @@ QSFMLCanvas::DrawTriangle(const triangle &t, const camera &cam, const glm::vec3 
         array<sf::Vertex, 3> points_to_render;
         for (int i = 0; i < points_.size(); ++i) {
             points_[i] = adapt_coords(cam, t.vertices[i], figure_center);
-            points_to_render[i] = Vertex({points_[i].x, points_[i].y},
-                                         sf::Color(static_cast<Uint8>(color.r * intensity),
-                                                   static_cast<Uint8>(color.g * intensity),
-                                                   static_cast<Uint8>(color.b * intensity)));
+//            points_to_render[i] = Vertex({points_[i].x, points_[i].y},
+//                                         sf::Color(static_cast<Uint8>(color.r * intensity),
+//                                                   static_cast<Uint8>(color.g * intensity),
+//                                                   static_cast<Uint8>(color.b * intensity)));
         }
-        z_buffer(points_, image, {static_cast<Uint8>(255 * intensity), static_cast<Uint8>(255 * intensity),
-                                  static_cast<Uint8>(250 * intensity)}, zbuffer);
+        z_buffer(points_, image, {static_cast<Uint8>(color.r * intensity), static_cast<Uint8>(color.g * intensity),
+                                  static_cast<Uint8>(color.b * intensity)}, zbuffer);
 //        this->draw(&points_to_render[0], points_to_render.size(), sf::Triangles);
     }
 }
@@ -255,8 +255,10 @@ glm::mat4 QSFMLCanvas::model(const glm::vec3 &cam_pos, const glm::vec3 &point) {
 }
 
 void QSFMLCanvas::DrawParticles(const particles_system &system, const camera &cam) {
+    vector<glm::vec3>
     for (auto &particle: system.particles) {
-        
+        glm::vec3 adapted_point = adapt_coords(cam, particle.position, system.spawn);
+
     }
 }
 
