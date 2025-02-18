@@ -29,3 +29,7 @@ particles_system &particles_system::operator=(const particles_system &system) {
     return *this;
 }
 
+void particles_system::start_simulation() {
+    
+}
+

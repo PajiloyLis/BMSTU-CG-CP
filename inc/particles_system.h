@@ -34,6 +34,8 @@ public:
 
     particles_system& operator=(const particles_system & system);
 
+    void start_simulation();
+
     particles_system (const particles_system &system);
     vector<particle> particles;
     glm::vec3 spawn;
