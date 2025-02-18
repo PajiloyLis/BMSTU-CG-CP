@@ -41,18 +41,30 @@
     </property>
     <addaction name="load_model_action"/>
    </widget>
-   <widget class="QMenu" name="menu_2">
+   <widget class="QMenu" name="params_menu">
     <property name="title">
      <string>Параметры</string>
     </property>
    </widget>
+   <widget class="QMenu" name="sim_menu">
+    <property name="title">
+     <string>Симуляция</string>
+    </property>
+    <addaction name="sim_start"/>
+   </widget>
    <addaction name="model_menu"/>
-   <addaction name="menu_2"/>
+   <addaction name="params_menu"/>
+   <addaction name="sim_menu"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <action name="load_model_action">
    <property name="text">
     <string>Загрузить</string>
+   </property>
+  </action>
+  <action name="sim_start">
+   <property name="text">
+    <string>Начать</string>
    </property>
   </action>
  </widget>
