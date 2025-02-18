@@ -181,7 +181,7 @@ void QSFMLCanvas::keyPressEvent(QKeyEvent *event) {
         s_pressed = true;
     else if (event->key() == Qt::Key_D)
         d_pressed = true;
-    this->startTimer(1000);
+    timers[KEYBOARD] = this->startTimer(1000);
 }
 
 void QSFMLCanvas::wheelEvent(QWheelEvent *event) {
@@ -236,7 +236,7 @@ void QSFMLCanvas::keyReleaseEvent(QKeyEvent *event) {
         emit DKeyPressed(RIGHT, delta);
     }
     if (timers[KEYBOARD]) {
-        cout<<"THIS MUTHERFUCKER MUST DIE\n";
+        cout << "THIS MUTHERFUCKER MUST DIE\n";
         this->killTimer(timers[KEYBOARD]);
     }
 }
