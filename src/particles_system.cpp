@@ -30,6 +30,6 @@ particles_system &particles_system::operator=(const particles_system &system) {
 }
 
 void particles_system::start_simulation() {
-    timer_id = 
+    timer_id =
 }
 
