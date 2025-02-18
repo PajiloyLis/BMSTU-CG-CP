@@ -409,10 +409,32 @@ handler.o: src/handler.cpp inc/handler.h \
 		inc/figure.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o handler.o src/handler.cpp
 
-main.o: src/main.cpp inc/main_window.h
+main.o: src/main.cpp inc/main_window.h \
+		inc/QSFML.h \
+		inc/triangle.h \
+		inc/conversions.h \
+		inc/camera.h \
+		inc/particles_system.h \
+		inc/handler.h \
+		inc/textured_figure.h \
+		inc/textured_triangle.h \
+		inc/scene.h \
+		inc/figure.h \
+		inc/cp_cg_ui.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o src/main.cpp
 
-main_window.o: src/main_window.cpp inc/main_window.h
+main_window.o: src/main_window.cpp inc/main_window.h \
+		inc/QSFML.h \
+		inc/triangle.h \
+		inc/conversions.h \
+		inc/camera.h \
+		inc/particles_system.h \
+		inc/handler.h \
+		inc/textured_figure.h \
+		inc/textured_triangle.h \
+		inc/scene.h \
+		inc/figure.h \
+		inc/cp_cg_ui.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main_window.o src/main_window.cpp
 
 operations.o: src/operations.cpp inc/operations.h

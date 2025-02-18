@@ -43,6 +43,8 @@ public:
 
     void DrawParticles(const particles_system &system, const camera &cam);
 
+    void StartSmokeTimer();
+
 signals:
 
     void LeftMouseButton(const int &x, const int &y);
@@ -90,6 +92,8 @@ signals:
 signals:
 
     void SmokeTimerElapsed();
+
+
 
 //private:
 //    void mousePressEvent(QMouseEvent *event) override;

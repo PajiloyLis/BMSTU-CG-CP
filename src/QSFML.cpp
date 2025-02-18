@@ -277,4 +277,8 @@ void QSFMLCanvas::DrawParticles(const particles_system &system, const camera &ca
     this->draw(adapted_points.data(), adapted_points.size(), sf::Points);
 }
 
+void QSFMLCanvas::StartSmokeTimer() {
+    timers[SMOKE] = startTimer(100);
+}
+
 
