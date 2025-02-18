@@ -72,6 +72,14 @@ Scene::AddParticlesSystem(const particles_system &system) {
     p_systems.push_back(system);
 }
 
+void Scene::StartSimulation() {
+    sf::Clock clock
+    while (scene->isOpen())
+    {
+
+    }
+}
+
 
 
 

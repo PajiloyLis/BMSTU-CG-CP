@@ -117,3 +117,7 @@ void TaskHandler::ScaleCamera(float &k) {
     scene.ScaleCamera(k);
 }
 
+void TaskHandler::StartSimulation() {
+    scene.StartSimulation();
+}
+

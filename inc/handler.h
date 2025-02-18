@@ -12,14 +12,6 @@ public:
 
     ~TaskHandler() = default;
 
-    void AddNewSegment(const int &x, const int &y);
-
-    void AddNewOrthogonalSegment(const int &x, const int &y);
-
-    void AddFinalSegment();
-
-    void SetFigureColor(const Color &color);
-
     void SetScene(const Scene &scene_to_set);
 
     void AddCamera(const camera &cam);
@@ -30,10 +22,6 @@ public:
 
     void ClearScene() const;
 
-    void FillFigure(const bool &delay, const int &x, const int &y);
-
-    void FigureDelLastPoint();
-
     void LoadModel(const string &filepath);
 
     void RotateCurCamera(const float &dx, const float &dy);
@@ -41,6 +29,8 @@ public:
     void MoveCamera(const Camera_Movement &move, float &delta_time);
 
     void ScaleCamera(float &k);
+
+    void StartSimulation();
 
 private:
 

@@ -35,6 +35,8 @@ public:
 
     void ScaleCamera(float &k);
 
+    void StartSimulation();
+
     glm::vec3 wind;
 private:
     QSFMLCanvas *scene;
