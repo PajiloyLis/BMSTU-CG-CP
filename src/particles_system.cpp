@@ -13,7 +13,7 @@ particles_system::particles_system(const int &start_count, const glm::vec3 &spaw
                                             static_cast<sf::Uint8 >(color.g + 1 - gen() % 3),
                                             static_cast<sf::Uint8 >(color.b + 1 - gen() % 3)}));
     this->spawn = spawn;
-
+    timer_id = 0;
 }
 
 particles_system::particles_system(const particles_system &system) {
@@ -30,6 +30,6 @@ particles_system &particles_system::operator=(const particles_system &system) {
 }
 
 void particles_system::start_simulation() {
-    
+    timer_id = 
 }
 
