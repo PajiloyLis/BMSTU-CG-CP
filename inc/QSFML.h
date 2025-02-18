@@ -88,7 +88,7 @@ signals:
 
     void MouseMove(float dx, float dy);
 
-private:
+//private:
 //    void mousePressEvent(QMouseEvent *event) override;
 
     static void z_buffer(array<glm::vec3, 3> points_, Image &image, sf::Color color_, vector<float> &zbuffer);
@@ -144,7 +144,7 @@ private:
 
     map<int, int> timers;
 
-public:
+//public:
 
     glm::vec3 adapt_coords(const camera &c, const glm::vec3 &point, const glm::vec3 &center);
 };

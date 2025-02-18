@@ -242,19 +242,25 @@ void QSFMLCanvas::keyReleaseEvent(QKeyEvent *event) {
 }
 
 void QSFMLCanvas::timerEvent(QTimerEvent *event) {
-    now_time = time(nullptr);
-    float delta = now_time - last_motion_time;
-    last_motion_time = now_time;
-    cout << "TIMER KEK" << '\n';
-    Q_UNUSED(event);
-    if (w_pressed) {
-        emit WKeyPressed(FORWARD, delta);
-    } else if (a_pressed) {
-        emit AKeyPressed(LEFT, delta);
-    } else if (s_pressed) {
-        emit SKeyPressed(BACKWARD, delta);
-    } else if (d_pressed) {
-        emit DKeyPressed(RIGHT, delta);
+    if(event->timerId() == timers[KEYBOARD]) {
+        now_time = time(nullptr);
+        float delta = now_time - last_motion_time;
+        last_motion_time = now_time;
+        cout << "TIMER KEK" << '\n';
+        Q_UNUSED(event);
+        if (w_pressed) {
+            emit WKeyPressed(FORWARD, delta);
+        } else if (a_pressed) {
+            emit AKeyPressed(LEFT, delta);
+        } else if (s_pressed) {
+            emit SKeyPressed(BACKWARD, delta);
+        } else if (d_pressed) {
+            emit DKeyPressed(RIGHT, delta);
+        }
+    }
+    else if(event->timerId()==timers[SMOKE])
+    {
+
     }
 }
 

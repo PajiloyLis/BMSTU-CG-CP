@@ -73,7 +73,7 @@ Scene::AddParticlesSystem(const particles_system &system) {
 }
 
 void Scene::StartSimulation() {
-    sf::Clock clock
+    scene.timers[SMOKE]
     while (scene->isOpen())
     {
 
