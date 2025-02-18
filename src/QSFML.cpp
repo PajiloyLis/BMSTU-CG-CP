@@ -152,7 +152,6 @@ glm::vec3 QSFMLCanvas::adapt_coords(const camera &c, const glm::vec3 &point, con
     glm::mat4 trans(1.0f);
 //    if (on_load)
 //    vec4 res_1 = c.perspective() * c.camLookAt() * vec4(center.x , center.y, center.z, 1);
-
 //    trans *= model(c.Position, point);
     trans *= viewport(center, c.Position, point);
     trans *= c.perspective();
@@ -255,10 +254,9 @@ glm::mat4 QSFMLCanvas::model(const glm::vec3 &cam_pos, const glm::vec3 &point) {
 }
 
 void QSFMLCanvas::DrawParticles(const particles_system &system, const camera &cam) {
-    vector<glm::vec3> 
     for (auto &particle: system.particles) {
         glm::vec3 adapted_point = adapt_coords(cam, particle.position, system.spawn);
-
+        this->draw(sf::Vertex(sf::Vector2f(adapted_point.x, adapted_point.y), ), )
     }
 }
 
