@@ -7,6 +7,7 @@ void TaskHandler::SetScene(const Scene &scene_to_set) {
 }
 
 void TaskHandler::DrawScene() {
+    ы
     scene.DrawFigures();
 }
 
