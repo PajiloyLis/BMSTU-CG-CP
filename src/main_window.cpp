@@ -27,6 +27,7 @@ void MainWindow::SetBindings() {
     QObject::connect(this->findChild<QAction *>("load_model_action"),
                      &QAction::triggered, this,
                      &MainWindow::LoadModelActionTriggered);
+    QObject::connect(this->findChild<QAction *>(""))
     QObject::connect(this->findChild<QSFMLCanvas *>("drawer"), &QSFMLCanvas::WKeyPressed, this,
                      &MainWindow::MoveCurCamera);
     QObject::connect(this->findChild<QSFMLCanvas *>("drawer"), &QSFMLCanvas::AKeyPressed, this,
