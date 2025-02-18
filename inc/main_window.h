@@ -52,6 +52,8 @@ private slots:
     void MoveCurCamera(const Camera_Movement &move, float delta_time);
 
     void ScaleCurCamera(float k);
+
+    void StartSimulation();
 private:
     static bool NumericFieldCheck(QLineEdit *&field);
 

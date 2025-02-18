@@ -27,7 +27,8 @@ void MainWindow::SetBindings() {
     QObject::connect(this->findChild<QAction *>("load_model_action"),
                      &QAction::triggered, this,
                      &MainWindow::LoadModelActionTriggered);
-    QObject::connect(this->findChild<QAction *>(""))
+    QObject::connect(this->findChild<QAction *>("sim_start"), &QAction::triggered, this,
+                     &MainWindow::StartSimulation);
     QObject::connect(this->findChild<QSFMLCanvas *>("drawer"), &QSFMLCanvas::WKeyPressed, this,
                      &MainWindow::MoveCurCamera);
     QObject::connect(this->findChild<QSFMLCanvas *>("drawer"), &QSFMLCanvas::AKeyPressed, this,
@@ -69,4 +70,8 @@ void MainWindow::MoveCurCamera(const Camera_Movement &move, float delta_time) {
 void MainWindow::ScaleCurCamera(float k) {
     handler.ScaleCamera(k);
     DrawScene();
+}
+
+void MainWindow::StartSimulation() {
+
 }
