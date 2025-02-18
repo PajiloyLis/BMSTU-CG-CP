@@ -76,6 +76,10 @@ void Scene::StartSimulation() {
     scene->StartSmokeTimer();
 }
 
+void Scene::SmokeTimerElapsed() {
+
+}
+
 
 
 
