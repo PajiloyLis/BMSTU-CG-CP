@@ -255,9 +255,8 @@ glm::mat4 QSFMLCanvas::model(const glm::vec3 &cam_pos, const glm::vec3 &point) {
 }
 
 void QSFMLCanvas::DrawParticles(const particles_system &system, const camera &cam) {
-    for (auto particle&: system)
-    {
-
+    for (auto &particle: system.particles) {
+        
     }
 }
 
