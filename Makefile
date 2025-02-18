@@ -61,7 +61,8 @@ SOURCES       = src/conversions.cpp \
 		src/QSFML.cpp \
 		src/scene.cpp \
 		src/triangle.cpp \
-		src/camera.cpp moc_QSFML.cpp
+		src/camera.cpp \
+		src/particles_system.cpp moc_QSFML.cpp
 OBJECTS       = conversions.o \
 		figure.o \
 		handler.o \
@@ -72,6 +73,7 @@ OBJECTS       = conversions.o \
 		scene.o \
 		triangle.o \
 		camera.o \
+		particles_system.o \
 		moc_QSFML.o
 DIST          = /usr/lib/x86_64-linux-gnu/qt6/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/common/unix.conf \
@@ -147,7 +149,8 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt6/mkspecs/features/spec_pre.prf \
 		inc/QSFML.h \
 		inc/scene.h \
 		inc/triangle.h \
-		inc/camera.h src/conversions.cpp \
+		inc/camera.h \
+		inc/particles_system.h src/conversions.cpp \
 		src/figure.cpp \
 		src/handler.cpp \
 		src/main.cpp \
@@ -156,7 +159,8 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt6/mkspecs/features/spec_pre.prf \
 		src/QSFML.cpp \
 		src/scene.cpp \
 		src/triangle.cpp \
-		src/camera.cpp
+		src/camera.cpp \
+		src/particles_system.cpp
 QMAKE_TARGET  = cp
 DESTDIR       = 
 TARGET        = cp
@@ -322,8 +326,8 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents /usr/lib/x86_64-linux-gnu/qt6/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents inc/conversions.h inc/cp_cg_ui.h inc/figure.h inc/handler.h inc/main_window.h inc/operations.h inc/QSFML.h inc/scene.h inc/triangle.h inc/camera.h $(DISTDIR)/
-	$(COPY_FILE) --parents src/conversions.cpp src/figure.cpp src/handler.cpp src/main.cpp src/main_window.cpp src/operations.cpp src/QSFML.cpp src/scene.cpp src/triangle.cpp src/camera.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents inc/conversions.h inc/cp_cg_ui.h inc/figure.h inc/handler.h inc/main_window.h inc/operations.h inc/QSFML.h inc/scene.h inc/triangle.h inc/camera.h inc/particles_system.h $(DISTDIR)/
+	$(COPY_FILE) --parents src/conversions.cpp src/figure.cpp src/handler.cpp src/main.cpp src/main_window.cpp src/operations.cpp src/QSFML.cpp src/scene.cpp src/triangle.cpp src/camera.cpp src/particles_system.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents inc/main_window.ui $(DISTDIR)/
 
 
@@ -465,6 +469,9 @@ triangle.o: src/triangle.cpp inc/triangle.h \
 camera.o: src/camera.cpp inc/camera.h \
 		inc/conversions.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o camera.o src/camera.cpp
+
+particles_system.o: src/particles_system.cpp inc/particles_system.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o particles_system.o src/particles_system.cpp
 
 moc_QSFML.o: moc_QSFML.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_QSFML.o moc_QSFML.cpp

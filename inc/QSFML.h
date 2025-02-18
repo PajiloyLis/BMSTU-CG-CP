@@ -93,6 +93,7 @@ signals:
 
     void SmokeTimerElapsed();
 
+public:
 
 
 //private:

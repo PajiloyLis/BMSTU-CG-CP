@@ -28,7 +28,8 @@ SOURCES += \
     ./src/QSFML.cpp \
     ./src/scene.cpp \
     ./src/triangle.cpp \
-    ./src/camera.cpp
+    ./src/camera.cpp \
+    ./src/particles_system.cpp
 
 HEADERS += \
     ./inc/conversions.h \
@@ -40,8 +41,8 @@ HEADERS += \
     ./inc/QSFML.h \
     ./inc/scene.h \
     ./inc/triangle.h \
-    ./inc/camera.h
-
+    ./inc/camera.h \
+    ./inc/particles_system.h
 FORMS += \
     ./inc/main_window.ui
 
