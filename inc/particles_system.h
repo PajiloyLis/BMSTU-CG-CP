@@ -32,6 +32,8 @@ public:
     particles_system(const int &start_count, const glm::vec3 &spawn, const sf::Color &color,
                      const glm::vec3 &speed);
 
+    particles_system& operator=(const particles_system & system);
+
     particles_system (const particles_system &system);
     vector<particle> particles;
     glm::vec3 spawn;

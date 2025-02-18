@@ -259,7 +259,7 @@ void QSFMLCanvas::DrawParticles(const particles_system &system, const camera &ca
         glm::vec3 adapted = adapt_coords(cam, system.particles[i].position, system.spawn);
         adapted_points[i] = sf::Vertex(sf::Vector2f(adapted.x, adapted.y), system.particles[i].color);
     }
-    this->draw(adapted_points, adapted_points.size(), sf::Points);
+    this->draw(adapted_points.data(), adapted_points.size(), sf::Points);
 }
 
 

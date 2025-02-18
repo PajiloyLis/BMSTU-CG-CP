@@ -22,3 +22,10 @@ particles_system::particles_system(const particles_system &system) {
     gen = system.gen;
 }
 
+particles_system &particles_system::operator=(const particles_system &system) {
+    spawn = system.spawn;
+    particles = system.particles;
+    gen = system.gen;
+    return *this;
+}
+
