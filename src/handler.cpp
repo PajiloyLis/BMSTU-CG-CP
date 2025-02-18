@@ -7,8 +7,10 @@ void TaskHandler::SetScene(const Scene &scene_to_set) {
 }
 
 void TaskHandler::DrawScene() {
-    ы
+    scene.ClearScene();
     scene.DrawFigures();
+    scene.DrawParticlesSystems();
+    scene.Show();
 }
 
 void TaskHandler::ClearScene() const {

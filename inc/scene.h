@@ -39,6 +39,8 @@ public:
 
     void SmokeTimerElapsed();
 
+    void Show();
+
     glm::vec3 wind;
 private:
     QSFMLCanvas *scene;

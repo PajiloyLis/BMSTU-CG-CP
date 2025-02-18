@@ -60,7 +60,7 @@ void Scene::MoveCamera(const Camera_Movement &move, float &delta_time) {
 
 
 void Scene::DrawParticlesSystems() const {
-    for(auto & system : p_systems)
+    for (auto &system: p_systems)
         scene->DrawParticles(system, cameras[cur_camera]);
 
 }
@@ -76,7 +76,14 @@ void Scene::StartSimulation() {
 
 void Scene::SmokeTimerElapsed() {
     p_systems[0].update_coords();
+    ClearScene();
+    DrawFigures();
+    DrawParticlesSystems();
+    Show();
+}
 
+void Scene::Show() {
+    scene->repaint();
 }
 
 

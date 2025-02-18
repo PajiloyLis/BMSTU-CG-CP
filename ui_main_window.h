@@ -25,12 +25,14 @@ class Ui_MainWindow
 {
 public:
     QAction *load_model_action;
+    QAction *sim_start;
     QWidget *centralwidget;
     QWidget *gridLayoutWidget;
     QGridLayout *gridLayout;
     QMenuBar *menubar;
     QMenu *model_menu;
-    QMenu *menu_2;
+    QMenu *params_menu;
+    QMenu *sim_menu;
     QStatusBar *statusbar;
 
     void setupUi(QMainWindow *MainWindow)
@@ -40,6 +42,8 @@ public:
         MainWindow->resize(1850, 1016);
         load_model_action = new QAction(MainWindow);
         load_model_action->setObjectName(QString::fromUtf8("load_model_action"));
+        sim_start = new QAction(MainWindow);
+        sim_start->setObjectName(QString::fromUtf8("sim_start"));
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         gridLayoutWidget = new QWidget(centralwidget);
@@ -54,16 +58,20 @@ public:
         menubar->setGeometry(QRect(0, 0, 1850, 22));
         model_menu = new QMenu(menubar);
         model_menu->setObjectName(QString::fromUtf8("model_menu"));
-        menu_2 = new QMenu(menubar);
-        menu_2->setObjectName(QString::fromUtf8("menu_2"));
+        params_menu = new QMenu(menubar);
+        params_menu->setObjectName(QString::fromUtf8("params_menu"));
+        sim_menu = new QMenu(menubar);
+        sim_menu->setObjectName(QString::fromUtf8("sim_menu"));
         MainWindow->setMenuBar(menubar);
         statusbar = new QStatusBar(MainWindow);
         statusbar->setObjectName(QString::fromUtf8("statusbar"));
         MainWindow->setStatusBar(statusbar);
 
         menubar->addAction(model_menu->menuAction());
-        menubar->addAction(menu_2->menuAction());
+        menubar->addAction(params_menu->menuAction());
+        menubar->addAction(sim_menu->menuAction());
         model_menu->addAction(load_model_action);
+        sim_menu->addAction(sim_start);
 
         retranslateUi(MainWindow);
 
@@ -74,8 +82,10 @@ public:
     {
         MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "MainWindow", nullptr));
         load_model_action->setText(QCoreApplication::translate("MainWindow", "\320\227\320\260\320\263\321\200\321\203\320\267\320\270\321\202\321\214", nullptr));
+        sim_start->setText(QCoreApplication::translate("MainWindow", "\320\235\320\260\321\207\320\260\321\202\321\214", nullptr));
         model_menu->setTitle(QCoreApplication::translate("MainWindow", "\320\234\320\276\320\264\320\265\320\273\321\214", nullptr));
-        menu_2->setTitle(QCoreApplication::translate("MainWindow", "\320\237\320\260\321\200\320\260\320\274\320\265\321\202\321\200\321\213", nullptr));
+        params_menu->setTitle(QCoreApplication::translate("MainWindow", "\320\237\320\260\321\200\320\260\320\274\320\265\321\202\321\200\321\213", nullptr));
+        sim_menu->setTitle(QCoreApplication::translate("MainWindow", "\320\241\320\270\320\274\321\203\320\273\321\217\321\206\320\270\321\217", nullptr));
     } // retranslateUi
 
 };
