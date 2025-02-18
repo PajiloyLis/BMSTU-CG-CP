@@ -63,6 +63,7 @@ void Scene::MoveCamera(const Camera_Movement &move, float &delta_time) {
 
 void Scene::DrawParticlesSystems() const {
     for(auto & system : p_systems)
+        
 
 }
 
