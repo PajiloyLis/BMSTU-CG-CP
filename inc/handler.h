@@ -32,6 +32,8 @@ public:
 
     void StartSimulation();
 
+    void SmokeTimerElapsed();
+
 private:
 
     static vector<triangle> read_stl(const string &filename);

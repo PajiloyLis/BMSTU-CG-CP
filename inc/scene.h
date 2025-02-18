@@ -37,6 +37,8 @@ public:
 
     void StartSimulation();
 
+    void SmokeTimerElapsed();
+
     glm::vec3 wind;
 private:
     QSFMLCanvas *scene;

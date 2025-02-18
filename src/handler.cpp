@@ -121,3 +121,7 @@ void TaskHandler::StartSimulation() {
     scene.StartSimulation();
 }
 
+void TaskHandler::SmokeTimerElapsed() {
+    scene.SmokeTimerElapsed();
+}
+

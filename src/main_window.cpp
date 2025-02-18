@@ -43,6 +43,7 @@ void MainWindow::SetBindings() {
                      &MainWindow::ScaleCurCamera);
     QObject::connect(this->findChild<QSFMLCanvas *>("drawer"), &QSFMLCanvas::MouseMove, this,
                      &MainWindow::RotateCurCamera);
+
 }
 
 void MainWindow::LoadModelActionTriggered() {
@@ -73,5 +74,9 @@ void MainWindow::ScaleCurCamera(float k) {
 }
 
 void MainWindow::StartSimulation() {
+    handler.StartSimulation();
+}
 
+void MainWindow::SmokeTimerElapsedHandler() {
+    handler.SmokeTimerElapsed();
 }

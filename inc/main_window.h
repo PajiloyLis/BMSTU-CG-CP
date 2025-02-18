@@ -54,6 +54,8 @@ private slots:
     void ScaleCurCamera(float k);
 
     void StartSimulation();
+
+    void SmokeTimerElapsedHandler();
 private:
     static bool NumericFieldCheck(QLineEdit *&field);
 

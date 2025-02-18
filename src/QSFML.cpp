@@ -260,7 +260,7 @@ void QSFMLCanvas::timerEvent(QTimerEvent *event) {
     }
     else if(event->timerId()==timers[SMOKE])
     {
-
+        emit SmokeTimerElapsed();
     }
 }
 
