@@ -44,6 +44,7 @@ void QSFMLCanvas::showEvent(QShowEvent *) {
 }
 
 void QSFMLCanvas::paintEvent(QPaintEvent *) {
+    cout<<"KEK"<<'\n';
     this->widgetDraw();
     this->display();
 }
@@ -237,6 +238,7 @@ void QSFMLCanvas::timerEvent(QTimerEvent *event) {
     now_time = time(nullptr);
     float delta = now_time - last_motion_time;
     last_motion_time = now_time;
+    cout<<"TIMER KEK"<<'\n';
     Q_UNUSED(event);
     if (w_pressed) {
         emit WKeyPressed(FORWARD, delta);
