@@ -179,6 +179,7 @@ void QSFMLCanvas::keyPressEvent(QKeyEvent *event) {
         s_pressed = true;
     else if (event->key() == Qt::Key_D)
         d_pressed = true;
+    this->startTimer()
 }
 
 void QSFMLCanvas::wheelEvent(QWheelEvent *event) {
