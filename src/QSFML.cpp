@@ -255,7 +255,7 @@ glm::mat4 QSFMLCanvas::model(const glm::vec3 &cam_pos, const glm::vec3 &point) {
 }
 
 void QSFMLCanvas::DrawParticles(const particles_system &system, const camera &cam) {
-    vector<glm::vec3>
+    vector<glm::vec3> 
     for (auto &particle: system.particles) {
         glm::vec3 adapted_point = adapt_coords(cam, particle.position, system.spawn);
 
