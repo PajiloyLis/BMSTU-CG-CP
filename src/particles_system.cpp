@@ -30,6 +30,9 @@ particles_system &particles_system::operator=(const particles_system &system) {
 }
 
 void particles_system::update_coords() {
-
+    for (auto &particle: particles) {
+        particle.position.x += particle.speed + glm::vec3(2 - gen() % 5, 2 - gen() % 5, 2 - gen() % 5), 1.f,
+                speed + glm::vec3(2 - gen() % 5, 2 - gen() % 5, 2 - gen() % 5);
+    }
 }
 

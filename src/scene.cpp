@@ -77,7 +77,7 @@ void Scene::StartSimulation() {
 }
 
 void Scene::SmokeTimerElapsed() {
-
+    p_systems[0].update_coords();
 }
 
 
