@@ -25,8 +25,7 @@
 using namespace std;
 using namespace sf;
 
-enum TIMERS
-{
+enum TIMERS {
     KEYBOARD,
     SMOKE
 };
@@ -88,6 +87,10 @@ signals:
 
     void MouseMove(float dx, float dy);
 
+signals:
+
+    void SmokeTimerElapsed();
+
 //private:
 //    void mousePressEvent(QMouseEvent *event) override;
 
@@ -110,6 +113,7 @@ signals:
     glm::mat4 viewport(const glm::vec3 &center, const glm::vec3 &cam_pos, const glm::vec3 &point);
 
     glm::mat4 model(const glm::vec3 &cam_pos, const glm::vec3 &point);
+
     void onInit();
 
     void onUpdate();
