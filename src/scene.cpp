@@ -20,11 +20,11 @@ void Scene::ClearScene() const {
 }
 
 void Scene::DrawFigures() const {
-    for (auto &figure: figures)
-        for (auto &triangle: figure.triangles)
-            scene->DrawTriangle(triangle, cameras[cur_camera],
-                                glm::vec3((figure.max_x - figure.min_x) / 2, (figure.max_y - figure.min_y) / 2,
-                                          (figure.max_z - figure.min_z) / 2), {255, 255, 250});
+//    for (auto &figure: figures)
+//        for (auto &triangle: figure.triangles)
+//            scene->DrawTriangle(triangle, cameras[cur_camera],
+//                                glm::vec3((figure.max_x - figure.min_x) / 2, (figure.max_y - figure.min_y) / 2,
+//                                          (figure.max_z - figure.min_z) / 2), {255, 255, 250});
 //    if (figures.size() > 0) {
 //        sf::CircleShape crater_pos(5);
 //        crater_pos.setFillColor(sf::Color::Red);
@@ -75,6 +75,7 @@ void Scene::StartSimulation() {
 }
 
 void Scene::SmokeTimerElapsed() {
+
     p_systems[0].update_coords(100);
     ClearScene();
     DrawFigures();
