@@ -81,7 +81,7 @@ void
 QSFMLCanvas::DrawTriangle(const triangle &t, const camera &cam, const glm::vec3 &figure_center,
                           const sf::Color &color) {
     float intensity = glm::dot(light_ray, t.n);
-    if (dot(cam.Front, t.n) > 0) {
+//    if (dot(cam.Front, t.n) > 0) {
         array<glm::vec3, 3> points_;
         array<sf::Vertex, 3> points_to_render;
         for (int i = 0; i < points_.size(); ++i) {
@@ -94,7 +94,7 @@ QSFMLCanvas::DrawTriangle(const triangle &t, const camera &cam, const glm::vec3 
         z_buffer(points_, image, {static_cast<Uint8>(color.r * intensity), static_cast<Uint8>(color.g * intensity),
                                   static_cast<Uint8>(color.b * intensity)}, zbuffer);
 //        this->draw(&points_to_render[0], points_to_render.size(), sf::Triangles);
-    }
+//    }
 }
 
 void QSFMLCanvas::z_buffer(array<glm::vec3, 3> points_, Image &image, sf::Color color_, vector<float> &zbuffer) {
@@ -127,7 +127,7 @@ void QSFMLCanvas::z_buffer(array<glm::vec3, 3> points_, Image &image, sf::Color 
                 int idx = static_cast<int>(round(P.x + P.y * image.getSize().x));
                 if (zbuffer[idx] > P.z) {
                     zbuffer[idx] = P.z;
-                    this->draw(vector<sf::Vertex>(1, sf::Vertex(sf::Vector2f(P.x, P.y), color_)).data(), 1, sf::Points);
+                    this->draw(vector<sf::Vertex>(1, sf::Vertex(sf::Vector2f(P.x, this->size().height() - P.y), color_)).data(), 1, sf::Points);
 //                    image.setPixel(static_cast<Uint32>(round(P.x)), static_cast<Uint32>(round(P.y)), color_);
                 }
             }
