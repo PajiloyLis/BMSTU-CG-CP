@@ -77,15 +77,21 @@ public:
     void move(Camera_Movement direction, float delta_time) {
         float velocity = MovementSpeed;
         if (direction == FORWARD) {
-            model = glm::translate({1.f}, -Front);
-            Position += Up * velocity;
+//            model = glm::translate(glm::mat4(1.f), -Front);
+            Position += Front * velocity;
         }
-        if (direction == BACKWARD)
-            Position -= Up * velocity;
-        if (direction == LEFT)
+        if (direction == BACKWARD) {
+//            model = glm::translate(glm::mat4(1.f), Front);
+            Position -= Front * velocity;
+        }
+        if (direction == LEFT) {
+//            model = glm::translate(glm::mat4(1.f), Right);
             Position -= Right * velocity;
-        if (direction == RIGHT)
+        }
+        if (direction == RIGHT) {
+//            model = glm::translate(glm::mat4(1.f), -Right);
             Position += Right * velocity;
+        }
         cout << "camera moved \npos " << Position.x << " " << Position.y << " " << Position.z << "\npov " << Front.x
              << " " << Front.y << " " << Front.z << '\n';
     }
