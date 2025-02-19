@@ -45,55 +45,7 @@ public:
 
     void StartSmokeTimer();
 
-signals:
 
-    void LeftMouseButton(const int &x, const int &y);
-
-signals:
-
-    void ShiftLeftMouseButton(const int &x, const int &y);
-
-signals:
-
-    void RightMouseButton();
-
-signals:
-
-    void LeftMouseButtonDouble(const int &x, const int &y);
-
-signals:
-
-    void WKeyPressed(const Camera_Movement &move, float delta_time);
-
-signals:
-
-    void AKeyPressed(const Camera_Movement &move, float delta_time);
-
-signals:
-
-    void SKeyPressed(const Camera_Movement &move, float delta_time);
-
-signals:
-
-    void DKeyPressed(const Camera_Movement &move, float delta_time);
-
-signals:
-
-    void WheelScrolledUp(float k);
-
-signals:
-
-    void WheelScrolledDown(float k);
-
-signals:
-
-    void MouseMove(float dx, float dy);
-
-signals:
-
-    void SmokeTimerElapsed();
-
-public:
 
 
 //private:
@@ -153,9 +105,56 @@ public:
 
     map<int, int> timers;
 
-//public:
 
     glm::vec3 adapt_coords(const camera &c, const glm::vec3 &point, const glm::vec3 &center);
+
+signals:
+
+    void LeftMouseButton(const int &x, const int &y);
+
+signals:
+
+    void ShiftLeftMouseButton(const int &x, const int &y);
+
+signals:
+
+    void RightMouseButton();
+
+signals:
+
+    void LeftMouseButtonDouble(const int &x, const int &y);
+
+signals:
+
+    void WKeyPressed(const Camera_Movement &move, float delta_time);
+
+signals:
+
+    void AKeyPressed(const Camera_Movement &move, float delta_time);
+
+signals:
+
+    void SKeyPressed(const Camera_Movement &move, float delta_time);
+
+signals:
+
+    void DKeyPressed(const Camera_Movement &move, float delta_time);
+
+signals:
+
+    void WheelScrolledUp(float k);
+
+signals:
+
+    void WheelScrolledDown(float k);
+
+signals:
+
+    void MouseMove(float dx, float dy);
+
+signals:
+
+    void SmokeTimerElapsed();
 };
 
 #endif
