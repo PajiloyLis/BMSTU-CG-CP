@@ -1,5 +1,7 @@
 #include "QSFML.h"
 
+#define SCREEN_DEPTH 256*256*256
+
 bool on_load = false;
 
 const glm::vec3 QSFMLCanvas::light_ray = glm::vec3(0, 0, 1);
@@ -8,7 +10,7 @@ QSFMLCanvas::QSFMLCanvas(QWidget *parent, const QSize &Size)
         : QWidget(parent),
           sf::RenderWindow(sf::VideoMode(Size.width(), Size.height()), "OpenGL",
                            sf::Style::Default),
-          zbuffer(Size.width() * Size.height(), std::numeric_limits<float>::min()),
+          zbuffer(Size.width() * Size.height(), SCREEN_DEPTH),
           m_initialized(false),
           back_color(sf::Color(0x87CEEB)), mouse_left_pressed(false), w_pressed(false), a_pressed(false),
           s_pressed(false), d_pressed(false) {
@@ -147,15 +149,25 @@ void QSFMLCanvas::Clear() {
         for (int j = 0; j < image.getSize().x; ++j)
             image.setPixel(j, i, back_color);
     }
-    fill(zbuffer.begin(), zbuffer.end(), std::numeric_limits<float>::max());
+    fill(zbuffer.begin(), zbuffer.end(), SCREEN_DEPTH);
     this->clear(back_color);
 }
 
 glm::vec3 QSFMLCanvas::adapt_coords(const camera &c, const glm::vec3 &point, const glm::vec3 &center) {
     glm::mat4 view = c.camLookAt(), perspective = c.perspective();
-    glm::mat4 trans = 
-    glm::vec4 res = trans * glm::vec4(point.x, point.y, point.z, 1);
-    return {res.x, res.y, res.z};
+    glm::mat4 trans = perspective * view;
+    // Преобразуем вектор из мировой системы в экранную
+    glm::vec4 clipSpacePosition = trans * glm::vec4(point.x, point.y, point.z, 1);
+
+    // Преобразуем в нормализованные координаты устройства (NDC)
+    glm::vec3 ndcPosition = glm::vec3(clipSpacePosition) / clipSpacePosition.w;
+
+    // Теперь можете использовать ndcPosition для дальнейшего преобразования в экранные координаты
+    float screenX = (ndcPosition.x * 0.5f + 0.5f) * this->size().width(); // ширина окна
+    float screenY = (ndcPosition.y * 0.5f + 0.5f) * this->size().height(); // высота окна
+    float screenZ = (ndcPosition.z * 0.5f + 0.5f) * SCREEN_DEPTH;
+
+    return {screenX, screenY, screenZ};
 }
 
 glm::mat4 QSFMLCanvas::viewport(const glm::vec3 &center, const glm::vec3 &cam_pos, const glm::vec3 &point) {
