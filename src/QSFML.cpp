@@ -277,9 +277,11 @@ void QSFMLCanvas::DrawParticles(const particles_system &system, const camera &ca
     for (int i = 0; i < adapted_points.size(); ++i) {
         glm::vec3 adapted = adapt_coords(cam, system.particles[i].position, system.spawn);
         sf::CircleShape particle(system.particles[i].radius);
-        particle.setPosition(system.particles[i].position.x, system.particles[i].position.y);
-        adapted_points[i] = sf::Vertex(sf::Vector2f(adapted.x, adapted.y), system.particles[i].color);
-        this->draw()
+        particle.setPosition(adapted.x, adapted.y);
+        particle.setFillColor(system.particles[i].color);
+        particle.setOutlineColor(system.particles[i].color);
+//        adapted_points[i] = sf::Vertex(sf::Vector2f(adapted.x, adapted.y), system.particles[i].color);
+        this->draw(particle);
     }
 }
 
