@@ -81,7 +81,7 @@ void
 QSFMLCanvas::DrawTriangle(const triangle &t, const camera &cam, const glm::vec3 &figure_center,
                           const sf::Color &color) {
     float intensity = glm::dot(light_ray, t.n);
-//    if (dot(cam.Front, t.n) > 0) {
+    if (dot(cam.Front, t.n) > 0) {
         array<glm::vec3, 3> points_;
         array<sf::Vertex, 3> points_to_render;
         for (int i = 0; i < points_.size(); ++i) {
@@ -94,7 +94,7 @@ QSFMLCanvas::DrawTriangle(const triangle &t, const camera &cam, const glm::vec3 
         z_buffer(points_, image, {static_cast<Uint8>(color.r * intensity), static_cast<Uint8>(color.g * intensity),
                                   static_cast<Uint8>(color.b * intensity)}, zbuffer);
 //        this->draw(&points_to_render[0], points_to_render.size(), sf::Triangles);
-//    }
+    }
 }
 
 void QSFMLCanvas::z_buffer(array<glm::vec3, 3> points_, Image &image, sf::Color color_, vector<float> &zbuffer) {
@@ -180,15 +180,15 @@ glm::mat4 QSFMLCanvas::viewport(const glm::vec3 &center, const glm::vec3 &cam_po
 
 void QSFMLCanvas::keyPressEvent(QKeyEvent *event) {
     last_motion_time = time(nullptr);
-    if (event->key() == Qt::Key_W)
+    if (event->key() == Qt::Key_W && !w_pressed)
         w_pressed = true;
-    else if (event->key() == Qt::Key_A)
+    else if (event->key() == Qt::Key_A && !a_pressed)
         a_pressed = true;
-    else if (event->key() == Qt::Key_S)
+    else if (event->key() == Qt::Key_S && !s_pressed)
         s_pressed = true;
-    else if (event->key() == Qt::Key_D)
+    else if (event->key() == Qt::Key_D && !d_pressed)
         d_pressed = true;
-    timers[KEYBOARD] = this->startTimer(1000);
+//    timers[KEYBOARD] = this->startTimer(1000);
 }
 
 void QSFMLCanvas::wheelEvent(QWheelEvent *event) {
@@ -242,14 +242,14 @@ void QSFMLCanvas::keyReleaseEvent(QKeyEvent *event) {
         d_pressed = false;
         emit DKeyPressed(RIGHT, delta);
     }
-    if (timers[KEYBOARD]) {
-        cout << "THIS MUTHERFUCKER MUST DIE\n";
-        this->killTimer(timers[KEYBOARD]);
-    }
+//    if (timers[KEYBOARD]) {
+//        cout << "THIS MUTHERFUCKER MUST DIE\n";
+//        this->killTimer(timers[KEYBOARD]);
+//    }
 }
 
 void QSFMLCanvas::timerEvent(QTimerEvent *event) {
-    if (event->timerId() == timers[KEYBOARD]) {
+//    if (event->timerId() == timers[KEYBOARD]) {
         now_time = time(nullptr);
         float delta = now_time - last_motion_time;
         last_motion_time = now_time;
@@ -264,8 +264,9 @@ void QSFMLCanvas::timerEvent(QTimerEvent *event) {
         } else if (d_pressed) {
             emit DKeyPressed(RIGHT, delta);
         }
-    } else if (event->timerId() == timers[SMOKE]) {
-        cout << "WORK BITCH\n";
+//    } else
+    if (event->timerId() == timers[SMOKE]) {
+//        cout << "WORK BITCH\n";
         emit SmokeTimerElapsed();
     }
 }
