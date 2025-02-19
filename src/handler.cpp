@@ -21,7 +21,7 @@ void TaskHandler::LoadModel(const string &filepath) {
     // Add mount
     scene.AddFigure(figure(read_stl(filepath)));
     // Add smoke
-    scene.AddParticlesSystem(particles_system(100, {50, 43, 40}, {198, 195, 181}, glm::vec3(0, 0, 0.3) + scene.wind));
+    scene.AddParticlesSystem(particles_system(100, {50, 43, 40}, {198, 195, 181}, glm::vec3(0, 0, 3) + scene.wind));
 }
 
 vector<triangle> TaskHandler::read_stl(const string &filename) {

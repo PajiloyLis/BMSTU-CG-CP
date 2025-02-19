@@ -75,7 +75,6 @@ void Scene::StartSimulation() {
 }
 
 void Scene::SmokeTimerElapsed() {
-
     p_systems[0].update_coords(100);
     ClearScene();
     DrawFigures();
@@ -86,9 +85,3 @@ void Scene::SmokeTimerElapsed() {
 void Scene::Show() {
     scene->repaint();
 }
-
-
-
-
-
-
