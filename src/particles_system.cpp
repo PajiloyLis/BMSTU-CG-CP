@@ -34,12 +34,12 @@ void particles_system::update_coords(const int &add_count) {
         particles.push_back(
                 particle(spawn + glm::vec3(1-rand()%3, 1-rand()%3, 1-rand()%3), 1.f,
                          particles[0].speed +
-                         glm::vec3(rand() / RAND_MAX * 10, rand() / RAND_MAX * 10, rand() / RAND_MAX * 10),
+                         glm::vec3(1-rand()%3, 1-rand()%3, 1-rand()%3),
                          base_system_color));
     }
     for (auto &particle: particles) {
         particle.position +=
-                particle.speed + glm::vec3(rand() / RAND_MAX * 10, rand() / RAND_MAX * 10, rand() / RAND_MAX * 10);
+                particle.speed + glm::vec3(1-rand()%3, 1-rand()%3, 1-rand()%3);
 //        cout << particle.position.x << ' '<<particle.position.y << " "<<particle.position.z << '\n';
     }
 }
