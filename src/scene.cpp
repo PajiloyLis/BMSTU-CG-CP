@@ -47,7 +47,7 @@ void Scene::AddCamera(const camera &c) {
 }
 
 void Scene::RotateCurCamera(const float &dx, const float &dy) {
-    cameras[cur_camera].rotate(dx, dy);
+    cameras[cur_camera].rotate(dx, -dy);
 }
 
 void Scene::ScaleCamera(float &k) {
