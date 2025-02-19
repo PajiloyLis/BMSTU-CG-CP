@@ -45,12 +45,6 @@ public:
 
     void StartSmokeTimer();
 
-
-
-
-//private:
-//    void mousePressEvent(QMouseEvent *event) override;
-
     static void z_buffer(array<glm::vec3, 3> points_, Image &image, sf::Color color_, vector<float> &zbuffer);
 
     void keyPressEvent(QKeyEvent *event) override;
