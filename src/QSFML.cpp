@@ -77,7 +77,6 @@ void QSFMLCanvas::paintEvent(QPaintEvent *) {
 //    }
 //}
 
-
 void
 QSFMLCanvas::DrawTriangle(const triangle &t, const camera &cam, const glm::vec3 &figure_center,
                           const sf::Color &color) {
@@ -128,8 +127,8 @@ void QSFMLCanvas::z_buffer(array<glm::vec3, 3> points_, Image &image, sf::Color 
                 int idx = static_cast<int>(round(P.x + P.y * image.getSize().x));
                 if (zbuffer[idx] > P.z) {
                     zbuffer[idx] = P.z;
-//                    this->draw({sf::Vertex(sf::Vector2f(P.x, P.y), color_)}, 1, sf::Points);
-                    image.setPixel(static_cast<Uint32>(round(P.x)), static_cast<Uint32>(round(P.y)), color_);
+                    this->draw(vector<sf::Vertex>(1, sf::Vertex(sf::Vector2f(P.x, P.y), color_)).data(), 1, sf::Points);
+//                    image.setPixel(static_cast<Uint32>(round(P.x)), static_cast<Uint32>(round(P.y)), color_);
                 }
             }
         }
@@ -137,12 +136,12 @@ void QSFMLCanvas::z_buffer(array<glm::vec3, 3> points_, Image &image, sf::Color 
 }
 
 void QSFMLCanvas::widgetDraw() {
-    for (int i = 0; i < image.getSize().y; ++i) {
-        VertexArray line(sf::Points, image.getSize().x);
-        for (int j = 0; j < image.getSize().x; ++j)
-            line[j] = Vertex(Vector2f(j, image.getSize().y - i), image.getPixel(j, i));
-        this->draw(line);
-    }
+//    for (int i = 0; i < image.getSize().y; ++i) {
+//        VertexArray line(sf::Points, image.getSize().x);
+//        for (int j = 0; j < image.getSize().x; ++j)
+//            line[j] = Vertex(Vector2f(j, image.getSize().y - i), image.getPixel(j, i));
+//        this->draw(line);
+//    }
 }
 
 void QSFMLCanvas::Clear() {
@@ -155,7 +154,7 @@ void QSFMLCanvas::Clear() {
 }
 
 glm::vec3 QSFMLCanvas::adapt_coords(const camera &c, const glm::vec3 &point, const glm::vec3 &center) {
-    glm::mat4 view = c.camLookAt(), perspective = c.perspective(), model = c.model();
+    glm::mat4 view = c.camLookAt(), perspective = c.perspective();
     glm::mat4 trans = perspective * view;
     // Преобразуем вектор из мировой системы в экранную
     glm::vec4 clipSpacePosition = trans * glm::vec4(point.x, point.y, point.z, 1);
@@ -275,9 +274,9 @@ void QSFMLCanvas::DrawParticles(const particles_system &system, const camera &ca
     vector<sf::Vertex> adapted_points(system.particles.size());
     for (int i = 0; i < adapted_points.size(); ++i) {
         glm::vec3 adapted = adapt_coords(cam, system.particles[i].position, system.spawn);
-//        adapted_points[i] = sf::Vertex(sf::Vector2f(adapted.x, adapted.y), system.particles[i].color);
+        adapted_points[i] = sf::Vertex(sf::Vector2f(adapted.x, adapted.y), system.particles[i].color);
     }
-
+    this->draw(adapted_points.data(), adapted_points.size(), sf::Points);
 }
 
 void QSFMLCanvas::StartSmokeTimer() {
