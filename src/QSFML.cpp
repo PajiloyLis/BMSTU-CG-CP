@@ -128,6 +128,7 @@ void QSFMLCanvas::z_buffer(array<glm::vec3, 3> points_, Image &image, sf::Color 
                 int idx = static_cast<int>(round(P.x + P.y * image.getSize().x));
                 if (zbuffer[idx] > P.z) {
                     zbuffer[idx] = P.z;
+//                    this->draw({sf::Vertex(sf::Vector2f(P.x, P.y), color_)}, 1, sf::Points);
                     image.setPixel(static_cast<Uint32>(round(P.x)), static_cast<Uint32>(round(P.y)), color_);
                 }
             }
@@ -164,7 +165,7 @@ glm::vec3 QSFMLCanvas::adapt_coords(const camera &c, const glm::vec3 &point, con
 
     // Теперь можете использовать ndcPosition для дальнейшего преобразования в экранные координаты
     float screenX = (ndcPosition.x * 0.5f + 0.5f) * this->size().width(); // ширина окна
-    float screenY = ((0.5-ndcPosition.y) * 0.5f) * this->size().height(); // высота окна
+    float screenY = ((0.5 - ndcPosition.y) * 0.5f) * this->size().height(); // высота окна
     float screenZ = (ndcPosition.z * 0.5f + 0.5f) * SCREEN_DEPTH;
 
     return {screenX, screenY, clipSpacePosition.z};
