@@ -17,7 +17,7 @@ class particle {
 public:
     particle() = default;
 
-    explicit particle(const glm::vec3 &pos = {0, 0, 0}, const float &r = 1.f, const glm::vec3 &sp = {0, 0, 0},
+    explicit particle(const glm::vec3 &pos = {0, 0, 0}, const float &r = 3.f, const glm::vec3 &sp = {0, 0, 0},
                       const sf::Color &c = {255, 255, 255}) : position(pos), radius(r), speed(sp), color(c),
                                                               iterations_count(0) {};
 
