@@ -11,7 +11,7 @@ Scene::Scene(QSFMLCanvas *&scene, const double &width, const double &height)
     this->width = width;
     this->height = height;
     last_frame_time = cur_frame_time = 0;
-    wind = {1, 5, 2};
+    wind = {0.1, 0.5, 0.2};
 }
 
 

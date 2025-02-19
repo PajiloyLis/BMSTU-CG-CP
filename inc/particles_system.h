@@ -44,6 +44,7 @@ public:
     std::random_device rd;
     std::mt19937 gen;
     int timer_id;
+    sf::Color base_system_color;
 };
 
 
