@@ -266,7 +266,7 @@ void QSFMLCanvas::timerEvent(QTimerEvent *event) {
 }
 
 glm::mat4 QSFMLCanvas::model(const glm::vec3 &cam_pos, const glm::vec3 &point) {
-    return glm::translate(glm::mat4(1.0f), cam_pos - point);
+    
 }
 
 void QSFMLCanvas::DrawParticles(const particles_system &system, const camera &cam) {
