@@ -78,11 +78,11 @@ public:
         float velocity = MovementSpeed;
         if (direction == FORWARD) {
 //            model = glm::translate(glm::mat4(1.f), -Front);
-            Position += Front * velocity;
+            Position += Up * velocity;
         }
         if (direction == BACKWARD) {
 //            model = glm::translate(glm::mat4(1.f), Front);
-            Position -= Front * velocity;
+            Position -= Up * velocity;
         }
         if (direction == LEFT) {
 //            model = glm::translate(glm::mat4(1.f), Right);
