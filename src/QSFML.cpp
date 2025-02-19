@@ -286,7 +286,7 @@ void QSFMLCanvas::DrawParticles(const particles_system &system, const camera &ca
 }
 
 void QSFMLCanvas::StartSmokeTimer() {
-    timers[SMOKE] = startTimer(100);
+    timers[SMOKE] = startTimer(10);
     if (timers[SMOKE] != 0)
         cout << "SMOKE TIMER STARTED\n";
 }
