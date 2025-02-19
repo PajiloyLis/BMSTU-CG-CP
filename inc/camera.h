@@ -44,10 +44,12 @@ public:
 
     float relation;
 
+    glm::mat4 model;
+
     // constructor with vectors
     camera(glm::vec3 position = glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3 up = glm::vec3(0.0f, 0.0f, 1.0f),
            float yaw = YAW, float pitch = PITCH) : Front(glm::vec3(-1.0f, 0.0f, 0.0f)), MovementSpeed(SPEED),
-                                                   MouseSensitivity(SENSITIVITY), Zoom(ZOOM), relation(3.f / 4) {
+                                                   MouseSensitivity(SENSITIVITY), Zoom(ZOOM), relation(16.f / 9) {
         Position = position;
         WorldUp = up;
         Yaw = yaw;
@@ -74,8 +76,10 @@ public:
     // processes input received from any keyboard-like input system. Accepts input parameter in the form of camera defined ENUM (to abstract it from windowing systems)
     void move(Camera_Movement direction, float delta_time) {
         float velocity = MovementSpeed;
-        if (direction == FORWARD)
+        if (direction == FORWARD) {
+            model = glm::translate({1.f}, -Front);
             Position += Up * velocity;
+        }
         if (direction == BACKWARD)
             Position -= Up * velocity;
         if (direction == LEFT)
@@ -122,13 +126,6 @@ public:
             Zoom = 45.0f;
     }
 
-    [[nodiscard]] glm::mat4 model() const {
-        return glm::inverse(
-                glm::mat4(Right.x, Up.x, Front.x, 0,
-                          Right.y, Up.y, Front.y, 0,
-                          Right.z, Up.z, Front.z, 0,
-                          0, 0, 0, 1));
-    }
 
 private:
     // calculates the front vector from the camera's (updated) Euler Angles
@@ -145,6 +142,7 @@ private:
         Up = glm::normalize(glm::cross(Right, Front));
     }
 };
+
 
 //
 //class camera {
