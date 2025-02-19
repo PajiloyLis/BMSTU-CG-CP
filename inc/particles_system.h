@@ -18,13 +18,14 @@ public:
     particle() = default;
 
     explicit particle(const glm::vec3 &pos = {0, 0, 0}, const float &r = 1.f, const glm::vec3 &sp = {0, 0, 0},
-                      const sf::Color &c = {255, 255, 255}) : position(pos), radius(r), speed(sp), color(c)
-                                                              {};
+                      const sf::Color &c = {255, 255, 255}) : position(pos), radius(r), speed(sp), color(c),
+                                                              iterations_count(0) {};
 
     glm::vec3 position;
     float radius;
     glm::vec3 speed;
     sf::Color color;
+    int iterations_count;
 };
 
 class particles_system {
