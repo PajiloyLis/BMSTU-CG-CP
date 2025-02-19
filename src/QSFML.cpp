@@ -164,7 +164,7 @@ glm::vec3 QSFMLCanvas::adapt_coords(const camera &c, const glm::vec3 &point, con
 }
 
 glm::mat4 QSFMLCanvas::viewport(const glm::vec3 &center, const glm::vec3 &cam_pos, const glm::vec3 &point) {
-    float k = std::min(this->width() / (2), this->height() / (2));
+    float k = std::min(this->width() / (2 * center.x), this->height() / (2 * center.y));
     return {k, 0, 0, this->width(),
             0, k, 0, this->height(),
             0, 0, 1, 0,
