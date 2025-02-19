@@ -41,7 +41,7 @@ void particles_system::update_coords(const int &add_count) {
     }
     for (auto &particle: particles) {
         particle.position += particle.speed + glm::vec3(2 - gen() % 5, 2 - gen() % 5, 2 - gen() % 5);
-        cout << particle.position.x << ' '<<particle.position.y << " "<<particle.position.z << '\n';
+//        cout << particle.position.x << ' '<<particle.position.y << " "<<particle.position.z << '\n';
     }
 }
 

@@ -37,7 +37,9 @@ add_executable(cp_cg
         inc/camera.h
         src/conversions.cpp
         src/particles_system.cpp
-        inc/particles_system.h)
+        inc/particles_system.h
+        moc_QSFML.cpp
+        moc_predefs.h)
 
 target_link_libraries(cp_cg PUBLIC
         Qt::Core
