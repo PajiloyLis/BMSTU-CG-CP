@@ -35,7 +35,7 @@ public:
 
     particles_system &operator=(const particles_system &system);
 
-    void update_coords();
+    void update_coords(const int &add_count);
 
     particles_system(const particles_system &system);
 
