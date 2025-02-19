@@ -127,7 +127,8 @@ void QSFMLCanvas::z_buffer(array<glm::vec3, 3> points_, Image &image, sf::Color 
                 int idx = static_cast<int>(round(P.x + P.y * image.getSize().x));
                 if (zbuffer[idx] > P.z) {
                     zbuffer[idx] = P.z;
-                    this->draw(vector<sf::Vertex>(1, sf::Vertex(sf::Vector2f(P.x, this->size().height() - P.y), color_)).data(), 1, sf::Points);
+                    this->draw(vector<sf::Vertex>(1, sf::Vertex(sf::Vector2f(P.x, this->size().height() - P.y),
+                                                                color_)).data(), 1, sf::Points);
 //                    image.setPixel(static_cast<Uint32>(round(P.x)), static_cast<Uint32>(round(P.y)), color_);
                 }
             }
@@ -250,20 +251,20 @@ void QSFMLCanvas::keyReleaseEvent(QKeyEvent *event) {
 
 void QSFMLCanvas::timerEvent(QTimerEvent *event) {
 //    if (event->timerId() == timers[KEYBOARD]) {
-        now_time = time(nullptr);
-        float delta = now_time - last_motion_time;
-        last_motion_time = now_time;
-        cout << "TIMER KEK" << '\n';
-        Q_UNUSED(event);
-        if (w_pressed) {
-            emit WKeyPressed(FORWARD, delta);
-        } else if (a_pressed) {
-            emit AKeyPressed(LEFT, delta);
-        } else if (s_pressed) {
-            emit SKeyPressed(BACKWARD, delta);
-        } else if (d_pressed) {
-            emit DKeyPressed(RIGHT, delta);
-        }
+    now_time = time(nullptr);
+    float delta = now_time - last_motion_time;
+    last_motion_time = now_time;
+    cout << "TIMER KEK" << '\n';
+    Q_UNUSED(event);
+    if (w_pressed) {
+        emit WKeyPressed(FORWARD, delta);
+    } else if (a_pressed) {
+        emit AKeyPressed(LEFT, delta);
+    } else if (s_pressed) {
+        emit SKeyPressed(BACKWARD, delta);
+    } else if (d_pressed) {
+        emit DKeyPressed(RIGHT, delta);
+    }
 //    } else
     if (event->timerId() == timers[SMOKE]) {
 //        cout << "WORK BITCH\n";
@@ -275,9 +276,11 @@ void QSFMLCanvas::DrawParticles(const particles_system &system, const camera &ca
     vector<sf::Vertex> adapted_points(system.particles.size());
     for (int i = 0; i < adapted_points.size(); ++i) {
         glm::vec3 adapted = adapt_coords(cam, system.particles[i].position, system.spawn);
+        sf::CircleShape particle(system.particles[i].radius);
+        particle.setPosition(system.particles[i].position.x, system.particles[i].position.y);
         adapted_points[i] = sf::Vertex(sf::Vector2f(adapted.x, adapted.y), system.particles[i].color);
+        this->draw()
     }
-    this->draw(adapted_points.data(), adapted_points.size(), sf::Points);
 }
 
 void QSFMLCanvas::StartSmokeTimer() {
