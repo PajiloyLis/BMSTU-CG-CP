@@ -164,7 +164,7 @@ glm::vec3 QSFMLCanvas::adapt_coords(const camera &c, const glm::vec3 &point, con
 
     // Теперь можете использовать ndcPosition для дальнейшего преобразования в экранные координаты
     float screenX = (ndcPosition.x * 0.5f + 0.5f) * this->size().width(); // ширина окна
-    float screenY = (ndcPosition.y * 0.5f) * this->size().height() -; // высота окна
+    float screenY = (ndcPosition.y * 0.5f) * this->size().height(); // высота окна
     float screenZ = (ndcPosition.z * 0.5f + 0.5f) * SCREEN_DEPTH;
 
     return {screenX, screenY, clipSpacePosition.z};
