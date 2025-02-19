@@ -167,7 +167,7 @@ glm::vec3 QSFMLCanvas::adapt_coords(const camera &c, const glm::vec3 &point, con
     float screenY = (ndcPosition.y * 0.5f + 0.5f) * this->size().height(); // высота окна
     float screenZ = (ndcPosition.z * 0.5f + 0.5f) * SCREEN_DEPTH;
 
-    return {screenX, screenY, screenZ};
+    return {screenX, screenY, clipSpacePosition.z};
 }
 
 glm::mat4 QSFMLCanvas::viewport(const glm::vec3 &center, const glm::vec3 &cam_pos, const glm::vec3 &point) {
