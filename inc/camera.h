@@ -122,7 +122,13 @@ public:
             Zoom = 45.0f;
     }
 
-    п
+    [[nodiscard]] glm::mat4 model() const {
+        return glm::inverse(
+                glm::mat4(Right.x, Up.x, Front.x, 0,
+                          Right.y, Up.y, Front.y, 0,
+                          Right.z, Up.z, Front.z, 0,
+                          0, 0, 0, 1));
+    }
 
 private:
     // calculates the front vector from the camera's (updated) Euler Angles
