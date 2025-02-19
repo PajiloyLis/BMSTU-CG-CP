@@ -34,7 +34,7 @@ particles_system &particles_system::operator=(const particles_system &system) {
 void particles_system::update_coords(const int &add_count) {
     for (int i = 0; i < add_count; ++i) {
         particles.push_back(
-                particle(spawn + glm::vec3(1-rand()%3, 1-rand()%3, 1-rand()%3), 5.f,
+                particle(spawn + glm::vec3(1-rand()%3, 1-rand()%3, 1-rand()%3), 10.f,
                          particles[0].speed +
                          glm::vec3(1-rand()%3, 1-rand()%3, 1-rand()%3),
                          base_system_color));
