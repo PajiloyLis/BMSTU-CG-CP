@@ -154,7 +154,7 @@ void QSFMLCanvas::Clear() {
 }
 
 glm::vec3 QSFMLCanvas::adapt_coords(const camera &c, const glm::vec3 &point, const glm::vec3 &center) {
-    glm::mat4 view = c.camLookAt(), perspective = c.perspective();
+    glm::mat4 view = c.camLookAt(), perspective = c.perspective(), model = c.model();
     glm::mat4 trans = perspective * view;
     // Преобразуем вектор из мировой системы в экранную
     glm::vec4 clipSpacePosition = trans * glm::vec4(point.x, point.y, point.z, 1);
