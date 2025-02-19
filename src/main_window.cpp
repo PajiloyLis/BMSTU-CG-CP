@@ -29,6 +29,8 @@ void MainWindow::SetBindings() {
                      &MainWindow::LoadModelActionTriggered);
     QObject::connect(this->findChild<QAction *>("sim_start"), &QAction::triggered, this,
                      &MainWindow::StartSimulation);
+    QObject::connect(this->findChild<QSFMLCanvas *>("drawer"), &QSFMLCanvas::SmokeTimerElapsed, this,
+                     &MainWindow::SmokeTimerElapsedHandler);
     QObject::connect(this->findChild<QSFMLCanvas *>("drawer"), &QSFMLCanvas::WKeyPressed, this,
                      &MainWindow::MoveCurCamera);
     QObject::connect(this->findChild<QSFMLCanvas *>("drawer"), &QSFMLCanvas::AKeyPressed, this,
