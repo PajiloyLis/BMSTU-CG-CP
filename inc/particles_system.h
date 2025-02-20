@@ -10,20 +10,25 @@
 #include <iostream>
 #include <SFML/Graphics.hpp>
 #include <random>
+#include <set>
 
 using namespace std;
+
+#define EPS 1e-5
 
 class particle {
 public:
     particle() = default;
 
     explicit particle(const glm::vec3 &pos = {0, 0, 0}, const float &r = 150.f, const glm::vec3 &sp = {0, 0, 0},
-                      const sf::Color &c = {198, 195, 181, }) : position(pos), radius(r), speed(sp), color(c),
+                      const sf::Color &c = {198, 195, 181}) : position(pos), radius(r), speed(sp), color(c),
                                                               iterations_count(0) {};
 
-    bool operator<(const particle &p) const
-    {
-        if(position.x<p.position.x || position.x)
+    bool operator<(const particle &p) const {
+        if (position.x < p.position.x || (abs(position.x - p.position.x) < EPS && position.y < p.position.y) ||
+            (abs(position.x - p.position.x) < EPS && abs(position.y - p.position.y) < EPS && position.z < p.position.z))
+            return true;
+        return false;
     }
 
     glm::vec3 position;
@@ -45,7 +50,7 @@ public:
 
     particles_system(const particles_system &system);
 
-    vector<particle> particles;
+    set<particle> particles;
     glm::vec3 spawn;
     std::random_device rd;
     std::mt19937 gen;
