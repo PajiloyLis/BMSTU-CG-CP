@@ -18,8 +18,13 @@ public:
     particle() = default;
 
     explicit particle(const glm::vec3 &pos = {0, 0, 0}, const float &r = 150.f, const glm::vec3 &sp = {0, 0, 0},
-                      const sf::Color &c = {198, 195, 181}) : position(pos), radius(r), speed(sp), color(c),
+                      const sf::Color &c = {198, 195, 181, }) : position(pos), radius(r), speed(sp), color(c),
                                                               iterations_count(0) {};
+
+    bool operator<(const particle &p) const
+    {
+        if(position.x<p.position.x || position.x)
+    }
 
     glm::vec3 position;
     float radius;
