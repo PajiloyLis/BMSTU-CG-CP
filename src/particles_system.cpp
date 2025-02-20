@@ -8,8 +8,8 @@ particles_system::particles_system(const int &start_count, const glm::vec3 &spaw
                                    const glm::vec3 &speed) {
     gen = mt19937(rd());
     for (int i = 0; i < start_count; ++i) {
-        particles.insert(particle(spawn, 10.f, speed + glm::vec3(1 - rand() % 3, 1 - rand() % 3, 1 - rand() % 3),
-                                  color));
+        particles.push_back(particle(spawn, 10.f, speed + glm::vec3(1 - rand() % 3, 1 - rand() % 3, 1 - rand() % 3),
+                                     color));
     }
     this->spawn = spawn;
     timer_id = 0;
@@ -33,7 +33,7 @@ particles_system &particles_system::operator=(const particles_system &system) {
 
 void particles_system::update_coords(const int &add_count) {
     for (int i = 0; i < add_count; ++i) {
-        particles.insert(
+        particles.push_back(
                 particle(spawn + glm::vec3(1 - rand() % 3, 1 - rand() % 3, 1 - rand() % 3), 10.f,
                          (*particles.begin()).speed +
                          glm::vec3(1 - rand() % 3, 1 - rand() % 3, 1 - rand() % 3),

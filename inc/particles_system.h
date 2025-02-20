@@ -11,7 +11,7 @@
 #include <SFML/Graphics.hpp>
 #include <random>
 #include <set>
-
+#include <deque>
 using namespace std;
 
 #define EPS 1e-5
@@ -50,7 +50,7 @@ public:
 
     particles_system(const particles_system &system);
 
-    set<particle> particles;
+    deque<particle> particles;
     glm::vec3 spawn;
     std::random_device rd;
     std::mt19937 gen;
