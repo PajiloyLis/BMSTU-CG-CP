@@ -8,7 +8,9 @@ particles_system::particles_system(const int &start_count, const glm::vec3 &spaw
                                    const glm::vec3 &speed) {
     gen = mt19937(rd());
     for (int i = 0; i < start_count; ++i) {
-        particles.push_back(particle(spawn, 1.f, speed + glm::vec3(rand()/RAND_MAX * 3, rand()/RAND_MAX * 3, rand()/RAND_MAX * 3),
+        particles.push_back(particle(spawn, 1.f, speed + glm::vec3(1 - (float) rand() / RAND_MAX * 3,
+                                                                   1 - (float) rand() / RAND_MAX * 3,
+                                                                   1 - (float) rand() / RAND_MAX * 3),
                                      color));
     }
     this->spawn = spawn;
@@ -34,14 +36,17 @@ particles_system &particles_system::operator=(const particles_system &system) {
 void particles_system::update_coords(const int &add_count) {
     for (int i = 0; i < add_count; ++i) {
         particles.push_back(
-                particle(spawn + glm::vec3(rand()/RAND_MAX * 3, rand()/RAND_MAX * 3, rand()/RAND_MAX * 3), 1.f,
+                particle(spawn + glm::vec3(1 - (float) rand() / RAND_MAX * 3, 1 - (float) rand() / RAND_MAX * 3,
+                                           1 - (float) rand() / RAND_MAX * 3), 1.f,
                          (*particles.begin()).speed +
-                         glm::vec3(rand()/RAND_MAX * 3, rand()/RAND_MAX * 3, rand()/RAND_MAX * 3),
+                         glm::vec3(1 - (float) rand() / RAND_MAX * 3, 1 - (float) rand() / RAND_MAX * 3,
+                                   1 - (float) rand() / RAND_MAX * 3),
                          base_system_color));
     }
     for (auto &particle: particles) {
         particle.position +=
-                particle.speed + glm::vec3(rand()/RAND_MAX * 3, rand()/RAND_MAX * 3, rand()/RAND_MAX * 3);
+                particle.speed + glm::vec3(1 - (float) rand() / RAND_MAX * 3, 1 - (float) rand() / RAND_MAX * 3,
+                                           1 - (float) rand() / RAND_MAX * 3);
 //        cout << particle.position.x << ' '<<particle.position.y << " "<<particle.position.z << '\n';
     }
 }
