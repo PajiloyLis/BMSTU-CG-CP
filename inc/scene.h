@@ -6,7 +6,7 @@
 #include "figure.h"
 #include "camera.h"
 #include <GL/gl.h>
-#include "particles_system.h"
+#include "smoke.h"
 class Scene {
 public:
     Scene();
@@ -19,7 +19,7 @@ public:
 
     void DrawParticlesSystems() const;
 
-    void AddParticlesSystem(const particles_system &system);
+    void AddParticlesSystem(const smoke &system);
 
     void ClearScene() const;
 
@@ -46,7 +46,7 @@ private:
     QSFMLCanvas *scene;
     double width, height;
     vector<figure> figures;
-    vector<particles_system> p_systems;
+    vector<smoke> p_systems;
     vector<camera> cameras;
     int cur_camera;
     float cur_frame_time, last_frame_time;

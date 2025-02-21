@@ -364,7 +364,7 @@ moc_QSFML.cpp: inc/QSFML.h \
 		inc/triangle.h \
 		inc/conversions.h \
 		inc/camera.h \
-		inc/particles_system.h \
+		inc/smoke.h \
 		moc_predefs.h \
 		/usr/lib/qt6/libexec/moc
 	/usr/lib/qt6/libexec/moc $(DEFINES) --include /home/ivan/Study/CompG/cp_cg/moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt6/mkspecs/linux-g++ -I/home/ivan/Study/CompG/cp_cg -I/usr/include -I/home/ivan/Study/CompG/cp_cg/inc -I/usr/include/x86_64-linux-gnu/qt6 -I/usr/include/x86_64-linux-gnu/qt6/QtWidgets -I/usr/include/x86_64-linux-gnu/qt6/QtGui -I/usr/include/x86_64-linux-gnu/qt6/QtCore -I/usr/include/c++/11 -I/usr/include/x86_64-linux-gnu/c++/11 -I/usr/include/c++/11/backward -I/usr/lib/gcc/x86_64-linux-gnu/11/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include inc/QSFML.h -o moc_QSFML.cpp
@@ -406,7 +406,7 @@ handler.o: src/handler.cpp inc/handler.h \
 		inc/scene.h \
 		inc/QSFML.h \
 		inc/camera.h \
-		inc/particles_system.h \
+		inc/smoke.h \
 		inc/figure.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o handler.o src/handler.cpp
 
@@ -415,7 +415,7 @@ main.o: src/main.cpp inc/main_window.h \
 		inc/triangle.h \
 		inc/conversions.h \
 		inc/camera.h \
-		inc/particles_system.h \
+		inc/smoke.h \
 		inc/handler.h \
 		inc/textured_figure.h \
 		inc/textured_triangle.h \
@@ -429,7 +429,7 @@ main_window.o: src/main_window.cpp inc/main_window.h \
 		inc/triangle.h \
 		inc/conversions.h \
 		inc/camera.h \
-		inc/particles_system.h \
+		inc/smoke.h \
 		inc/handler.h \
 		inc/textured_figure.h \
 		inc/textured_triangle.h \
@@ -445,7 +445,7 @@ QSFML.o: src/QSFML.cpp inc/QSFML.h \
 		inc/triangle.h \
 		inc/conversions.h \
 		inc/camera.h \
-		inc/particles_system.h
+		inc/smoke.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o QSFML.o src/QSFML.cpp
 
 scene.o: src/scene.cpp inc/scene.h \
@@ -453,7 +453,7 @@ scene.o: src/scene.cpp inc/scene.h \
 		inc/triangle.h \
 		inc/conversions.h \
 		inc/camera.h \
-		inc/particles_system.h \
+		inc/smoke.h \
 		inc/textured_figure.h \
 		inc/textured_triangle.h \
 		inc/figure.h
@@ -467,7 +467,7 @@ camera.o: src/camera.cpp inc/camera.h \
 		inc/conversions.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o camera.o src/camera.cpp
 
-particles_system.o: src/particles_system.cpp inc/particles_system.h
+particles_system.o: src/smoke.cpp inc/smoke.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o particles_system.o src/particles_system.cpp
 
 moc_QSFML.o: moc_QSFML.cpp 

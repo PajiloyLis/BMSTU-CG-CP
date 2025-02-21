@@ -2,8 +2,8 @@
 // Created by ivan on 17.02.25.
 //
 
-#ifndef CP_CG_PARTICLES_SYSTEM_H
-#define CP_CG_PARTICLES_SYSTEM_H
+#ifndef CP_CG_SMOKE_H
+#define CP_CG_SMOKE_H
 
 #include <glm/glm.hpp>
 #include <vector>
@@ -38,17 +38,17 @@ public:
     int iterations_count;
 };
 
-class particles_system {
+class smoke {
 public:
 
-    particles_system(const int &start_count, const glm::vec3 &spawn, const sf::Color &color,
-                     const glm::vec3 &speed);
+    smoke(const int &start_count, const glm::vec3 &spawn, const sf::Color &color,
+          const glm::vec3 &speed);
 
-    particles_system &operator=(const particles_system &system);
+    smoke &operator=(const smoke &system);
 
     void update_coords(const int &add_count);
 
-    particles_system(const particles_system &system);
+    smoke(const smoke &system);
 
     deque<particle> particles;
     glm::vec3 spawn;
@@ -59,4 +59,4 @@ public:
 };
 
 
-#endif //CP_CG_PARTICLES_SYSTEM_H
+#endif //CP_CG_SMOKE_H

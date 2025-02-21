@@ -272,7 +272,7 @@ void QSFMLCanvas::timerEvent(QTimerEvent *event) {
     }
 }
 
-void QSFMLCanvas::DrawParticles(particles_system &system, const camera &cam) {
+void QSFMLCanvas::DrawParticles(smoke &system, const camera &cam) {
     int deleted = 0, i = 0;
     while (i < system.particles.size() - deleted) {
         glm::vec3 adapted = adapt_coords(cam, system.particles[i].position, system.spawn);

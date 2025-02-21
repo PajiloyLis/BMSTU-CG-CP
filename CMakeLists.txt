@@ -36,8 +36,8 @@ add_executable(cp_cg
         src/camera.cpp
         inc/camera.h
         src/conversions.cpp
-        src/particles_system.cpp
-        inc/particles_system.h
+        src/smoke.cpp
+        inc/smoke.h
         moc_QSFML.cpp
         moc_predefs.h)
 

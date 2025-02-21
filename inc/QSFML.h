@@ -20,7 +20,7 @@
 #include <glm/glm.hpp>
 #include "triangle.h"
 #include "camera.h"
-#include "particles_system.h"
+#include "smoke.h"
 
 using namespace std;
 using namespace sf;
@@ -41,7 +41,7 @@ public:
 
     void DrawTriangle(const triangle &t, const camera &cam, const glm::vec3 &figure_center, const sf::Color &color);
 
-    void DrawParticles(particles_system &system, const camera &cam);
+    void DrawParticles(smoke &system, const camera &cam);
 
     void StartSmokeTimer();
 
