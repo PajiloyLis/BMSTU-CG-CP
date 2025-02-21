@@ -60,6 +60,7 @@ public:
 //    sf::Color base_system_color;
     vector<vector<float>> u, v, u_prev, v_prev;
     vector<vector<float>> dens, dens_prev;
+    
 };
 
 
