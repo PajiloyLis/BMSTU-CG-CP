@@ -4,6 +4,8 @@
 
 #include "smoke.h"
 
+#define DEPTH 1000;
+
 //smoke::smoke(const int &start_count, const glm::vec3 &spawn, const sf::Color &color,
 //             const glm::vec3 &speed) {
 //    gen = mt19937(rd());
@@ -51,8 +53,8 @@
 //    }
 //}
 
-smoke::smoke(const int &grid_width, const int &grid_height) {
-    u.resize(grid_height, vector<float>(grid_width, 0)),
+smoke::smoke(const int &grid_width, const int &grid_height, const glm::vec3 &speed) {
+    u.resize(grid_height, vector<vector<glm::vec3>>(grid_width, 0)),
             v.resize(grid_height, vector<float>(grid_width, 0)),
             u_prev.resize(grid_height, vector<float>(grid_width, 0)),
             v_prev.resize(grid_height, vector<float>(grid_width, 0)),

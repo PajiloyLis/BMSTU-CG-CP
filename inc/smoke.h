@@ -41,7 +41,7 @@ using namespace std;
 class smoke {
 public:
 
-    smoke(const int &grid_width, const int &grid_height);
+    smoke(const int &grid_width, const int &grid_height, const glm::vec3 &speed);
 
 //    smoke(const int &start_count, const glm::vec3 &spawn, const sf::Color &color,
 //          const glm::vec3 &speed);
