@@ -58,5 +58,5 @@ smoke::smoke(const int &grid_width, const int &grid_height) {
             v_prev.resize(grid_height, vector<float>(grid_width, 0)),
             dens.resize(grid_height, vector<float>(grid_width, 0)),
             dens_prev.resize(grid_height, vector<float>(grid_width, 0));
-    
+
 }
