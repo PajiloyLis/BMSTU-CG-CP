@@ -53,5 +53,12 @@
 
 smoke::smoke(const int &grid_width, const int &grid_height) {
     int size = (grid_height + 1) * (grid_width + 1);
-    u.resize()
+    u.resize(size),
+    v.resize(size),
+    u_prev.resize(size),
+    v_prev.resize(size),
+    dens.resize(size),
+    dens_prev.resize(size);
+
+    
 }
