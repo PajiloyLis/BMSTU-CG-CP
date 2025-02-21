@@ -52,13 +52,11 @@
 //}
 
 smoke::smoke(const int &grid_width, const int &grid_height) {
-    int size = (grid_height + 1) * (grid_width + 1);
-    u.resize(size, 0),
-            v.resize(size, 0),
-            u_prev.resize(size, 0),
-            v_prev.resize(size, 0),
-            dens.resize(size, 0),
-            dens_prev.resize(size, 0);
+    u.resize(grid_height, vector<float>(grid_width, 0)),
+            v.resize(grid_height, vector<float>(grid_width, 0)),
+            u_prev.resize(grid_height, vector<float>(grid_width, 0)),
+            v_prev.resize(grid_height, vector<float>(grid_width, 0)),
+            dens.resize(grid_height, vector<float>(grid_width, 0)),
+            dens_prev.resize(grid_height, vector<float>(grid_width, 0));
     
-
 }

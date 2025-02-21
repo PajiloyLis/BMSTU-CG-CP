@@ -58,8 +58,8 @@ public:
 //    std::mt19937 gen;
 //    int timer_id;
 //    sf::Color base_system_color;
-    vector<float> u, v, u_prev, v_prev;
-    vector<float> dens, dens_prev;
+    vector<vector<float>> u, v, u_prev, v_prev;
+    vector<vector<float>> dens, dens_prev;
 };
 
 
