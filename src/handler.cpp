@@ -21,7 +21,7 @@ void TaskHandler::LoadModel(const string &filepath) {
     // Add mount
     scene.AddFigure(figure(read_stl(filepath)));
     // Add smoke
-    scene.AddParticlesSystem(smoke(10000, {50, 43, 40}, <#initializer#>));
+//    scene.AddParticlesSystem(smoke(10000, {50, 43, 40}, <#initializer#>));
 }
 
 vector<triangle> TaskHandler::read_stl(const string &filename) {
@@ -120,11 +120,11 @@ void TaskHandler::ScaleCamera(float &k) {
     scene.ScaleCamera(k);
 }
 
-void TaskHandler::StartSimulation() {
-    scene.StartSimulation();
-}
+//void TaskHandler::StartSimulation() {
+//    scene.StartSimulation();
+//}
 
-void TaskHandler::SmokeTimerElapsed() {
-    scene.SmokeTimerElapsed();
-}
+//void TaskHandler::SmokeTimerElapsed() {
+//    scene.SmokeTimerElapsed();
+//}
 

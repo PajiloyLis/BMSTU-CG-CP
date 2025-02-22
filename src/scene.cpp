@@ -59,29 +59,29 @@ void Scene::MoveCamera(const Camera_Movement &move, float &delta_time) {
 }
 
 
-void Scene::DrawParticlesSystems() const {
-    for (auto &system: p_systems)
-        scene->DrawParticles(const_cast<smoke &>(system), cameras[cur_camera]);
+//void Scene::DrawParticlesSystems() const {
+//    for (auto &system: p_systems)
+//        scene->DrawParticles(const_cast<smoke &>(system), cameras[cur_camera]);
+//
+//}
 
-}
-
-void
-Scene::AddParticlesSystem(const smoke &system) {
-    p_systems.push_back(system);
-}
-
-void Scene::StartSimulation() {
-    scene->StartSmokeTimer();
-}
-
-void Scene::SmokeTimerElapsed() {
-    p_systems[0].update_coords(10000);
-    ClearScene();
-    DrawFigures();
-    DrawParticlesSystems();
-    Show();
-}
-
+//void
+//Scene::AddParticlesSystem(const smoke &system) {
+//    p_systems.push_back(system);
+//}
+//
+//void Scene::StartSimulation() {
+//    scene->StartSmokeTimer();
+//}
+//
+//void Scene::SmokeTimerElapsed() {
+//    p_systems[0].update_coords(10000);
+//    ClearScene();
+//    DrawFigures();
+//    DrawParticlesSystems();
+//    Show();
+//}
+//
 void Scene::Show() {
     scene->repaint();
 }
