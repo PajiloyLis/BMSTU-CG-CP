@@ -272,24 +272,7 @@ void QSFMLCanvas::timerEvent(QTimerEvent *event) {
     }
 }
 
-void QSFMLCanvas::DrawParticles(smoke &system, const camera &cam) {
-    int deleted = 0, i = 0;
-    while (i < system.particles.size() - deleted) {
-        glm::vec3 adapted = adapt_coords(cam, system.particles[i].position, system.spawn);
-        if (adapted.x < 0 || adapted.x > this->size().width() || adapted.y < 0 || adapted.y > this->size().height()) {
-            system.particles.erase(system.particles.begin() + i);
-            ++deleted;
-        } else {
-            sf::CircleShape particle(system.particles[i].radius);
-            particle.setPosition(adapted.x, this->size().height() - adapted.y);
-            particle.setFillColor(system.particles[i].color);
-            particle.setOutlineColor(system.particles[i].color);
-//        adapted_points[i] = sf::Vertex(sf::Vector2f(adapted.x, adapted.y), system.particles[i].color);
-            this->draw(particle);
-            ++i;
-        }
-    }
-}
+
 
 void QSFMLCanvas::StartSmokeTimer() {
     timers[SMOKE] = startTimer(10);

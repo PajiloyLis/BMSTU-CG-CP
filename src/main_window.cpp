@@ -10,6 +10,7 @@ MainWindow::MainWindow() : QMainWindow(), handler() {
     auto const *grid = this->findChild<QWidget *>("gridLayoutWidget");
     auto const *menu = this->findChild<QMenuBar *>("menubar");
     auto *drawer = new QSFMLCanvas(this, QSize(grid->size()));
+    cout << QSize(grid->size()).width() << " " << QSize(grid->size()).height() << '\n';
     drawer->setObjectName("drawer");
     drawer->setGeometry(menu->pos().x(), grid->pos().y() + menu->size().height(),
                         grid->size().width(), grid->size().height());
