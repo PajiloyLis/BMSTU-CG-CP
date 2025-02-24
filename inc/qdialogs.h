@@ -54,10 +54,12 @@ public:
         connect(okButton, &QPushButton::clicked, this, &WindDialog::accept);
         connect(cancelButton, &QPushButton::clicked, this, &WindDialog::reject);
     }
-
-     int getWindSpeed() const {
-        return findChild<QSlider *>("speed_slider"))->;
+    
+     [[nodiscard]] int getWindSpeed() const {
+        auto slider = findChild<QSlider *>("speed_slider");
+        return slider->value();
     }
+
 };
 
 
