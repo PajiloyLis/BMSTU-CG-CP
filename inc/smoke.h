@@ -31,7 +31,8 @@ public:
 
     int width, height;
 
-    glm::vec3 source, wind;
+    glm::vec3 source;
+    glm::vec2 wind;
 
     float dt;
 
@@ -41,7 +42,7 @@ public:
     float intensity, v_initial;
 
 
-    smoke(int grid_width, int grid_height, const glm::vec3 &crater, const glm::vec3 &wind_, float dt_, int frames_count,
+    smoke(int grid_width, int grid_height, const glm::vec3 &crater, const glm::vec2 &wind_, float dt_, int frames_count,
           float intensity_, float vertical_speed) :
             width(grid_width / VOX_SIZE), height(grid_height / VOX_SIZE), source(crater), wind(wind_), dt(dt_),
             u(height + 2, vector<vector<float>>(height, vector<float>(width, 0.f))),

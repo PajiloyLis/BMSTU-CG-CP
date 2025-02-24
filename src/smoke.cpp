@@ -50,7 +50,8 @@ void smoke::diffuse(int b, vector<vector<vector<float>>> &x, vector<vector<vecto
 }
 
 void smoke::advect(int b, vector<vector<vector<float>>> &d, vector<vector<vector<float>>> &d0,
-                   vector<vector<vector<float>>> &u_, vector<vector<vector<float>>> &v_, vector<vector<vector<float>>> &w_,
+                   vector<vector<vector<float>>> &u_, vector<vector<vector<float>>> &v_,
+                   vector<vector<vector<float>>> &w_,
                    float dt_) {
     int i, j, i0, j0, k0, i1, j1, k1;
     float x, y, z, s0, t0, s1, t1, dt0, u1, u0;
@@ -105,7 +106,8 @@ smoke::project(vector<vector<vector<float>>> &u_, vector<vector<vector<float>>> 
         for (j = 1; j <= height; j++) {
             for (int k = 1; k <= width; ++k) {
                 div[i][j][k] = -1.0 / 3.0 *
-                               ((u_[i + 1][j][k] - u_[i - 1][j][k]) / height + (v_[i][j + 1][k] - v_[i][j - 1][k]) / height +
+                               ((u_[i + 1][j][k] - u_[i - 1][j][k]) / height +
+                                (v_[i][j + 1][k] - v_[i][j - 1][k]) / height +
                                 (w_[i][j][k + 1] - w_[i][j][k - 1]) / width);
                 p[i][j][k] = 0;
             }
@@ -167,24 +169,27 @@ void smoke::update() {
     for (int i = 0; i < height + 2; ++i) {
         for (int j = 0; j < height + 2; ++j) {
             for (int k = 0; k < width + 2; ++k) {
-                u_prev[i][j][k] = log(i-source.z)*wind;
-                u_prev[i][j][k] = v_prev[i][j][k] = 0;
-                w_prev[i][j][k] = -0.001;
+                u_prev[i][j][k] = log(i - source.z) * wind.y;
+                v_prev[i][j][k] = log(i - source.z) * wind.x;
+                w_prev[i][j][k] = 0.001;
                 dens_prev[i][j][k] = 0;
             }
         }
     }
     if (frames_counter < total_frames) {
-        for (int i = static_cast<int>(source.x); i < static_cast<int>(source.x) + 1; ++i) {
+        for (int i = static_cast<int>(source.z); i < static_cast<int>(source.z) + 1; ++i) {
             for (int j = static_cast<int>(source.x); j < static_cast<int>(source.x) + 1; ++j) {
-                for (int k = static_cast<int>(source.x); k < static_cast<int>(source.x) + 1; ++k) {
+                for (int k = static_cast<int>(source.y); k < static_cast<int>(source.y) + 1; ++k) {
                     dens_prev[i][j][k] = intensity;
-                    w_prev[i][j][k] = v_initial;
+                    w_prev[i][j][k] += v_initial;
                 }
             }
         }
+
     }
     ++frames_counter;
+    vel_step(u, v, w, v_prev, u_prev, w_prev, VISC, dt);
+    dens_step(dens, dens_prev, u, v, w, dt, DIFF_COEF);
 }
 
 
