@@ -23,13 +23,21 @@ public:
 
         QLabel *speed_label = new QLabel("Установите скорость ветра (м/с):");
         QSlider *speed_slider = new QSlider(Qt::Horizontal);
+        speed_slider->setObjectName("speed_slider");
+        speed_slider->setTickInterval(1);
         speed_slider->setRange(0, 35);
         speed_slider->setValue(5); // Начальное значение
 
         QLabel *angle_label = new QLabel("Установите направление ветра (в градусах по часовой стрелке от севера):");
         QSlider *angle_slider = new QSlider(Qt::Horizontal);
+        angle_slider->setObjectName("angle_slider");
+        angle_slider->setTickInterval(1);
         speed_slider->setRange(0, 360);
         speed_slider->setValue(90); // Начальное значение
+
+        QPushButton *okButton = new QPushButton("OK", this);
+        QPushButton *cancelButton = new QPushButton("Cancel", this);
+
 
         QVBoxLayout *mainLayout = new QVBoxLayout(this);
         mainLayout->addWidget(speed_label);
@@ -47,8 +55,8 @@ public:
         connect(cancelButton, &QPushButton::clicked, this, &WindDialog::reject);
     }
 
-    QString getInputText() const {
-        return findChild<QLineEdit *>())->text();
+     int getWindSpeed() const {
+        return findChild<QSlider *>("speed_slider"))->;
     }
 };
 
