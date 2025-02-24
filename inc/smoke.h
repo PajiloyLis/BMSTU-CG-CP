@@ -12,6 +12,7 @@
 #include <random>
 #include <set>
 #include <deque>
+
 using namespace std;
 
 #define EPS 1e-5
@@ -23,12 +24,42 @@ public:
 
     int width, height;
 
-    glm::vec3 source;
+    glm::vec3 source, wind;
+
+    float dt;
 
     vector<vector<vector<float>>> u, v, u_prev, v_prev, z, z_prev, dens, dens_prev;
 
 
-    smoke(int grid_width, int grid_height, const glm::vec3 &crater);
+    smoke(int grid_width, int grid_height, const glm::vec3 &crater, const glm::vec3 &wind, float dt) : width(
+            grid_width),
+                                                                                                       height(grid_height) {}
+
+    void add_source(vector<vector<vector<float>>> &x, vector<vector<vector<float>>> &s, float dt);
+
+    void set_bnd(int b, vector<vector<vector<float>>> &x);
+
+    void lin_solve(int b, vector<vector<vector<float>>> &x, vector<vector<vector<float>>> &x0, float a, float c);
+
+    void diffuse(int b, vector<vector<vector<float>>> &x, vector<vector<vector<float>>> &x0, float diff, float dt);
+
+    void
+    advect(int b, vector<vector<vector<float>>> &d, vector<vector<vector<float>>> &d0, vector<vector<vector<float>>> &u,
+           vector<vector<vector<float>>> &v, vector<vector<vector<float>>> &w, float dt);
+
+    void project(vector<vector<vector<float>>> &u, vector<vector<vector<float>>> &v, vector<vector<vector<float>>> &w,
+                 vector<vector<vector<float>>> &p, vector<vector<vector<float>>> &div);
+
+    void
+    dens_step(vector<vector<vector<float>>> &x, vector<vector<vector<float>>> &x0, vector<vector<vector<float>>> &u,
+              vector<vector<vector<float>>> &v, vector<vector<vector<float>>> &w, float dt, float diff);
+
+    void vel_step(vector<vector<vector<float>>> &u, vector<vector<vector<float>>> &v, vector<vector<vector<float>>> &w,
+                  vector<vector<vector<float>>> &v0, vector<vector<vector<float>>> &u0,
+                  vector<vector<vector<float>>> &w0,
+                  float visc, float dt);
+
+    void update();
 
 };
 
