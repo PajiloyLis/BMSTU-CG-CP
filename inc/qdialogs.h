@@ -21,17 +21,21 @@ public:
     WindDialog(QWidget *parent = nullptr) : QDialog(parent) {
         setWindowTitle("Установить параметры ветра");
 
-        QLabel *label = new QLabel("E");
-        QSlider *slider = new QSlider(Qt::Horizontal);
-        slider->setRange(0, 35);
-        slider->setValue(5); // Начальное значение
-        QLineEdit *inputField = new QLineEdit(this);
-        QPushButton *okButton = new QPushButton("OK", this);
-        QPushButton *cancelButton = new QPushButton("Cancel", this);
+        QLabel *speed_label = new QLabel("Установите скорость ветра (м/с):");
+        QSlider *speed_slider = new QSlider(Qt::Horizontal);
+        speed_slider->setRange(0, 35);
+        speed_slider->setValue(5); // Начальное значение
+
+        QLabel *angle_label = new QLabel("Установите направление ветра (в градусах по часовой стрелке от севера):");
+        QSlider *angle_slider = new QSlider(Qt::Horizontal);
+        speed_slider->setRange(0, 360);
+        speed_slider->setValue(90); // Начальное значение
 
         QVBoxLayout *mainLayout = new QVBoxLayout(this);
-        mainLayout->addWidget(label);
-        mainLayout->addWidget(inputField);
+        mainLayout->addWidget(speed_label);
+        mainLayout->addWidget(speed_slider);
+        mainLayout->addWidget(angle_label);
+        mainLayout->addWidget(angle_slider);
 
         QHBoxLayout *buttonLayout = new QHBoxLayout();
         buttonLayout->addWidget(okButton);
