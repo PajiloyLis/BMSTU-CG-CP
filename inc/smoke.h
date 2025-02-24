@@ -16,10 +16,12 @@ using namespace std;
 
 #define EPS 1e-5
 
+#define VOX_SIZE 5
+
 class smoke {
 public:
 
-//    smoke(const int &grid_width, const int &grid_height);
+    smoke()
 
 };
 
