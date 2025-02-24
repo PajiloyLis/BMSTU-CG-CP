@@ -268,7 +268,7 @@ void QSFMLCanvas::timerEvent(QTimerEvent *event) {
 //    } else
     if (event->timerId() == timers[SMOKE]) {
 //        cout << "WORK BITCH\n";
-        emit SmokeTimerElapsed();
+        emit Redraw();
     }
 }
 

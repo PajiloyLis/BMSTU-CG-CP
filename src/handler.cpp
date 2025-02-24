@@ -124,7 +124,7 @@ void TaskHandler::ScaleCamera(float &k) {
 //    scene.StartSimulation();
 //}
 
-//void TaskHandler::SmokeTimerElapsed() {
-//    scene.SmokeTimerElapsed();
+//void TaskHandler::Redraw() {
+//    scene.Redraw();
 //}
 

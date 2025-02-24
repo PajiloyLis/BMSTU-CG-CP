@@ -50,7 +50,7 @@ QT_MOC_LITERAL(191, 17), // "WheelScrolledDown"
 QT_MOC_LITERAL(209, 9), // "MouseMove"
 QT_MOC_LITERAL(219, 2), // "dx"
 QT_MOC_LITERAL(222, 2), // "dy"
-QT_MOC_LITERAL(225, 17) // "SmokeTimerElapsed"
+QT_MOC_LITERAL(225, 17) // "Redraw"
 
     },
     "QSFMLCanvas\0LeftMouseButton\0\0x\0y\0"
@@ -124,7 +124,8 @@ void QSFMLCanvas::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id,
         case 8: _t->WheelScrolledUp((*reinterpret_cast< std::add_pointer_t<float>>(_a[1]))); break;
         case 9: _t->WheelScrolledDown((*reinterpret_cast< std::add_pointer_t<float>>(_a[1]))); break;
         case 10: _t->MouseMove((*reinterpret_cast< std::add_pointer_t<float>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<float>>(_a[2]))); break;
-        case 11: _t->SmokeTimerElapsed(); break;
+        case 11:
+            _t->Redraw(); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
@@ -208,7 +209,7 @@ void QSFMLCanvas::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id,
         }
         {
             using _t = void (QSFMLCanvas::*)();
-            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&QSFMLCanvas::SmokeTimerElapsed)) {
+            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&QSFMLCanvas::Redraw)) {
                 *result = 11;
                 return;
             }
@@ -341,7 +342,7 @@ void QSFMLCanvas::MouseMove(float _t1, float _t2)
 }
 
 // SIGNAL 11
-void QSFMLCanvas::SmokeTimerElapsed()
+void QSFMLCanvas::Redraw()
 {
     QMetaObject::activate(this, &staticMetaObject, 11, nullptr);
 }

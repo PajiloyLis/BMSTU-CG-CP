@@ -148,7 +148,7 @@ signals:
 
 signals:
 
-    void SmokeTimerElapsed();
+    void Redraw();
 };
 
 #endif

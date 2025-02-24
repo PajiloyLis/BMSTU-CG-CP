@@ -74,7 +74,7 @@ void Scene::MoveCamera(const Camera_Movement &move, float &delta_time) {
 //    scene->StartSmokeTimer();
 //}
 //
-//void Scene::SmokeTimerElapsed() {
+//void Scene::Redraw() {
 //    p_systems[0].update_coords(10000);
 //    ClearScene();
 //    DrawFigures();

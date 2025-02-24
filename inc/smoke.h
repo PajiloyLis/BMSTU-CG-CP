@@ -84,7 +84,7 @@ public:
 
     void update();
 
-    sf::Uint8 convert_color(const float &val) {
+    static sf::Uint8 convert_color(const float &val) {
         if (val > 1)
             return MIN_GREY;
         if (val < EPS)
