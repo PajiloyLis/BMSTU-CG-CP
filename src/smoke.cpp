@@ -168,21 +168,22 @@ void smoke::update() {
         for (int j = 0; j < N + 2; ++j) {
             for (int k = 0; k < N + 2; ++k) {
                 u_prev[i][j][k] = v_prev[i][j][k] = 0;
-                z_prev[i][j][k] = -0.001;
+                w_prev[i][j][k] = -0.001;
                 dens_prev[i][j][k] = 0;
             }
         }
     }
-    if (frames_count < 1000) {
-        for (int i = center; i < center + 1; ++i) {
+    if (frames_counter < 1000) {
+        for (int i = ; i < center + 1; ++i) {
             for (int j = center; j < center + 1; ++j) {
                 for (int k = center; k < center + 1; ++k) {
                     dens_prev[i][j][k] = MAX_DENS;
-                    z_prev[i][j][k] = MAX_VEL;
+                    w_prev[i][j][k] = MAX_VEL;
                 }
             }
         }
     }
+    frames_counter++
 }
 
 
