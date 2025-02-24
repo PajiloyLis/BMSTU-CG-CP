@@ -9,7 +9,7 @@ void TaskHandler::SetScene(const Scene &scene_to_set) {
 void TaskHandler::DrawScene() {
     scene.ClearScene();
     scene.DrawFigures();
-//    scene.DrawParticlesSystems();
+//    scene.DrawSmoke();
     scene.Show();
 }
 
@@ -21,7 +21,7 @@ void TaskHandler::LoadModel(const string &filepath) {
     // Add mount
     scene.AddFigure(figure(read_stl(filepath)));
     // Add smoke
-//    scene.AddParticlesSystem(smoke(10000, {50, 43, 40}, <#initializer#>));
+//    scene.AddSmoke(smoke(10000, {50, 43, 40}, <#initializer#>));
 }
 
 vector<triangle> TaskHandler::read_stl(const string &filename) {

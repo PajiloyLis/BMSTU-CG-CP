@@ -17,9 +17,9 @@ public:
 
     void DrawFigures() const;
 
-    void DrawParticlesSystems() const;
+    void DrawSmoke() const;
 
-    void AddParticlesSystem(const smoke &system);
+    void AddSmoke(const smoke &smoke);
 
     void ClearScene() const;
 
@@ -41,7 +41,7 @@ public:
 
     void Show();
 
-    glm::vec3 wind;
+    glm::vec2 wind;
 private:
     QSFMLCanvas *scene;
     double width, height;

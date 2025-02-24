@@ -41,6 +41,7 @@ public:
     int total_frames, frames_counter;
     float intensity, v_initial;
 
+    smoke()=default;
 
     smoke(int grid_width, int grid_height, const glm::vec3 &crater, const glm::vec2 &wind_, float dt_, int frames_count,
           float intensity_, float vertical_speed) :

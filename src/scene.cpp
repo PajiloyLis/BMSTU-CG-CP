@@ -5,13 +5,11 @@ Scene::Scene() : figures() {
     width = height = 0;
 }
 
-Scene::Scene(QSFMLCanvas *&scene, const double &width, const double &height) {
+Scene::Scene(QSFMLCanvas *&scene, const double &width, const double &height)
+        : figures(), cameras(), cur_camera(0) {
     this->scene = scene;
     this->width = width;
     this->height = height;
-    figures = {};
-    cameras = {};
-
     last_frame_time = cur_frame_time = 0;
     wind = {1, 5, 2};
 }
@@ -61,28 +59,26 @@ void Scene::MoveCamera(const Camera_Movement &move, float &delta_time) {
 }
 
 
-//void Scene::DrawParticlesSystems() const {
-//    for (auto &system: p_systems)
-//        scene->DrawParticles(const_cast<smoke &>(system), cameras[cur_camera]);
-//
-//}
+void Scene::DrawSmoke() const {
+    scene->DrawParticles(const_cast<smoke &>(system), cameras[cur_camera]);
+}
 
-//void
-//Scene::AddParticlesSystem(const smoke &system) {
-//    p_systems.push_back(system);
-//}
-//
+void
+Scene::AddSmoke(const smoke &smoke) {
+    ash=smoke;
+}
+
 void Scene::StartSimulation() {
     scene->StartSmokeTimer();
 }
 
-//
-void Scene::Redraw() {
-    p_systems[0].update_coords(10000);
+void Scene::SmokeTimerElapsed() {
+    ash.update();
     ClearScene();
     DrawFigures();
-    DrawParticlesSystems();
+    DrawSmoke();
     Show();
+    scene->Redraw();
 }
 
 void Scene::Show() {
