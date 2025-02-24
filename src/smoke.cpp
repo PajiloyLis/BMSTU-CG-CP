@@ -164,26 +164,26 @@ smoke::vel_step(vector<vector<vector<float>>> &u_, vector<vector<vector<float>>>
 }
 
 void smoke::update() {
-    for (int i = 0; i < N + 2; ++i) {
-        for (int j = 0; j < N + 2; ++j) {
-            for (int k = 0; k < N + 2; ++k) {
+    for (int i = 0; i < height + 2; ++i) {
+        for (int j = 0; j < height + 2; ++j) {
+            for (int k = 0; k < width + 2; ++k) {
                 u_prev[i][j][k] = v_prev[i][j][k] = 0;
                 w_prev[i][j][k] = -0.001;
                 dens_prev[i][j][k] = 0;
             }
         }
     }
-    if (frames_counter < 1000) {
-        for (int i = ; i < center + 1; ++i) {
-            for (int j = center; j < center + 1; ++j) {
-                for (int k = center; k < center + 1; ++k) {
-                    dens_prev[i][j][k] = MAX_DENS;
-                    w_prev[i][j][k] = MAX_VEL;
+    if (frames_counter < total_frames) {
+        for (int i = static_cast<int>(source.x); i < static_cast<int>(source.x) + 1; ++i) {
+            for (int j = static_cast<int>(source.x); j < static_cast<int>(source.x) + 1; ++j) {
+                for (int k = static_cast<int>(source.x); k < static_cast<int>(source.x) + 1; ++k) {
+                    dens_prev[i][j][k] = intensity;
+                    w_prev[i][j][k] = v_initial;
                 }
             }
         }
     }
-    frames_counter++
+    ++frames_counter;
 }
 
 
