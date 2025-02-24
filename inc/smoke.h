@@ -51,10 +51,10 @@ public:
     void diffuse(int b, vector<vector<vector<float>>> &x, vector<vector<vector<float>>> &x0, float diff, float d);
 
     void
-    advect(int b, vector<vector<vector<float>>> &d, vector<vector<vector<float>>> &d0, vector<vector<vector<float>>> &u,
-           vector<vector<vector<float>>> &v, vector<vector<vector<float>>> &w, float dt);
+    advect(int b, vector<vector<vector<float>>> &d, vector<vector<vector<float>>> &d0, vector<vector<vector<float>>> &u_,
+           vector<vector<vector<float>>> &v_, vector<vector<vector<float>>> &w_, float dt_);
 
-    void project(vector<vector<vector<float>>> &u, vector<vector<vector<float>>> &v, vector<vector<vector<float>>> &w,
+    void project(vector<vector<vector<float>>> &u_, vector<vector<vector<float>>> &v_, vector<vector<vector<float>>> &w_,
                  vector<vector<vector<float>>> &p, vector<vector<vector<float>>> &div);
 
     void

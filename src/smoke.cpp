@@ -50,30 +50,30 @@ void smoke::diffuse(int b, vector<vector<vector<float>>> &x, vector<vector<vecto
 }
 
 void smoke::advect(int b, vector<vector<vector<float>>> &d, vector<vector<vector<float>>> &d0,
-                   vector<vector<vector<float>>> &u, vector<vector<vector<float>>> &v, vector<vector<vector<float>>> &w,
-                   float dt) {
+                   vector<vector<vector<float>>> &u_, vector<vector<vector<float>>> &v_, vector<vector<vector<float>>> &w_,
+                   float dt_) {
     int i, j, i0, j0, k0, i1, j1, k1;
     float x, y, z, s0, t0, s1, t1, dt0, u1, u0;
 
-    dt0 = dt * max(height, width);
-    for (i = 1; i <= N; i++) {
-        for (j = 1; j <= N; j++) {
-            for (int k = 1; k <= N; ++k) {
-                x = i - dt0 * u[i][j][k];
-                y = j - dt0 * v[i][j][k];
-                z = k - dt0 * w[i][j][k];
+    dt0 = dt_ * max(height, width);
+    for (i = 1; i <= height; i++) {
+        for (j = 1; j <= height; j++) {
+            for (int k = 1; k <= width; ++k) {
+                x = i - dt0 * u_[i][j][k];
+                y = j - dt0 * v_[i][j][k];
+                z = k - dt0 * w_[i][j][k];
                 if (x < 1.5f) x = 1.5f;
-                if (x > N - 0.5f) x = N - 0.5f;
+                if (x > height - 0.5f) x = height - 0.5f;
                 i0 = (int) x;
                 i1 = i0 + 1;
 
                 if (y < 1.5f) y = 1.5f;
-                if (y > N - 0.5f) y = N - 0.5f;
+                if (y > height - 0.5f) y = height - 0.5f;
                 j0 = (int) y;
                 j1 = j0 + 1;
 
                 if (z < 1.5f) z = 1.5f;
-                if (z > N - 0.5f) z = N - 0.5f;
+                if (z > width - 0.5f) z = width - 0.5f;
                 k0 = (int) z;
                 k1 = k0 + 1;
 
@@ -96,10 +96,42 @@ void smoke::advect(int b, vector<vector<vector<float>>> &d, vector<vector<vector
     set_bnd(b, d);
 }
 
+void
+smoke::project(vector<vector<vector<float>>> &u_, vector<vector<vector<float>>> &v_, vector<vector<vector<float>>> &w_,
+               vector<vector<vector<float>>> &p, vector<vector<vector<float>>> &div) {
+    int i, j;
 
+    for (i = 1; i <= height; i++) {
+        for (j = 1; j <= height; j++) {
+            for (int k = 1; k <= width; ++k) {
+                div[i][j][k] = -1.0 / 3.0 *
+                               ((u_[i + 1][j][k] - u_[i - 1][j][k]) / height + (v_[i][j + 1][k] - v_[i][j - 1][k]) / height +
+                                (w_[i][j][k + 1] - w_[i][j][k - 1]) / width);
+                p[i][j][k] = 0;
+            }
+        }
+    }
+    set_bnd(0, div);
+    set_bnd(0, p);
 
+    lin_solve(0, p, div, 1, 6);
 
+    for (i = 1; i <= height; i++) {
+        for (j = 1; j <= height; j++) {
+            for (int k = 1; k <= width; ++k) {
+                u_[i][j][k] -= 1.f / 3.f * height * (p[i + 1][j][k] - p[i - 1][j][k]);
+                v_[i][j][k] -= 1.f / 3.f * height * (p[i][j + 1][k] - p[i][j - 1][k]);
+                w_[i][j][k] -= 1.f / 3.f * width * (w_[i][j][k + 1] - w_[i][j][k - 1]);
+            }
+        }
+    }
+    set_bnd(1, u_);
+    set_bnd(2, v_);
+    set_bnd(3, w_);
+}
 
+void
+smoke::dens_step(vector<vector<vector<float>>> &x, vector<vector<vector<float>>> &x0, vector<vector<vector<float>>> &u,
+                 vector<vector<vector<float>>> &v, vector<vector<vector<float>>> &w, float dt, float diff) {
 
-
-
+}
