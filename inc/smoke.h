@@ -28,12 +28,19 @@ public:
 
     float dt;
 
-    vector<vector<vector<float>>> u, v, u_prev, v_prev, z, z_prev, dens, dens_prev;
+    vector<vector<vector<float>>> u, v, u_prev, v_prev, w, w_prev, dens, dens_prev;
 
 
     smoke(int grid_width, int grid_height, const glm::vec3 &crater, const glm::vec3 &wind_, float dt_) :
             width(grid_width / VOX_SIZE), height(grid_height / VOX_SIZE), source(crater), wind(wind_), dt(dt_),
-            u(height + 2, vector<vector<float>>(height, vector<float>(width, 0.f))) {}
+            u(height + 2, vector<vector<float>>(height, vector<float>(width, 0.f))),
+            v(height + 2, vector<vector<float>>(height, vector<float>(width, 0.f))),
+            w(height + 2, vector<vector<float>>(height, vector<float>(width, 0.f))),
+            u_prev(height + 2, vector<vector<float>>(height, vector<float>(width, 0.f))),
+            v_prev(height + 2, vector<vector<float>>(height, vector<float>(width, 0.f))),
+            w_prev(height + 2, vector<vector<float>>(height, vector<float>(width, 0.f))),
+            dens(height + 2, vector<vector<float>>(height, vector<float>(width, 0.f))),
+            dens_prev(height + 2, vector<vector<float>>(height, vector<float>(width, 0.f))) {}
 
     void add_source(vector<vector<vector<float>>> &x, vector<vector<vector<float>>> &s, float dt);
 
