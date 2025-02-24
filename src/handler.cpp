@@ -120,9 +120,9 @@ void TaskHandler::ScaleCamera(float &k) {
     scene.ScaleCamera(k);
 }
 
-//void TaskHandler::StartSimulation() {
-//    scene.StartSimulation();
-//}
+void TaskHandler::StartSimulation() {
+    scene.StartSimulation();
+}
 
 //void TaskHandler::Redraw() {
 //    scene.Redraw();

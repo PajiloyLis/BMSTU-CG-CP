@@ -5,11 +5,13 @@ Scene::Scene() : figures() {
     width = height = 0;
 }
 
-Scene::Scene(QSFMLCanvas *&scene, const double &width, const double &height)
-        : figures(), p_systems(), cameras(), cur_camera(0) {
+Scene::Scene(QSFMLCanvas *&scene, const double &width, const double &height) {
     this->scene = scene;
     this->width = width;
     this->height = height;
+    figures = {};
+    cameras = {};
+
     last_frame_time = cur_frame_time = 0;
     wind = {1, 5, 2};
 }
@@ -70,18 +72,19 @@ void Scene::MoveCamera(const Camera_Movement &move, float &delta_time) {
 //    p_systems.push_back(system);
 //}
 //
-//void Scene::StartSimulation() {
-//    scene->StartSmokeTimer();
-//}
+void Scene::StartSimulation() {
+    scene->StartSmokeTimer();
+}
+
 //
-//void Scene::Redraw() {
-//    p_systems[0].update_coords(10000);
-//    ClearScene();
-//    DrawFigures();
-//    DrawParticlesSystems();
-//    Show();
-//}
-//
+void Scene::Redraw() {
+    p_systems[0].update_coords(10000);
+    ClearScene();
+    DrawFigures();
+    DrawParticlesSystems();
+    Show();
+}
+
 void Scene::Show() {
     scene->repaint();
 }

@@ -275,9 +275,7 @@ void QSFMLCanvas::timerEvent(QTimerEvent *event) {
 
 
 void QSFMLCanvas::StartSmokeTimer() {
-    timers[SMOKE] = startTimer(10);
-    if (timers[SMOKE] != 0)
-        cout << "SMOKE TIMER STARTED\n";
+    emit Redraw();
 }
 
 

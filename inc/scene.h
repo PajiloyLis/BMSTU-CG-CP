@@ -46,7 +46,7 @@ private:
     QSFMLCanvas *scene;
     double width, height;
     vector<figure> figures;
-    vector<smoke> p_systems;
+    smoke ash;
     vector<camera> cameras;
     int cur_camera;
     float cur_frame_time, last_frame_time;
