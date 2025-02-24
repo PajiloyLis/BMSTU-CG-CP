@@ -45,6 +45,8 @@
     <property name="title">
      <string>Параметры</string>
     </property>
+    <addaction name="set_wind_action"/>
+    <addaction name="set_speed_action"/>
    </widget>
    <widget class="QMenu" name="sim_menu">
     <property name="title">
@@ -65,6 +67,16 @@
   <action name="sim_start">
    <property name="text">
     <string>Начать</string>
+   </property>
+  </action>
+  <action name="set_wind_action">
+   <property name="text">
+    <string>Задать ветер</string>
+   </property>
+  </action>
+  <action name="set_speed_action">
+   <property name="text">
+    <string>Задать скорость симуляции</string>
    </property>
   </action>
  </widget>

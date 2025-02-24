@@ -29,7 +29,7 @@ SOURCES += \
     ./src/scene.cpp \
     ./src/triangle.cpp \
     ./src/camera.cpp \
-    ./src/particles_system.cpp
+    ./src/smoke.cpp
 
 HEADERS += \
     ./inc/conversions.h \
@@ -42,7 +42,7 @@ HEADERS += \
     ./inc/scene.h \
     ./inc/triangle.h \
     ./inc/camera.h \
-    ./inc/particles_system.h
+    ./inc/smoke.h
 FORMS += \
     ./inc/main_window.ui
 

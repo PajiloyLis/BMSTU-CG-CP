@@ -39,7 +39,8 @@ add_executable(cp_cg
         src/smoke.cpp
         inc/smoke.h
         moc_QSFML.cpp
-        moc_predefs.h)
+        moc_predefs.h
+        inc/qdialogs.h)
 
 target_link_libraries(cp_cg PUBLIC
         Qt::Core
