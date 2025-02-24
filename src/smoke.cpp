@@ -131,7 +131,58 @@ smoke::project(vector<vector<vector<float>>> &u_, vector<vector<vector<float>>> 
 }
 
 void
-smoke::dens_step(vector<vector<vector<float>>> &x, vector<vector<vector<float>>> &x0, vector<vector<vector<float>>> &u,
-                 vector<vector<vector<float>>> &v, vector<vector<vector<float>>> &w, float dt, float diff) {
-
+smoke::dens_step(vector<vector<vector<float>>> &x, vector<vector<vector<float>>> &x0, vector<vector<vector<float>>> &u_,
+                 vector<vector<vector<float>>> &v_, vector<vector<vector<float>>> &w_, float d, float diff) {
+    add_source(x, x0, d);
+    x0.swap(x);
+    diffuse(0, x, x0, diff, d);
+    x0.swap(x);
+    advect(0, x, x0, u_, v_, w_, d);
 }
+
+void
+smoke::vel_step(vector<vector<vector<float>>> &u_, vector<vector<vector<float>>> &v_, vector<vector<vector<float>>> &w_,
+                vector<vector<vector<float>>> &v0, vector<vector<vector<float>>> &u0, vector<vector<vector<float>>> &w0,
+                float visc, float d) {
+    add_source(u_, u0, d);
+    add_source(v_, v0, d);
+    add_source(w_, w0, d);
+    u0.swap(u_);
+    diffuse(1, u_, u0, visc, d);
+    v0.swap(v_);
+    diffuse(2, v_, v0, visc, d);
+    w0.swap(w_);
+    diffuse(3, w_, w0, visc, d);
+    project(u_, v_, w_, u0, v0);
+    u0.swap(u_);
+    v0.swap(v_);
+    w0.swap(w_);
+    advect(1, u_, u0, u0, v0, w0, d);
+    advect(2, v_, v0, u0, v0, w0, d);
+    advect(3, w_, w0, u0, v0, w0, d);
+    project(u_, v_, w_, u0, v0);
+}
+
+void smoke::update() {
+    for (int i = 0; i < N + 2; ++i) {
+        for (int j = 0; j < N + 2; ++j) {
+            for (int k = 0; k < N + 2; ++k) {
+                u_prev[i][j][k] = v_prev[i][j][k] = 0;
+                z_prev[i][j][k] = -0.001;
+                dens_prev[i][j][k] = 0;
+            }
+        }
+    }
+    if (frames_count < 1000) {
+        for (int i = center; i < center + 1; ++i) {
+            for (int j = center; j < center + 1; ++j) {
+                for (int k = center; k < center + 1; ++k) {
+                    dens_prev[i][j][k] = MAX_DENS;
+                    z_prev[i][j][k] = MAX_VEL;
+                }
+            }
+        }
+    }
+}
+
+

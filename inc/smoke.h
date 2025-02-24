@@ -58,13 +58,13 @@ public:
                  vector<vector<vector<float>>> &p, vector<vector<vector<float>>> &div);
 
     void
-    dens_step(vector<vector<vector<float>>> &x, vector<vector<vector<float>>> &x0, vector<vector<vector<float>>> &u,
-              vector<vector<vector<float>>> &v, vector<vector<vector<float>>> &w, float dt, float diff);
+    dens_step(vector<vector<vector<float>>> &x, vector<vector<vector<float>>> &x0, vector<vector<vector<float>>> &u_,
+              vector<vector<vector<float>>> &v_, vector<vector<vector<float>>> &w_, float d, float diff);
 
-    void vel_step(vector<vector<vector<float>>> &u, vector<vector<vector<float>>> &v, vector<vector<vector<float>>> &w,
+    void vel_step(vector<vector<vector<float>>> &u_, vector<vector<vector<float>>> &v_, vector<vector<vector<float>>> &w_,
                   vector<vector<vector<float>>> &v0, vector<vector<vector<float>>> &u0,
                   vector<vector<vector<float>>> &w0,
-                  float visc, float dt);
+                  float visc, float d);
 
     void update();
 
