@@ -31,9 +31,9 @@ public:
     vector<vector<vector<float>>> u, v, u_prev, v_prev, z, z_prev, dens, dens_prev;
 
 
-    smoke(int grid_width, int grid_height, const glm::vec3 &crater, const glm::vec3 &wind, float dt) : width(
-            grid_width),
-                                                                                                       height(grid_height) {}
+    smoke(int grid_width, int grid_height, const glm::vec3 &crater, const glm::vec3 &wind_, float dt_) :
+            width(grid_width / VOX_SIZE), height(grid_height / VOX_SIZE), source(crater), wind(wind_), dt(dt_),
+            u(height + 2, vector<vector<float>>(height, vector<float>(width, 0.f))) {}
 
     void add_source(vector<vector<vector<float>>> &x, vector<vector<vector<float>>> &s, float dt);
 
