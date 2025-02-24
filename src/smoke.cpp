@@ -7,6 +7,99 @@
 #define DEPTH 1000;
 
 
-void smoke::add_source(vector<vector<vector<float>>> &x, vector<vector<vector<float>>> &s, float dt) {
-
+void smoke::add_source(vector<vector<vector<float>>> &x, vector<vector<vector<float>>> &s, float d) {
+    for (int i = 0; i < x.size(); ++i) {
+        for (int j = 0; j < x[i].size(); ++j) {
+            for (int k = 0; k < x[i][j].size(); ++k) {
+                x[i][j][k] += d * s[i][j][k];
+            }
+        }
+    }
 }
+
+void smoke::set_bnd(int b, vector<vector<vector<float>>> &x) {
+    int i;
+
+    for (i = 1; i <= height; i++) {
+        for (int j = 0; j <= width; ++j) {
+            x[height + 1][i][j] = b == 3 ? -x[height][i][j] : x[height][i][j];
+        }
+    }
+}
+
+void smoke::lin_solve(int b, vector<vector<vector<float>>> &x, vector<vector<vector<float>>> &x0, float a, float c) {
+    int i, j, iter;
+
+    for (iter = 0; iter < 20; iter++) {
+        for (i = 1; i <= height; i++) {
+            for (j = 1; j <= height; j++) {
+                for (int k = 1; k <= width; ++k) {
+                    x[i][j][k] = (x0[i][j][k] + a * (x[i - 1][j][k] + x[i + 1][j][k] + x[i][j - 1][k] + x[i][j + 1][k] +
+                                                     x[i][j][k - 1] + x[i][j][k + 1])) / c;
+
+                }
+            }
+        }
+        set_bnd(b, x);
+    }
+}
+
+void smoke::diffuse(int b, vector<vector<vector<float>>> &x, vector<vector<vector<float>>> &x0, float diff, float d) {
+    float a = dt * diff * height * height * width;
+    lin_solve(b, x, x0, a, 1 + 6 * a);
+}
+
+void smoke::advect(int b, vector<vector<vector<float>>> &d, vector<vector<vector<float>>> &d0,
+                   vector<vector<vector<float>>> &u, vector<vector<vector<float>>> &v, vector<vector<vector<float>>> &w,
+                   float dt) {
+    int i, j, i0, j0, k0, i1, j1, k1;
+    float x, y, z, s0, t0, s1, t1, dt0, u1, u0;
+
+    dt0 = dt * max(height, width);
+    for (i = 1; i <= N; i++) {
+        for (j = 1; j <= N; j++) {
+            for (int k = 1; k <= N; ++k) {
+                x = i - dt0 * u[i][j][k];
+                y = j - dt0 * v[i][j][k];
+                z = k - dt0 * w[i][j][k];
+                if (x < 1.5f) x = 1.5f;
+                if (x > N - 0.5f) x = N - 0.5f;
+                i0 = (int) x;
+                i1 = i0 + 1;
+
+                if (y < 1.5f) y = 1.5f;
+                if (y > N - 0.5f) y = N - 0.5f;
+                j0 = (int) y;
+                j1 = j0 + 1;
+
+                if (z < 1.5f) z = 1.5f;
+                if (z > N - 0.5f) z = N - 0.5f;
+                k0 = (int) z;
+                k1 = k0 + 1;
+
+                s1 = x - i0;
+                s0 = 1 - s1;
+
+                t1 = y - j0;
+                t0 = 1 - t1;
+
+                u1 = z - k0;
+                u0 = 1 - u1;
+                d[i][j][k] = s0 * (t0 * u0 * d0[i0][j0][k0] + t1 * u0 * d0[i0][j1][k0] + t0 * u1 * d0[i0][j0][k1] +
+                                   t1 * u1 * d0[i0][j1][k1]) + s1 * (t0 * u0 * d0[i1][j0][k0] +
+                                                                     t1 * u0 * d0[i1][j1][k0] +
+                                                                     t0 * u1 * d0[i1][j0][k1] +
+                                                                     t1 * u1 * d0[i1][j1][k1]);
+            }
+        }
+    }
+    set_bnd(b, d);
+}
+
+
+
+
+
+
+
+

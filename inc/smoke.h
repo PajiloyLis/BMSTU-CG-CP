@@ -42,13 +42,13 @@ public:
             dens(height + 2, vector<vector<float>>(height, vector<float>(width, 0.f))),
             dens_prev(height + 2, vector<vector<float>>(height, vector<float>(width, 0.f))) {}
 
-    void add_source(vector<vector<vector<float>>> &x, vector<vector<vector<float>>> &s, float dt);
+    void add_source(vector<vector<vector<float>>> &x, vector<vector<vector<float>>> &s, float d);
 
     void set_bnd(int b, vector<vector<vector<float>>> &x);
 
     void lin_solve(int b, vector<vector<vector<float>>> &x, vector<vector<vector<float>>> &x0, float a, float c);
 
-    void diffuse(int b, vector<vector<vector<float>>> &x, vector<vector<vector<float>>> &x0, float diff, float dt);
+    void diffuse(int b, vector<vector<vector<float>>> &x, vector<vector<vector<float>>> &x0, float diff, float d);
 
     void
     advect(int b, vector<vector<vector<float>>> &d, vector<vector<vector<float>>> &d0, vector<vector<vector<float>>> &u,
