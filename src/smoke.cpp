@@ -167,6 +167,7 @@ void smoke::update() {
     for (int i = 0; i < height + 2; ++i) {
         for (int j = 0; j < height + 2; ++j) {
             for (int k = 0; k < width + 2; ++k) {
+                u_prev[i][j][k] = log(i-source.z)*wind;
                 u_prev[i][j][k] = v_prev[i][j][k] = 0;
                 w_prev[i][j][k] = -0.001;
                 dens_prev[i][j][k] = 0;

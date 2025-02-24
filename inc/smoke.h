@@ -12,12 +12,19 @@
 #include <random>
 #include <set>
 #include <deque>
+#include <cmath>
 
 using namespace std;
 
 #define EPS 1e-5
 
 #define VOX_SIZE 5
+
+#define MIN_GREY 60
+#define MAX_GREY 192
+
+#define DIFF_COEF 0
+#define VISC 0
 
 class smoke {
 public:
