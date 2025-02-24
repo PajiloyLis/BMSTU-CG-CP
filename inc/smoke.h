@@ -21,7 +21,14 @@ using namespace std;
 class smoke {
 public:
 
-    smoke()
+    int width, height;
+
+    glm::vec3 source;
+
+    vector<vector<vector<float>>> u, v, u_prev, v_prev, z, z_prev, dens, dens_prev;
+
+
+    smoke(int grid_width, int grid_height, const glm::vec3 &crater);
 
 };
 

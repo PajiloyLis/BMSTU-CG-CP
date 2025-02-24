@@ -6,3 +6,6 @@
 
 #define DEPTH 1000;
 
+smoke::smoke(int grid_width, int grid_height) {
+
+}
