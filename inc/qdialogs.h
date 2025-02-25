@@ -22,6 +22,7 @@ public:
         setWindowTitle("Установить параметры ветра");
 
         QLabel *speed_label = new QLabel("Установите скорость ветра (м/с):");
+        QLabel *left_speed_boud = new QLabel("0"), *right_speed_bound  = new QLabel("35");
         QSlider *speed_slider = new QSlider(Qt::Horizontal);
         speed_slider->setObjectName("speed_slider");
         speed_slider->setTickInterval(1);
@@ -31,6 +32,7 @@ public:
 
         QLabel *angle_label = new QLabel("Установите направление ветра (в градусах по часовой стрелке от севера):");
         QSlider *angle_slider = new QSlider(Qt::Horizontal);
+        QLabel *left_angle_boud = new QLabel("0"), *right_angle_bound  = new QLabel("360");
         angle_slider->setObjectName("angle_slider");
         angle_slider->setTickInterval(5);
         angle_slider->setRange(0, 360);
@@ -43,7 +45,7 @@ public:
 
 
         QGridLayout *mainLayout = new QGridLayout(this);
-        mainLayout->addWidget(speed_label);
+        mainLayout->addWidget(speed_label, 0, 0, 1, 3, Qt::AlignHCenter);
         mainLayout->addWidget(speed_slider);
         mainLayout->addWidget(angle_label);
         mainLayout->addWidget(angle_slider);
