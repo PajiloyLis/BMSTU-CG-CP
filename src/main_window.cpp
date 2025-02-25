@@ -88,5 +88,6 @@ void MainWindow::SmokeTimerElapsedHandler() {
 
 void MainWindow::WindSettingsHandler() {
     WindDialog dialog;
-    cout << "FUCK "<<dialog.getWindSpeed() << '\n';
+    if(dialog.exec()==QDialog::Accepted)
+        cout << "FUCK "<<dialog.getWindSpeed() << '\n';
 }

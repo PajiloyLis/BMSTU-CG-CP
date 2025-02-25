@@ -62,7 +62,8 @@ SOURCES       = src/conversions.cpp \
 		src/scene.cpp \
 		src/triangle.cpp \
 		src/camera.cpp \
-		src/smoke.cpp moc_QSFML.cpp
+		src/smoke.cpp moc_QSFML.cpp \
+		moc_qdialogs.cpp
 OBJECTS       = conversions.o \
 		figure.o \
 		handler.o \
@@ -74,7 +75,8 @@ OBJECTS       = conversions.o \
 		triangle.o \
 		camera.o \
 		smoke.o \
-		moc_QSFML.o
+		moc_QSFML.o \
+		moc_qdialogs.o
 DIST          = /usr/lib/x86_64-linux-gnu/qt6/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/common/unix.conf \
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/common/linux.conf \
@@ -150,7 +152,8 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt6/mkspecs/features/spec_pre.prf \
 		inc/scene.h \
 		inc/triangle.h \
 		inc/camera.h \
-		inc/smoke.h src/conversions.cpp \
+		inc/smoke.h \
+		inc/qdialogs.h src/conversions.cpp \
 		src/figure.cpp \
 		src/handler.cpp \
 		src/main.cpp \
@@ -326,7 +329,7 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents /usr/lib/x86_64-linux-gnu/qt6/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents inc/conversions.h inc/cp_cg_ui.h inc/figure.h inc/handler.h inc/main_window.h inc/operations.h inc/QSFML.h inc/scene.h inc/triangle.h inc/camera.h inc/smoke.h $(DISTDIR)/
+	$(COPY_FILE) --parents inc/conversions.h inc/cp_cg_ui.h inc/figure.h inc/handler.h inc/main_window.h inc/operations.h inc/QSFML.h inc/scene.h inc/triangle.h inc/camera.h inc/smoke.h inc/qdialogs.h $(DISTDIR)/
 	$(COPY_FILE) --parents src/conversions.cpp src/figure.cpp src/handler.cpp src/main.cpp src/main_window.cpp src/operations.cpp src/QSFML.cpp src/scene.cpp src/triangle.cpp src/camera.cpp src/smoke.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents inc/main_window.ui $(DISTDIR)/
 
@@ -360,9 +363,9 @@ compiler_moc_predefs_clean:
 moc_predefs.h: /usr/lib/x86_64-linux-gnu/qt6/mkspecs/features/data/dummy.cpp
 	g++ -pipe -O2 -std=gnu++2a -Wall -Wextra -dM -E -o moc_predefs.h /usr/lib/x86_64-linux-gnu/qt6/mkspecs/features/data/dummy.cpp
 
-compiler_moc_header_make_all: moc_QSFML.cpp
+compiler_moc_header_make_all: moc_QSFML.cpp moc_qdialogs.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) moc_QSFML.cpp
+	-$(DEL_FILE) moc_QSFML.cpp moc_qdialogs.cpp
 moc_QSFML.cpp: inc/QSFML.h \
 		inc/triangle.h \
 		inc/conversions.h \
@@ -371,6 +374,11 @@ moc_QSFML.cpp: inc/QSFML.h \
 		moc_predefs.h \
 		/usr/lib/qt6/libexec/moc
 	/usr/lib/qt6/libexec/moc $(DEFINES) --include /home/ivan/Study/CompG/cp_cg/moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt6/mkspecs/linux-g++ -I/home/ivan/Study/CompG/cp_cg -I/usr/include -I/home/ivan/Study/CompG/cp_cg/inc -I/usr/include/x86_64-linux-gnu/qt6 -I/usr/include/x86_64-linux-gnu/qt6/QtWidgets -I/usr/include/x86_64-linux-gnu/qt6/QtGui -I/usr/include/x86_64-linux-gnu/qt6/QtCore -I/usr/include/c++/11 -I/usr/include/x86_64-linux-gnu/c++/11 -I/usr/include/c++/11/backward -I/usr/lib/gcc/x86_64-linux-gnu/11/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include inc/QSFML.h -o moc_QSFML.cpp
+
+moc_qdialogs.cpp: inc/qdialogs.h \
+		moc_predefs.h \
+		/usr/lib/qt6/libexec/moc
+	/usr/lib/qt6/libexec/moc $(DEFINES) --include /home/ivan/Study/CompG/cp_cg/moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt6/mkspecs/linux-g++ -I/home/ivan/Study/CompG/cp_cg -I/usr/include -I/home/ivan/Study/CompG/cp_cg/inc -I/usr/include/x86_64-linux-gnu/qt6 -I/usr/include/x86_64-linux-gnu/qt6/QtWidgets -I/usr/include/x86_64-linux-gnu/qt6/QtGui -I/usr/include/x86_64-linux-gnu/qt6/QtCore -I/usr/include/c++/11 -I/usr/include/x86_64-linux-gnu/c++/11 -I/usr/include/c++/11/backward -I/usr/lib/gcc/x86_64-linux-gnu/11/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include inc/qdialogs.h -o moc_qdialogs.cpp
 
 compiler_moc_objc_header_make_all:
 compiler_moc_objc_header_clean:
@@ -414,6 +422,7 @@ handler.o: src/handler.cpp inc/handler.h \
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o handler.o src/handler.cpp
 
 main.o: src/main.cpp inc/main_window.h \
+		inc/qdialogs.h \
 		inc/QSFML.h \
 		inc/triangle.h \
 		inc/conversions.h \
@@ -428,6 +437,7 @@ main.o: src/main.cpp inc/main_window.h \
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o src/main.cpp
 
 main_window.o: src/main_window.cpp inc/main_window.h \
+		inc/qdialogs.h \
 		inc/QSFML.h \
 		inc/triangle.h \
 		inc/conversions.h \
@@ -475,6 +485,9 @@ smoke.o: src/smoke.cpp inc/smoke.h
 
 moc_QSFML.o: moc_QSFML.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_QSFML.o moc_QSFML.cpp
+
+moc_qdialogs.o: moc_qdialogs.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_qdialogs.o moc_qdialogs.cpp
 
 ####### Install
 

@@ -43,7 +43,7 @@ HEADERS += \
     ./inc/triangle.h \
     ./inc/camera.h \
     ./inc/smoke.h \
-    ./src/qdialogs.h
+    ./inc/qdialogs.h
 FORMS += \
     ./inc/main_window.ui
 
