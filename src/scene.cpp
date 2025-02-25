@@ -64,11 +64,13 @@ void Scene::DrawSmoke() const {
         for (int j = 1; j <= ash.height; ++j) {
             for (int k = 1; k <= ash.width; ++k) {
                 sf::Uint8 color000 = smoke::convert_color(ash.dens[i][j][k]),
-                        color001 = smoke::convert_color(ash.dens[i][j][k+1]),
-                        color010 = smoke::convert_color(ash.dens[i][j+1][k]),
-                        color011 = smoke::convert_color(ash.dens[i][j+1][k+1]),
-                        color100 = smoke::convert_color(ash.dens[i+1][j][k]),
-                        color101 = smoke::convert_color(ash.dens[i+1][j][k+1])
+                        color001 = smoke::convert_color(ash.dens[i][j][k + 1]),
+                        color010 = smoke::convert_color(ash.dens[i][j + 1][k]),
+                        color011 = smoke::convert_color(ash.dens[i][j + 1][k + 1]),
+                        color100 = smoke::convert_color(ash.dens[i + 1][j][k]),
+                        color101 = smoke::convert_color(ash.dens[i + 1][j][k + 1]),
+                        color110 = smoke::convert_color(ash.dens[i + 1][j + 1][k]),
+                        color111 = smoke::convert_color(ash.dens[i + 1][j + 1][k + 1]);
                 scene->DrawSmoke({(j - 1) * VOX_SIZE, (k - 1) * VOX_SIZE, i * VOX_SIZE},
                                  {(j) * VOX_SIZE, (k) * VOX_SIZE, (i) * VOX_SIZE}, {})
             }
