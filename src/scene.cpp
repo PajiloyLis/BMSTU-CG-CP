@@ -81,7 +81,8 @@ void Scene::DrawSmoke() const {
                 colors.push_back({color110, color110, color110});
                 colors.push_back({color111, color111, color111});
                 scene->DrawSmoke({(j - 1) * VOX_SIZE, (k - 1) * VOX_SIZE, i * VOX_SIZE},
-                                 {(j) * VOX_SIZE - 1, (k) * VOX_SIZE - 1, (i) * VOX_SIZE - 1}, colors, VOX_SIZE);
+                                 {(j) * VOX_SIZE - 1, (k) * VOX_SIZE - 1, (i) * VOX_SIZE - 1}, colors, VOX_SIZE,
+                                 <#initializer#>, 0);
             }
         }
     }
