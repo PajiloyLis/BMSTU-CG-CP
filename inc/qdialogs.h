@@ -47,25 +47,30 @@ public:
 
 
         QGridLayout *mainLayout = new QGridLayout(this);
-        mainLayout->addWidget(speed_label, 0, 0, 1, 3, Qt::AlignHCenter);
-        mainLayout->addWidget(left_speed_boud, 1, 0, 1, 1, Qt::AlignCenter);
-        mainLayout->addWidget(speed_slider, 1, 1, 1, 1, Qt::AlignHCenter);
-        mainLayout->addWidget(right_speed_bound, 1, 2, 1, 1, Qt::AlignCenter);
-        mainLayout->addWidget(angle_label, 2, 0, 1, 3, Qt::AlignHCenter);
-        mainLayout->addWidget(left_angle_boud, 3, 0, 1, 1, Qt::AlignCenter);
-        mainLayout->addWidget(angle_slider, 3, 1, 1, 1, Qt::AlignHCenter);
-        mainLayout->addWidget(right_angle_bound, 3, 2, 1, 1, Qt::AlignCenter);
+        mainLayout->addWidget(speed_label, 0, 0, 1, 3, Qt::AlignJustify);
+        mainLayout->addWidget(left_speed_boud, 1, 0, 1, 1, Qt::AlignLeft);
+        mainLayout->addWidget(speed_slider, 1, 1, 1, 1, Qt::AlignJustify);
+        mainLayout->addWidget(right_speed_bound, 1, 2, 1, 1, Qt::AlignRight);
+        mainLayout->addWidget(cur_speed_value, 2, 0, 1, 3, Qt::AlignJustify);
+        mainLayout->addWidget(angle_label, 3, 0, 1, 3, Qt::AlignJustify);
+        mainLayout->addWidget(left_angle_boud, 4, 0, 1, 1, Qt::AlignLeft);
+        mainLayout->addWidget(angle_slider, 4, 1, 1, 1, Qt::AlignJustify);
+        mainLayout->addWidget(right_angle_bound, 4, 2, 1, 1, Qt::AlignRight);
+        mainLayout->addWidget(cur_angle_value, 5, 0, 1, 3, Qt::AlignJustify);
 
         QHBoxLayout *buttonLayout = new QHBoxLayout();
         buttonLayout->addWidget(okButton);
         buttonLayout->addWidget(cancelButton);
 
-        mainLayout->addLayout(buttonLayout, 4, 0, 1, 3, Qt::AlignCenter);
+        mainLayout->addLayout(buttonLayout, 6, 0, 1, 3, Qt::AlignJustify);
 
         connect(okButton, &QPushButton::clicked, this, &WindDialog::accept);
         connect(cancelButton, &QPushButton::clicked, this, &WindDialog::reject);
         connect(speed_slider, &QSlider::valueChanged, [cur_speed_value](int value) {
             cur_speed_value->setText(QString("%1").arg(value));
+        });
+        connect(angle_slider, &QSlider::valueChanged, [cur_angle_value](int value) {
+            cur_angle_value->setText(QString("%1").arg(value));
         });
     }
 
