@@ -273,7 +273,7 @@ void QSFMLCanvas::StartSmokeTimer() {
 }
 
 void QSFMLCanvas::DrawSmoke(const smoke &smoke) {
-    //TODO Ох бля
+    
 }
 
 
