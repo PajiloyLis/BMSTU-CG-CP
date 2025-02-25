@@ -5,7 +5,6 @@
 #include "smoke.h"
 
 
-
 void smoke::add_source(vector<vector<vector<float>>> &x, vector<vector<vector<float>>> &s, float d) {
     for (int i = 0; i < x.size(); ++i) {
         for (int j = 0; j < x[i].size(); ++j) {
@@ -168,17 +167,18 @@ void smoke::update() {
     for (int i = 0; i < height + 2; ++i) {
         for (int j = 0; j < height + 2; ++j) {
             for (int k = 0; k < width + 2; ++k) {
-                u_prev[i][j][k] = (i> 0 ? log(i) * wind.y:0);
-                v_prev[i][j][k] = (i>0 ? log(i) * wind.x : 0);
+                u_prev[i][j][k] = (i > 0 ? log(static_cast<float>(i)) * wind.y : 0.f);
+                v_prev[i][j][k] = (i > 0 ? log(static_cast<float>(i)) * wind.x : 0.f);
                 w_prev[i][j][k] = 0.001;
                 dens_prev[i][j][k] = 0;
             }
         }
     }
     if (frames_counter < total_frames) {
-        for (int i = static_cast<int>(source.z); i < static_cast<int>(source.z) + 1; ++i) {
-            for (int j = static_cast<int>(source.x); j < static_cast<int>(source.x) + 1; ++j) {
-                for (int k = static_cast<int>(source.y); k < static_cast<int>(source.y) + 1; ++k) {
+        for (int i = static_cast<int>(source.z / VOX_SIZE); i < static_cast<int>(source.z / VOX_SIZE) + 1; ++i) {
+            for (int j = static_cast<int>(source.x / VOX_SIZE); j < static_cast<int>(source.x / VOX_SIZE) + 1; ++j) {
+                for (int k = static_cast<int>(source.y / VOX_SIZE);
+                     k < static_cast<int>(source.y / VOX_SIZE) + 1; ++k) {
                     dens_prev[i][j][k] = intensity;
                     w_prev[i][j][k] += v_initial;
                 }
