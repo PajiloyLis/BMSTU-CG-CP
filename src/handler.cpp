@@ -125,7 +125,7 @@ void TaskHandler::StartSimulation() {
 }
 
 void TaskHandler::UpdateWind(int speed, int angle) {
-    scene.UpdateWind(cos(rad angle)*)
+    scene.UpdateWind({cos(M_PI / 180. * (360 - angle)) * speed, sin(M_PI / 180. * (360 - angle)) * speed});
 }
 
 void TaskHandler::UpdateSimSpeed() {
