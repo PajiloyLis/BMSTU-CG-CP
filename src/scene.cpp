@@ -60,7 +60,20 @@ void Scene::MoveCamera(const Camera_Movement &move, float &delta_time) {
 
 
 void Scene::DrawSmoke() const {
-    scene->DrawSmoke(ash);
+    for (int i = 1; i <= ash.height; ++i) {
+        for (int j = 1; j <= ash.height; ++j) {
+            for (int k = 1; k <= ash.width; ++k) {
+                sf::Uint8 color000 = smoke::convert_color(ash.dens[i][j][k]),
+                        color001 = smoke::convert_color(ash.dens[i][j][k+1]),
+                        color010 = smoke::convert_color(ash.dens[i][j+1][k]),
+                        color011 = smoke::convert_color(ash.dens[i][j+1][k+1]),
+                        color100 = smoke::convert_color(ash.dens[i+1][j][k]),
+                        color101 = smoke::convert_color(ash.dens[i+1][j][k+1])
+                scene->DrawSmoke({(j - 1) * VOX_SIZE, (k - 1) * VOX_SIZE, i * VOX_SIZE},
+                                 {(j) * VOX_SIZE, (k) * VOX_SIZE, (i) * VOX_SIZE}, {})
+            }
+        }
+    }
 }
 
 void
@@ -87,7 +100,7 @@ void Scene::Show() {
 }
 
 void Scene::UpdateWind(const glm::vec2 &wind) {
-    ash.wind=wind;
+    ash.wind = wind;
 }
 
 void Scene::UpdateSimSpeed(float sim_speed) {

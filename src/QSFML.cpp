@@ -268,7 +268,8 @@ void QSFMLCanvas::StartSmokeTimer() {
     emit Redraw();
 }
 
-void QSFMLCanvas::DrawSmoke() {
+void QSFMLCanvas::DrawSmoke(const glm::vec3 &vec000, const glm::vec3 &vec111, const vector<sf::Color> &colors,
+                            int voxel_size) {
 
 }
 
