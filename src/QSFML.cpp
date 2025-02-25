@@ -263,14 +263,15 @@ void QSFMLCanvas::timerEvent(QTimerEvent *event) {
 }
 
 
-
 void QSFMLCanvas::StartSmokeTimer() {
     emit Redraw();
 }
 
 void QSFMLCanvas::DrawSmoke(const glm::vec3 &vec000, const glm::vec3 &vec111, const vector<sf::Color> &colors,
                             int voxel_size) {
-
+    glm::vec3 vec001 = vec000 + glm::vec3{0, 0, voxel_size},
+            vec010 = vec000 + glm::vec3{0, voxel_size, 0},
+            vec100 = vec000 + glm::vec3{voxel_size, 0, 0};
 }
 
 
