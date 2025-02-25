@@ -1,5 +1,6 @@
 #include "scene.h"
 
+#define ALPHA static_cast<sf::Uint8>(255*0.6)
 
 Scene::Scene() : figures() {
     scene = nullptr;
@@ -60,6 +61,8 @@ void Scene::MoveCamera(const Camera_Movement &move, float &delta_time) {
 
 
 void Scene::DrawSmoke() const {
+    timespec start, end, start1, end1;
+    clock_gettime(CLOCK_MONOTONIC, &start);
     for (int i = 1; i <= ash.height; ++i) {
         for (int j = 1; j <= ash.height; ++j) {
             for (int k = 1; k <= ash.width; ++k) {
@@ -72,19 +75,21 @@ void Scene::DrawSmoke() const {
                         color101 = smoke::convert_color(ash.dens[i + 1][j][k + 1]),
                         color110 = smoke::convert_color(ash.dens[i + 1][j + 1][k]),
                         color111 = smoke::convert_color(ash.dens[i + 1][j + 1][k + 1]);
-                colors.push_back({color000, color000, color000});
-                colors.push_back({color001, color001, color001});
-                colors.push_back({color010, color010, color010});
-                colors.push_back({color011, color011, color011});
-                colors.push_back({color100, color100, color100});
-                colors.push_back({color101, color101, color101});
-                colors.push_back({color110, color110, color110});
-                colors.push_back({color111, color111, color111});
+                colors.push_back({color000, color000, color000, ALPHA});
+                colors.push_back({color001, color001, color001, ALPHA});
+                colors.push_back({color010, color010, color010, ALPHA});
+                colors.push_back({color011, color011, color011, ALPHA});
+                colors.push_back({color100, color100, color100, ALPHA});
+                colors.push_back({color101, color101, color101, ALPHA});
+                colors.push_back({color110, color110, color110, ALPHA});
+                colors.push_back({color111, color111, color111, ALPHA});
                 scene->DrawSmoke({(j - 1) * VOX_SIZE, (k - 1) * VOX_SIZE, i * VOX_SIZE}, colors, VOX_SIZE,
                                  cameras[cur_camera]);
             }
         }
     }
+    clock_gettime(CLOCK_MONOTONIC, &end);
+    cout << end.tv_sec - start.tv_sec + (end.tv_nsec - start.tv_nsec) * 1e-9 << '\n';
 }
 
 void

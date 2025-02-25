@@ -5,6 +5,7 @@
 #include "textured_figure.h"
 #include "scene.h"
 #include "camera.h"
+#include <ctime>
 
 class TaskHandler {
 public:
