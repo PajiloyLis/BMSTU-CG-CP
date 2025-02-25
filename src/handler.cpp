@@ -124,6 +124,14 @@ void TaskHandler::StartSimulation() {
     scene.StartSimulation();
 }
 
+void TaskHandler::UpdateWind(int speed, int angle) {
+    scene.UpdateWind(cos(rad angle)*)
+}
+
+void TaskHandler::UpdateSimSpeed() {
+
+}
+
 //void TaskHandler::Redraw() {
 //    scene.Redraw();
 //}

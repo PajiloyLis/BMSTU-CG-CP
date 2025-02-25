@@ -34,6 +34,10 @@ public:
 
     void SmokeTimerElapsed();
 
+    void UpdateWind(int speed, int angle);
+
+    void UpdateSimSpeed();
+
 private:
 
     static vector<triangle> read_stl(const string &filename);

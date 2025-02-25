@@ -65,7 +65,8 @@ void Scene::MoveCamera(const Camera_Movement &move, float &delta_time) {
 
 void
 Scene::AddSmoke() {
-    ash = smoke(static_cast<int>( width) / VOX_SIZE * VOX_SIZE, static_cast<int>(height)/VOX_SIZE*VOX_SIZE, {46, 33, 38}, {0, 0}, 0.1f, 100, 100.f, 5.f);
+    ash = smoke(static_cast<int>( width) / VOX_SIZE * VOX_SIZE, static_cast<int>(height) / VOX_SIZE * VOX_SIZE,
+                {46, 33, 38}, {0, 0}, 0.1f, 100, 100.f, 5.f);
 }
 
 void Scene::StartSimulation() {
@@ -83,4 +84,8 @@ void Scene::SmokeTimerElapsed() {
 
 void Scene::Show() {
     scene->repaint();
+}
+
+void Scene::UpdateWind(const glm::vec2 &wind) {
+    ash.wind=wind;
 }
