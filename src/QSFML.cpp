@@ -268,7 +268,7 @@ void QSFMLCanvas::StartSmokeTimer() {
     emit Redraw();
 }
 
-void QSFMLCanvas::DrawSmoke(const smoke &smoke) {
+void QSFMLCanvas::DrawSmoke() {
 
 }
 
