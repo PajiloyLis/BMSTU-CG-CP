@@ -47,22 +47,23 @@ public:
 
 
         QGridLayout *mainLayout = new QGridLayout(this);
-        mainLayout->addWidget(speed_label, 0, 0, 1, 3, Qt::AlignJustify);
-        mainLayout->addWidget(left_speed_boud, 1, 0, 1, 1, Qt::AlignLeft);
-        mainLayout->addWidget(speed_slider, 1, 1, 1, 1, Qt::AlignJustify);
-        mainLayout->addWidget(right_speed_bound, 1, 2, 1, 1, Qt::AlignRight);
-        mainLayout->addWidget(cur_speed_value, 2, 0, 1, 3, Qt::AlignJustify);
-        mainLayout->addWidget(angle_label, 3, 0, 1, 3, Qt::AlignJustify);
-        mainLayout->addWidget(left_angle_boud, 4, 0, 1, 1, Qt::AlignLeft);
-        mainLayout->addWidget(angle_slider, 4, 1, 1, 1, Qt::AlignJustify);
-        mainLayout->addWidget(right_angle_bound, 4, 2, 1, 1, Qt::AlignRight);
-        mainLayout->addWidget(cur_angle_value, 5, 0, 1, 3, Qt::AlignJustify);
+        mainLayout->setColumnStretch(1, 400);
+        mainLayout->addWidget(speed_label, 0, 0, 1, 3);
+        mainLayout->addWidget(left_speed_boud, 1, 0, 1, 1);
+        mainLayout->addWidget(speed_slider, 1, 1, 1, 1);
+        mainLayout->addWidget(right_speed_bound, 1, 2, 1, 1);
+        mainLayout->addWidget(cur_speed_value, 2, 0, 1, 3);
+        mainLayout->addWidget(angle_label, 3, 0, 1, 3);
+        mainLayout->addWidget(left_angle_boud, 4, 0, 1, 1);
+        mainLayout->addWidget(angle_slider, 4, 1, 1, 1);
+        mainLayout->addWidget(right_angle_bound, 4, 2, 1, 1);
+        mainLayout->addWidget(cur_angle_value, 5, 0, 1, 3);
 
         QHBoxLayout *buttonLayout = new QHBoxLayout();
         buttonLayout->addWidget(okButton);
         buttonLayout->addWidget(cancelButton);
 
-        mainLayout->addLayout(buttonLayout, 6, 0, 1, 3, Qt::AlignJustify);
+        mainLayout->addLayout(buttonLayout, 6, 0, 1, 3);
 
         connect(okButton, &QPushButton::clicked, this, &WindDialog::accept);
         connect(cancelButton, &QPushButton::clicked, this, &WindDialog::reject);
