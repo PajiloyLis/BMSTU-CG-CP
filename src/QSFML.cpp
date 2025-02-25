@@ -287,7 +287,11 @@ QSFMLCanvas::DrawSmoke(const glm::vec3 &vec000, const vector<sf::Color> &colors,
             a_vec110 = adapt_coords(cam, vec110, {0, 0, 0}),
             a_vec111 = adapt_coords(cam, vec111, {0, 0, 0});
 
-    
+    sf::VertexArray quad(sf::Quads, 4);
+    quad[0] = sf::Vertex(sf::Vector2f(a_vec000.x, a_vec000.y), colors[0]);
+    quad[1] = sf::Vertex(sf::Vector2f(a_vec010.x, a_vec010.y), colors[2]);
+    quad[2] = sf::Vertex(sf::Vector2f(a_vec110.x, a_vec110.y), colors[6]);
+    quad[3] = sf::Vertex(sf::Vector2f(a_vec100.x, a_vec100.y), color[4]);
 
 }
 
