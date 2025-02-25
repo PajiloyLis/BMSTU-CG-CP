@@ -85,7 +85,7 @@ void MainWindow::StartSimulation() {
 }
 
 void MainWindow::SmokeTimerElapsedHandler() {
-//    handler.SmokeTimerElapsed();
+    handler.SmokeTimerElapsed();
 }
 
 void MainWindow::WindSettingsHandler() {

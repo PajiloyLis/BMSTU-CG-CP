@@ -41,7 +41,7 @@ public:
 
     void DrawTriangle(const triangle &t, const camera &cam, const glm::vec3 &figure_center, const sf::Color &color);
 
-    void DrawParticles(smoke &system, const camera &cam);
+    void DrawSmoke(const smoke &smoke);
 
     void StartSmokeTimer();
 

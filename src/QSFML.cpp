@@ -250,7 +250,6 @@ void QSFMLCanvas::keyReleaseEvent(QKeyEvent *event) {
 }
 
 void QSFMLCanvas::timerEvent(QTimerEvent *event) {
-//    if (event->timerId() == timers[KEYBOARD]) {
     now_time = time(nullptr);
     float delta = now_time - last_motion_time;
     last_motion_time = now_time;
@@ -265,17 +264,16 @@ void QSFMLCanvas::timerEvent(QTimerEvent *event) {
     } else if (d_pressed) {
         emit DKeyPressed(RIGHT, delta);
     }
-//    } else
-    if (event->timerId() == timers[SMOKE]) {
-//        cout << "WORK BITCH\n";
-        emit Redraw();
-    }
 }
 
 
 
 void QSFMLCanvas::StartSmokeTimer() {
     emit Redraw();
+}
+
+void QSFMLCanvas::DrawSmoke(const smoke &smoke) {
+    //TODO Ох бля
 }
 
 

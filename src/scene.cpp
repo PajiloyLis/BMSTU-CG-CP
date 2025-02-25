@@ -59,9 +59,9 @@ void Scene::MoveCamera(const Camera_Movement &move, float &delta_time) {
 }
 
 
-//void Scene::DrawSmoke() const {
-//    scene->DrawParticles(const_cast<smoke &>(system), cameras[cur_camera]);
-//}
+void Scene::DrawSmoke() const {
+    scene->DrawSmoke(ash);
+}
 
 void
 Scene::AddSmoke() {
@@ -77,7 +77,7 @@ void Scene::SmokeTimerElapsed() {
     ash.update();
     ClearScene();
     DrawFigures();
-//    DrawSmoke();
+    DrawSmoke();
     Show();
     scene->Redraw();
 }

@@ -132,7 +132,7 @@ void TaskHandler::UpdateSimSpeed(int x) {
     scene.UpdateSimSpeed(0.05f * x);
 }
 
-//void TaskHandler::Redraw() {
-//    scene.Redraw();
-//}
+void TaskHandler::SmokeTimerElapsed() {
+    scene.SmokeTimerElapsed();
+}
 
