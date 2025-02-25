@@ -64,8 +64,8 @@ void Scene::MoveCamera(const Camera_Movement &move, float &delta_time) {
 //}
 
 void
-Scene::AddSmoke(const smoke &smoke) {
-    ash=smoke;
+Scene::AddSmoke() {
+    ash = smoke(static_cast<int>( width) / VOX_SIZE * VOX_SIZE);
 }
 
 void Scene::StartSimulation() {

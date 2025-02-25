@@ -19,7 +19,7 @@ public:
 
     void DrawSmoke() const;
 
-    void AddSmoke(const smoke &smoke);
+    void AddSmoke();
 
     void ClearScene() const;
 
