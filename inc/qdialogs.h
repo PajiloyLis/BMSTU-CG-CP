@@ -19,7 +19,7 @@ class WindDialog : public QDialog {
 
 public:
     WindDialog(QWidget *parent = nullptr) : QDialog(parent) {
-        setWindowTitle("Установить параметры ветра");
+        setWindowTitle("Установка параметров ветра");
 
         QLabel *speed_label = new QLabel("Установите скорость ветра (м/с):");
         QLabel *left_speed_boud = new QLabel("0"), *right_speed_bound  = new QLabel("35");
@@ -76,6 +76,60 @@ public:
     }
 
      [[nodiscard]] int getWindSpeed() const {
+        auto slider = findChild<QSlider *>("speed_slider");
+        return slider->value();
+    }
+
+    [[nodiscard]] int getWindAngle() const {
+        auto slider = findChild<QSlider *>("angle_slider");
+        return slider->value();
+    }
+
+};
+
+class SpeedDialog : public QDialog {
+Q_OBJECT
+
+public:
+    SpeedDialog(QWidget *parent = nullptr) : QDialog(parent) {
+        setWindowTitle("Установка параметров скорости симуляции");
+
+        QLabel *speed_label = new QLabel("Установите скорость симуляции:");
+        QLabel *left_speed_boud = new QLabel("х1"), *right_speed_bound  = new QLabel("х10");
+        QLabel *cur_speed_value = new QLabel("5");
+        QSlider *speed_slider = new QSlider(Qt::Horizontal);
+        speed_slider->setObjectName("speed_slider");
+        speed_slider->setTickInterval(1);
+        speed_slider->setRange(1, 10);
+        speed_slider->setValue(5); // Начальное значение
+        speed_slider->setTickPosition(QSlider::TicksBelow);
+
+
+        QPushButton *okButton = new QPushButton("OK", this);
+        QPushButton *cancelButton = new QPushButton("Cancel", this);
+
+
+        QGridLayout *mainLayout = new QGridLayout(this);
+        mainLayout->setColumnStretch(1, 400);
+        mainLayout->addWidget(speed_label, 0, 0, 1, 3);
+        mainLayout->addWidget(left_speed_boud, 1, 0, 1, 1);
+        mainLayout->addWidget(speed_slider, 1, 1, 1, 1);
+        mainLayout->addWidget(right_speed_bound, 1, 2, 1, 1);
+        mainLayout->addWidget(cur_speed_value, 2, 0, 1, 3);
+        QHBoxLayout *buttonLayout = new QHBoxLayout();
+        buttonLayout->addWidget(okButton);
+        buttonLayout->addWidget(cancelButton);
+
+        mainLayout->addLayout(buttonLayout, 3, 0, 1, 3);
+
+        connect(okButton, &QPushButton::clicked, this, &WindDialog::accept);
+        connect(cancelButton, &QPushButton::clicked, this, &WindDialog::reject);
+        connect(speed_slider, &QSlider::valueChanged, [cur_speed_value](int value) {
+            cur_speed_value->setText(QString("%1").arg(value));
+        });
+    }
+
+    [[nodiscard]] int getSimulationSpeed() const {
         auto slider = findChild<QSlider *>("speed_slider");
         return slider->value();
     }

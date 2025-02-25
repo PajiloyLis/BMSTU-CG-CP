@@ -59,6 +59,8 @@ private slots:
     void SmokeTimerElapsedHandler();
 
     void WindSettingsHandler();
+
+    void SpeedSettingsHandler();
 private:
     static bool NumericFieldCheck(QLineEdit *&field);
 

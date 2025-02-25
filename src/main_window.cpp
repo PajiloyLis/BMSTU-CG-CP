@@ -30,6 +30,8 @@ void MainWindow::SetBindings() {
                      &MainWindow::LoadModelActionTriggered);
     QObject::connect(this->findChild<QAction *>("set_wind_action"), &QAction::triggered, this,
                      &MainWindow::WindSettingsHandler);
+    QObject::connect(this->findChild<QAction *>("set_speed_action"), &QAction::triggered, this,
+                     &MainWindow::SpeedSettingsHandler);
     QObject::connect(this->findChild<QAction *>("sim_start"), &QAction::triggered, this,
                      &MainWindow::StartSimulation);
     QObject::connect(this->findChild<QSFMLCanvas *>("drawer"), &QSFMLCanvas::Redraw, this,
@@ -88,6 +90,16 @@ void MainWindow::SmokeTimerElapsedHandler() {
 
 void MainWindow::WindSettingsHandler() {
     WindDialog dialog;
+    if(dialog.exec()==QDialog::Accepted) {
+        cout << "WIND SPEED " << dialog.getWindSpeed() << '\n';
+        cout<<"WIND ANGLE "<<dialog.getWindAngle()<<'\n';
+    }
+}
+
+void MainWindow::SpeedSettingsHandler() {
+    SpeedDialog dialog;
     if(dialog.exec()==QDialog::Accepted)
-        cout << "FUCK "<<dialog.getWindSpeed() << '\n';
+    {
+        cout<<"Simulation speed "<<dialog.getSimulationSpeed()<<'\n';
+    }
 }
