@@ -1,5 +1,6 @@
 #include "scene.h"
 
+
 Scene::Scene() : figures() {
     scene = nullptr;
     width = height = 0;
