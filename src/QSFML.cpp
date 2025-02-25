@@ -272,7 +272,7 @@ void QSFMLCanvas::DrawSmoke(const glm::vec3 &vec000, const glm::vec3 &vec111, co
     glm::vec3 vec001 = vec000 + glm::vec3{0, voxel_size, 0},
             vec010 = vec000 + glm::vec3{0, 0, voxel_size},
             vec011 = vec000 + glm::vec3{0, voxel_size, voxel_size};
-    йvec010 = vec000 + glm::vec3{0, vox_size},
+    йvec010 = vec000 + glm::vec3{0, voxrrplzhgggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg_size},
             vec100 = vec000 + glm::vec3{voxel_size, 0, 0};
 
 
