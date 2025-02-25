@@ -243,10 +243,6 @@ void QSFMLCanvas::keyReleaseEvent(QKeyEvent *event) {
         d_pressed = false;
         emit DKeyPressed(RIGHT, delta);
     }
-//    if (timers[KEYBOARD]) {
-//        cout << "THIS MUTHERFUCKER MUST DIE\n";
-//        this->killTimer(timers[KEYBOARD]);
-//    }
 }
 
 void QSFMLCanvas::timerEvent(QTimerEvent *event) {
@@ -273,7 +269,7 @@ void QSFMLCanvas::StartSmokeTimer() {
 }
 
 void QSFMLCanvas::DrawSmoke(const smoke &smoke) {
-    
+
 }
 
 
