@@ -267,14 +267,15 @@ void QSFMLCanvas::StartSmokeTimer() {
     emit Redraw();
 }
 
-void QSFMLCanvas::DrawSmoke(const glm::vec3 &vec000, const glm::vec3 &vec111, const vector<sf::Color> &colors,
-                            int voxel_size, const camera &cam) {
+void
+QSFMLCanvas::DrawSmoke(const glm::vec3 &vec000, const vector<sf::Color> &colors, int voxel_size, const camera &cam) {
     glm::vec3 vec001 = vec000 + glm::vec3{0, voxel_size, 0},
             vec010 = vec000 + glm::vec3{0, 0, voxel_size},
             vec011 = vec000 + glm::vec3{0, voxel_size, voxel_size},
             vec100 = vec000 + glm::vec3{voxel_size, 0, 0},
             vec101 = vec000 + glm::vec3{voxel_size, 0, voxel_size},
-            vec110 = vec000 + glm::vec3{voxel_size, voxel_size, 0};
+            vec110 = vec000 + glm::vec3{voxel_size, voxel_size, 0},
+            vec111 = vec000 + glm::vec3{voxel_size, voxel_size, voxel_size};
 
 
     glm::vec3 a_vec000 = adapt_coords(cam, vec000, {0, 0, 0}),
@@ -286,6 +287,7 @@ void QSFMLCanvas::DrawSmoke(const glm::vec3 &vec000, const glm::vec3 &vec111, co
             a_vec110 = adapt_coords(cam, vec110, {0, 0, 0}),
             a_vec111 = adapt_coords(cam, vec111, {0, 0, 0});
 
+    
 
 }
 
