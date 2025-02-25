@@ -27,19 +27,22 @@ public:
         speed_slider->setTickInterval(1);
         speed_slider->setRange(0, 35);
         speed_slider->setValue(5); // Начальное значение
+        speed_slider->setTickPosition(QSlider::TicksBelow);
 
         QLabel *angle_label = new QLabel("Установите направление ветра (в градусах по часовой стрелке от севера):");
         QSlider *angle_slider = new QSlider(Qt::Horizontal);
         angle_slider->setObjectName("angle_slider");
-        angle_slider->setTickInterval(1);
-        speed_slider->setRange(0, 360);
-        speed_slider->setValue(90); // Начальное значение
+        angle_slider->setTickInterval(5);
+        angle_slider->setRange(0, 360);
+        angle_slider->setValue(90); // Начальное значение
+        angle_slider->setTickPosition(QSlider::TicksBelow);
+
 
         QPushButton *okButton = new QPushButton("OK", this);
         QPushButton *cancelButton = new QPushButton("Cancel", this);
 
 
-        QVBoxLayout *mainLayout = new QVBoxLayout(this);
+        QGridLayout *mainLayout = new QGridLayout(this);
         mainLayout->addWidget(speed_label);
         mainLayout->addWidget(speed_slider);
         mainLayout->addWidget(angle_label);
