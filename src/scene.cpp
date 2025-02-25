@@ -11,7 +11,6 @@ Scene::Scene(QSFMLCanvas *&scene, const double &width, const double &height)
     this->width = width;
     this->height = height;
     last_frame_time = cur_frame_time = 0;
-    wind = {1, 5};
 }
 
 
@@ -81,7 +80,7 @@ void Scene::DrawSmoke() const {
                 colors.push_back({color110, color110, color110});
                 colors.push_back({color111, color111, color111});
                 scene->DrawSmoke({(j - 1) * VOX_SIZE, (k - 1) * VOX_SIZE, i * VOX_SIZE}, colors, VOX_SIZE,
-                                 <#initializer#>);
+                                 cameras[cur_camera]);
             }
         }
     }
