@@ -41,6 +41,8 @@ public:
 
     void UpdateWind(const glm::vec2 &wind);
 
+    void UpdateSimSpeed(float sim_speed);
+
     void Show();
 
 private:

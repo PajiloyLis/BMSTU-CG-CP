@@ -36,7 +36,7 @@ public:
 
     void UpdateWind(int speed, int angle);
 
-    void UpdateSimSpeed();
+    void UpdateSimSpeed(int x);
 
 private:
 

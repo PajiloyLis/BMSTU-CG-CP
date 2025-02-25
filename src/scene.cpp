@@ -89,3 +89,7 @@ void Scene::Show() {
 void Scene::UpdateWind(const glm::vec2 &wind) {
     ash.wind=wind;
 }
+
+void Scene::UpdateSimSpeed(float sim_speed) {
+    ash.dt = sim_speed;
+}

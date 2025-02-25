@@ -90,16 +90,14 @@ void MainWindow::SmokeTimerElapsedHandler() {
 
 void MainWindow::WindSettingsHandler() {
     WindDialog dialog;
-    if(dialog.exec()==QDialog::Accepted) {
-        cout << "WIND SPEED " << dialog.getWindSpeed() << '\n';
-        cout<<"WIND ANGLE "<<dialog.getWindAngle()<<'\n';
+    if (dialog.exec() == QDialog::Accepted) {
+        handler.UpdateWind(dialog.getWindSpeed(), dialog.getWindAngle());
     }
 }
 
 void MainWindow::SpeedSettingsHandler() {
     SpeedDialog dialog;
-    if(dialog.exec()==QDialog::Accepted)
-    {
-        cout<<"Simulation speed "<<dialog.getSimulationSpeed()<<'\n';
+    if (dialog.exec() == QDialog::Accepted) {
+        handler.UpdateSimSpeed(dialog.getSimulationSpeed());
     }
 }
