@@ -15,6 +15,7 @@
 #include <QProgressBar>
 #include <QFileDialog>
 
+#include "qdialogs.h"
 #include "QSFML.h"
 #include "handler.h"
 #include "cp_cg_ui.h"
@@ -56,6 +57,8 @@ private slots:
     void StartSimulation();
 
     void SmokeTimerElapsedHandler();
+
+    void WindSettingsHandler();
 private:
     static bool NumericFieldCheck(QLineEdit *&field);
 

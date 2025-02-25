@@ -42,7 +42,8 @@ HEADERS += \
     ./inc/scene.h \
     ./inc/triangle.h \
     ./inc/camera.h \
-    ./inc/smoke.h
+    ./inc/smoke.h \
+    ./src/qdialogs.h
 FORMS += \
     ./inc/main_window.ui
 

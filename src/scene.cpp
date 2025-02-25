@@ -11,7 +11,7 @@ Scene::Scene(QSFMLCanvas *&scene, const double &width, const double &height)
     this->width = width;
     this->height = height;
     last_frame_time = cur_frame_time = 0;
-    wind = {1, 5, 2};
+    wind = {1, 5};
 }
 
 
@@ -59,9 +59,9 @@ void Scene::MoveCamera(const Camera_Movement &move, float &delta_time) {
 }
 
 
-void Scene::DrawSmoke() const {
-    scene->DrawParticles(const_cast<smoke &>(system), cameras[cur_camera]);
-}
+//void Scene::DrawSmoke() const {
+//    scene->DrawParticles(const_cast<smoke &>(system), cameras[cur_camera]);
+//}
 
 void
 Scene::AddSmoke(const smoke &smoke) {
@@ -76,7 +76,7 @@ void Scene::SmokeTimerElapsed() {
     ash.update();
     ClearScene();
     DrawFigures();
-    DrawSmoke();
+//    DrawSmoke();
     Show();
     scene->Redraw();
 }

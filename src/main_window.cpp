@@ -28,7 +28,8 @@ void MainWindow::SetBindings() {
     QObject::connect(this->findChild<QAction *>("load_model_action"),
                      &QAction::triggered, this,
                      &MainWindow::LoadModelActionTriggered);
-    QObject::connect(this->findChild<QAction *>(""))
+    QObject::connect(this->findChild<QAction *>("set_wind_action"), &QAction::triggered, this,
+                     &MainWindow::WindSettingsHandler);
     QObject::connect(this->findChild<QAction *>("sim_start"), &QAction::triggered, this,
                      &MainWindow::StartSimulation);
     QObject::connect(this->findChild<QSFMLCanvas *>("drawer"), &QSFMLCanvas::Redraw, this,
@@ -82,5 +83,10 @@ void MainWindow::StartSimulation() {
 }
 
 void MainWindow::SmokeTimerElapsedHandler() {
-    handler.SmokeTimerElapsed();
+//    handler.SmokeTimerElapsed();
+}
+
+void MainWindow::WindSettingsHandler() {
+    WindDialog dialog;
+    cout << "FUCK "<<dialog.getWindSpeed() << '\n';
 }
