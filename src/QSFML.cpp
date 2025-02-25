@@ -319,10 +319,10 @@ QSFMLCanvas::DrawSmoke(const glm::vec3 &vec000, const vector<sf::Color> &colors,
 
     this->draw(quad);
 
-    // 
+    // left
     quad[0] = sf::Vertex(sf::Vector2f(a_vec000.x, a_vec000.y), colors[0]);
-    quad[1] = sf::Vertex(sf::Vector2f(a_vec010.x, a_vec010.y), colors[2]);
-    quad[2] = sf::Vertex(sf::Vector2f(a_vec011.x, a_vec011.y), colors[3]);
+    quad[1] = sf::Vertex(sf::Vector2f(a_vec100.x, a_vec100.y), colors[4]);
+    quad[2] = sf::Vertex(sf::Vector2f(a_vec101.x, a_vec101.y), colors[5]);
     quad[3] = sf::Vertex(sf::Vector2f(a_vec001.x, a_vec001.y), colors[1]);
 
     this->draw(quad);
