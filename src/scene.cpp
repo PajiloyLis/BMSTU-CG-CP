@@ -63,6 +63,7 @@ void Scene::DrawSmoke() const {
     for (int i = 1; i <= ash.height; ++i) {
         for (int j = 1; j <= ash.height; ++j) {
             for (int k = 1; k <= ash.width; ++k) {
+                vector<sf::Color> colors;
                 sf::Uint8 color000 = smoke::convert_color(ash.dens[i][j][k]),
                         color001 = smoke::convert_color(ash.dens[i][j][k + 1]),
                         color010 = smoke::convert_color(ash.dens[i][j + 1][k]),
@@ -71,8 +72,16 @@ void Scene::DrawSmoke() const {
                         color101 = smoke::convert_color(ash.dens[i + 1][j][k + 1]),
                         color110 = smoke::convert_color(ash.dens[i + 1][j + 1][k]),
                         color111 = smoke::convert_color(ash.dens[i + 1][j + 1][k + 1]);
+                colors.push_back({color000, color000, color000});
+                colors.push_back({color001, color001, color001});
+                colors.push_back({color010, color010, color010});
+                colors.push_back({color011, color011, color011});
+                colors.push_back({color100, color100, color100});
+                colors.push_back({color101, color101, color101});
+                colors.push_back({color110, color110, color110});
+                colors.push_back({color111, color111, color111});
                 scene->DrawSmoke({(j - 1) * VOX_SIZE, (k - 1) * VOX_SIZE, i * VOX_SIZE},
-                                 {(j) * VOX_SIZE, (k) * VOX_SIZE, (i) * VOX_SIZE}, {})
+                                 {(j) * VOX_SIZE - 1, (k) * VOX_SIZE - 1, (i) * VOX_SIZE - 1}, colors, VOX_SIZE);
             }
         }
     }
