@@ -19,7 +19,7 @@ public:
 
     void DrawSmoke() const;
 
-    void AddSmoke();
+    void AddSmoke(int fig_width, int fig_height);
 
     void ClearScene() const;
 
@@ -27,7 +27,7 @@ public:
 
     void ChangeCurCamera(int ind) { cur_camera = ind; }
 
-    void AddFigure(const figure &f);
+    const figure & AddFigure(const figure &f);
 
     void RotateCurCamera(const float &dx, const float &dy);
 
