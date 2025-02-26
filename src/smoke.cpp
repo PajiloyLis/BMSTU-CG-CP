@@ -121,7 +121,7 @@ smoke::project(vector<vector<vector<float>>> &u_, vector<vector<vector<float>>> 
             for (int k = 1; k <= width; ++k) {
                 u_[i][j][k] -= 1.f / 3.f * height * (p[i + 1][j][k] - p[i - 1][j][k]);
                 v_[i][j][k] -= 1.f / 3.f * height * (p[i][j + 1][k] - p[i][j - 1][k]);
-                w_[i][j][k] -= 1.f / 3.f * width * (w_[i][j][k + 1] - w_[i][j][k - 1]);
+                w_[i][j][k] -= 1.f / 3.f * width * (p[i][j][k + 1] - p[i][j][k - 1]);
             }
         }
     }
