@@ -83,7 +83,7 @@ void Scene::DrawSmoke() const {
                     colors.push_back(color101);
                     colors.push_back(color110);
                     colors.push_back(color111);
-                    scene->DrawSmoke({(j - 1) * VOX_SIZE, (k - 1) * VOX_SIZE, (i - 1) * VOX_SIZE}, colors, VOX_SIZE,
+                    scene->DrawSmoke({(j - 1) * VOX_SIZE, (k - 1) * VOX_SIZE, ash.height - (i - 1) * VOX_SIZE}, colors, VOX_SIZE,
                                      cameras[cur_camera]);
                 }
             }
@@ -96,7 +96,7 @@ void Scene::DrawSmoke() const {
 void
 Scene::AddSmoke(int fig_width, int fig_height) {
     ash = smoke(fig_width / VOX_SIZE * VOX_SIZE, fig_height / VOX_SIZE * VOX_SIZE,
-                {46, 33, 50}, {0, 0}, 0.1f, 100, 100.f, 5.f);
+                {46, 33, 38}, {0, 0}, 0.1f, 100, 100.f, 5.f);
 }
 
 void Scene::StartSimulation() {
