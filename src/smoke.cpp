@@ -28,7 +28,7 @@ void smoke::set_bnd(int b, vector<vector<vector<float>>> &x) {
 void smoke::lin_solve(int b, vector<vector<vector<float>>> &x, vector<vector<vector<float>>> &x0, float a, float c) {
     int i, j, iter;
 
-    for (iter = 0; iter < 20; iter++) {
+    for (iter = 0; iter < 5; iter++) {
         for (i = 1; i <= height; i++) {
             for (j = 1; j <= height; j++) {
                 for (int k = 1; k <= width; ++k) {
