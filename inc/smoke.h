@@ -16,7 +16,7 @@
 
 using namespace std;
 
-#define ALPHA static_cast<sf::Uint8>(255*0.6)
+#define ALPHA static_cast<sf::Uint8>(255*0.8)
 
 #define EPS 1e-5
 

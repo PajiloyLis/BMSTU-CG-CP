@@ -107,7 +107,7 @@ void Scene::SmokeTimerElapsed() {
     ash.update();
     ClearScene();
     DrawSmoke();
-    DrawFigures();
+//    DrawFigures();
     Show();
     scene->Redraw();
 }
