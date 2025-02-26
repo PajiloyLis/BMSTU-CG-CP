@@ -20,7 +20,7 @@ using namespace std;
 
 #define EPS 1e-5
 
-#define VOX_SIZE 10
+#define VOX_SIZE 5
 
 #define MIN_GREY 60
 #define MAX_GREY 192

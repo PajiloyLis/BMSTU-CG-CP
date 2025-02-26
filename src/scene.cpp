@@ -64,25 +64,27 @@ void Scene::DrawSmoke() const {
     for (int i = 1; i <= ash.height; ++i) {
         for (int j = 1; j <= ash.height; ++j) {
             for (int k = 1; k <= ash.width; ++k) {
-                vector<sf::Color> colors;
-                sf::Color color000 = smoke::convert_color(ash.dens[i][j][k]),
-                        color001 = smoke::convert_color(ash.dens[i][j][k + 1]),
-                        color010 = smoke::convert_color(ash.dens[i][j + 1][k]),
-                        color011 = smoke::convert_color(ash.dens[i][j + 1][k + 1]),
-                        color100 = smoke::convert_color(ash.dens[i + 1][j][k]),
-                        color101 = smoke::convert_color(ash.dens[i + 1][j][k + 1]),
-                        color110 = smoke::convert_color(ash.dens[i + 1][j + 1][k]),
-                        color111 = smoke::convert_color(ash.dens[i + 1][j + 1][k + 1]);
-                colors.push_back(color000);
-                colors.push_back(color001);
-                colors.push_back(color010);
-                colors.push_back(color011);
-                colors.push_back(color100);
-                colors.push_back(color101);
-                colors.push_back(color110);
-                colors.push_back(color111);
-                scene->DrawSmoke({(j - 1) * VOX_SIZE, (k - 1) * VOX_SIZE, (i-1) * VOX_SIZE}, colors, VOX_SIZE,
-                                 cameras[cur_camera]);
+                if (ash.dens[i][j][k] > EPS) {
+                    vector<sf::Color> colors;
+                    sf::Color color000 = smoke::convert_color(ash.dens[i][j][k]),
+                            color001 = smoke::convert_color(ash.dens[i][j][k + 1]),
+                            color010 = smoke::convert_color(ash.dens[i][j + 1][k]),
+                            color011 = smoke::convert_color(ash.dens[i][j + 1][k + 1]),
+                            color100 = smoke::convert_color(ash.dens[i + 1][j][k]),
+                            color101 = smoke::convert_color(ash.dens[i + 1][j][k + 1]),
+                            color110 = smoke::convert_color(ash.dens[i + 1][j + 1][k]),
+                            color111 = smoke::convert_color(ash.dens[i + 1][j + 1][k + 1]);
+                    colors.push_back(color000);
+                    colors.push_back(color001);
+                    colors.push_back(color010);
+                    colors.push_back(color011);
+                    colors.push_back(color100);
+                    colors.push_back(color101);
+                    colors.push_back(color110);
+                    colors.push_back(color111);
+                    scene->DrawSmoke({(j - 1) * VOX_SIZE, (k - 1) * VOX_SIZE, (i - 1) * VOX_SIZE}, colors, VOX_SIZE,
+                                     cameras[cur_camera]);
+                }
             }
         }
     }
