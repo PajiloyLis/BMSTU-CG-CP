@@ -105,8 +105,8 @@ void Scene::StartSimulation() {
 void Scene::SmokeTimerElapsed() {
     ash.update();
     ClearScene();
-    DrawFigures();
     DrawSmoke();
+    DrawFigures();
     Show();
     scene->Redraw();
 }
