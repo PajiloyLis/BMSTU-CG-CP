@@ -16,6 +16,8 @@
 
 using namespace std;
 
+#define ALPHA static_cast<sf::Uint8>(255*0.6)
+
 #define EPS 1e-5
 
 #define VOX_SIZE 10
@@ -85,11 +87,12 @@ public:
 
     void update();
 
-    static sf::Uint8 convert_color(const float &val) {
+    static sf::Color convert_color(const float &val) {
         if (val > 1)
-            return MIN_GREY;
+            return {MIN_GREY, MIN_GREY, MIN_GREY, ALPHA};
         if (val < EPS)
             return 0;
+
         return MAX_GREY - (MAX_GREY - MIN_GREY) * val;
     }
 };

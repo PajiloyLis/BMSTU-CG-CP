@@ -1,7 +1,5 @@
 #include "scene.h"
 
-#define ALPHA static_cast<sf::Uint8>(255*0.6)
-
 Scene::Scene() : figures() {
     scene = nullptr;
     width = height = 0;
