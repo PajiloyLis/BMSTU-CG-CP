@@ -89,7 +89,7 @@ void Scene::DrawSmoke() const {
 //            }
 //        }
 //    }
-for(int i = 0 ; i < ash.height; ++i)
+for(int i = 0 ; i < ash.width; ++i)
 {
     vector<sf::Color> colors;
     sf::Color color000 = sf::Color::Black,
@@ -108,7 +108,7 @@ for(int i = 0 ; i < ash.height; ++i)
     colors.push_back(color101);
     colors.push_back(color110);
     colors.push_back(color111);
-    scene->DrawSmoke({0 * VOX_SIZE, 0, (i - 1) * VOX_SIZE}, colors, VOX_SIZE,
+    scene->DrawSmoke({0 * VOX_SIZE, (i - 1) * VOX_SIZE, ash.height}, colors, VOX_SIZE,
                                      cameras[cur_camera]);
 }
     clock_gettime(CLOCK_MONOTONIC, &end);
@@ -128,7 +128,7 @@ void Scene::StartSimulation() {
 void Scene::SmokeTimerElapsed() {
     ash.update();
     ClearScene();
-    DrawFigures();
+//    DrawFigures();
     DrawSmoke();
     Show();
     scene->Redraw();
