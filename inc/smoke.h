@@ -20,7 +20,7 @@ using namespace std;
 
 #define EPS 1e-5
 
-#define VOX_SIZE 10
+#define VOX_SIZE 20
 
 #define MIN_GREY 60
 #define MAX_GREY 192
@@ -91,9 +91,9 @@ public:
         if (val > 1)
             return {MIN_GREY, MIN_GREY, MIN_GREY, ALPHA};
         if (val < EPS)
-            return 0;
-
-        return MAX_GREY - (MAX_GREY - MIN_GREY) * val;
+            return sf::Color(0x87CEEB);
+        auto color_val = static_cast<sf::Uint8 > (MAX_GREY - (MAX_GREY - MIN_GREY) * val);
+        return {color_val, color_val, color_val, ALPHA};
     }
 };
 
