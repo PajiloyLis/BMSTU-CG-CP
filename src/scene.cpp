@@ -62,33 +62,55 @@ void Scene::MoveCamera(const Camera_Movement &move, float &delta_time) {
 void Scene::DrawSmoke() const {
     timespec start, end, start1, end1;
     clock_gettime(CLOCK_MONOTONIC, &start);
-    for (int i = 1; i <= ash.height; ++i) {
-        for (int j = 1; j <= ash.height; ++j) {
-            for (int k = 1; k <= ash.width; ++k) {
-                if (ash.dens[i][j][k] > EPS) {
-                    vector<sf::Color> colors;
-                    sf::Color color000 = smoke::convert_color(ash.dens[i][j][k]),
-                            color001 = smoke::convert_color(ash.dens[i][j][k + 1]),
-                            color010 = smoke::convert_color(ash.dens[i][j + 1][k]),
-                            color011 = smoke::convert_color(ash.dens[i][j + 1][k + 1]),
-                            color100 = smoke::convert_color(ash.dens[i + 1][j][k]),
-                            color101 = smoke::convert_color(ash.dens[i + 1][j][k + 1]),
-                            color110 = smoke::convert_color(ash.dens[i + 1][j + 1][k]),
-                            color111 = smoke::convert_color(ash.dens[i + 1][j + 1][k + 1]);
-                    colors.push_back(color000);
-                    colors.push_back(color001);
-                    colors.push_back(color010);
-                    colors.push_back(color011);
-                    colors.push_back(color100);
-                    colors.push_back(color101);
-                    colors.push_back(color110);
-                    colors.push_back(color111);
-                    scene->DrawSmoke({(j - 1) * VOX_SIZE, (k - 1) * VOX_SIZE, ash.height - (i - 1) * VOX_SIZE}, colors, VOX_SIZE,
+//    for (int i = 1; i <= ash.height; ++i) {
+//        for (int j = 1; j <= ash.height; ++j) {
+//            for (int k = 1; k <= ash.width; ++k) {
+//                if (ash.dens[i][j][k] > EPS) {
+//                    vector<sf::Color> colors;
+//                    sf::Color color000 = smoke::convert_color(ash.dens[i][j][k]),
+//                            color001 = smoke::convert_color(ash.dens[i][j][k + 1]),
+//                            color010 = smoke::convert_color(ash.dens[i][j + 1][k]),
+//                            color011 = smoke::convert_color(ash.dens[i][j + 1][k + 1]),
+//                            color100 = smoke::convert_color(ash.dens[i + 1][j][k]),
+//                            color101 = smoke::convert_color(ash.dens[i + 1][j][k + 1]),
+//                            color110 = smoke::convert_color(ash.dens[i + 1][j + 1][k]),
+//                            color111 = smoke::convert_color(ash.dens[i + 1][j + 1][k + 1]);
+//                    colors.push_back(color000);
+//                    colors.push_back(color001);
+//                    colors.push_back(color010);
+//                    colors.push_back(color011);
+//                    colors.push_back(color100);
+//                    colors.push_back(color101);
+//                    colors.push_back(color110);
+//                    colors.push_back(color111);
+//                    scene->DrawSmoke({(j - 1) * VOX_SIZE, (k - 1) * VOX_SIZE, (i - 1) * VOX_SIZE}, colors, VOX_SIZE,
+//                                     cameras[cur_camera]);
+//                }
+//            }
+//        }
+//    }
+for(int i = 0 ; i < ash.height; ++i)
+{
+    vector<sf::Color> colors;
+    sf::Color color000 = sf::Color::Black,
+            color001 = sf::Color::Black,
+            color010 = sf::Color::Black,
+            color011 = sf::Color::Black,
+            color100 = sf::Color::Black,
+            color101 = sf::Color::Black,
+            color110 = sf::Color::Black,
+            color111 = sf::Color::Black;
+    colors.push_back(color000);
+    colors.push_back(color001);
+    colors.push_back(color010);
+    colors.push_back(color011);
+    colors.push_back(color100);
+    colors.push_back(color101);
+    colors.push_back(color110);
+    colors.push_back(color111);
+    scene->DrawSmoke({0 * VOX_SIZE, 0, (i - 1) * VOX_SIZE}, colors, VOX_SIZE,
                                      cameras[cur_camera]);
-                }
-            }
-        }
-    }
+}
     clock_gettime(CLOCK_MONOTONIC, &end);
     cout << end.tv_sec - start.tv_sec + (end.tv_nsec - start.tv_nsec) * 1e-9 << '\n';
 }
