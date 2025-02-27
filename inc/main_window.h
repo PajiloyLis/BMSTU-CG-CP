@@ -33,13 +33,11 @@ public:
 
 signals:
 
-    void ModelPathFetched(const string &path);
+    void ModelPathFetched(const std::string &path);
 
     void WindSettingsFetched(const int &speed, const int &angle);
 
     void SimulationSpeedSettingsFetched(const int &x);
-
-
 
 public slots:
 
