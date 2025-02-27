@@ -53,9 +53,6 @@ public slots:
 
 private:
 
-    void closeEvent(QCloseEvent *event) override;
-
-
     int returnValue;
 };
 

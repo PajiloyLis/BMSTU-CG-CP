@@ -26,14 +26,6 @@ void MainWindow::SimulationSpeedChanged() {
 }
 
 void MainWindow::StartButtonHandler() {
-    returnValue = 100;
+    QApplication::exit(100);
     this->close();
-}
-
-void MainWindow::closeEvent(QCloseEvent *event) {
-    qDebug() << "Window closed with return value:" << returnValue;
-    if(returnValue == 100)
-        event->accept();
-    else
-        event->ignore();
 }
