@@ -91,9 +91,8 @@ public:
         if (val > 1)
             return {MIN_GREY, MIN_GREY, MIN_GREY, ALPHA};
         if (val < EPS)
-            return sf::Color(0x87CEEB);
-        auto color_val = static_cast<sf::Uint8 > (MAX_GREY - (MAX_GREY - MIN_GREY) * val);
-        return {color_val, color_val, color_val, ALPHA};
+            return 0x87CEEB;
+        return static_cast<sf::Uint8 > (MAX_GREY - (MAX_GREY - MIN_GREY) * val);
     }
 
     static sf::Uint8 convert_alpha(const float &val) {
@@ -102,7 +101,6 @@ public:
         if (val < EPS)
             return 0;
         return static_cast<sf::Uint8 > (255 * val);
-        return {color_val, color_val, color_val, ALPHA};
     }
 };
 
