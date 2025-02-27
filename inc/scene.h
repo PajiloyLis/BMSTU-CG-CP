@@ -8,6 +8,7 @@
 #include <GL/gl.h>
 #include "smoke.h"
 #include "operations.h"
+#include "triangle.h"
 class Scene {
 public:
     Scene();

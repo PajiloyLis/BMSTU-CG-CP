@@ -19,14 +19,13 @@ void Scene::ClearScene() const {
 
 void Scene::DrawFigures() const {
     for (auto &figure: figures)
-        for (auto &triangle: figure.triangles)
-        {
-            vector<glm::vec3> adapted(triangle.vertices.size());
-            for(int i = 0; i < triangle.vertices.size(); ++i)
-            {
-                adapted[i] = adapt_coords(cameras[cur_camera], triangle.vertices[i]);
-            }
-            triangle adapted()
+        for (auto &t: figure.triangles) {
+            array<glm::vec3, 3> adapted;
+            for (int i = 0; i < t.vertices.size(); ++i)
+                adapted[i] = adapt_coords(cameras[cur_camera], t.vertices[i]);
+            triangle adapted_triangle = ();
+            adapted_triangle.n = adapt_coords(cameras[cur_camera], t.n);
+            adapted_triangle.vertices = adapted;
         }
 //    if (figures.size() > 0) {
 //        sf::CircleShape crater_pos(5);
