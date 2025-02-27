@@ -68,8 +68,8 @@ void Scene::DrawSmoke() const {
                 if (ash.dens[i][j][k] + ash.dens[i][j][k + 1] + ash.dens[i][j + 1][k] + ash.dens[i][j + 1][k + 1] +
                     ash.dens[i + 1][j][k] + ash.dens[i + 1][j][k + 1] + ash.dens[i + 1][j + 1][k] +
                     ash.dens[i + 1][j + 1][k + 1] > EPS) {
-                    vector < sf::Color > colors;
-                    sf::Color color000 = smoke::convert_color(ash.dens[i][j][k]), //front left top
+                    vector<sf::Color> colors;
+                    sf::Uint8 color000 = smoke::convert_color(ash.dens[i][j][k]), //front left top
                     color001 = smoke::convert_color(ash.dens[i][j][k + 1]), //front right top
                     color010 = smoke::convert_color(ash.dens[i][j + 1][k]), //back left top
                     color011 = smoke::convert_color(ash.dens[i][j + 1][k + 1]), // back right top
@@ -77,8 +77,8 @@ void Scene::DrawSmoke() const {
                     color101 = smoke::convert_color(ash.dens[i + 1][j][k + 1]), //front right bottom
                     color110 = smoke::convert_color(ash.dens[i + 1][j + 1][k]), //back left bottom
                     color111 = smoke::convert_color(ash.dens[i + 1][j + 1][k + 1]); //back right bottom
-                    colors.push_back(color000);
-                    colors.push_back(color001);
+                    colors.push_back({color000, color000, color000, smoke::convert_alpha(ash.dens[i][j][k])});
+                    colors.push_back({color001, color001, color001, smoke::convert_alpha(ash.dens[i][j][k + 1])});
                     colors.push_back(color010);
                     colors.push_back(color011);
                     colors.push_back(color100);

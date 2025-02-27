@@ -89,7 +89,7 @@ public:
 
     static sf::Uint8 convert_color(const float &val) {
         if (val > 1)
-            return {MIN_GREY, MIN_GREY, MIN_GREY, ALPHA};
+            return MIN_GREY;
         if (val < EPS)
             return 0x87CEEB;
         return static_cast<sf::Uint8 > (MAX_GREY - (MAX_GREY - MIN_GREY) * val);
