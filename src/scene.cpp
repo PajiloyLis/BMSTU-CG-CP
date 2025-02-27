@@ -15,11 +15,13 @@ Scene::Scene(sf::RenderTarget *scene)
     zbuffer.resize((this->height) * (this->width), SCREEN_DEPTH);
 }
 
-void Scene::ClearScene() const {
+void Scene::ClearScene() {
     scene->clear();
+    zbuffer.resize(0);
+    zbuffer.resize((this->height) * (this->width), SCREEN_DEPTH);
 }
 
-void Scene::DrawFigures() const {
+void Scene::DrawFigures() {
     for (auto &figure: figures)
         for (auto &t: figure.triangles) {
             array<glm::vec3, 3> adapted;
@@ -27,7 +29,7 @@ void Scene::DrawFigures() const {
                 adapted[i] = adapt_coords(cameras[cur_camera], t.vertices[i], width, height);
             triangle adapted_triangle(adapt_coords(cameras[cur_camera], t.n, width, height),
                                       adapted);
-            adapted_triangle.draw(*scene, const_cast<vector<float> &>(zbuffer));
+            adapted_triangle.draw(*scene, zbuffer);
         }
 //    if (figures.size() > 0) {
 //        sf::CircleShape crater_pos(5);
@@ -64,7 +66,7 @@ void Scene::MoveCamera(const Camera_Movement &move, const float &delta_time) {
 }
 
 
-void Scene::DrawSmoke() const {
+void Scene::DrawSmoke()  {
     timespec start, end, start1, end1;
     clock_gettime(CLOCK_MONOTONIC, &start);
     for (int i = ash.height; i >= 1; --i) {
@@ -129,10 +131,6 @@ Scene::AddSmoke(int fig_width, int fig_height) {
                 {100, 35, 30}, {0, 0}, 0.1f, 100, 10000.f, 5.f);
 }
 
-void Scene::StartSimulation() {
-    scene->StartSmokeTimer();
-}
-
 void Scene::SmokeTimerElapsed() {
     timespec start, end;
     clock_gettime(CLOCK_MONOTONIC, &start);
@@ -147,7 +145,7 @@ void Scene::SmokeTimerElapsed() {
 }
 
 void Scene::Show() {
-    scene->repaint();
+    scene->;
 }
 
 void Scene::UpdateWind(const glm::vec2 &wind) {

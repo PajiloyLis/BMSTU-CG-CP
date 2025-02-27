@@ -9,6 +9,7 @@
 #include "smoke.h"
 #include "operations.h"
 #include "triangle.h"
+
 class Scene {
 public:
     Scene();
@@ -17,13 +18,13 @@ public:
 
     ~Scene() = default;
 
-    void DrawFigures() const;
+    void DrawFigures() ;
 
-    void DrawSmoke() const;
+    void DrawSmoke() ;
 
     void AddSmoke(int fig_width, int fig_height);
 
-    void ClearScene() const;
+    void ClearScene() ;
 
     void AddCamera(const camera &c);
 
