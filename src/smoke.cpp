@@ -117,7 +117,7 @@ smoke::project(vector<vector<vector<float>>> &u_, vector<vector<vector<float>>> 
     set_bnd(0, p);
 
     lin_solve(0, p, div, 1, 6);
-
+#pragma omp parallel for
     for (i = 1; i <= height; i++) {
         for (j = 1; j <= height; j++) {
             for (int k = 1; k <= width; ++k) {
@@ -166,6 +166,7 @@ smoke::vel_step(vector<vector<vector<float>>> &u_, vector<vector<vector<float>>>
 }
 
 void smoke::update() {
+#pragma omp parallel for
     for (int i = 0; i < height + 2; ++i) {
         for (int j = 0; j < height + 2; ++j) {
             for (int k = 0; k < width + 2; ++k) {
