@@ -112,7 +112,7 @@ void TaskHandler::RotateCurCamera(const float &dx, const float &dy) {
 }
 
 
-void TaskHandler::MoveCamera(const Camera_Movement &move, float &delta_time) {
+void TaskHandler::MoveCamera(const Camera_Movement &move, const float &delta_time) {
     scene.MoveCamera(move, delta_time);
 }
 

@@ -77,7 +77,9 @@ signed main(int argc, char *argv[]) {
 ////
 ////    vector<float> zbuffer(screen_size.x * screen_size.y, std::numeric_limits<float>::min());
 
-    handler.SetScene()
+//    handler.SetScene()
+
+    bool mouse_pressed;
 
     while (window.isOpen()) {
         sf::Event event;
@@ -87,15 +89,16 @@ signed main(int argc, char *argv[]) {
                 window.close();
             if (event.type == sf::Event::KeyPressed) {
                 if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
-                    handler.MoveCamera(LEFT, 0);
+                    handler.MoveCamera(LEFT, 0.f);
                 else if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
-                    handler.MoveCamera(RIGHT, 0);
-                else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
-                    mountain.rotate({0, -M_PI / 90, 0});
-                else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
-                    mountain.rotate({0, M_PI / 90, 0});
-                fill(zbuffer.begin(), zbuffer.end(), std::numeric_limits<float>::min());
-                image.create(screen_size.x, screen_size.y, Color(0x87CEEB));
+                    handler.MoveCamera(RIGHT, 0.f);
+                else if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
+                    handler.MoveCamera(FORWARD, 0.f);
+                else if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
+                    handler.MoveCamera(BACKWARD, 0.f);
+            }
+            if (event.type == sf::Event::MouseButtonPressed) {
+                if (sf::)
             }
         }
         window.clear(sf::Color{0x87CEEB});
