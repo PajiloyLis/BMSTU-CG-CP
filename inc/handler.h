@@ -13,6 +13,7 @@ public:
 
     ~TaskHandler() = default;
 
+public slots:
     void SetScene(const Scene &scene_to_set);
 
     void AddCamera(const camera &cam);

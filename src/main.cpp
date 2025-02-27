@@ -18,6 +18,12 @@ signed main(int argc, char *argv[])
     QApplication app(argc, argv);
     MainWindow window;
     window.show();
+    TaskHandler handler;
+    QObject::connect(window.findChild<QPushButton *>("load_model_button"), &QPushButton::clicked, window,
+                     &TaskHandler::LoadModel);
+    QObject::connect(this->findChild<QSlider *>("wind_speed_slider"), &QSlider::sliderReleased, TaskHandler,
+                     &TaskHandler::W);
+    QObject::connect(this->findChild<QSlider *>("wind_angle_slider"), &QSlider::sliderReleased, this->)
     return app.exec();
 }
 
