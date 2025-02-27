@@ -101,7 +101,7 @@ void
 smoke::project(vector<vector<vector<float>>> &u_, vector<vector<vector<float>>> &v_, vector<vector<vector<float>>> &w_,
                vector<vector<vector<float>>> &p, vector<vector<vector<float>>> &div) {
     int i, j;
-
+#pragma omp parallel for
     for (i = 1; i <= height; i++) {
         for (j = 1; j <= height; j++) {
             for (int k = 1; k <= width; ++k) {
