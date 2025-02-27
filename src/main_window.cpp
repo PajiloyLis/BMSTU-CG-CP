@@ -24,7 +24,7 @@ MainWindow::MainWindow() : QMainWindow() {
 //    DrawScene();
 }
 
-void MainWindow::SetBindings() {
+//void MainWindow::SetBindings() {
 
 //    QObject::connect(this->findChild<QAction *>("load_model_action"),
 //                     &QAction::triggered, this,
@@ -52,7 +52,7 @@ void MainWindow::SetBindings() {
 //    QObject::connect(this->findChild<QSFMLCanvas *>("drawer"), &QSFMLCanvas::MouseMove, this,
 //                     &MainWindow::RotateCurCamera);
 
-}
+//}
 
 void MainWindow::LoadModelActionTriggered() {
     on_load = true;
@@ -60,46 +60,46 @@ void MainWindow::LoadModelActionTriggered() {
     emit ModelPathFetched(file_path);
 }
 
-void MainWindow::DrawScene() {
-    handler.DrawScene();
-}
-
-void MainWindow::RotateCurCamera(float dx, float dy) {
-    handler.RotateCurCamera(dx, dy);
-    DrawScene();
-}
-
-void MainWindow::MoveCurCamera(const Camera_Movement &move, float delta_time) {
-    handler.MoveCamera(move, delta_time);
-    DrawScene();
-}
-
-void MainWindow::ScaleCurCamera(float k) {
-    handler.ScaleCamera(k);
-    DrawScene();
-}
-
-void MainWindow::StartSimulation() {
-    handler.StartSimulation();
-}
-
-void MainWindow::SmokeTimerElapsedHandler() {
-    handler.SmokeTimerElapsed();
-}
-
-void MainWindow::WindSettingsHandler() {
-    WindDialog dialog;
-    if (dialog.exec() == QDialog::Accepted) {
-        handler.UpdateWind(dialog.getWindSpeed(), dialog.getWindAngle());
-    }
-}
-
-void MainWindow::SpeedSettingsHandler() {
-    SpeedDialog dialog;
-    if (dialog.exec() == QDialog::Accepted) {
-        handler.UpdateSimSpeed(dialog.getSimulationSpeed());
-    }
-}
+//void MainWindow::DrawScene() {
+//    handler.DrawScene();
+//}
+//
+//void MainWindow::RotateCurCamera(float dx, float dy) {
+//    handler.RotateCurCamera(dx, dy);
+//    DrawScene();
+//}
+//
+//void MainWindow::MoveCurCamera(const Camera_Movement &move, float delta_time) {
+//    handler.MoveCamera(move, delta_time);
+//    DrawScene();
+//}
+//
+//void MainWindow::ScaleCurCamera(float k) {
+//    handler.ScaleCamera(k);
+//    DrawScene();
+//}
+//
+//void MainWindow::StartSimulation() {
+//    handler.StartSimulation();
+//}
+//
+//void MainWindow::SmokeTimerElapsedHandler() {
+//    handler.SmokeTimerElapsed();
+//}
+//
+//void MainWindow::WindSettingsHandler() {
+//    WindDialog dialog;
+//    if (dialog.exec() == QDialog::Accepted) {
+//        handler.UpdateWind(dialog.getWindSpeed(), dialog.getWindAngle());
+//    }
+//}
+//
+//void MainWindow::SpeedSettingsHandler() {
+//    SpeedDialog dialog;
+//    if (dialog.exec() == QDialog::Accepted) {
+//        handler.UpdateSimSpeed(dialog.getSimulationSpeed());
+//    }
+//}
 
 void MainWindow::WindChanged() {
     auto speed_slider = this->findChild<QSlider *>("wind_speed_slider");
@@ -116,5 +116,11 @@ void MainWindow::SimulationSpeedChanged() {
 }
 
 void MainWindow::StartButtonHandler() {
-    this->do
+    returnValue = 100;
+    this->close();
+}
+
+void MainWindow::closeEvent(QCloseEvent *event) {
+    qDebug() << "Window closed with return value:" << returnValue;
+    event->accept();
 }

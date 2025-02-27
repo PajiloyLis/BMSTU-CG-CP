@@ -29,10 +29,11 @@ signed main(int argc, char *argv[]) {
                      &MainWindow::SimulationSpeedChanged);
     QObject::connect(&window, &MainWindow::SimulationSpeedSettingsFetched, &handler, &TaskHandler::UpdateSimSpeed);
     window.show();
-    app.exec();
-}
+    int res;
+    if ((res = app.exec()) != 100)
+        return EXIT_FAILURE;
 
-//int main() {
+
 ////    Color snow(255, 0, 0), mount_1(10, 12, 23), mount_2(25, 26, 33);
 ////    textured_figure mountain(read_stl("./prepared_srtm/klyuchevskaya.STL"));
 //////    Texture texture;

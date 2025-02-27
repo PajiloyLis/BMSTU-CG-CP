@@ -83,9 +83,13 @@ public slots:
 
 private:
 
+    void closeEvent(QCloseEvent *event) override;
+
     void DrawScene();
 
     void SetBindings();
+
+    int returnValue;
 };
 
 #endif
