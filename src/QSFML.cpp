@@ -30,8 +30,8 @@ void QSFMLCanvas::onInit() {
 }
 
 void QSFMLCanvas::onUpdate() {
-    this->widgetDraw();
-    this->display();
+//    this->widgetDraw();
+//    this->display();
 }
 
 QPaintEngine *QSFMLCanvas::paintEngine() const {
@@ -49,7 +49,7 @@ void QSFMLCanvas::showEvent(QShowEvent *) {
 
 void QSFMLCanvas::paintEvent(QPaintEvent *) {
     cout << "KEK" << '\n';
-    this->widgetDraw();
+//    this->widgetDraw();
     this->display();
 }
 
@@ -91,9 +91,9 @@ QSFMLCanvas::DrawTriangle(const triangle &t, const camera &cam, const glm::vec3 
 //                                                   static_cast<Uint8>(color.g * intensity),
 //                                                   static_cast<Uint8>(color.b * intensity)));
         }
-        z_buffer(points_, image, {static_cast<Uint8>(color.r * intensity), static_cast<Uint8>(color.g * intensity),
-                                  static_cast<Uint8>(color.b * intensity)}, zbuffer);
-//        this->draw(&points_to_render[0], points_to_render.size(), sf::Triangles);
+//        z_buffer(points_, image, {static_cast<Uint8>(color.r * intensity), static_cast<Uint8>(color.g * intensity),
+//                                  static_cast<Uint8>(color.b * intensity)}, zbuffer);
+        this->draw(&points_to_render[0], points_to_render.size(), sf::Triangles);
     }
 }
 
@@ -127,9 +127,9 @@ void QSFMLCanvas::z_buffer(array<glm::vec3, 3> points_, Image &image, sf::Color 
                 int idx = static_cast<int>(round(P.x + P.y * image.getSize().x));
                 if (zbuffer[idx] > P.z) {
                     zbuffer[idx] = P.z;
-//                    this->draw(vector<sf::Vertex>(1, sf::Vertex(sf::Vector2f(P.x, this->size().height() - P.y),
-//                                                                color_)).data(), 1, sf::Points);
-                    image.setPixel(static_cast<Uint32>(round(P.x)), static_cast<Uint32>(round(P.y)), color_);
+                    this->draw(vector<sf::Vertex>(1, sf::Vertex(sf::Vector2f(static_cast<Uint32>(round(P.x)), this->size().height() - static_cast<Uint32>(round(P.y))),
+                                                                color_)).data(), 1, sf::Points);
+//                    image.setPixel(static_cast<Uint32>(round(P.x)), static_cast<Uint32>(round(P.y)), color_);
                 }
             }
         }
@@ -137,12 +137,12 @@ void QSFMLCanvas::z_buffer(array<glm::vec3, 3> points_, Image &image, sf::Color 
 }
 
 void QSFMLCanvas::widgetDraw() {
-    for (int i = 0; i < image.getSize().y; ++i) {
-        VertexArray line(sf::Points, image.getSize().x);
-        for (int j = 0; j < image.getSize().x; ++j)
-            line[j] = Vertex(Vector2f(j, image.getSize().y - i), image.getPixel(j, i));
-        this->draw(line);
-    }
+//    for (int i = 0; i < image.getSize().y; ++i) {
+//        VertexArray line(sf::Points, image.getSize().x);
+//        for (int j = 0; j < image.getSize().x; ++j)
+//            line[j] = Vertex(Vector2f(j, image.getSize().y - i), image.getPixel(j, i));
+//        this->draw(line);
+//    }
 }
 
 void QSFMLCanvas::Clear() {
