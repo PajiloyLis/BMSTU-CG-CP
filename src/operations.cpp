@@ -5,33 +5,27 @@ void z_buffer(array<glm::vec3, 3> points, sf::RenderTarget &image, sf::Color col
             t1(ceil(points[1].x), ceil(points[1].y), ceil(points[1].z)),
             t2(ceil(points[2].x), ceil(points[2].y), ceil(points[2].z));
     if (t0.y == t1.y && t1.z == t2.z) return;
-    if (points[0].н > points[1].z) std::swap(points[0], points[1]);
-    if (points[0].z > points[2].z) std::swap(points[0], points[2]);
-    if (points[1].z > points[2].z) std::swap(points[1], points[2]);
-    glm::vec<3, int, glm::defaultp> t0(ceil(points[0].x), ceil(points[0].y), ceil(points[0].z)),
-            t1(ceil(points[1].x), ceil(points[1].y), ceil(points[1].z)),
-            t2(ceil(points[2].x), ceil(points[2].y), ceil(points[2].z));
-    int total_height = (int) (points[2].z - points[0].z);
+    if (t0.y > t1.y) std::swap(t0, t1);
+    if (t0.y > t2.y) std::swap(t0, t2);
+    if (t1.y > t2.y) std::swap(t1, t2);
+    int total_height = t2.y - t0.y;
     for (int i = 0; i < total_height; i++) {
-        bool second_half = i > points[1].z - points[0].z || points[1].z == points[0].z;
-        int segment_height = (second_half ? static_cast<int>(points[2].z - points[1].z)
-                                          : static_cast<int>(points[1].z - points[0].z));
+        bool second_half = i > t1.y - t0.y || t1.y == t0.y;
+        int segment_height = second_half ? t2.y - t1.y : t1.y - t0.y;
         float alpha = (float) i / total_height;
-        float beta = (float) (i - (second_half ? points[1].z - points[0].z : 0)) /
+        float beta = (float) (i - (second_half ? t1.y - t0.y : 0)) /
                      segment_height; // be careful: with above conditions no division by zero here
-        glm::vec3 A = points[0] + glm::vec3(points[2] - points[0]) * alpha;
-        glm::vec3 B = second_half ? points[1] + glm::vec3(points[2] - points[1]) * beta :
-                      points[0] + glm::vec3(points[1] - points[0]) * beta;
-        if (A.y > B.y) std::swap(A, B);
-        for (int j = static_cast<int>(A.y); j <= static_cast<int>(B.y); j++) {
-            float phi = B.y == A.y ? 1. : (float) (j - A.y) / (float) (B.y - A.y);
-            glm::vec3 P = glm::vec3(A) + glm::vec3(B - A) * phi;
-            if (P.z >= 0 && P.y >= 0 && P.z < image.getSize().y && P.y < image.getSize().x) {
-                int idx = static_cast<int>(round(P.y + P.z * image.getSize().x));
-                if (z_buffer[idx] < P.x) {
-                    z_buffer[idx] = P.x;
-                    image.setPixel(static_cast<Uint32>(round(P.y)), static_cast<Uint32>(round(P.z)), color);
-                }
+        glm::vec3 A = glm::vec3(t0) + glm::vec3(t2 - t0) * alpha;
+        glm::vec3 B = second_half ? glm::vec3(t1) + glm::vec3(t2 - t1) * beta : glm::vec3(t0) +
+                                                                                glm::vec3(t1 - t0) * beta;
+        if (A.x > B.x) std::swap(A, B);
+        for (int j = A.x; j <= B.x; j++) {
+            float phi = B.x == A.x ? 1. : (float) (j - A.x) / (float) (B.x - A.x);
+            Vec3i P = Vec3f(A) + Vec3f(B - A) * phi;
+            int idx = P.x + P.y * width;
+            if (zbuffer[idx] < P.z) {
+                zbuffer[idx] = P.z;
+                image.set(P.x, P.y, color);
             }
         }
     }
