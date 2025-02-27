@@ -42,6 +42,9 @@ add_executable(cp_cg
         src/conversions.cpp
         src/smoke.cpp
         inc/smoke.h
+        moc_handler.cpp
+        moc_main_window.cpp
+
 #        moc_QSFML.cpp
         #        inc/qdialogs.h
 )
