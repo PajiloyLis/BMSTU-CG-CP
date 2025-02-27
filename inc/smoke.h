@@ -29,7 +29,7 @@ using namespace std;
 #define DIFF_COEF 0
 #define VISC 0
 
-class smoke : public sf::Drawable {
+class smoke {
 public:
 
     int width, height;
@@ -44,11 +44,12 @@ public:
     int total_frames, frames_counter;
     float intensity, v_initial;
 
-    smoke()=default;
+    smoke() = default;
 
     smoke(int grid_width, int grid_height, const glm::vec3 &crater, const glm::vec2 &wind_, float dt_, int frames_count,
-          float intensity_, float vertical_speed) : sf::Drawable(),
-            width(grid_width / VOX_SIZE), height(grid_height / VOX_SIZE), source(crater), wind(wind_), dt(dt_),
+          float intensity_, float vertical_speed) :
+            width(grid_width / VOX_SIZE), height(grid_height / VOX_SIZE),
+            source({crater.x / VOX_SIZE, crater.y / VOX_SIZE, crater.z / VOX_SIZE}), wind(wind_), dt(dt_),
             u(height + 2, vector<vector<float>>(height + 2, vector<float>(width + 2, 0.f))),
             v(height + 2, vector<vector<float>>(height + 2, vector<float>(width + 2, 0.f))),
             w(height + 2, vector<vector<float>>(height + 2, vector<float>(width + 2, 0.f))),

@@ -57,7 +57,7 @@ void Scene::MoveCamera(const Camera_Movement &move, const float &delta_time) {
 }
 
 
-void Scene::DrawSmoke()  {
+void Scene::DrawSmoke() {
     timespec start, end, start1, end1;
     clock_gettime(CLOCK_MONOTONIC, &start);
     for (int i = ash.height; i >= 1; --i) {
@@ -84,34 +84,79 @@ void Scene::DrawSmoke()  {
                     colors.push_back({color110, color110, color110, smoke::convert_alpha(ash.dens[i + 1][j + 1][k])});
                     colors.push_back(
                             {color111, color111, color111, smoke::convert_alpha(ash.dens[i + 1][j + 1][k + 1])});
-                    scene->DrawSmoke({(j - 1) * VOX_SIZE, (k - 1) * VOX_SIZE, (i - 1) * VOX_SIZE}, colors, VOX_SIZE,
-                                     cameras[cur_camera]);
+
+                    glm::vec3 vec000 = {(j - 1) * VOX_SIZE, (k - 1) * VOX_SIZE, (i - 1) * VOX_SIZE},
+                            vec001 = vec000 + glm::vec3{0, 0, VOX_SIZE},
+                            vec010 = vec000 + glm::vec3{0, VOX_SIZE, 0},
+                            vec011 = vec000 + glm::vec3{0, VOX_SIZE, VOX_SIZE},
+                            vec100 = vec000 + glm::vec3{VOX_SIZE, 0, 0},
+                            vec101 = vec000 + glm::vec3{VOX_SIZE, 0, VOX_SIZE},
+                            vec110 = vec000 + glm::vec3{VOX_SIZE, VOX_SIZE, 0},
+                            vec111 = vec000 + glm::vec3{VOX_SIZE, VOX_SIZE, VOX_SIZE};
+
+
+                    glm::vec3 a_vec000 = adapt_coords(cameras[cur_camera], vec000, this->width, this->height),
+                            a_vec001 = adapt_coords(cameras[cur_camera], vec001, this->width, this->height),
+                            a_vec010 = adapt_coords(cameras[cur_camera], vec010, this->width, this->height),
+                            a_vec011 = adapt_coords(cameras[cur_camera], vec011, this->width, this->height),
+                            a_vec100 = adapt_coords(cameras[cur_camera], vec100, this->width, this->height),
+                            a_vec101 = adapt_coords(cameras[cur_camera], vec101, this->width, this->height),
+                            a_vec110 = adapt_coords(cameras[cur_camera], vec110, this->width, this->height),
+                            a_vec111 = adapt_coords(cameras[cur_camera], vec111, this->width, this->height);
+
+                    sf::VertexArray quad(sf::Quads, 4);
+
+                    //bottom
+                    quad[0] = sf::Vertex(sf::Vector2f(a_vec000.x, a_vec000.y), colors[0]);
+                    quad[1] = sf::Vertex(sf::Vector2f(a_vec010.x, a_vec010.y), colors[2]);
+                    quad[2] = sf::Vertex(sf::Vector2f(a_vec110.x, a_vec110.y), colors[6]);
+                    quad[3] = sf::Vertex(sf::Vector2f(a_vec100.x, a_vec100.y), colors[4]);
+
+                    scene->draw(quad);
+
+                    // up
+                    quad[0] = sf::Vertex(sf::Vector2f(a_vec001.x, a_vec001.y), colors[1]);
+                    quad[1] = sf::Vertex(sf::Vector2f(a_vec011.x, a_vec011.y), colors[3]);
+                    quad[2] = sf::Vertex(sf::Vector2f(a_vec111.x, a_vec111.y), colors[7]);
+                    quad[3] = sf::Vertex(sf::Vector2f(a_vec101.x, a_vec101.y), colors[5]);
+
+                    scene->draw(quad);
+
+                    // front
+                    quad[0] = sf::Vertex(sf::Vector2f(a_vec100.x, a_vec100.y), colors[4]);
+                    quad[1] = sf::Vertex(sf::Vector2f(a_vec110.x, a_vec110.y), colors[6]);
+                    quad[2] = sf::Vertex(sf::Vector2f(a_vec111.x, a_vec111.y), colors[7]);
+                    quad[3] = sf::Vertex(sf::Vector2f(a_vec101.x, a_vec101.y), colors[5]);
+
+                    scene->draw(quad);
+
+                    // backward
+                    quad[0] = sf::Vertex(sf::Vector2f(a_vec000.x, a_vec000.y), colors[0]);
+                    quad[1] = sf::Vertex(sf::Vector2f(a_vec010.x, a_vec010.y), colors[2]);
+                    quad[2] = sf::Vertex(sf::Vector2f(a_vec011.x, a_vec011.y), colors[3]);
+                    quad[3] = sf::Vertex(sf::Vector2f(a_vec001.x, a_vec001.y), colors[1]);
+
+                    scene->draw(quad);
+
+                    // left
+                    quad[0] = sf::Vertex(sf::Vector2f(a_vec000.x, a_vec000.y), colors[0]);
+                    quad[1] = sf::Vertex(sf::Vector2f(a_vec100.x, a_vec100.y), colors[4]);
+                    quad[2] = sf::Vertex(sf::Vector2f(a_vec101.x, a_vec101.y), colors[5]);
+                    quad[3] = sf::Vertex(sf::Vector2f(a_vec001.x, a_vec001.y), colors[1]);
+
+                    scene->draw(quad);
+
+                    // right
+                    quad[0] = sf::Vertex(sf::Vector2f(a_vec010.x, a_vec010.y), colors[2]);
+                    quad[1] = sf::Vertex(sf::Vector2f(a_vec110.x, a_vec110.y), colors[6]);
+                    quad[2] = sf::Vertex(sf::Vector2f(a_vec111.x, a_vec111.y), colors[7]);
+                    quad[3] = sf::Vertex(sf::Vector2f(a_vec011.x, a_vec011.y), colors[3]);
+
+                    scene->draw(quad);
                 }
             }
         }
     }
-//for(int i = 0 ; i < ash.width; ++i)
-//{
-//    vector<sf::Color> colors;
-//    sf::Color color000 = sf::Color::Black,
-//            color001 = sf::Color::Black,
-//            color010 = sf::Color::Black,
-//            color011 = sf::Color::Black,
-//            color100 = sf::Color::Black,
-//            color101 = sf::Color::Black,
-//            color110 = sf::Color::Black,
-//            color111 = sf::Color::Black;
-//    colors.push_back(color000);
-//    colors.push_back(color001);
-//    colors.push_back(color010);
-//    colors.push_back(color011);
-//    colors.push_back(color100);
-//    colors.push_back(color101);
-//    colors.push_back(color110);
-//    colors.push_back(color111);
-//    scene->DrawSmoke({0 * VOX_SIZE, (i - 1) * VOX_SIZE, ash.height}, colors, VOX_SIZE,
-//                                     cameras[cur_camera]);
-//}
     clock_gettime(CLOCK_MONOTONIC, &end);
     cout << end.tv_sec - start.tv_sec + (end.tv_nsec - start.tv_nsec) * 1e-9 << '\n';
 }
@@ -119,24 +164,7 @@ void Scene::DrawSmoke()  {
 void
 Scene::AddSmoke(int fig_width, int fig_height) {
     ash = smoke(fig_width / VOX_SIZE * VOX_SIZE, fig_height / VOX_SIZE * VOX_SIZE,
-                {100, 35, 30}, {0, 0}, 0.1f, 100, 10000.f, 5.f);
-}
-
-void Scene::SmokeTimerElapsed() {
-    timespec start, end;
-    clock_gettime(CLOCK_MONOTONIC, &start);
-    ash.update();
-    clock_gettime(CLOCK_MONOTONIC, &end);
-    cout << "UPDATE TIME " << end.tv_sec - start.tv_sec + (end.tv_nsec - start.tv_nsec) / 1e9 << '\n';
-    ClearScene();
-    DrawFigures();
-    DrawSmoke();
-    Show();
-    scene->Redraw();
-}
-
-void Scene::Show() {
-    scene->;
+                {50, 43.5, 40}, {0, 0}, 0.1f, 100, 10000.f, 5.f);
 }
 
 void Scene::UpdateWind(const glm::vec2 &wind) {

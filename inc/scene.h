@@ -18,13 +18,13 @@ public:
 
     ~Scene() = default;
 
-    void DrawFigures() ;
+    void DrawFigures();
 
     void DrawSmoke() ;
 
     void AddSmoke(int fig_width, int fig_height);
 
-    void ClearScene() ;
+    void ClearScene();
 
     void AddCamera(const camera &c);
 
