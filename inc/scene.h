@@ -7,6 +7,7 @@
 #include "camera.h"
 #include <GL/gl.h>
 #include "smoke.h"
+#include "operations.h"
 class Scene {
 public:
     Scene();

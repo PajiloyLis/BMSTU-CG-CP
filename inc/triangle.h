@@ -12,6 +12,7 @@
 #include "conversions.h"
 #include <SFML/Graphics/Drawable.hpp>
 #include <SFML/Graphics.hpp>
+#include <operations.h>
 
 using namespace std;
 

@@ -20,9 +20,14 @@ void Scene::ClearScene() const {
 void Scene::DrawFigures() const {
     for (auto &figure: figures)
         for (auto &triangle: figure.triangles)
-            scene->DrawTriangle(triangle, cameras[cur_camera],
-                                glm::vec3((figure.max_x - figure.min_x) / 2, (figure.max_y - figure.min_y) / 2,
-                                          (figure.max_z - figure.min_z) / 2), {255, 255, 250});
+        {
+            vector<glm::vec3> adapted(triangle.vertices.size());
+            for(int i = 0; i < triangle.vertices.size(); ++i)
+            {
+                adapted[i] = adapt_coords(cameras[cur_camera], triangle.vertices[i]);
+            }
+            triangle adapted()
+        }
 //    if (figures.size() > 0) {
 //        sf::CircleShape crater_pos(5);
 //        crater_pos.setFillColor(sf::Color::Red);
