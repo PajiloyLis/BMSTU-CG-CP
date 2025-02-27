@@ -32,8 +32,8 @@ signed main(int argc, char *argv[]) {
         QObject::connect(window.findChild<QPushButton *>("simulation_start_button"), &QPushButton::clicked, &window,
                          &MainWindow::StartButtonHandler);
         window.show();
-        int res = app.exec();
-        if () {
+        int res;
+        if ((res = app.exec()) != 100) {
             cout<<res<<'\n';
             return res;
         }

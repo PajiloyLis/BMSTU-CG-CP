@@ -39,9 +39,9 @@ add_executable(cp_cg
         src/conversions.cpp
         src/smoke.cpp
         inc/smoke.h
-        moc_main_window.cpp
-        moc_handler.cpp
-        moc_predefs.h
+#        moc_main_window.cpp
+#        moc_handler.cpp
+#        moc_predefs.h
 )
 
 target_link_libraries(cp_cg PUBLIC
