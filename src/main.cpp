@@ -80,7 +80,7 @@ signed main(int argc, char *argv[]) {
 //    handler.SetScene()
 
     bool mouse_pressed;
-
+    sf::Vector2
     while (window.isOpen()) {
         sf::Event event;
 
@@ -98,7 +98,9 @@ signed main(int argc, char *argv[]) {
                     handler.MoveCamera(BACKWARD, 0.f);
             }
             if (event.type == sf::Event::MouseButtonPressed) {
-                if (sf::)
+                if (event.mouseButton.button == sf::Mouse::Left) {
+                        mouse_pressed=true;
+                }
             }
         }
         window.clear(sf::Color{0x87CEEB});
