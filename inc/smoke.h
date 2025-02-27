@@ -9,6 +9,7 @@
 #include <vector>
 #include <iostream>
 #include <SFML/Graphics.hpp>
+#include <SFML/Graphics/Drawable.hpp>
 #include <random>
 #include <set>
 #include <deque>
@@ -28,7 +29,7 @@ using namespace std;
 #define DIFF_COEF 0
 #define VISC 0
 
-class smoke {
+class smoke : public sf::Drawable {
 public:
 
     int width, height;
@@ -46,7 +47,7 @@ public:
     smoke()=default;
 
     smoke(int grid_width, int grid_height, const glm::vec3 &crater, const glm::vec2 &wind_, float dt_, int frames_count,
-          float intensity_, float vertical_speed) :
+          float intensity_, float vertical_speed) : sf::Drawable(),
             width(grid_width / VOX_SIZE), height(grid_height / VOX_SIZE), source(crater), wind(wind_), dt(dt_),
             u(height + 2, vector<vector<float>>(height + 2, vector<float>(width + 2, 0.f))),
             v(height + 2, vector<vector<float>>(height + 2, vector<float>(width + 2, 0.f))),
