@@ -62,10 +62,10 @@ void Scene::MoveCamera(const Camera_Movement &move, float &delta_time) {
 void Scene::DrawSmoke() const {
     timespec start, end, start1, end1;
     clock_gettime(CLOCK_MONOTONIC, &start);
+    int j;
     for (int i = ash.height; i >= 1; --i) {
-        for (int j = ash.height; j >= 1; --j) {
             for (int k = ash.width; k >= 1; --k) {
-                if (ash.dens[i][j][k] > EPS) {
+                for (j = ash.height; j >= 1 && ash.dens[i][j][k] < EPS; --j) {}
                     vector<sf::Color> colors;
                     sf::Color color000 = smoke::convert_color(ash.dens[i][j][k]),
                             color001 = smoke::convert_color(ash.dens[i][j][k + 1]),
@@ -85,10 +85,10 @@ void Scene::DrawSmoke() const {
                     colors.push_back(color111);
                     scene->DrawSmoke({(j - 1) * VOX_SIZE, (k - 1) * VOX_SIZE, (i - 1) * VOX_SIZE}, colors, VOX_SIZE,
                                      cameras[cur_camera]);
-                }
+                
             }
         }
-    }
+
 //for(int i = 0 ; i < ash.width; ++i)
 //{
 //    vector<sf::Color> colors;
