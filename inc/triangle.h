@@ -31,8 +31,6 @@ public:
 
     [[nodiscard]] const array<glm::vec3, 3> &getVertices() const;
 
-    [[nodiscard]] const glm::vec3 &getN() const;
-
     bool operator==(const triangle &t) const {
         return vertices[0] == t.vertices[0] && vertices[1] == t.vertices[1] && vertices[2] == t.vertices[2];
     }
@@ -40,23 +38,6 @@ public:
     bool operator!=(const triangle &t) const {
         return !(*this == t);
     }
-
-//    bool operator<(const triangle &t) const {
-//        return min(vertices[0], min(vertices[1], vertices[2])) <
-//               min(t.vertices[0], min(t.vertices[1], min(t.vertices[2], t.vertices[0])));
-//    }
-//
-//    bool operator<=(const triangle &t) const {
-//        return *this < t || *this == t;
-//    }
-//
-//    bool operator>(const triangle &t) const {
-//        return !(*this <= t);
-//    }
-//
-//    bool operator>=(const triangle &t) const {
-//        return !(*this < t);
-//    }
 
     triangle &operator=(const triangle &t);
 
