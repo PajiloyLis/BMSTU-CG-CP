@@ -5,14 +5,13 @@ Scene::Scene() : figures() {
     width = height = 0;
 }
 
-Scene::Scene(QSFMLCanvas *&scene, const double &width, const double &height)
+Scene::Scene(const double &width, const double &height)
         : figures(), cameras(), cur_camera(0) {
     this->scene = scene;
     this->width = width;
     this->height = height;
     last_frame_time = cur_frame_time = 0;
 }
-
 
 void Scene::ClearScene() const {
     scene->Clear();

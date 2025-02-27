@@ -11,13 +11,20 @@
 using namespace std;
 using namespace sf;
 
+enum Camera_Movement {
+    FORWARD,
+    BACKWARD,
+    LEFT,
+    RIGHT
+};
+
 #include "main_window.h"
 
 signed main(int argc, char *argv[]) {
+    TaskHandler handler;
     {
         QApplication app(argc, argv);
         MainWindow window;
-        TaskHandler handler;
         QObject::connect(window.findChild<QPushButton *>("load_model_button"), &QPushButton::clicked, &window,
                          &MainWindow::LoadModelActionTriggered);
         QObject::connect(&window, &MainWindow::ModelPathFetched, &handler, &TaskHandler::LoadModel);
@@ -69,16 +76,18 @@ signed main(int argc, char *argv[]) {
 ////    image.create(screen_size.x, screen_size.y, Color(0x87CEEB));
 ////
 ////    vector<float> zbuffer(screen_size.x * screen_size.y, std::numeric_limits<float>::min());
-////
+
+    handler.SetScene()
+
     while (window.isOpen()) {
         sf::Event event;
 
-        while (sf_window.pollEvent(event)) {
+        while (window.pollEvent(event)) {
             if (event.type == sf::Event::Closed)
                 window.close();
             if (event.type == sf::Event::KeyPressed) {
-                if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
-                    mountain.rotate({0, 0, -M_PI / 90});
+                if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
+
                 else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
                     mountain.rotate({0, 0, M_PI / 90});
                 else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))

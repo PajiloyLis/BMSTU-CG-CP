@@ -18,6 +18,15 @@ public:
     ~TaskHandler() = default;
 
 public slots:
+
+    void UpdateWind(int speed, int angle);
+
+    void UpdateSimSpeed(int x);
+
+    void LoadModel(const string &filepath);
+
+public:
+
     void SetScene(const Scene &scene_to_set);
 
     void AddCamera(const camera &cam);
@@ -27,8 +36,6 @@ public slots:
     void ClearFigure();
 
     void ClearScene() const;
-
-    void LoadModel(const string &filepath);
 
     void RotateCurCamera(const float &dx, const float &dy);
 
@@ -40,9 +47,6 @@ public slots:
 
     void SmokeTimerElapsed();
 
-    void UpdateWind(int speed, int angle);
-
-    void UpdateSimSpeed(int x);
 
 private:
 
