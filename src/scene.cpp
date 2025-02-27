@@ -27,7 +27,7 @@ void Scene::DrawFigures() const {
                 adapted[i] = adapt_coords(cameras[cur_camera], t.vertices[i], width, height);
             triangle adapted_triangle(adapt_coords(cameras[cur_camera], t.n, width, height),
                                       adapted);
-            scene->draw(adapted_triangle);
+            adapted_triangle.draw(scene, zbuffer);
         }
 //    if (figures.size() > 0) {
 //        sf::CircleShape crater_pos(5);
