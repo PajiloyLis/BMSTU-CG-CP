@@ -1,6 +1,6 @@
 #include "handler.h"
 
-TaskHandler::TaskHandler() : scene() {}
+TaskHandler::TaskHandler() : QObject(), scene() {}
 
 void TaskHandler::SetScene(const Scene &scene_to_set) {
     scene = scene_to_set;
