@@ -29,11 +29,12 @@ signed main(int argc, char *argv[]) {
         QObject::connect(window.findChild<QSlider *>("sim_speed_slider"), &QSlider::sliderReleased, &window,
                          &MainWindow::SimulationSpeedChanged);
         QObject::connect(&window, &MainWindow::SimulationSpeedSettingsFetched, &handler, &TaskHandler::UpdateSimSpeed);
-        QObject::connect(window.findChild<QPushButton *>(""))
+        QObject::connect(window.findChild<QPushButton *>("simulation_start_button"), &QPushButton::clicked, &window,
+                         &MainWindow::StartButtonHandler);
         window.show();
         int res;
         if ((res = app.exec()) != 100)
-            return EXIT_FAILURE;
+            return res;
     }
 
 ////    Color snow(255, 0, 0), mount_1(10, 12, 23), mount_2(25, 26, 33);
