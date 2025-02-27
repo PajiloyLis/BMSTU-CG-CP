@@ -14,6 +14,10 @@ find_package(Qt6 COMPONENTS
         Widgets
         REQUIRED)
 
+find_package(OpenMP REQUIRED)
+
+
+
 include_directories(./inc .)
 
 add_executable(cp_cg
@@ -45,6 +49,6 @@ add_executable(cp_cg
 target_link_libraries(cp_cg PUBLIC
         Qt::Core
         Qt::Gui
-        Qt::Widgets sfml-graphics sfml-window sfml-system pthread)
+        Qt::Widgets sfml-graphics sfml-window sfml-system pthread  OpenMP::OpenMP_CXX)
 
 #target_link_options(cp_cg PUBLIC fopenmp)
