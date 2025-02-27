@@ -121,7 +121,7 @@ void Scene::DrawSmoke() const {
 void
 Scene::AddSmoke(int fig_width, int fig_height) {
     ash = smoke(fig_width / VOX_SIZE * VOX_SIZE, fig_height / VOX_SIZE * VOX_SIZE,
-                {46, 33, 0}, {0, 0}, 0.1f, 100, 10000.f, 5.f);
+                {46, 35, 25}, {0, 0}, 0.1f, 100, 10000.f, 5.f);
 }
 
 void Scene::StartSimulation() {
@@ -135,7 +135,7 @@ void Scene::SmokeTimerElapsed() {
     clock_gettime(CLOCK_MONOTONIC, &end);
     cout << "UPDATE TIME " << end.tv_sec - start.tv_sec + (end.tv_nsec - start.tv_nsec) / 1e9 << '\n';
     ClearScene();
-//    DrawFigures();
+    DrawFigures();
     DrawSmoke();
     Show();
     scene->Redraw();
