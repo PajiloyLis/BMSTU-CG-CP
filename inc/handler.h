@@ -7,7 +7,7 @@
 #include "camera.h"
 #include <ctime>
 
-class TaskHandler: public QObject {
+class TaskHandler {
 
 Q_OBJECT
 

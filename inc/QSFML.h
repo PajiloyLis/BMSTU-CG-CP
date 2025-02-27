@@ -25,13 +25,10 @@
 using namespace std;
 using namespace sf;
 
-enum TIMERS {
-    KEYBOARD,
-    SMOKE
-};
-
 class QSFMLCanvas : public QWidget, public sf::RenderWindow {
+
 Q_OBJECT
+
 public:
     QSFMLCanvas(QWidget *parent, const QSize &Size);
 
