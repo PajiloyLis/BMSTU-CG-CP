@@ -6,7 +6,7 @@
 
 
 void smoke::add_source(vector<vector<vector<float>>> &x, vector<vector<vector<float>>> &s, float d) {
-#pragma omp parallel
+#pragma omp parallel for
     for (int i = 0; i < x.size(); ++i) {
         for (int j = 0; j < x[i].size(); ++j) {
             for (int k = 0; k < x[i][j].size(); ++k) {
@@ -18,7 +18,7 @@ void smoke::add_source(vector<vector<vector<float>>> &x, vector<vector<vector<fl
 
 void smoke::set_bnd(int b, vector<vector<vector<float>>> &x) {
     int i;
-#pragma omp parallel
+#pragma omp parallel for
     for (i = 1; i <= height; i++) {
         for (int j = 0; j <= width; ++j) {
             x[height + 1][i][j] = b == 3 ? -x[height][i][j] : x[height][i][j];
@@ -56,9 +56,9 @@ void smoke::advect(int b, vector<vector<vector<float>>> &d, vector<vector<vector
     float x, y, z, s0, t0, s1, t1, dt0, u1, u0;
 
     dt0 = dt_ * max(height, width);
+#pragma omp parallel for
     for (i = 1; i <= height; i++) {
         for (j = 1; j <= height; j++) {
-#pragma omp parallel
             for (int k = 1; k <= width; ++k) {
                 x = i - dt0 * w_[i][j][k];
                 y = j - dt0 * u_[i][j][k];
