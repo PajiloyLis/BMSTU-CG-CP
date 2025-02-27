@@ -31,6 +31,8 @@ public:
 
 private slots:
 
+    void WindChanged();
+
     void LoadModelActionTriggered();
 
     void ClearButtonClicked();
