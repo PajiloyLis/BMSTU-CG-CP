@@ -21,7 +21,7 @@ void TaskHandler::LoadModel(const string &filepath) {
     // Add mount
     figure f = scene.AddFigure(figure(read_stl(filepath)));
     // Add smoke
-    scene.AddSmoke(static_cast<int>(3*ceil(f.max_z-f.min_z)), static_cast<int>(ceil(max(f.max_y-f.min_y, f.max_x-f.min_x))));
+    scene.AddSmoke(static_cast<int>(4*ceil(f.max_z-f.min_z)), static_cast<int>(ceil(max(f.max_y-f.min_y, f.max_x-f.min_x))));
 }
 
 vector<triangle> TaskHandler::read_stl(const string &filename) {

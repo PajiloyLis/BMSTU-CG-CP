@@ -22,7 +22,7 @@ using namespace std;
 
 #define VOX_SIZE 1
 
-#define MIN_GREY 60
+#define MIN_GREY 100
 #define MAX_GREY 192
 
 #define DIFF_COEF 0
