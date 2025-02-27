@@ -78,7 +78,6 @@ public slots:
     void SpeedSettingsHandler();
 
 private:
-    static bool NumericFieldCheck(QLineEdit *&field);
 
     void DrawScene();
 
