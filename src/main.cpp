@@ -33,10 +33,10 @@ signed main(int argc, char *argv[]) {
                          &MainWindow::StartButtonHandler);
         window.show();
         int res;
-        app.exec();
-        if 
-        if ((res = app.exec()) != 100)
+        if ((res = app.exec()) != 100) {
+            cout<<res<<'\n';
             return res;
+        }
     }
 
 ////    Color snow(255, 0, 0), mount_1(10, 12, 23), mount_2(25, 26, 33);
@@ -76,7 +76,7 @@ signed main(int argc, char *argv[]) {
 
 //    handler.SetScene()
 
-    bool mouse_pressed;
+    bool mouse_pressed = false;
     sf::Vector2f mouse_last_pos(0, 0);
     while (window.isOpen()) {
         sf::Event event;
