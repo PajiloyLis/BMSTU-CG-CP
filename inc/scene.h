@@ -13,7 +13,7 @@ class Scene {
 public:
     Scene();
 
-    explicit Scene(sf::RenderTarget *scene, const double &width, const double &height);
+    explicit Scene(sf::RenderTarget *scene);
 
     ~Scene() = default;
 
@@ -49,12 +49,12 @@ public:
 
 private:
     sf::RenderTarget *scene;
-    double width, height;
+    float width, height;
     vector<figure> figures;
     smoke ash;
     vector<camera> cameras;
     int cur_camera;
-    float cur_frame_time, last_frame_time;
+    vector<vector<float>> zbuffer;
 };
 
 #endif

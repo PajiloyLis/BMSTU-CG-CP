@@ -20,7 +20,7 @@ class triangle : public sf::Drawable {
 public:
     triangle(const glm::vec3 &normal, const array<glm::vec3, 3> &points);
 
-    virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
+    void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 
     triangle() = default;
 

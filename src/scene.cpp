@@ -1,15 +1,18 @@
 #include "scene.h"
 
+#define SCREEN_DEPTH 256*256*256
+
 Scene::Scene() : figures() {
     scene = nullptr;
     width = height = 0;
 }
 
-Scene::Scene(sf::RenderTarget *scene, const double &width, const double &height)
+Scene::Scene(sf::RenderTarget *scene)
         : figures(), cameras(), cur_camera(0) {
     this->scene = scene;
     this->width = scene->getSize().x;
     this->height = scene->getSize().y;
+    zbuffer.resize(this->height, vector<float>(this->width, SCREEN_DEPTH));
 }
 
 void Scene::ClearScene() const {
@@ -21,8 +24,9 @@ void Scene::DrawFigures() const {
         for (auto &t: figure.triangles) {
             array<glm::vec3, 3> adapted;
             for (int i = 0; i < t.vertices.size(); ++i)
-                adapted[i] = adapt_coords(cameras[cur_camera], t.vertices[i], <#initializer#>, <#initializer#>);
-            triangle adapted_triangle(adapt_coords(cameras[cur_camera], t.n, <#initializer#>, <#initializer#>), adapted);
+                adapted[i] = adapt_coords(cameras[cur_camera], t.vertices[i], width, height);
+            triangle adapted_triangle(adapt_coords(cameras[cur_camera], t.n, width, height),
+                                      adapted);
             scene->draw(adapted_triangle);
         }
 //    if (figures.size() > 0) {
