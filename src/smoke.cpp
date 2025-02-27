@@ -58,6 +58,7 @@ void smoke::advect(int b, vector<vector<vector<float>>> &d, vector<vector<vector
     for (i = 1; i <= height; i++) {
         for (j = 1; j <= height; j++) {
             for (int k = 1; k <= width; ++k) {
+#pragma 
                 x = i - dt0 * w_[i][j][k];
                 y = j - dt0 * u_[i][j][k];
                 z = k - dt0 * v_[i][j][k];
