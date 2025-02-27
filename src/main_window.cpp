@@ -114,3 +114,7 @@ void MainWindow::SimulationSpeedChanged() {
     int x = sim_speed_slider->value();
     emit SimulationSpeedSettingsFetched(x);
 }
+
+void MainWindow::StartButtonHandler() {
+    this->do
+}
