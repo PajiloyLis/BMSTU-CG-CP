@@ -16,6 +16,6 @@ using namespace sf;
 
 void z_buffer(array<glm::vec3, 3> points, Image &image, sf::Color color, vector<float> &z_buffer);
 
-glm::vec3 adapt_coords(const camera &c, const glm::vec3 &point);
+glm::vec3 adapt_coords(const camera &c, const glm::vec3 &point, const float &scene_width, const float &scene_height);
 
 #endif //CP_CG_OPERATIONS_Hs

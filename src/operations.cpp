@@ -37,7 +37,7 @@ void z_buffer(array<glm::vec3, 3> points, Image &image, sf::Color color, vector<
     }
 }
 
-glm::vec3 adapt_coords(const camera &c, const glm::vec3 &point) {
+glm::vec3 adapt_coords(const camera &c, const glm::vec3 &point, const float &scene_width, const float &scene_height) {
     glm::mat4 view = c.camLookAt(), perspective = c.perspective();
     glm::mat4 trans = perspective * view;
     // Преобразуем вектор из мировой системы в экранную
@@ -47,9 +47,8 @@ glm::vec3 adapt_coords(const camera &c, const glm::vec3 &point) {
     glm::vec3 ndcPosition = glm::vec3(clipSpacePosition) / clipSpacePosition.w;
 
     // Теперь можете использовать ndcPosition для дальнейшего преобразования в экранные координаты
-    float screenX = (ndcPosition.x * 0.5f + 0.5f) * this->size().width(); // ширина окна
-    float screenY = ((0.5 - ndcPosition.y) * 0.5f) * this->size().height(); // высота окна
-    float screenZ = (ndcPosition.z * 0.5f + 0.5f) * SCREEN_DEPTH;
+    float screenX = (ndcPosition.x * 0.5f + 0.5f) * scene_width; // ширина окна
+    float screenY = ((0.5 - ndcPosition.y) * 0.5f) * scene_height; // высота окна
 
     return {screenX, screenY, clipSpacePosition.z};
 }

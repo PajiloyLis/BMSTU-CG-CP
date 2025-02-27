@@ -8,9 +8,8 @@ Scene::Scene() : figures() {
 Scene::Scene(sf::RenderTarget *scene, const double &width, const double &height)
         : figures(), cameras(), cur_camera(0) {
     this->scene = scene;
-    this->width = width;
-    this->height = height;
-    last_frame_time = cur_frame_time = 0;
+    this->width = scene->getSize().x;
+    this->height = scene->getSize().y;
 }
 
 void Scene::ClearScene() const {
@@ -22,8 +21,8 @@ void Scene::DrawFigures() const {
         for (auto &t: figure.triangles) {
             array<glm::vec3, 3> adapted;
             for (int i = 0; i < t.vertices.size(); ++i)
-                adapted[i] = adapt_coords(cameras[cur_camera], t.vertices[i]);
-            triangle adapted_triangle(adapt_coords(cameras[cur_camera], t.n), adapted);
+                adapted[i] = adapt_coords(cameras[cur_camera], t.vertices[i], <#initializer#>, <#initializer#>);
+            triangle adapted_triangle(adapt_coords(cameras[cur_camera], t.n, <#initializer#>, <#initializer#>), adapted);
             scene->draw(adapted_triangle);
         }
 //    if (figures.size() > 0) {
