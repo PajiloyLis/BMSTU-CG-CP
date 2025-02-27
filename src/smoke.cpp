@@ -169,7 +169,7 @@ void smoke::update() {
             for (int k = 0; k < width + 2; ++k) {
                 u_prev[i][j][k] = (i > 0 ? log(static_cast<float>(i)) * wind.y : 0.f);
                 v_prev[i][j][k] = (i > 0 ? log(static_cast<float>(i)) * wind.x : 0.f);
-                w_prev[i][j][k] = 0.001;
+                w_prev[i][j][k] = -0.001;
                 dens_prev[i][j][k] = 0;
             }
         }
@@ -180,7 +180,7 @@ void smoke::update() {
                 for (int k = static_cast<int>(source.y / VOX_SIZE);
                      k < static_cast<int>(source.y / VOX_SIZE) + 1; ++k) {
                     dens_prev[i][j][k] = intensity;
-                    w_prev[i][j][k] += v_initial;
+                    w_prev[i][j][k] -= v_initial;
                 }
             }
         }
