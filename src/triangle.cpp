@@ -14,7 +14,7 @@ triangle::triangle(const glm::vec3 &normal, const array<glm::vec3, 3> &points) :
     min_z = std::min(vertices[0].z, std::min(vertices[1].z, vertices[2].z));
 }
 
-triangle::triangle(const glm::vec3 &normal, array<glm::vec3, 3> &&points): sf::Drawable() {
+triangle::triangle(const glm::vec3 &normal, array<glm::vec3, 3> &&points) : sf::Drawable() {
     n = normal;
     vertices = points;
     max_x = std::max(vertices[0].x, std::max(vertices[1].x, vertices[2].x));
@@ -26,7 +26,7 @@ triangle::triangle(const glm::vec3 &normal, array<glm::vec3, 3> &&points): sf::D
     min_z = std::min(vertices[0].z, std::min(vertices[1].z, vertices[2].z));
 }
 
-triangle::triangle(glm::vec3 &&normal, const array<glm::vec3, 3> &points): sf::Drawable() {
+triangle::triangle(glm::vec3 &&normal, const array<glm::vec3, 3> &points) : sf::Drawable() {
     n = normal;
     vertices = points;
     max_x = std::max(vertices[0].x, std::max(vertices[1].x, vertices[2].x));
@@ -38,7 +38,7 @@ triangle::triangle(glm::vec3 &&normal, const array<glm::vec3, 3> &points): sf::D
     min_z = std::min(vertices[0].z, std::min(vertices[1].z, vertices[2].z));
 }
 
-triangle::triangle(glm::vec3 &&normal, array<glm::vec3, 3> &&points): sf::Drawable() {
+triangle::triangle(glm::vec3 &&normal, array<glm::vec3, 3> &&points) : sf::Drawable() {
     n = normal;
     vertices = points;
     max_x = std::max(vertices[0].x, std::max(vertices[1].x, vertices[2].x));
@@ -83,19 +83,9 @@ void triangle::rotate(const rotate_t &rotate_data) {
 }
 
 void triangle::draw(sf::RenderTarget &target, sf::RenderStates states) const {
-    float intensity = glm::dot(light_ray, t.n);
-    if (dot(cam.Front, t.n) > 0) {
-        array<glm::vec3, 3> points_;
-        array<sf::Vertex, 3> points_to_render;
-        for (int i = 0; i < points_.size(); ++i) {
-            points_[i] = adapt_coords(cam, t.vertices[i], figure_center);
-//            points_to_render[i] = Vertex({points_[i].x, points_[i].y},
-//                                         sf::Color(static_cast<Uint8>(color.r * intensity),
-//                                                   static_cast<Uint8>(color.g * intensity),
-//                                                   static_cast<Uint8>(color.b * intensity)));
-        }
-        z_buffer(points_, image, {static_cast<Uint8>(color.r * intensity), static_cast<Uint8>(color.g * intensity),
-                                  static_cast<Uint8>(color.b * intensity)}, zbuffer);
+    float intensity = glm::dot(light_ray, n);
+    z_buffer(points_, image, {static_cast<Uint8>(color.r * intensity), static_cast<Uint8>(color.g * intensity),
+                              static_cast<Uint8>(color.b * intensity)}, zbuffer);
 //        this->draw(&points_to_render[0], points_to_render.size(), sf::Triangles);
-    }
+
 }
