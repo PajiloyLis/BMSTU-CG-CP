@@ -7,13 +7,13 @@
 #include "camera.h"
 #include <ctime>
 
-class TaskHandler {
+class TaskHandler : public QObject {
 
 Q_OBJECT
 
 public:
 
-    TaskHandler();
+    TaskHandler(QObject *parent = nullptr);
 
     ~TaskHandler() = default;
 
