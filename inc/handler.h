@@ -35,17 +35,13 @@ public:
 
     void ClearFigure();
 
-    void ClearScene() const;
+    void ClearScene();
 
     void RotateCurCamera(const float &dx, const float &dy);
 
     void MoveCamera(const Camera_Movement &move, const float &delta_time);
 
     void ScaleCamera(float &k);
-
-    void StartSimulation();
-
-    void SmokeTimerElapsed();
 
 
 private:

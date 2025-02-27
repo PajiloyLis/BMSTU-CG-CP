@@ -11,13 +11,6 @@
 using namespace std;
 using namespace sf;
 
-enum Camera_Movement {
-    FORWARD,
-    BACKWARD,
-    LEFT,
-    RIGHT
-};
-
 #include "main_window.h"
 
 signed main(int argc, char *argv[]) {

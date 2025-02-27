@@ -2,7 +2,7 @@
 
 const glm::vec3 light_ray = glm::vec3(0, 0, 1);
 
-triangle::triangle(const glm::vec3 &normal, const array<glm::vec3, 3> &points) : sf::Drawable() {
+triangle::triangle(const glm::vec3 &normal, const array<glm::vec3, 3> &points) {
     n = normal;
     vertices = points;
     max_x = std::max(vertices[0].x, std::max(vertices[1].x, vertices[2].x));
@@ -14,7 +14,7 @@ triangle::triangle(const glm::vec3 &normal, const array<glm::vec3, 3> &points) :
     min_z = std::min(vertices[0].z, std::min(vertices[1].z, vertices[2].z));
 }
 
-triangle::triangle(const glm::vec3 &normal, array<glm::vec3, 3> &&points) : sf::Drawable() {
+triangle::triangle(const glm::vec3 &normal, array<glm::vec3, 3> &&points) {
     n = normal;
     vertices = points;
     max_x = std::max(vertices[0].x, std::max(vertices[1].x, vertices[2].x));
@@ -26,7 +26,7 @@ triangle::triangle(const glm::vec3 &normal, array<glm::vec3, 3> &&points) : sf::
     min_z = std::min(vertices[0].z, std::min(vertices[1].z, vertices[2].z));
 }
 
-triangle::triangle(glm::vec3 &&normal, const array<glm::vec3, 3> &points) : sf::Drawable() {
+triangle::triangle(glm::vec3 &&normal, const array<glm::vec3, 3> &points) {
     n = normal;
     vertices = points;
     max_x = std::max(vertices[0].x, std::max(vertices[1].x, vertices[2].x));
@@ -38,7 +38,7 @@ triangle::triangle(glm::vec3 &&normal, const array<glm::vec3, 3> &points) : sf::
     min_z = std::min(vertices[0].z, std::min(vertices[1].z, vertices[2].z));
 }
 
-triangle::triangle(glm::vec3 &&normal, array<glm::vec3, 3> &&points) : sf::Drawable() {
+triangle::triangle(glm::vec3 &&normal, array<glm::vec3, 3> &&points) {
     n = normal;
     vertices = points;
     max_x = std::max(vertices[0].x, std::max(vertices[1].x, vertices[2].x));

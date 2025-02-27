@@ -58,25 +58,23 @@ SOURCES       = src/conversions.cpp \
 		src/main.cpp \
 		src/main_window.cpp \
 		src/operations.cpp \
-		src/QSFML.cpp \
 		src/scene.cpp \
 		src/triangle.cpp \
 		src/camera.cpp \
-		src/smoke.cpp moc_QSFML.cpp \
-		moc_qdialogs.cpp
+		src/smoke.cpp moc_handler.cpp \
+		moc_main_window.cpp
 OBJECTS       = conversions.o \
 		figure.o \
 		handler.o \
 		main.o \
 		main_window.o \
 		operations.o \
-		QSFML.o \
 		scene.o \
 		triangle.o \
 		camera.o \
 		smoke.o \
-		moc_QSFML.o \
-		moc_qdialogs.o
+		moc_handler.o \
+		moc_main_window.o
 DIST          = /usr/lib/x86_64-linux-gnu/qt6/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/common/unix.conf \
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/common/linux.conf \
@@ -148,18 +146,15 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt6/mkspecs/features/spec_pre.prf \
 		inc/handler.h \
 		inc/main_window.h \
 		inc/operations.h \
-		inc/QSFML.h \
 		inc/scene.h \
 		inc/triangle.h \
 		inc/camera.h \
-		inc/smoke.h \
-		inc/qdialogs.h src/conversions.cpp \
+		inc/smoke.h src/conversions.cpp \
 		src/figure.cpp \
 		src/handler.cpp \
 		src/main.cpp \
 		src/main_window.cpp \
 		src/operations.cpp \
-		src/QSFML.cpp \
 		src/scene.cpp \
 		src/triangle.cpp \
 		src/camera.cpp \
@@ -329,8 +324,8 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents /usr/lib/x86_64-linux-gnu/qt6/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents inc/conversions.h inc/cp_cg_ui.h inc/figure.h inc/handler.h inc/main_window.h inc/operations.h inc/QSFML.h inc/scene.h inc/triangle.h inc/camera.h inc/smoke.h inc/qdialogs.h $(DISTDIR)/
-	$(COPY_FILE) --parents src/conversions.cpp src/figure.cpp src/handler.cpp src/main.cpp src/main_window.cpp src/operations.cpp src/QSFML.cpp src/scene.cpp src/triangle.cpp src/camera.cpp src/smoke.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents inc/conversions.h inc/cp_cg_ui.h inc/figure.h inc/handler.h inc/main_window.h inc/operations.h inc/scene.h inc/triangle.h inc/camera.h inc/smoke.h $(DISTDIR)/
+	$(COPY_FILE) --parents src/conversions.cpp src/figure.cpp src/handler.cpp src/main.cpp src/main_window.cpp src/operations.cpp src/scene.cpp src/triangle.cpp src/camera.cpp src/smoke.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents inc/main_window.ui $(DISTDIR)/
 
 
@@ -363,22 +358,41 @@ compiler_moc_predefs_clean:
 moc_predefs.h: /usr/lib/x86_64-linux-gnu/qt6/mkspecs/features/data/dummy.cpp
 	g++ -pipe -O2 -std=gnu++2a -Wall -Wextra -dM -E -o moc_predefs.h /usr/lib/x86_64-linux-gnu/qt6/mkspecs/features/data/dummy.cpp
 
-compiler_moc_header_make_all: moc_QSFML.cpp moc_qdialogs.cpp
+compiler_moc_header_make_all: moc_handler.cpp moc_main_window.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) moc_QSFML.cpp moc_qdialogs.cpp
-moc_QSFML.cpp: inc/QSFML.h \
+	-$(DEL_FILE) moc_handler.cpp moc_main_window.cpp
+moc_handler.cpp: inc/handler.h \
+		inc/textured_figure.h \
 		inc/triangle.h \
 		inc/conversions.h \
+		inc/operations.h \
+		inc/camera.h \
+		inc/textured_triangle.h \
+		inc/scene.h \
+		inc/QSFML.h \
+		inc/smoke.h \
+		inc/figure.h \
+		moc_predefs.h \
+		/usr/lib/qt6/libexec/moc
+	/usr/lib/qt6/libexec/moc $(DEFINES) --include /home/ivan/Study/CompG/cp_cg/moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt6/mkspecs/linux-g++ -I/home/ivan/Study/CompG/cp_cg -I/usr/include -I/home/ivan/Study/CompG/cp_cg/inc -I/usr/include/x86_64-linux-gnu/qt6 -I/usr/include/x86_64-linux-gnu/qt6/QtWidgets -I/usr/include/x86_64-linux-gnu/qt6/QtGui -I/usr/include/x86_64-linux-gnu/qt6/QtCore -I/usr/include/c++/11 -I/usr/include/x86_64-linux-gnu/c++/11 -I/usr/include/c++/11/backward -I/usr/lib/gcc/x86_64-linux-gnu/11/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include inc/handler.h -o moc_handler.cpp
+
+moc_main_window.cpp: inc/main_window.h \
+		inc/qdialogs.h \
+		inc/QSFML.h \
+		inc/triangle.h \
+		inc/conversions.h \
+		inc/operations.h \
 		inc/camera.h \
 		inc/smoke.h \
+		inc/handler.h \
+		inc/textured_figure.h \
+		inc/textured_triangle.h \
+		inc/scene.h \
+		inc/figure.h \
+		inc/cp_cg_ui.h \
 		moc_predefs.h \
 		/usr/lib/qt6/libexec/moc
-	/usr/lib/qt6/libexec/moc $(DEFINES) --include /home/ivan/Study/CompG/cp_cg/moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt6/mkspecs/linux-g++ -I/home/ivan/Study/CompG/cp_cg -I/usr/include -I/home/ivan/Study/CompG/cp_cg/inc -I/usr/include/x86_64-linux-gnu/qt6 -I/usr/include/x86_64-linux-gnu/qt6/QtWidgets -I/usr/include/x86_64-linux-gnu/qt6/QtGui -I/usr/include/x86_64-linux-gnu/qt6/QtCore -I/usr/include/c++/11 -I/usr/include/x86_64-linux-gnu/c++/11 -I/usr/include/c++/11/backward -I/usr/lib/gcc/x86_64-linux-gnu/11/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include inc/QSFML.h -o moc_QSFML.cpp
-
-moc_qdialogs.cpp: inc/qdialogs.h \
-		moc_predefs.h \
-		/usr/lib/qt6/libexec/moc
-	/usr/lib/qt6/libexec/moc $(DEFINES) --include /home/ivan/Study/CompG/cp_cg/moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt6/mkspecs/linux-g++ -I/home/ivan/Study/CompG/cp_cg -I/usr/include -I/home/ivan/Study/CompG/cp_cg/inc -I/usr/include/x86_64-linux-gnu/qt6 -I/usr/include/x86_64-linux-gnu/qt6/QtWidgets -I/usr/include/x86_64-linux-gnu/qt6/QtGui -I/usr/include/x86_64-linux-gnu/qt6/QtCore -I/usr/include/c++/11 -I/usr/include/x86_64-linux-gnu/c++/11 -I/usr/include/c++/11/backward -I/usr/lib/gcc/x86_64-linux-gnu/11/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include inc/qdialogs.h -o moc_qdialogs.cpp
+	/usr/lib/qt6/libexec/moc $(DEFINES) --include /home/ivan/Study/CompG/cp_cg/moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt6/mkspecs/linux-g++ -I/home/ivan/Study/CompG/cp_cg -I/usr/include -I/home/ivan/Study/CompG/cp_cg/inc -I/usr/include/x86_64-linux-gnu/qt6 -I/usr/include/x86_64-linux-gnu/qt6/QtWidgets -I/usr/include/x86_64-linux-gnu/qt6/QtGui -I/usr/include/x86_64-linux-gnu/qt6/QtCore -I/usr/include/c++/11 -I/usr/include/x86_64-linux-gnu/c++/11 -I/usr/include/c++/11/backward -I/usr/lib/gcc/x86_64-linux-gnu/11/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include inc/main_window.h -o moc_main_window.cpp
 
 compiler_moc_objc_header_make_all:
 compiler_moc_objc_header_clean:
@@ -406,31 +420,37 @@ conversions.o: src/conversions.cpp inc/conversions.h
 
 figure.o: src/figure.cpp inc/figure.h \
 		inc/triangle.h \
-		inc/conversions.h
+		inc/conversions.h \
+		inc/operations.h \
+		inc/camera.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o figure.o src/figure.cpp
 
 handler.o: src/handler.cpp inc/handler.h \
 		inc/textured_figure.h \
 		inc/triangle.h \
 		inc/conversions.h \
+		inc/operations.h \
+		inc/camera.h \
 		inc/textured_triangle.h \
 		inc/scene.h \
 		inc/QSFML.h \
-		inc/camera.h \
 		inc/smoke.h \
 		inc/figure.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o handler.o src/handler.cpp
 
-main.o: src/main.cpp inc/main_window.h \
+main.o: src/main.cpp inc/map_prepare.h \
+		inc/my_vec3f.h \
+		inc/conversions.h \
+		inc/triangle.h \
+		inc/operations.h \
+		inc/camera.h \
+		inc/textured_triangle.h \
+		inc/main_window.h \
 		inc/qdialogs.h \
 		inc/QSFML.h \
-		inc/triangle.h \
-		inc/conversions.h \
-		inc/camera.h \
 		inc/smoke.h \
 		inc/handler.h \
 		inc/textured_figure.h \
-		inc/textured_triangle.h \
 		inc/scene.h \
 		inc/figure.h \
 		inc/cp_cg_ui.h
@@ -441,6 +461,7 @@ main_window.o: src/main_window.cpp inc/main_window.h \
 		inc/QSFML.h \
 		inc/triangle.h \
 		inc/conversions.h \
+		inc/operations.h \
 		inc/camera.h \
 		inc/smoke.h \
 		inc/handler.h \
@@ -451,20 +472,16 @@ main_window.o: src/main_window.cpp inc/main_window.h \
 		inc/cp_cg_ui.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main_window.o src/main_window.cpp
 
-operations.o: src/operations.cpp inc/operations.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o operations.o src/operations.cpp
-
-QSFML.o: src/QSFML.cpp inc/QSFML.h \
-		inc/triangle.h \
-		inc/conversions.h \
+operations.o: src/operations.cpp inc/operations.h \
 		inc/camera.h \
-		inc/smoke.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o QSFML.o src/QSFML.cpp
+		inc/conversions.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o operations.o src/operations.cpp
 
 scene.o: src/scene.cpp inc/scene.h \
 		inc/QSFML.h \
 		inc/triangle.h \
 		inc/conversions.h \
+		inc/operations.h \
 		inc/camera.h \
 		inc/smoke.h \
 		inc/textured_figure.h \
@@ -473,7 +490,9 @@ scene.o: src/scene.cpp inc/scene.h \
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o scene.o src/scene.cpp
 
 triangle.o: src/triangle.cpp inc/triangle.h \
-		inc/conversions.h
+		inc/conversions.h \
+		inc/operations.h \
+		inc/camera.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o triangle.o src/triangle.cpp
 
 camera.o: src/camera.cpp inc/camera.h \
@@ -483,11 +502,11 @@ camera.o: src/camera.cpp inc/camera.h \
 smoke.o: src/smoke.cpp inc/smoke.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o smoke.o src/smoke.cpp
 
-moc_QSFML.o: moc_QSFML.cpp 
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_QSFML.o moc_QSFML.cpp
+moc_handler.o: moc_handler.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_handler.o moc_handler.cpp
 
-moc_qdialogs.o: moc_qdialogs.cpp 
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_qdialogs.o moc_qdialogs.cpp
+moc_main_window.o: moc_main_window.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_main_window.o moc_main_window.cpp
 
 ####### Install
 

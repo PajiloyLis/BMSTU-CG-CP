@@ -25,7 +25,6 @@ SOURCES += \
     ./src/main.cpp \
     ./src/main_window.cpp \
     ./src/operations.cpp \
-    ./src/QSFML.cpp \
     ./src/scene.cpp \
     ./src/triangle.cpp \
     ./src/camera.cpp \
@@ -38,12 +37,10 @@ HEADERS += \
     ./inc/handler.h \
     ./inc/main_window.h \
     ./inc/operations.h \
-    ./inc/QSFML.h \
     ./inc/scene.h \
     ./inc/triangle.h \
     ./inc/camera.h \
-    ./inc/smoke.h \
-    ./inc/qdialogs.h
+    ./inc/smoke.h
 FORMS += \
     ./inc/main_window.ui
 

@@ -38,15 +38,9 @@ public:
 
     void ScaleCamera(float &k);
 
-    void StartSimulation();
-
-    void SmokeTimerElapsed();
-
     void UpdateWind(const glm::vec2 &wind);
 
     void UpdateSimSpeed(float sim_speed);
-
-    void Show();
 
     vector<float> zbuffer;
 

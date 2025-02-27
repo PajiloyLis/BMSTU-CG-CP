@@ -12,7 +12,7 @@ void TaskHandler::DrawScene() {
     scene.DrawSmoke();
 }
 
-void TaskHandler::ClearScene() const {
+void TaskHandler::ClearScene() {
     scene.ClearScene();
 }
 
@@ -56,17 +56,6 @@ vector<triangle> TaskHandler::read_stl(const string &filename) {
     }
     cout << "readed " << cnt << '\n';
     in.close();
-//    float max_x, min_x, max_y, min_y, max_z, min_z;
-//    max_x = max_y = max_z = -1e9;
-//    min_x = min_y = min_z = 1e9;
-//    for (auto &triangle: triangles) {
-//        for (auto &p: triangle.getVertices()) {
-//            max_x = std::max(max_x, p.x), min_x = std::min(min_x, p.x);
-//            max_y = std::max(max_y, p.y), min_y = std::min(min_y, p.y);
-//            max_z = std::max(max_z, p.z), min_z = std::min(min_z, p.z);
-//        }
-//    }
-//    cout << max_x << " " << max_y << " " << max_z << " " << min_x << " " << min_y << " " << min_z << '\n';
     if (!normal) {
         cout << "calculate normals\n";
         float max_x, min_x, max_y, min_y, max_z, min_z;
@@ -118,11 +107,6 @@ void TaskHandler::MoveCamera(const Camera_Movement &move, const float &delta_tim
 void TaskHandler::ScaleCamera(float &k) {
     scene.ScaleCamera(k);
 }
-
-void TaskHandler::StartSimulation() {
-    scene.StartSimulation();
-}
-
 void TaskHandler::UpdateWind(int speed, int angle) {
     scene.UpdateWind({cos(M_PI / 180. * (180 - angle)) * speed / 20., sin(M_PI / 180. * (180 - angle)) * speed / 20.});
 }
@@ -130,8 +114,3 @@ void TaskHandler::UpdateWind(int speed, int angle) {
 void TaskHandler::UpdateSimSpeed(int x) {
     scene.UpdateSimSpeed(0.05f * x);
 }
-
-void TaskHandler::SmokeTimerElapsed() {
-    scene.SmokeTimerElapsed();
-}
-

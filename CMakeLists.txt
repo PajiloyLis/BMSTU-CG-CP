@@ -34,7 +34,7 @@ add_executable(cp_cg
         inc/cp_cg_ui.h
         src/scene.cpp
         src/handler.cpp
-        src/QSFML.cpp
+#        src/QSFML.cpp
         src/figure.cpp
         inc/figure.h
         src/camera.cpp
@@ -42,9 +42,10 @@ add_executable(cp_cg
         src/conversions.cpp
         src/smoke.cpp
         inc/smoke.h
-        moc_QSFML.cpp
+#        moc_QSFML.cpp
         moc_predefs.h
-        inc/qdialogs.h)
+#        inc/qdialogs.h
+)
 
 target_link_libraries(cp_cg PUBLIC
         Qt::Core
