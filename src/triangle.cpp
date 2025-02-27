@@ -85,7 +85,7 @@ void triangle::rotate(const rotate_t &rotate_data) {
 void triangle::draw(sf::RenderTarget &target, sf::RenderStates states) const {
     float intensity = glm::dot(light_ray, n);
     z_buffer(vertices, target, {static_cast<Uint8>(255 * intensity), static_cast<Uint8>(250.g * intensity),
-                              static_cast<Uint8>(250.b * intensity)}, zbuffer);
+                              static_cast<Uint8>(250 * intensity)}, zbuffer);
 //        this->draw(&points_to_render[0], points_to_render.size(), sf::Triangles);
 
 }
