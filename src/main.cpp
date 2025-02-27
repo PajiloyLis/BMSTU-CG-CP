@@ -29,7 +29,7 @@ signed main(int argc, char *argv[]) {
                      &MainWindow::SimulationSpeedChanged);
     QObject::connect(&window, &MainWindow::SimulationSpeedSettingsFetched, &handler, &TaskHandler::UpdateSimSpeed);
     window.show();
-    return app.exec();
+    app.exec();
 }
 
 //int main() {

@@ -39,6 +39,8 @@ signals:
 
     void SimulationSpeedSettingsFetched(const int &x);
 
+    
+
 public slots:
 
     void WindChanged();
