@@ -16,11 +16,11 @@
 
 using namespace std;
 
-#define ALPHA static_cast<sf::Uint8>(255)
+#define ALPHA static_cast<sf::Uint8>(255*0.9)
 
 #define EPS 1e-5
 
-#define VOX_SIZE 1
+#define VOX_SIZE 5
 
 #define MIN_GREY 60
 #define MAX_GREY 192
