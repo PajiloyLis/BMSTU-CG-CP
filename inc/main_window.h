@@ -31,7 +31,11 @@ public:
 
 private slots:
 
-    void WindChanged();
+    void WindSpeedChanged();
+
+    void WindAngleChanged();
+
+    void SimulationSpeedChanged();
 
     void LoadModelActionTriggered();
 

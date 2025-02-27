@@ -27,7 +27,7 @@ MainWindow::MainWindow() : QMainWindow(), handler() {
 void MainWindow::SetBindings() {
     QObject::connect(this->findChild<QPushButton *>("load_model_button"), &QPushButton::clicked, this,
                      &MainWindow::LoadModelActionTriggered);
-    QObject::connect(this->findChild<QSlider *>("wind_speed_slider"), &QSlider::sliderReleased, this, &MainWindow::)
+    QObject::connect(this->findChild<QSlider *>("wind_speed_slider"), &QSlider::sliderReleased, this, &MainWindow::WindSpeedChanged)
 //    QObject::connect(this->findChild<QAction *>("load_model_action"),
 //                     &QAction::triggered, this,
 //                     &MainWindow::LoadModelActionTriggered);
@@ -103,4 +103,16 @@ void MainWindow::SpeedSettingsHandler() {
     if (dialog.exec() == QDialog::Accepted) {
         handler.UpdateSimSpeed(dialog.getSimulationSpeed());
     }
+}
+
+void MainWindow::WindSpeedChanged() {
+
+}
+
+void MainWindow::WindAngleChanged() {
+
+}
+
+void MainWindow::SimulationSpeedChanged() {
+
 }
