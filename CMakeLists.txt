@@ -22,8 +22,6 @@ include_directories(./inc .)
 
 add_executable(cp_cg
         src/main.cpp
-#        src/my_vec3f.cpp
-#        inc/my_vec3f.h
         src/operations.cpp
         inc/operations.h
         src/triangle.cpp
@@ -34,7 +32,6 @@ add_executable(cp_cg
         inc/cp_cg_ui.h
         src/scene.cpp
         src/handler.cpp
-#        src/QSFML.cpp
         src/figure.cpp
         inc/figure.h
         src/camera.cpp
@@ -42,9 +39,9 @@ add_executable(cp_cg
         src/conversions.cpp
         src/smoke.cpp
         inc/smoke.h
-
-        #        moc_QSFML.cpp
-        #        inc/qdialogs.h
+        moc_main_window.cpp
+        moc_handler.cpp
+        moc_predefs.h
 )
 
 target_link_libraries(cp_cg PUBLIC

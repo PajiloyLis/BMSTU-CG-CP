@@ -1,7 +1,5 @@
 #include "main_window.h"
 
-extern bool on_load;
-
 MainWindow::MainWindow() : QMainWindow() {
     std::setlocale(LC_ALL, "");
     Ui::MainWindow ui;
@@ -9,7 +7,6 @@ MainWindow::MainWindow() : QMainWindow() {
 }
 
 void MainWindow::LoadModelActionTriggered() {
-    on_load = true;
     string file_path = QFileDialog::getOpenFileName(nullptr, "Выберите STL файл", ".", "*.STL").toStdString();
     emit ModelPathFetched(file_path);
 }
