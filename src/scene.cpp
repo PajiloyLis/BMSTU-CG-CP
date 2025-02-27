@@ -12,7 +12,7 @@ Scene::Scene(sf::RenderTarget *scene)
     this->scene = scene;
     this->width = scene->getSize().x;
     this->height = scene->getSize().y;
-    zbuffer.resize(this->height, vector<float>(this->width, SCREEN_DEPTH));
+    zbuffer.resize((this->height) * (this->width), SCREEN_DEPTH);
 }
 
 void Scene::ClearScene() const {
@@ -27,7 +27,7 @@ void Scene::DrawFigures() const {
                 adapted[i] = adapt_coords(cameras[cur_camera], t.vertices[i], width, height);
             triangle adapted_triangle(adapt_coords(cameras[cur_camera], t.n, width, height),
                                       adapted);
-            adapted_triangle.draw(scene, zbuffer);
+            adapted_triangle.draw(*scene, const_cast<vector<float> &>(zbuffer));
         }
 //    if (figures.size() > 0) {
 //        sf::CircleShape crater_pos(5);

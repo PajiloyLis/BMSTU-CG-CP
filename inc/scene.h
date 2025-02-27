@@ -47,6 +47,8 @@ public:
 
     void Show();
 
+    vector<float> zbuffer;
+
 private:
     sf::RenderTarget *scene;
     float width, height;
@@ -54,7 +56,6 @@ private:
     smoke ash;
     vector<camera> cameras;
     int cur_camera;
-    vector<vector<float>> zbuffer;
 };
 
 #endif
