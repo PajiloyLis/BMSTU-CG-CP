@@ -104,7 +104,11 @@ void MainWindow::SpeedSettingsHandler() {
 }
 
 void MainWindow::WindSpeedChanged() {
-
+    auto speed_slider = this->findChild<QSlider *>("wind_speed_slider");
+    int speed = speed_slider->value();
+    auto angle_slider = this->findChild<QSlider *>("wind_angle_slider");
+    int angle = angle_slider->value();
+    emit WindSettingsFetched(speed, angle);
 }
 
 void MainWindow::WindAngleChanged() {
