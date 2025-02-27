@@ -29,6 +29,7 @@ signed main(int argc, char *argv[]) {
         QObject::connect(window.findChild<QSlider *>("sim_speed_slider"), &QSlider::sliderReleased, &window,
                          &MainWindow::SimulationSpeedChanged);
         QObject::connect(&window, &MainWindow::SimulationSpeedSettingsFetched, &handler, &TaskHandler::UpdateSimSpeed);
+        QObject::connect(window.findChild<QPushButton *>(""))
         window.show();
         int res;
         if ((res = app.exec()) != 100)

@@ -51,43 +51,10 @@ public slots:
 
     void LoadModelActionTriggered();
 
-    void ClearButtonClicked();
-
-    void AddPointButtonClicked();
-
-    void DrawingModeChanged();
-
-    void LeftMouseButtonClicked(const int &x, const int &y);
-
-    void RightMouseButtonClicked();
-
-    void ShiftLeftMouseButtonClicked(const int &x, const int &y);
-
-    void FillButtonClicked(const int &x, const int &y);
-
-    void ShowTime(const double &time);
-
-    void RotateCurCamera(float dx, float dy);
-
-    void MoveCurCamera(const Camera_Movement &move, float delta_time);
-
-    void ScaleCurCamera(float k);
-
-    void StartSimulation();
-
-    void SmokeTimerElapsedHandler();
-
-    void WindSettingsHandler();
-
-    void SpeedSettingsHandler();
-
 private:
 
     void closeEvent(QCloseEvent *event) override;
 
-    void DrawScene();
-
-    void SetBindings();
 
     int returnValue;
 };
