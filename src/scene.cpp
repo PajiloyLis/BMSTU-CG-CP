@@ -67,14 +67,14 @@ void Scene::DrawSmoke() const {
             for (int k = ash.width; k >= 1; --k) {
                 if (ash.dens[i][j][k] > EPS) {
                     vector<sf::Color> colors;
-                    sf::Color color000 = smoke::convert_color(ash.dens[i][j][k]),
-                            color001 = smoke::convert_color(ash.dens[i][j][k + 1]),
-                            color010 = smoke::convert_color(ash.dens[i][j + 1][k]),
-                            color011 = smoke::convert_color(ash.dens[i][j + 1][k + 1]),
-                            color100 = smoke::convert_color(ash.dens[i + 1][j][k]),
-                            color101 = smoke::convert_color(ash.dens[i + 1][j][k + 1]),
-                            color110 = smoke::convert_color(ash.dens[i + 1][j + 1][k]),
-                            color111 = smoke::convert_color(ash.dens[i + 1][j + 1][k + 1]);
+                    sf::Color color000 = smoke::convert_color(ash.dens[i][j][k]), //front left top
+                            color001 = smoke::convert_color(ash.dens[i][j][k + 1]), //front right top
+                            color010 = smoke::convert_color(ash.dens[i][j + 1][k]), //back left top
+                            color011 = smoke::convert_color(ash.dens[i][j + 1][k + 1]), // back right top
+                            color100 = smoke::convert_color(ash.dens[i + 1][j][k]), // front left bottom
+                            color101 = smoke::convert_color(ash.dens[i + 1][j][k + 1]), //front right bottom
+                            color110 = smoke::convert_color(ash.dens[i + 1][j + 1][k]), //back left bottom
+                            color111 = smoke::convert_color(ash.dens[i + 1][j + 1][k + 1]); //back right bottom
                     colors.push_back(color000);
                     colors.push_back(color001);
                     colors.push_back(color010);
