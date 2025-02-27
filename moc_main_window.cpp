@@ -24,7 +24,7 @@ QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_MainWindow_t {
     const uint offsetsAndSize[28];
-    char stringdata0[185];
+    char stringdata0[190];
 };
 #define QT_MOC_LITERAL(ofs, len) \
     uint(offsetof(qt_meta_stringdata_MainWindow_t, stringdata0) + ofs), len 
@@ -33,20 +33,20 @@ static const qt_meta_stringdata_MainWindow_t qt_meta_stringdata_MainWindow = {
 QT_MOC_LITERAL(0, 10), // "MainWindow"
 QT_MOC_LITERAL(11, 16), // "ModelPathFetched"
 QT_MOC_LITERAL(28, 0), // ""
-QT_MOC_LITERAL(29, 6), // "string"
-QT_MOC_LITERAL(36, 4), // "path"
-QT_MOC_LITERAL(41, 19), // "WindSettingsFetched"
-QT_MOC_LITERAL(61, 5), // "speed"
-QT_MOC_LITERAL(67, 5), // "angle"
-QT_MOC_LITERAL(73, 30), // "SimulationSpeedSettingsFetched"
-QT_MOC_LITERAL(104, 1), // "x"
-QT_MOC_LITERAL(106, 18), // "StartButtonHandler"
-QT_MOC_LITERAL(125, 11), // "WindChanged"
-QT_MOC_LITERAL(137, 22), // "SimulationSpeedChanged"
-QT_MOC_LITERAL(160, 24) // "LoadModelActionTriggered"
+QT_MOC_LITERAL(29, 11), // "std::string"
+QT_MOC_LITERAL(41, 4), // "path"
+QT_MOC_LITERAL(46, 19), // "WindSettingsFetched"
+QT_MOC_LITERAL(66, 5), // "speed"
+QT_MOC_LITERAL(72, 5), // "angle"
+QT_MOC_LITERAL(78, 30), // "SimulationSpeedSettingsFetched"
+QT_MOC_LITERAL(109, 1), // "x"
+QT_MOC_LITERAL(111, 18), // "StartButtonHandler"
+QT_MOC_LITERAL(130, 11), // "WindChanged"
+QT_MOC_LITERAL(142, 22), // "SimulationSpeedChanged"
+QT_MOC_LITERAL(165, 24) // "LoadModelActionTriggered"
 
     },
-    "MainWindow\0ModelPathFetched\0\0string\0"
+    "MainWindow\0ModelPathFetched\0\0std::string\0"
     "path\0WindSettingsFetched\0speed\0angle\0"
     "SimulationSpeedSettingsFetched\0x\0"
     "StartButtonHandler\0WindChanged\0"
@@ -98,7 +98,7 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         auto *_t = static_cast<MainWindow *>(_o);
         (void)_t;
         switch (_id) {
-        case 0: _t->ModelPathFetched((*reinterpret_cast< std::add_pointer_t<string>>(_a[1]))); break;
+        case 0: _t->ModelPathFetched((*reinterpret_cast< std::add_pointer_t<std::string>>(_a[1]))); break;
         case 1: _t->WindSettingsFetched((*reinterpret_cast< std::add_pointer_t<int>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<int>>(_a[2]))); break;
         case 2: _t->SimulationSpeedSettingsFetched((*reinterpret_cast< std::add_pointer_t<int>>(_a[1]))); break;
         case 3: _t->StartButtonHandler(); break;
@@ -110,7 +110,7 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
     } else if (_c == QMetaObject::IndexOfMethod) {
         int *result = reinterpret_cast<int *>(_a[0]);
         {
-            using _t = void (MainWindow::*)(const string & );
+            using _t = void (MainWindow::*)(const std::string & );
             if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&MainWindow::ModelPathFetched)) {
                 *result = 0;
                 return;
@@ -140,7 +140,7 @@ const QMetaObject MainWindow::staticMetaObject = { {
     qt_static_metacall,
     nullptr,
 qt_incomplete_metaTypeArray<qt_meta_stringdata_MainWindow_t
-, QtPrivate::TypeAndForceComplete<MainWindow, std::true_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<const string &, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<const int &, std::false_type>, QtPrivate::TypeAndForceComplete<const int &, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<const int &, std::false_type>
+, QtPrivate::TypeAndForceComplete<MainWindow, std::true_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<const std::string &, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<const int &, std::false_type>, QtPrivate::TypeAndForceComplete<const int &, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<const int &, std::false_type>
 , QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>
 
 
@@ -180,7 +180,7 @@ int MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 }
 
 // SIGNAL 0
-void MainWindow::ModelPathFetched(const string & _t1)
+void MainWindow::ModelPathFetched(const std::string & _t1)
 {
     void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t1))) };
     QMetaObject::activate(this, &staticMetaObject, 0, _a);
