@@ -121,6 +121,5 @@ signed main(int argc, char *argv[]) {
             }
         }
         window.clear(sf::Color{0x87CEEB});
-
     }
 }
