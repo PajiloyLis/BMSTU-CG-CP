@@ -32,11 +32,7 @@ signed main(int argc, char *argv[]) {
         QObject::connect(window.findChild<QPushButton *>("simulation_start_button"), &QPushButton::clicked, &window,
                          &MainWindow::StartButtonHandler);
         window.show();
-        int res;
-        if ((res = app.exec()) != 100) {
-            cout<<res<<'\n';
-            return res;
-        }
+        app.exec();
     }
 
 ////    Color snow(255, 0, 0), mount_1(10, 12, 23), mount_2(25, 26, 33);
