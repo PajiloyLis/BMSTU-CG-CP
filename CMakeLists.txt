@@ -47,4 +47,4 @@ target_link_libraries(cp_cg PUBLIC
         Qt::Gui
         Qt::Widgets sfml-graphics sfml-window sfml-system pthread)
 
-target_link_options(cp_cg fopenmp)
+#target_link_options(cp_cg PUBLIC fopenmp)
