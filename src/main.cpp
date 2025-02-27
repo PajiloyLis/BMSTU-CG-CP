@@ -1,38 +1,39 @@
-//#include <SFML/Window.hpp>
-//#include <SFML/Graphics.hpp>
-//#include <SFML/Graphics/Image.hpp>
-//#include "map_prepare.h"
-//#include <cmath>
+#include <SFML/Window.hpp>
+#include <SFML/Graphics.hpp>
+#include <SFML/Graphics/Image.hpp>
+#include "map_prepare.h"
+#include <cmath>
 //#include "textured_figure.h"
 //#include "my_vec3f.h"
 //#include "operations.h"
-//#include <cstdlib>
-//
-//using namespace std;
-//using namespace sf;
+#include <cstdlib>
+
+using namespace std;
+using namespace sf;
 
 #include "main_window.h"
 
 signed main(int argc, char *argv[]) {
-    QApplication app(argc, argv);
-    MainWindow window;
-    TaskHandler handler;
-    QObject::connect(window.findChild<QPushButton *>("load_model_button"), &QPushButton::clicked, &window,
-                     &MainWindow::LoadModelActionTriggered);
-    QObject::connect(&window, &MainWindow::ModelPathFetched, &handler, &TaskHandler::LoadModel);
-    QObject::connect(window.findChild<QSlider *>("wind_speed_slider"), &QSlider::sliderReleased, &window,
-                     &MainWindow::WindChanged);
-    QObject::connect(window.findChild<QSlider *>("wind_angle_slider"), &QSlider::sliderReleased, &window,
-                     &MainWindow::WindChanged);
-    QObject::connect(&window, &MainWindow::WindSettingsFetched, &handler, &TaskHandler::UpdateWind);
-    QObject::connect(window.findChild<QSlider *>("sim_speed_slider"), &QSlider::sliderReleased, &window,
-                     &MainWindow::SimulationSpeedChanged);
-    QObject::connect(&window, &MainWindow::SimulationSpeedSettingsFetched, &handler, &TaskHandler::UpdateSimSpeed);
-    window.show();
-    int res;
-    if ((res = app.exec()) != 100)
-        return EXIT_FAILURE;
-
+    {
+        QApplication app(argc, argv);
+        MainWindow window;
+        TaskHandler handler;
+        QObject::connect(window.findChild<QPushButton *>("load_model_button"), &QPushButton::clicked, &window,
+                         &MainWindow::LoadModelActionTriggered);
+        QObject::connect(&window, &MainWindow::ModelPathFetched, &handler, &TaskHandler::LoadModel);
+        QObject::connect(window.findChild<QSlider *>("wind_speed_slider"), &QSlider::sliderReleased, &window,
+                         &MainWindow::WindChanged);
+        QObject::connect(window.findChild<QSlider *>("wind_angle_slider"), &QSlider::sliderReleased, &window,
+                         &MainWindow::WindChanged);
+        QObject::connect(&window, &MainWindow::WindSettingsFetched, &handler, &TaskHandler::UpdateWind);
+        QObject::connect(window.findChild<QSlider *>("sim_speed_slider"), &QSlider::sliderReleased, &window,
+                         &MainWindow::SimulationSpeedChanged);
+        QObject::connect(&window, &MainWindow::SimulationSpeedSettingsFetched, &handler, &TaskHandler::UpdateSimSpeed);
+        window.show();
+        int res;
+        if ((res = app.exec()) != 100)
+            return EXIT_FAILURE;
+    }
 
 ////    Color snow(255, 0, 0), mount_1(10, 12, 23), mount_2(25, 26, 33);
 ////    textured_figure mountain(read_stl("./prepared_srtm/klyuchevskaya.STL"));
@@ -43,7 +44,7 @@ signed main(int argc, char *argv[]) {
 ////    array<float, 3> size = mountain.get_size();
 ////    float delta = std::max(size[0], std::max(size[1], size[2]));
 ////    cout << delta << '\n';
-////    sf::RenderWindow window(sf::VideoMode(1850, 1016), "kek");
+    sf::RenderWindow window(sf::VideoMode(1850, 1016), "kek");
 ////    sf::Vector2u screen_size = window.getSize();
 ////    cout << screen_size.x << " " << screen_size.y << '\n';
 ////    unsigned x_center = screen_size.x / 2, y_center = screen_size.y / 2;
@@ -69,39 +70,39 @@ signed main(int argc, char *argv[]) {
 ////
 ////    vector<float> zbuffer(screen_size.x * screen_size.y, std::numeric_limits<float>::min());
 ////
-////    while (window.isOpen()) {
-////        sf::Event event;
-////
-////        if (window.pollEvent(event)) {
-////            if (event.type == sf::Event::Closed)
-////                window.close();
-////            if (event.type == sf::Event::KeyPressed) {
-////                if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
-////                    mountain.rotate({0, 0, -M_PI / 90});
-////                else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
-////                    mountain.rotate({0, 0, M_PI / 90});
-////                else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
-////                    mountain.rotate({0, -M_PI / 90, 0});
-////                else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
-////                    mountain.rotate({0, M_PI / 90, 0});
-//////                fill(zbuffer.begin(), zbuffer.end(), std::numeric_limits<float>::min());
-//////                image.create(screen_size.x, screen_size.y, Color(0x87CEEB));
-////            }
-////        }
-////        window.clear(sf::Color{0x87CEEB});
-////        for (auto &i: mountain.getTriangles()) {
-//////            index = 0;
-////            float intensity = light_ray.dot(i.getT().getN());
-////            if (cam.dot(i.getT().getN()) > 0) {
-////                window.draw(i.shape);
-//////                zbuffer(i.getT().getVertices(), image,
-//////                         sf::Color{static_cast<sf::Uint8>(255 * intensity),
-//////                                   static_cast<sf::Uint8>(250 * intensity),
-//////                                   static_cast<sf::Uint8>(250 * intensity)}, zbuffer);
-//////                for (auto &j: i.getVertices()) {
-//////                    triangle[index] = {sf::Vector2f(j.getY(), -j.getZ() + screen_size.y),
-//////                                       {static_cast<sf::Uint8>(255 * intensity),
-//////                                        static_cast<sf::Uint8>(255 * intensity),
+    while (window.isOpen()) {
+        sf::Event event;
+
+        while (sf_window.pollEvent(event)) {
+            if (event.type == sf::Event::Closed)
+                window.close();
+            if (event.type == sf::Event::KeyPressed) {
+                if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
+                    mountain.rotate({0, 0, -M_PI / 90});
+                else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
+                    mountain.rotate({0, 0, M_PI / 90});
+                else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
+                    mountain.rotate({0, -M_PI / 90, 0});
+                else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
+                    mountain.rotate({0, M_PI / 90, 0});
+                fill(zbuffer.begin(), zbuffer.end(), std::numeric_limits<float>::min());
+                image.create(screen_size.x, screen_size.y, Color(0x87CEEB));
+            }
+        }
+        window.clear(sf::Color{0x87CEEB});
+        for (auto &i: mountain.getTriangles()) {
+            index = 0;
+            float intensity = light_ray.dot(i.getT().getN());
+            if (cam.dot(i.getT().getN()) > 0) {
+                window.draw(i.shape);
+//                zbuffer(i.getT().getVertices(), image,
+//                         sf::Color{static_cast<sf::Uint8>(255 * intensity),
+//                                   static_cast<sf::Uint8>(250 * intensity),
+//                                   static_cast<sf::Uint8>(250 * intensity)}, zbuffer);
+////                for (auto &j: i.getVertices()) {
+////                    triangle[index] = {sf::Vector2f(j.getY(), -j.getZ() + screen_size.y),
+////                                       {static_cast<sf::Uint8>(255 * intensity),
+////                                        static_cast<sf::Uint8>(255 * intensity),
 //////                                        static_cast<sf::Uint8>(255 * intensity)}};
 //////                    ++index;
 //////                }
