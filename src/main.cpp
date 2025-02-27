@@ -80,7 +80,7 @@ signed main(int argc, char *argv[]) {
 //    handler.SetScene()
 
     bool mouse_pressed;
-    sf::Vector2
+    sf::Vector2f mouse_last_pos(0, 0);
     while (window.isOpen()) {
         sf::Event event;
 
@@ -99,16 +99,20 @@ signed main(int argc, char *argv[]) {
             }
             if (event.type == sf::Event::MouseButtonPressed) {
                 if (event.mouseButton.button == sf::Mouse::Left) {
-                        mouse_pressed=true;
+                    mouse_pressed = true;
+                    mouse_last_pos = (event.mouseButton.x, event.mouseButton.y);
                 }
             }
+            if (event.type == sf::Event::MouseMoved) {
+                {}
+            }
         }
-        window.clear(sf::Color{0x87CEEB});
-        for (auto &i: mountain.getTriangles()) {
-            index = 0;
-            float intensity = light_ray.dot(i.getT().getN());
-            if (cam.dot(i.getT().getN()) > 0) {
-                window.draw(i.shape);
+    window.clear(sf::Color{0x87CEEB});
+    for (auto &i: mountain.getTriangles()) {
+        index = 0;
+        float intensity = light_ray.dot(i.getT().getN());
+        if (cam.dot(i.getT().getN()) > 0) {
+            window.draw(i.shape);
 //                zbuffer(i.getT().getVertices(), image,
 //                         sf::Color{static_cast<sf::Uint8>(255 * intensity),
 //                                   static_cast<sf::Uint8>(250 * intensity),
