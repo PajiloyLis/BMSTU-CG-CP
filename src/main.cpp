@@ -87,9 +87,9 @@ signed main(int argc, char *argv[]) {
                 window.close();
             if (event.type == sf::Event::KeyPressed) {
                 if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
-
-                else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
-                    mountain.rotate({0, 0, M_PI / 90});
+                    handler.MoveCamera(LEFT, 0);
+                else if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
+                    handler.MoveCamera(RIGHT, 0);
                 else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
                     mountain.rotate({0, -M_PI / 90, 0});
                 else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))

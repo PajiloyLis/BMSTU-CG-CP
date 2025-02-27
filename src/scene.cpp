@@ -7,7 +7,7 @@ Scene::Scene() : figures() {
 
 Scene::Scene(const double &width, const double &height)
         : figures(), cameras(), cur_camera(0) {
-    this->scene = scene;
+//    this->scene = scene;
     this->width = width;
     this->height = height;
     last_frame_time = cur_frame_time = 0;
