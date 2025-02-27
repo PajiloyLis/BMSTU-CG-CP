@@ -79,12 +79,13 @@ void Scene::DrawSmoke() const {
                     color111 = smoke::convert_color(ash.dens[i + 1][j + 1][k + 1]); //back right bottom
                     colors.push_back({color000, color000, color000, smoke::convert_alpha(ash.dens[i][j][k])});
                     colors.push_back({color001, color001, color001, smoke::convert_alpha(ash.dens[i][j][k + 1])});
-                    colors.push_back(color010);
-                    colors.push_back(color011);
-                    colors.push_back(color100);
-                    colors.push_back(color101);
-                    colors.push_back(color110);
-                    colors.push_back(color111);
+                    colors.push_back({color010, color010, color010, smoke::convert_alpha(ash.dens[i][j + 1][k])});
+                    colors.push_back({color011, color011, color011, smoke::convert_alpha(ash.dens[i][j + 1][k + 1])});
+                    colors.push_back({color100, color100, color100, smoke::convert_alpha(ash.dens[i + 1][j][k])});
+                    colors.push_back({color101, color101, color101, smoke::convert_alpha(ash.dens[i + 1][j][k + 1])});
+                    colors.push_back({color110, color110, color110, smoke::convert_alpha(ash.dens[i + 1][j + 1][k])});
+                    colors.push_back(
+                            {color111, color111, color111, smoke::convert_alpha(ash.dens[i + 1][j + 1][k + 1])});
                     scene->DrawSmoke({(j - 1) * VOX_SIZE, (k - 1) * VOX_SIZE, (i - 1) * VOX_SIZE}, colors, VOX_SIZE,
                                      cameras[cur_camera]);
                 }
