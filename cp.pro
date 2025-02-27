@@ -28,7 +28,9 @@ SOURCES += \
     ./src/scene.cpp \
     ./src/triangle.cpp \
     ./src/camera.cpp \
-    ./src/smoke.cpp
+    ./src/smoke.cpp \
+    ./moc_handler.cpp \
+    ./moc_main_window.cpp
 
 HEADERS += \
     ./inc/conversions.h \
@@ -40,7 +42,8 @@ HEADERS += \
     ./inc/scene.h \
     ./inc/triangle.h \
     ./inc/camera.h \
-    ./inc/smoke.h
+    ./inc/smoke.h \
+    ./moc_predefs.h
 FORMS += \
     ./inc/main_window.ui
 
