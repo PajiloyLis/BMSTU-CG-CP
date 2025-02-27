@@ -13,7 +13,7 @@ class Scene {
 public:
     Scene();
 
-    explicit Scene(QSFMLCanvas *&scene, const double &width, const double &height);
+    explicit Scene(sf::RenderTarget *scene, const double &width, const double &height);
 
     ~Scene() = default;
 
@@ -48,7 +48,7 @@ public:
     void Show();
 
 private:
-    QSFMLCanvas *scene;
+    sf::RenderTarget *scene;
     double width, height;
     vector<figure> figures;
     smoke ash;

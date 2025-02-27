@@ -5,16 +5,16 @@ Scene::Scene() : figures() {
     width = height = 0;
 }
 
-Scene::Scene(const double &width, const double &height)
+Scene::Scene(sf::RenderTarget *scene, const double &width, const double &height)
         : figures(), cameras(), cur_camera(0) {
-//    this->scene = scene;
+    this->scene = scene;
     this->width = width;
     this->height = height;
     last_frame_time = cur_frame_time = 0;
 }
 
 void Scene::ClearScene() const {
-    scene->Clear();
+    scene->clear();
 }
 
 void Scene::DrawFigures() const {
@@ -23,9 +23,8 @@ void Scene::DrawFigures() const {
             array<glm::vec3, 3> adapted;
             for (int i = 0; i < t.vertices.size(); ++i)
                 adapted[i] = adapt_coords(cameras[cur_camera], t.vertices[i]);
-            triangle adapted_triangle = ();
-            adapted_triangle.n = adapt_coords(cameras[cur_camera], t.n);
-            adapted_triangle.vertices = adapted;
+            triangle adapted_triangle(adapt_coords(cameras[cur_camera], t.n), adapted);
+            scene->draw(adapted_triangle);
         }
 //    if (figures.size() > 0) {
 //        sf::CircleShape crater_pos(5);
