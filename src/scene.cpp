@@ -121,7 +121,7 @@ void Scene::DrawSmoke() const {
 void
 Scene::AddSmoke(int fig_width, int fig_height) {
     ash = smoke(fig_width / VOX_SIZE * VOX_SIZE, fig_height / VOX_SIZE * VOX_SIZE,
-                {60, 35, 30}, {0, 0}, 0.1f, 100, 10000.f, 5.f);
+                {100, 35, 30}, {0, 0}, 0.1f, 100, 10000.f, 5.f);
 }
 
 void Scene::StartSimulation() {
