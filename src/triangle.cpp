@@ -1,6 +1,8 @@
 #include "triangle.h"
 
-triangle::triangle(const glm::vec3 &normal, const array<glm::vec3, 3> &points) {
+const glm::vec3 light_ray = glm::vec3(0, 0, 1);
+
+triangle::triangle(const glm::vec3 &normal, const array<glm::vec3, 3> &points) : sf::Drawable() {
     n = normal;
     vertices = points;
     max_x = std::max(vertices[0].x, std::max(vertices[1].x, vertices[2].x));
@@ -12,7 +14,7 @@ triangle::triangle(const glm::vec3 &normal, const array<glm::vec3, 3> &points) {
     min_z = std::min(vertices[0].z, std::min(vertices[1].z, vertices[2].z));
 }
 
-triangle::triangle(const glm::vec3 &normal, array<glm::vec3, 3> &&points) {
+triangle::triangle(const glm::vec3 &normal, array<glm::vec3, 3> &&points): sf::Drawable() {
     n = normal;
     vertices = points;
     max_x = std::max(vertices[0].x, std::max(vertices[1].x, vertices[2].x));
@@ -24,7 +26,7 @@ triangle::triangle(const glm::vec3 &normal, array<glm::vec3, 3> &&points) {
     min_z = std::min(vertices[0].z, std::min(vertices[1].z, vertices[2].z));
 }
 
-triangle::triangle(glm::vec3 &&normal, const array<glm::vec3, 3> &points) {
+triangle::triangle(glm::vec3 &&normal, const array<glm::vec3, 3> &points): sf::Drawable() {
     n = normal;
     vertices = points;
     max_x = std::max(vertices[0].x, std::max(vertices[1].x, vertices[2].x));
@@ -36,7 +38,7 @@ triangle::triangle(glm::vec3 &&normal, const array<glm::vec3, 3> &points) {
     min_z = std::min(vertices[0].z, std::min(vertices[1].z, vertices[2].z));
 }
 
-triangle::triangle(glm::vec3 &&normal, array<glm::vec3, 3> &&points) {
+triangle::triangle(glm::vec3 &&normal, array<glm::vec3, 3> &&points): sf::Drawable() {
     n = normal;
     vertices = points;
     max_x = std::max(vertices[0].x, std::max(vertices[1].x, vertices[2].x));
@@ -67,10 +69,6 @@ const array<glm::vec3, 3> &triangle::getVertices() const {
     return vertices;
 }
 
-const glm::vec3 &triangle::getN() const {
-    return n;
-}
-
 triangle &triangle::operator=(const triangle &t) {
     if (this != &t) {
         vertices = t.vertices;
@@ -82,4 +80,22 @@ triangle &triangle::operator=(const triangle &t) {
 void triangle::rotate(const rotate_t &rotate_data) {
     for (auto &vertex: vertices)
         ::rotate(rotate_data, vertex);
+}
+
+void triangle::draw(sf::RenderTarget &target, sf::RenderStates states) const {
+    float intensity = glm::dot(light_ray, t.n);
+    if (dot(cam.Front, t.n) > 0) {
+        array<glm::vec3, 3> points_;
+        array<sf::Vertex, 3> points_to_render;
+        for (int i = 0; i < points_.size(); ++i) {
+            points_[i] = adapt_coords(cam, t.vertices[i], figure_center);
+//            points_to_render[i] = Vertex({points_[i].x, points_[i].y},
+//                                         sf::Color(static_cast<Uint8>(color.r * intensity),
+//                                                   static_cast<Uint8>(color.g * intensity),
+//                                                   static_cast<Uint8>(color.b * intensity)));
+        }
+        z_buffer(points_, image, {static_cast<Uint8>(color.r * intensity), static_cast<Uint8>(color.g * intensity),
+                                  static_cast<Uint8>(color.b * intensity)}, zbuffer);
+//        this->draw(&points_to_render[0], points_to_render.size(), sf::Triangles);
+    }
 }
