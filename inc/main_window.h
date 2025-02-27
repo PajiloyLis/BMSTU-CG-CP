@@ -39,9 +39,7 @@ signals:
 
 public slots:
 
-    void WindSpeedChanged();
-
-    void WindAngleChanged();
+    void WindChanged();
 
     void SimulationSpeedChanged();
 

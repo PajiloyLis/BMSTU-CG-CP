@@ -13,8 +13,7 @@
 
 #include "main_window.h"
 
-signed main(int argc, char *argv[])
-{
+signed main(int argc, char *argv[]) {
     QApplication app(argc, argv);
     MainWindow window;
     window.show();
@@ -22,8 +21,11 @@ signed main(int argc, char *argv[])
     QObject::connect(window.findChild<QPushButton *>("load_model_button"), &QPushButton::clicked, &window,
                      &MainWindow::LoadModelActionTriggered);
     QObject::connect(window.findChild<QSlider *>("wind_speed_slider"), &QSlider::sliderReleased, &window,
-                     &MainWindow::WindSpeedChanged);
-    QObject::connect(this->findChild<QSlider *>("wind_angle_slider"), &QSlider::sliderReleased, this->)
+                     &MainWindow::WindChanged);
+    QObject::connect(window.findChild<QSlider *>("wind_angle_slider"), &QSlider::sliderReleased, &window,
+                     &MainWindow::WindChanged);
+    QObject::connect(this->findChild<QSlider *>("sim_speed_slider"), &QSlider::sliderReleased, &window,
+                     &MainWindow::SimulationSpeedChanged);
     return app.exec();
 }
 
