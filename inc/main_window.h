@@ -14,6 +14,7 @@
 #include <map>
 #include <QProgressBar>
 #include <QFileDialog>
+#include <QSlider>
 
 #include "qdialogs.h"
 #include "QSFML.h"

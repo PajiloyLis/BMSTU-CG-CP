@@ -7,49 +7,52 @@ MainWindow::MainWindow() : QMainWindow(), handler() {
     Ui::MainWindow ui;
     ui.setupUi(this);
 
-    auto const *grid = this->findChild<QWidget *>("gridLayoutWidget");
-    auto const *menu = this->findChild<QMenuBar *>("menubar");
-    auto *drawer = new QSFMLCanvas(this, QSize(grid->size()));
-    cout << QSize(grid->size()).width() << " " << QSize(grid->size()).height() << '\n';
-    drawer->setObjectName("drawer");
-    drawer->setGeometry(menu->pos().x(), grid->pos().y() + menu->size().height(),
-                        grid->size().width(), grid->size().height());
-    drawer->setMouseTracking(true);
-    this->handler.AddCamera(
-            {{150, 43, 10}});
-    this->handler.SetScene(
-            Scene(drawer, drawer->size().width(), drawer->size().height()));
-
+//    auto const *grid = this->findChild<QWidget *>("gridLayoutWidget");
+//    auto const *menu = this->findChild<QMenuBar *>("menubar");
+//    auto *drawer = new QSFMLCanvas(this, QSize(grid->size()));
+//    cout << QSize(grid->size()).width() << " " << QSize(grid->size()).height() << '\n';
+//    drawer->setObjectName("drawer");
+//    drawer->setGeometry(menu->pos().x(), grid->pos().y() + menu->size().height(),
+//                        grid->size().width(), grid->size().height());
+//    drawer->setMouseTracking(true);
+//    this->handler.AddCamera(
+//            {{150, 43, 10}});
+//    this->handler.SetScene(
+//            Scene(drawer, drawer->size().width(), drawer->size().height()));
+//
     this->SetBindings();
-    DrawScene();
+//    DrawScene();
 }
 
 void MainWindow::SetBindings() {
-    QObject::connect(this->findChild<QAction *>("load_model_action"),
-                     &QAction::triggered, this,
+    QObject::connect(this->findChild<QPushButton *>("load_model_button"), &QPushButton::clicked, this,
                      &MainWindow::LoadModelActionTriggered);
-    QObject::connect(this->findChild<QAction *>("set_wind_action"), &QAction::triggered, this,
-                     &MainWindow::WindSettingsHandler);
-    QObject::connect(this->findChild<QAction *>("set_speed_action"), &QAction::triggered, this,
-                     &MainWindow::SpeedSettingsHandler);
-    QObject::connect(this->findChild<QAction *>("sim_start"), &QAction::triggered, this,
-                     &MainWindow::StartSimulation);
-    QObject::connect(this->findChild<QSFMLCanvas *>("drawer"), &QSFMLCanvas::Redraw, this,
-                     &MainWindow::SmokeTimerElapsedHandler);
-    QObject::connect(this->findChild<QSFMLCanvas *>("drawer"), &QSFMLCanvas::WKeyPressed, this,
-                     &MainWindow::MoveCurCamera);
-    QObject::connect(this->findChild<QSFMLCanvas *>("drawer"), &QSFMLCanvas::AKeyPressed, this,
-                     &MainWindow::MoveCurCamera);
-    QObject::connect(this->findChild<QSFMLCanvas *>("drawer"), &QSFMLCanvas::SKeyPressed, this,
-                     &MainWindow::MoveCurCamera);
-    QObject::connect(this->findChild<QSFMLCanvas *>("drawer"), &QSFMLCanvas::DKeyPressed, this,
-                     &MainWindow::MoveCurCamera);
-    QObject::connect(this->findChild<QSFMLCanvas *>("drawer"), &QSFMLCanvas::WheelScrolledDown, this,
-                     &MainWindow::ScaleCurCamera);
-    QObject::connect(this->findChild<QSFMLCanvas *>("drawer"), &QSFMLCanvas::WheelScrolledUp, this,
-                     &MainWindow::ScaleCurCamera);
-    QObject::connect(this->findChild<QSFMLCanvas *>("drawer"), &QSFMLCanvas::MouseMove, this,
-                     &MainWindow::RotateCurCamera);
+    QObject::connect(this->findChild<QSlider *>("wind_speed_slider"), &QSlider::)
+//    QObject::connect(this->findChild<QAction *>("load_model_action"),
+//                     &QAction::triggered, this,
+//                     &MainWindow::LoadModelActionTriggered);
+//    QObject::connect(this->findChild<QAction *>("set_wind_action"), &QAction::triggered, this,
+//                     &MainWindow::WindSettingsHandler);
+//    QObject::connect(this->findChild<QAction *>("set_speed_action"), &QAction::triggered, this,
+//                     &MainWindow::SpeedSettingsHandler);
+//    QObject::connect(this->findChild<QAction *>("sim_start"), &QAction::triggered, this,
+//                     &MainWindow::StartSimulation);
+//    QObject::connect(this->findChild<QSFMLCanvas *>("drawer"), &QSFMLCanvas::Redraw, this,
+//                     &MainWindow::SmokeTimerElapsedHandler);
+//    QObject::connect(this->findChild<QSFMLCanvas *>("drawer"), &QSFMLCanvas::WKeyPressed, this,
+//                     &MainWindow::MoveCurCamera);
+//    QObject::connect(this->findChild<QSFMLCanvas *>("drawer"), &QSFMLCanvas::AKeyPressed, this,
+//                     &MainWindow::MoveCurCamera);
+//    QObject::connect(this->findChild<QSFMLCanvas *>("drawer"), &QSFMLCanvas::SKeyPressed, this,
+//                     &MainWindow::MoveCurCamera);
+//    QObject::connect(this->findChild<QSFMLCanvas *>("drawer"), &QSFMLCanvas::DKeyPressed, this,
+//                     &MainWindow::MoveCurCamera);
+//    QObject::connect(this->findChild<QSFMLCanvas *>("drawer"), &QSFMLCanvas::WheelScrolledDown, this,
+//                     &MainWindow::ScaleCurCamera);
+//    QObject::connect(this->findChild<QSFMLCanvas *>("drawer"), &QSFMLCanvas::WheelScrolledUp, this,
+//                     &MainWindow::ScaleCurCamera);
+//    QObject::connect(this->findChild<QSFMLCanvas *>("drawer"), &QSFMLCanvas::MouseMove, this,
+//                     &MainWindow::RotateCurCamera);
 
 }
 
