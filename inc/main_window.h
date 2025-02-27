@@ -29,7 +29,11 @@ public:
 
     ~MainWindow() override = default;
 
-private slots:
+signals:
+
+    void ModelPathFetched(const string &path);
+
+public slots:
 
     void WindSpeedChanged();
 
@@ -68,6 +72,7 @@ private slots:
     void WindSettingsHandler();
 
     void SpeedSettingsHandler();
+
 private:
     static bool NumericFieldCheck(QLineEdit *&field);
 
