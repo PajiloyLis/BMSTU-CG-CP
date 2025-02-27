@@ -16,7 +16,7 @@
 
 using namespace std;
 
-#define ALPHA static_cast<sf::Uint8>(255*0.9)
+//#define ALPHA static_cast<sf::Uint8>(255*0.9)
 
 #define EPS 1e-5
 
@@ -87,12 +87,21 @@ public:
 
     void update();
 
-    static sf::Color convert_color(const float &val) {
+    static sf::Uint8 convert_color(const float &val) {
         if (val > 1)
             return {MIN_GREY, MIN_GREY, MIN_GREY, ALPHA};
         if (val < EPS)
             return sf::Color(0x87CEEB);
         auto color_val = static_cast<sf::Uint8 > (MAX_GREY - (MAX_GREY - MIN_GREY) * val);
+        return {color_val, color_val, color_val, ALPHA};
+    }
+
+    static sf::Uint8 convert_alpha(const float &val) {
+        if (val > 1)
+            return 255;
+        if (val < EPS)
+            return 0;
+        return static_cast<sf::Uint8 > (255 * val);
         return {color_val, color_val, color_val, ALPHA};
     }
 };
