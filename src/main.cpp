@@ -21,8 +21,8 @@ signed main(int argc, char *argv[])
     TaskHandler handler;
     QObject::connect(window.findChild<QPushButton *>("load_model_button"), &QPushButton::clicked, &window,
                      &MainWindow::LoadModelActionTriggered);
-    QObject::connect(this->findChild<QSlider *>("wind_speed_slider"), &QSlider::sliderReleased, TaskHandler,
-                     &TaskHandler::W);
+    QObject::connect(window.findChild<QSlider *>("wind_speed_slider"), &QSlider::sliderReleased, &window,
+                     &MainWindow::WindSpeedChanged);
     QObject::connect(this->findChild<QSlider *>("wind_angle_slider"), &QSlider::sliderReleased, this->)
     return app.exec();
 }
