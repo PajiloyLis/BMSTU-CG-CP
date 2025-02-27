@@ -24,7 +24,7 @@ signed main(int argc, char *argv[]) {
                      &MainWindow::WindChanged);
     QObject::connect(window.findChild<QSlider *>("wind_angle_slider"), &QSlider::sliderReleased, &window,
                      &MainWindow::WindChanged);
-    QObject::connect(this->findChild<QSlider *>("sim_speed_slider"), &QSlider::sliderReleased, &window,
+    QObject::connect(window.findChild<QSlider *>("sim_speed_slider"), &QSlider::sliderReleased, &window,
                      &MainWindow::SimulationSpeedChanged);
     return app.exec();
 }

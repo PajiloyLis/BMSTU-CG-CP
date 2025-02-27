@@ -112,5 +112,7 @@ void MainWindow::WindChanged() {
 }
 
 void MainWindow::SimulationSpeedChanged() {
-
+    auto sim_speed_slider = this->findChild<QSlider *>("sim_speed_slider");
+    int x = sim_speed_slider->value();
+    emit SimulationSpeedSettingsFetched(x);
 }
