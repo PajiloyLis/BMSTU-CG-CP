@@ -35,7 +35,7 @@ void Scene::DrawFigures() const {
 //    }
 }
 
-const figure & Scene::AddFigure(const figure &f) {
+const figure &Scene::AddFigure(const figure &f) {
     figures.push_back(f);
     return f;
 }
@@ -65,16 +65,18 @@ void Scene::DrawSmoke() const {
     for (int i = ash.height; i >= 1; --i) {
         for (int j = ash.height; j >= 1; --j) {
             for (int k = ash.width; k >= 1; --k) {
-                if (ash.dens[i][j][k] > EPS) {
-                    vector<sf::Color> colors;
+                if (ash.dens[i][j][k] + ash.dens[i][j][k + 1] + ash.dens[i][j + 1][k] + ash.dens[i][j + 1][k + 1] +
+                    ash.dens[i + 1][j][k] + ash.dens[i + 1][j][k + 1] + ash.dens[i + 1][j + 1][k] +
+                    ash.dens[i + 1][j + 1][k + 1] > EPS) {
+                    vector < sf::Color > colors;
                     sf::Color color000 = smoke::convert_color(ash.dens[i][j][k]), //front left top
-                            color001 = smoke::convert_color(ash.dens[i][j][k + 1]), //front right top
-                            color010 = smoke::convert_color(ash.dens[i][j + 1][k]), //back left top
-                            color011 = smoke::convert_color(ash.dens[i][j + 1][k + 1]), // back right top
-                            color100 = smoke::convert_color(ash.dens[i + 1][j][k]), // front left bottom
-                            color101 = smoke::convert_color(ash.dens[i + 1][j][k + 1]), //front right bottom
-                            color110 = smoke::convert_color(ash.dens[i + 1][j + 1][k]), //back left bottom
-                            color111 = smoke::convert_color(ash.dens[i + 1][j + 1][k + 1]); //back right bottom
+                    color001 = smoke::convert_color(ash.dens[i][j][k + 1]), //front right top
+                    color010 = smoke::convert_color(ash.dens[i][j + 1][k]), //back left top
+                    color011 = smoke::convert_color(ash.dens[i][j + 1][k + 1]), // back right top
+                    color100 = smoke::convert_color(ash.dens[i + 1][j][k]), // front left bottom
+                    color101 = smoke::convert_color(ash.dens[i + 1][j][k + 1]), //front right bottom
+                    color110 = smoke::convert_color(ash.dens[i + 1][j + 1][k]), //back left bottom
+                    color111 = smoke::convert_color(ash.dens[i + 1][j + 1][k + 1]); //back right bottom
                     colors.push_back(color000);
                     colors.push_back(color001);
                     colors.push_back(color010);
@@ -130,7 +132,7 @@ void Scene::SmokeTimerElapsed() {
     clock_gettime(CLOCK_MONOTONIC, &start);
     ash.update();
     clock_gettime(CLOCK_MONOTONIC, &end);
-    cout<<"UPDATE TIME "<<end.tv_sec-start.tv_sec+(end.tv_nsec-start.tv_nsec)/1e9<<'\n';
+    cout << "UPDATE TIME " << end.tv_sec - start.tv_sec + (end.tv_nsec - start.tv_nsec) / 1e9 << '\n';
     ClearScene();
 //    DrawFigures();
     DrawSmoke();

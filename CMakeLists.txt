@@ -49,6 +49,6 @@ add_executable(cp_cg
 target_link_libraries(cp_cg PUBLIC
         Qt::Core
         Qt::Gui
-        Qt::Widgets sfml-graphics sfml-window sfml-system pthread  OpenMP)
+        Qt::Widgets sfml-graphics sfml-window sfml-system pthread  OpenMP::OpenMP_CXX)
 
 #target_link_options(cp_cg PUBLIC fopenmp)
