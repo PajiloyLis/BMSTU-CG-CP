@@ -81,8 +81,6 @@ private:
     void DrawScene();
 
     void SetBindings();
-
-    TaskHandler handler;
 };
 
 #endif

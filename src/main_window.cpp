@@ -2,7 +2,7 @@
 
 extern bool on_load;
 
-MainWindow::MainWindow() : QMainWindow(), handler() {
+MainWindow::MainWindow() : QMainWindow() {
     std::setlocale(LC_ALL, "");
     Ui::MainWindow ui;
     ui.setupUi(this);
@@ -20,7 +20,7 @@ MainWindow::MainWindow() : QMainWindow(), handler() {
 //    this->handler.SetScene(
 //            Scene(drawer, drawer->size().width(), drawer->size().height()));
 //
-    this->SetBindings();
+//    this->SetBindings();
 //    DrawScene();
 }
 
@@ -57,9 +57,7 @@ void MainWindow::SetBindings() {
 void MainWindow::LoadModelActionTriggered() {
     on_load = true;
     string file_path = QFileDialog::getOpenFileName(nullptr, "Выберите STL файл", ".", "*.STL").toStdString();
-    handler.LoadModel(file_path);
-    DrawScene();
-//    on_load = false;
+    emit ModelPathFetched(file_path);
 }
 
 void MainWindow::DrawScene() {

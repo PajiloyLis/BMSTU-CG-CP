@@ -8,7 +8,11 @@
 #include <ctime>
 
 class TaskHandler {
+
+Q_OBJECT
+
 public:
+
     TaskHandler();
 
     ~TaskHandler() = default;
