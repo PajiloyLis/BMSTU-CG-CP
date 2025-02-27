@@ -33,6 +33,8 @@ signed main(int argc, char *argv[]) {
                          &MainWindow::StartButtonHandler);
         window.show();
         int res;
+        app.exec();
+        if 
         if ((res = app.exec()) != 100)
             return res;
     }

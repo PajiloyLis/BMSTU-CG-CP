@@ -35,5 +35,5 @@ void MainWindow::closeEvent(QCloseEvent *event) {
     if(returnValue == 100)
         event->accept();
     else
-        event->
+        event->ignore();
 }
