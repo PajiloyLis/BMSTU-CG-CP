@@ -117,43 +117,13 @@ signed main(int argc, char *argv[]) {
                                             event.mouseButton.y - mouse_last_pos.y);
                 }
             }
-            if(event.type == sf::Event::MouseWheelScrolled)
-            {
-                if(event.mouseWheelScroll.wheel == sf::Mouse::VerticalWheel)
-                {
-                    if()
+            if (event.type == sf::Event::MouseWheelScrolled) {
+                if (event.mouseWheelScroll.wheel == sf::Mouse::VerticalWheel) {
+                    handler.ScaleCamera(event.mouseWheelScroll.delta);
                 }
             }
         }
         window.clear(sf::Color{0x87CEEB});
-        for (auto &i: mountain.getTriangles()) {
-            index = 0;
-            float intensity = light_ray.dot(i.getT().getN());
-            if (cam.dot(i.getT().getN()) > 0) {
-                window.draw(i.shape);
-//                zbuffer(i.getT().getVertices(), image,
-//                         sf::Color{static_cast<sf::Uint8>(255 * intensity),
-//                                   static_cast<sf::Uint8>(250 * intensity),
-//                                   static_cast<sf::Uint8>(250 * intensity)}, zbuffer);
-////                for (auto &j: i.getVertices()) {
-////                    triangle[index] = {sf::Vector2f(j.getY(), -j.getZ() + screen_size.y),
-////                                       {static_cast<sf::Uint8>(255 * intensity),
-////                                        static_cast<sf::Uint8>(255 * intensity),
-//////                                        static_cast<sf::Uint8>(255 * intensity)}};
-//////                    ++index;
-//////                }
-//////                window.draw(&triangle[0], 3, sf::Triangles);
-////            }
-////        }
-//////        for (int i = 0; i < image.getSize().y; ++i) {
-//////            VertexArray line(sf::Points, image.getSize().x);
-//////            for (int j = 0; j < image.getSize().x; ++j)
-//////                line[j] = Vertex(Vector2f(j, image.getSize().y - i), image.getPixel(j, i));
-//////            window.draw(line);
-//////        }
-////        window.display();
-////    }
-////
-////    return 0;
-//
-//}
+
+    }
+}
