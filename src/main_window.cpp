@@ -32,5 +32,8 @@ void MainWindow::StartButtonHandler() {
 
 void MainWindow::closeEvent(QCloseEvent *event) {
     qDebug() << "Window closed with return value:" << returnValue;
-    event->accept();
+    if(returnValue == 100)
+        event->accept();
+    else
+        event->
 }
