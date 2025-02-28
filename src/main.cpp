@@ -70,7 +70,9 @@ signed main(int argc, char *argv[]) {
 ////
 ////    vector<float> zbuffer(screen_size.x * screen_size.y, std::numeric_limits<float>::min());
 
-//    handler.SetScene()
+    handler.SetScene(Scene(&window));
+
+    handler.AddCamera(camera({200, 50, 10}));
 
     bool mouse_pressed = false;
     sf::Vector2f mouse_last_pos(0, 0);
@@ -116,6 +118,6 @@ signed main(int argc, char *argv[]) {
                 }
             }
         }
-        window.clear(sf::Color{0x87CEEB});
+        handler.DrawScene();
     }
 }

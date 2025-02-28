@@ -16,7 +16,7 @@ Scene::Scene(sf::RenderTarget *scene)
 }
 
 void Scene::ClearScene() {
-    scene->clear();
+    scene->clear(sf::Color(0x87CEEB));
     zbuffer.resize(0);
     zbuffer.resize((this->height) * (this->width), SCREEN_DEPTH);
 }
