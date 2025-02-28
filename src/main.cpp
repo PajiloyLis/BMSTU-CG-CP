@@ -13,7 +13,7 @@ using namespace sf;
 signed main(int argc, char *argv[]) {
 
     sf::RenderWindow sf_window(sf::VideoMode(1850, 1016), "kek");
-
+    sf_window.
     TaskHandler handler;
 
     handler.SetScene(Scene(&sf_window));
@@ -44,7 +44,7 @@ signed main(int argc, char *argv[]) {
     sf::Vector2f mouse_last_pos(0, 0);
     while (sf_window.isOpen()) {
         sf::Event event;
-
+        sf_window.clear(sf::Color::White);
         if (sf_window.pollEvent(event)) {
             if (event.type == sf::Event::Closed)
                 sf_window.close();
@@ -84,6 +84,6 @@ signed main(int argc, char *argv[]) {
                 }
             }
         }
-        handler.DrawScene();
+//        handler.DrawScene();
     }
 }
