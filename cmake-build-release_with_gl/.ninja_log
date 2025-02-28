@@ -1,0 +1,16 @@
+# ninja log v5
+1	17	1740780693975224577	cp_cg_autogen/timestamp	2bf1b1afb48b1106
+1	17	1740780693975224577	/home/ivan/Study/CompG/cp_cg/cmake-build-release_with_gl/cp_cg_autogen/timestamp	2bf1b1afb48b1106
+18	3694	1740780697651224552	CMakeFiles/cp_cg.dir/src/operations.cpp.o	7851f5f475a52f1b
+18	3810	1740780697767224551	CMakeFiles/cp_cg.dir/src/triangle.cpp.o	d9a104fc79ed12ef
+3812	6538	1740780700495224533	CMakeFiles/cp_cg.dir/src/camera.cpp.o	78e51ff9356889f1
+6538	8099	1740780702057224523	CMakeFiles/cp_cg.dir/src/conversions.cpp.o	9a915b45d3ee38c6
+3696	8308	1740780702260224521	CMakeFiles/cp_cg.dir/src/figure.cpp.o	7908c64052f3fbea
+19	11610	1740780705566224499	CMakeFiles/cp_cg.dir/src/handler.cpp.o	e2e3a2732c3988a9
+17	11639	1740780705589224499	CMakeFiles/cp_cg.dir/src/main.cpp.o	185e4b70798bcf6a
+18	12155	1740780706112224495	CMakeFiles/cp_cg.dir/src/main_window.cpp.o	a29fb9369ba4d1c5
+8100	12413	1740780706371224494	CMakeFiles/cp_cg.dir/src/smoke.cpp.o	bc1fd7f9c9454c99
+8308	15499	1740780709457224473	CMakeFiles/cp_cg.dir/moc_main_window.cpp.o	c3fabe820835139b
+5	9318	1740780735878224296	CMakeFiles/cp_cg.dir/moc_handler.cpp.o	93499184d1da2a90
+5	10582	1740780737142224287	CMakeFiles/cp_cg.dir/src/scene.cpp.o	f075af4fcd141132
+10582	11150	1740780737705224284	cp_cg	ee08bd00b727f5c6
