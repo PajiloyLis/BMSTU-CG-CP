@@ -40,7 +40,7 @@ void Scene::DrawFigures() {
             float intensity = glm::dot(light_ray, t.n);
             sf::Color color(static_cast<sf::Uint8>(255 * intensity), static_cast<sf::Uint8>(250 * intensity),
                             static_cast<sf::Uint8>(250 * intensity));
-            adapted_triangle.draw(*scene, zbuffer, light_ray, color, sf::RenderStates(), <#initializer#>);
+            adapted_triangle.draw(*scene, zbuffer, light_ray, {color, color, color}, sf::RenderStates());
         }
     clock_gettime(CLOCK_MONOTONIC, &end);
     cout << "figure draw time " << end.tv_sec - start.tv_sec + (end.tv_nsec - start.tv_nsec) * 1e-9 << '\n';
@@ -140,8 +140,7 @@ void Scene::DrawSmoke() {
                     adapted_triangle.vertices[1] = a_vec001,
                     adapted_triangle.vertices[2] = a_vec010;
 
-                    adapted_triangle.draw(*scene, zbuffer, light_ray, <#initializer#>, sf::RenderStates(),
-                                          <#initializer#>)
+                    adapted_triangle.draw(*scene, zbuffer, light_ray, , sf::RenderStates())
 
                     //bottom
                     quad[0] = sf::Vertex(sf::Vector2f(a_vec000.x, a_vec000.y), colors[0]);
