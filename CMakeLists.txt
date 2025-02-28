@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.27)
 project(cp_cg)
 
 set(CMAKE_CXX_STANDARD 20)
-set(CMAKE_AUTOMOC ON)
+#set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
 set(CMAKE_AUTOUIC ON)
 
@@ -48,6 +48,8 @@ add_executable(cp_cg
 target_link_libraries(cp_cg PUBLIC
         Qt::Core
         Qt::Gui
-        Qt::Widgets sfml-graphics sfml-window sfml-system pthread  OpenMP::OpenMP_CXX)
+        Qt::Widgets sfml-graphics sfml-window sfml-system pthread
+        OpenMP::OpenMP_CXX
+)
 
 #target_link_options(cp_cg PUBLIC fopenmp)
