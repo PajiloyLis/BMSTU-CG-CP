@@ -93,7 +93,7 @@ public:
         if (val > 1)
             return MIN_GREY;
         if (val < EPS)
-            return 0x87CEEB;
+            return 0;
         return static_cast<sf::Uint8 > (MAX_GREY - (MAX_GREY - MIN_GREY) * val);
     }
 
