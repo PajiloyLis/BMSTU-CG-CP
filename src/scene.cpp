@@ -112,14 +112,14 @@ void Scene::DrawSmoke() {
                             a_vec110 = adapt_coords(cameras[cur_camera], vec110, this->width, this->height),
                             a_vec111 = adapt_coords(cameras[cur_camera], vec111, this->width, this->height);
 
-                    a_vec000.y = scene->getSize().y - a_vec000.y,
-                    a_vec001.y = scene->getSize().y - a_vec001.y,
-                    a_vec010.y = scene->getSize().y - a_vec010.y,
-                    a_vec011.y = scene->getSize().y - a_vec011.y,
-                    a_vec100.y = scene->getSize().y - a_vec100.y,
-                    a_vec101.y = scene->getSize().y - a_vec101.y,
-                    a_vec110.y = scene->getSize().y - a_vec110.y,
-                    a_vec111.y = scene->getSize().y - a_vec111.y;
+//                    a_vec000.y = scene->getSize().y - a_vec000.y,
+//                    a_vec001.y = scene->getSize().y - a_vec001.y,
+//                    a_vec010.y = scene->getSize().y - a_vec010.y,
+//                    a_vec011.y = scene->getSize().y - a_vec011.y,
+//                    a_vec100.y = scene->getSize().y - a_vec100.y,
+//                    a_vec101.y = scene->getSize().y - a_vec101.y,
+//                    a_vec110.y = scene->getSize().y - a_vec110.y,
+//                    a_vec111.y = scene->getSize().y - a_vec111.y;
 
 
                     sf::VertexArray quad(sf::Quads, 4);
