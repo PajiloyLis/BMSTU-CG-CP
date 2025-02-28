@@ -39,3 +39,10 @@
 2429	3130	1740786514836185545	cp_cg	ee08bd00b727f5c6
 9	7093	1740786590119185040	CMakeFiles/cp_cg.dir/src/triangle.cpp.o	d9a104fc79ed12ef
 23	9160	1740786592185185026	CMakeFiles/cp_cg.dir/src/figure.cpp.o	7908c64052f3fbea
+16	20467	1740786603491184950	CMakeFiles/cp_cg.dir/src/main_window.cpp.o	a29fb9369ba4d1c5
+21	21342	1740786604365184945	CMakeFiles/cp_cg.dir/src/handler.cpp.o	e2e3a2732c3988a9
+8	21715	1740786604740184942	CMakeFiles/cp_cg.dir/src/main.cpp.o	185e4b70798bcf6a
+20	23032	1740786606053184933	CMakeFiles/cp_cg.dir/src/scene.cpp.o	f075af4fcd141132
+9161	25483	1740786608505184917	CMakeFiles/cp_cg.dir/moc_handler.cpp.o	93499184d1da2a90
+7095	26419	1740786609443184911	CMakeFiles/cp_cg.dir/moc_main_window.cpp.o	c3fabe820835139b
+26419	27841	1740786610849184901	cp_cg	ee08bd00b727f5c6
