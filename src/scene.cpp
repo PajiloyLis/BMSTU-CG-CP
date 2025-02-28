@@ -22,6 +22,8 @@ void Scene::ClearScene() {
 }
 
 void Scene::DrawFigures() {
+    timespec start, end, start1, end1;
+    clock_gettime(CLOCK_MONOTONIC, &start);
     for (auto &figure: figures)
         for (auto &t: figure.triangles) {
             array<glm::vec3, 3> adapted;
@@ -31,6 +33,8 @@ void Scene::DrawFigures() {
                                       adapted);
             adapted_triangle.draw(*scene, zbuffer);
         }
+    clock_gettime(CLOCK_MONOTONIC, &end);
+    cout << end.tv_sec - start.tv_sec + (end.tv_nsec - start.tv_nsec) * 1e-9 << '\n';
 }
 
 const figure &Scene::AddFigure(const figure &f) {
