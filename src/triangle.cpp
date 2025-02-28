@@ -83,9 +83,6 @@ void triangle::rotate(const rotate_t &rotate_data) {
 void
 triangle::draw(sf::RenderTarget &target, vector<float> &zbuffer, const glm::vec3 &light, const sf::Color &color,
                sf::RenderStates states) const {
-    float intensity = glm::dot(light, n);
-    sf::Color color(static_cast<Uint8>(255 * intensity), static_cast<Uint8>(250 * intensity),
-                    static_cast<Uint8>(250 * intensity));
 #ifndef GL
     z_buffer(vertices, target, color, zbuffer);
 #else
@@ -93,6 +90,6 @@ triangle::draw(sf::RenderTarget &target, vector<float> &zbuffer, const glm::vec3
     for (int i = 0; i < 3; ++i) {
         to_draw[i] = sf::Vertex(sf::Vector2f(vertices[i].x, vertices[i].y), color);
     }
-    target->draw(<#initializer#>, <#initializer#>, <#initializer#>, <#initializer#>)
+    target.draw(to_draw);
 #endif
 }
