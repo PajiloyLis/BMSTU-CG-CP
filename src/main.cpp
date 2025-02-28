@@ -76,7 +76,7 @@ signed main(int argc, char *argv[]) {
             if (event.type == sf::Event::MouseButtonReleased) {
                 if (event.mouseButton.button == sf::Mouse::Left) {
                     mouse_pressed = false;
-                    handler.RotateCurCamera(event.mouseButton.y - mouse_last_pos.y, event.mouseButton.x - mouse_last_pos.xw);
+                    handler.RotateCurCamera(event.mouseButton.y - mouse_last_pos.y, event.mouseButton.x - mouse_last_pos.x);
                 }
             }
             if (event.type == sf::Event::MouseWheelScrolled) {
