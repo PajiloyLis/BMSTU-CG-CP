@@ -148,7 +148,7 @@ void Scene::DrawSmoke() {
                     v_n = glm::normalize(v_n);
                     adapted_triangle.n = v_n;
 #else
-                    scene->draw(adapted_triangle.vertices.data(), 3, sf::Triangles)
+                    scene->draw(adapted_triangle.vertices.data(), 3, sf::Triangles);
 #endif
 
                     //bottom

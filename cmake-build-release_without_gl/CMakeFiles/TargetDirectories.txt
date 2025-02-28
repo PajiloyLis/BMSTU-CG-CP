@@ -1,0 +1,5 @@
+/home/ivan/Study/CompG/cp_cg/cmake-build-release_without_gl/CMakeFiles/cp_cg.dir
+/home/ivan/Study/CompG/cp_cg/cmake-build-release_without_gl/CMakeFiles/edit_cache.dir
+/home/ivan/Study/CompG/cp_cg/cmake-build-release_without_gl/CMakeFiles/rebuild_cache.dir
+/home/ivan/Study/CompG/cp_cg/cmake-build-release_without_gl/CMakeFiles/cp_cg_autogen_timestamp_deps.dir
+/home/ivan/Study/CompG/cp_cg/cmake-build-release_without_gl/CMakeFiles/cp_cg_autogen.dir
