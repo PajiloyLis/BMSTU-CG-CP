@@ -178,18 +178,18 @@ void Scene::DrawSmoke() {
 //
 //                    scene->draw(quad);
 
-                    adapted_triangle.vertices[0] = a_vec001,
-                    adapted_triangle.vertices[1] = a_vec011,
+                    adapted_triangle.vertices[0] = a_vec100,
+                    adapted_triangle.vertices[1] = a_vec110,
                     adapted_triangle.vertices[2] = a_vec111;
 
-                    adapted_triangle.draw(*scene, zbuffer, light_ray, {colors[1], colors[3], colors[7]});
+                    adapted_triangle.draw(*scene, zbuffer, light_ray, {colors[4], colors[6], colors[7]});
 
 
-                    adapted_triangle.vertices[0] = a_vec001,
-                    adapted_triangle.vertices[1] = a_vec011,
+                    adapted_triangle.vertices[0] = a_vec100,
+                    adapted_triangle.vertices[1] = a_vec110,
                     adapted_triangle.vertices[2] = a_vec101;
 
-                    adapted_triangle.draw(*scene, zbuffer, light_ray, {colors[1], colors[3], colors[5]});
+                    adapted_triangle.draw(*scene, zbuffer, light_ray, {colors[4], colors[6], colors[5]});
 
                     // front
                     quad[0] = sf::Vertex(sf::Vector2f(a_vec100.x, a_vec100.y), colors[4]);
