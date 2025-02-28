@@ -33,7 +33,7 @@ void Scene::DrawFigures() {
             adapted_triangle.draw(*scene, zbuffer);
         }
     clock_gettime(CLOCK_MONOTONIC, &end);
-    cout << end.tv_sec - start.tv_sec + (end.tv_nsec - start.tv_nsec) * 1e-9 << '\n';
+    cout << "figure draw time " << end.tv_sec - start.tv_sec + (end.tv_nsec - start.tv_nsec) * 1e-9 << '\n';
 }
 
 const figure &Scene::AddFigure(const figure &f) {
@@ -161,7 +161,7 @@ void Scene::DrawSmoke() {
         }
     }
     clock_gettime(CLOCK_MONOTONIC, &end);
-    cout << end.tv_sec - start.tv_sec + (end.tv_nsec - start.tv_nsec) * 1e-9 << '\n';
+    cout << "smoke draw time" << end.tv_sec - start.tv_sec + (end.tv_nsec - start.tv_nsec) * 1e-9 << '\n';
 }
 
 void

@@ -47,7 +47,7 @@ signed main(int argc, char *argv[]) {
     sf_window.setVisible(true);
     while (sf_window.isOpen()) {
         sf::Event event;
-//        cout<<sf_window.hasFocus()<<'\n';
+        drawn = false;
         while (sf_window.pollEvent(event)) {
 //            cout<<event.type<<'\n';
             if (event.type == sf::Event::Closed)
