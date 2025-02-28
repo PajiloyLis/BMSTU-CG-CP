@@ -1,5 +1,5 @@
 #include "triangle.h"
-#define GL
+
 const glm::vec3 light_ray = glm::vec3(0, 0, 1);
 
 triangle::triangle(const glm::vec3 &normal, const array<glm::vec3, 3> &points) {

@@ -14,6 +14,8 @@
 #include <SFML/Graphics.hpp>
 #include <operations.h>
 
+#define GL
+
 using namespace std;
 
 class triangle {

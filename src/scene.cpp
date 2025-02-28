@@ -148,7 +148,8 @@ void Scene::DrawSmoke() {
 #ifndef GL
                     adapted_triangle.draw(*scene, zbuffer);
 #else
-                    scene->draw()
+                    scene->draw({{sf::Vector2f(adapted_triangle.vertices[0].x, height - adapted_triangle.vertices[0].y),
+                                  sf::Color(255, 250, 250)}})
 #endif
 
                     //bottom
