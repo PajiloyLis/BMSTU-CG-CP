@@ -45,7 +45,7 @@ signed main(int argc, char *argv[]) {
     while (sf_window.isOpen()) {
         sf::Event event;
 
-        while (sf_window.pollEvent(event)) {
+        if (sf_window.pollEvent(event)) {
             if (event.type == sf::Event::Closed)
                 sf_window.close();
             if (event.type == sf::Event::KeyPressed) {
