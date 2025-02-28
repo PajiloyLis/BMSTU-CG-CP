@@ -2,6 +2,8 @@
 
 #define SCREEN_DEPTH 256*256*256
 
+const glm::vec3 light_ray = glm::vec3(0, 0, 1);
+
 Scene::Scene() : figures() {
     scene = nullptr;
     width = height = 0;
@@ -148,7 +150,7 @@ void Scene::DrawSmoke() {
 #ifndef GL
                     adapted_triangle.draw(*scene, zbuffer);
 #else
-                    scene->draw({{sf::Vector2f(adapted_triangle.vertices[0].x, height - adapted_triangle.vertices[0].y),
+                    scene->draw(sf::VertexArray{sf::Vertex{sf::Vector2f(adapted_triangle.vertices[0].x, height - adapted_triangle.vertices[0].y),
                                   sf::Color(255, 250, 250)}})
 #endif
 
