@@ -81,6 +81,10 @@ void Scene::DrawSmoke() {
     for (int i = ash.height; i >= 1; --i) {
         for (int j = ash.height; j >= 1; --j) {
             for (int k = ash.width; k >= 1; --k) {
+                if(j==53)
+                {
+                    cout<<ash.dens[i][j][k]<<" ";
+                }
                 if (ash.dens[i][j][k] + ash.dens[i][j][k + 1] + ash.dens[i][j + 1][k] + ash.dens[i][j + 1][k + 1] +
                     ash.dens[i + 1][j][k] + ash.dens[i + 1][j][k + 1] + ash.dens[i + 1][j + 1][k] +
                     ash.dens[i + 1][j + 1][k + 1] > EPS) {
@@ -181,6 +185,10 @@ void Scene::DrawSmoke() {
 
                     scene->draw(quad);
                 }
+            }
+            if(j==53)
+            {
+                cout<<'\n';
             }
         }
     }
