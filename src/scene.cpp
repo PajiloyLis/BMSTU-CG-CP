@@ -37,7 +37,7 @@ void Scene::DrawFigures() {
             adapted_triangle.vertices[0].y = height - adapted_triangle.vertices[0].y,
             adapted_triangle.vertices[1].y = height - adapted_triangle.vertices[1].y,
             adapted_triangle.vertices[2].y = height - adapted_triangle.vertices[2].y;
-            adapted_triangle.draw(*scene, zbuffer, light_ray);
+            adapted_triangle.draw(*scene, zbuffer, light_ray, <#initializer#>, sf::RenderStates());
         }
     clock_gettime(CLOCK_MONOTONIC, &end);
     cout << "figure draw time " << end.tv_sec - start.tv_sec + (end.tv_nsec - start.tv_nsec) * 1e-9 << '\n';
