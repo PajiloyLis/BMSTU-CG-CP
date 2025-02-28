@@ -63,6 +63,7 @@ void Scene::MoveCamera(const Camera_Movement &move, const float &delta_time) {
 void Scene::DrawSmoke() {
     timespec start, end, start1, end1;
     clock_gettime(CLOCK_MONOTONIC, &start);
+    ash.update();
     for (int i = ash.height; i >= 1; --i) {
         for (int j = ash.height; j >= 1; --j) {
             for (int k = ash.width; k >= 1; --k) {
