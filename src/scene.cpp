@@ -99,7 +99,6 @@ void Scene::DrawSmoke() {
                             vec110 = vec000 + glm::vec3{VOX_SIZE, VOX_SIZE, 0},
                             vec111 = vec000 + glm::vec3{VOX_SIZE, VOX_SIZE, VOX_SIZE};
 
-
                     glm::vec3 a_vec000 = adapt_coords(cameras[cur_camera], vec000, this->width, this->height),
                             a_vec001 = adapt_coords(cameras[cur_camera], vec001, this->width, this->height),
                             a_vec010 = adapt_coords(cameras[cur_camera], vec010, this->width, this->height),
@@ -108,6 +107,16 @@ void Scene::DrawSmoke() {
                             a_vec101 = adapt_coords(cameras[cur_camera], vec101, this->width, this->height),
                             a_vec110 = adapt_coords(cameras[cur_camera], vec110, this->width, this->height),
                             a_vec111 = adapt_coords(cameras[cur_camera], vec111, this->width, this->height);
+
+                    a_vec000.y = scene->getSize().y - a_vec000.y,
+                    a_vec001.y = scene->getSize().y - a_vec001.y,
+                    a_vec000.y = scene->getSize().y - a_vec000.y,
+                    a_vec000.y = scene->getSize().y - a_vec000.y,
+                    a_vec000.y = scene->getSize().y - a_vec000.y,
+                    a_vec000.y = scene->getSize().y - a_vec000.y,
+                    a_vec000.y = scene->getSize().y - a_vec000.y,
+                    a_vec000.y = scene->getSize().y - a_vec000.y;
+
 
                     sf::VertexArray quad(sf::Quads, 4);
 

@@ -178,10 +178,10 @@ void smoke::update() {
         }
     }
     if (frames_counter < total_frames) {
-        for (int i = static_cast<int>(source.z / VOX_SIZE); i < static_cast<int>(source.z / VOX_SIZE) + 1; ++i) {
-            for (int j = static_cast<int>(source.x / VOX_SIZE); j < static_cast<int>(source.x / VOX_SIZE) + 1; ++j) {
-                for (int k = static_cast<int>(source.y / VOX_SIZE);
-                     k < static_cast<int>(source.y / VOX_SIZE) + 1; ++k) {
+        for (int i = static_cast<int>(source.z); i < static_cast<int>(source.z) + 1; ++i) {
+            for (int j = static_cast<int>(source.x); j < static_cast<int>(source.x) + 1; ++j) {
+                for (int k = static_cast<int>(source.y);
+                     k < static_cast<int>(source.y) + 1; ++k) {
                     dens_prev[i][j][k] = intensity;
                     w_prev[i][j][k] -= v_initial;
                 }
