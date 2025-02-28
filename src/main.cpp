@@ -50,25 +50,25 @@ signed main(int argc, char *argv[]) {
             if (event.type == sf::Event::Closed)
                 sf_window.close();
             if (event.type == sf::Event::KeyPressed) {
-                if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
+                if (event.key.code == sf::Keyboard::A) {
                     handler.MoveCamera(LEFT, 0.f);
                     handler.DrawScene();
                     sf_window.display();
-                } else if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
+                } else if (event.key.code == sf::Keyboard::D) {
                     handler.MoveCamera(RIGHT, 0.f);
                     handler.DrawScene();
                     sf_window.display();
-                } else if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)) {
+                } else if (event.key.code == sf::Keyboard::W) {
                     handler.MoveCamera(FORWARD, 0.f);
                     handler.DrawScene();
                     sf_window.display();
-                } else if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)) {
+                } else if (event.key.code == sf::Keyboard::S) {
                     handler.MoveCamera(BACKWARD, 0.f);
                     handler.DrawScene();
                     sf_window.display();
-                } else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter)) {
+                } else if (event.key.code == sf::Keyboard::Enter) {
                     handler.ChangeSimState();
-                } else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)) {
+                } else if (event.key.code == sf::Keyboard::Escape) {
                     handler.PauseSim();
                 }
                 drawn = true;
