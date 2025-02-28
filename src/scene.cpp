@@ -29,7 +29,7 @@ void Scene::DrawFigures() {
             array<glm::vec3, 3> adapted;
             for (int i = 0; i < t.vertices.size(); ++i)
                 adapted[i] = adapt_coords(cameras[cur_camera], t.vertices[i], width, height);
-            triangle adapted_triangle(adapt_coords(cameras[cur_camera], t.n, width, height),
+            triangle adapted_triangle(t.n,
                                       adapted);
             adapted_triangle.draw(*scene, zbuffer);
         }

@@ -69,16 +69,14 @@ signed main(int argc, char *argv[]) {
             }
             if (event.type == sf::Event::MouseMoved) {
                 if (event.mouseButton.button == sf::Mouse::Left && mouse_pressed) {
-                    handler.RotateCurCamera(event.mouseButton.x - mouse_last_pos.x,
-                                            event.mouseButton.y - mouse_last_pos.y);
+                    handler.RotateCurCamera(event.mouseButton.y - mouse_last_pos.y, event.mouseButton.x - mouse_last_pos.x);
                     mouse_last_pos = {static_cast<float>(event.mouseButton.x), static_cast<float>(event.mouseButton.y)};
                 }
             }
             if (event.type == sf::Event::MouseButtonReleased) {
                 if (event.mouseButton.button == sf::Mouse::Left) {
                     mouse_pressed = false;
-                    handler.RotateCurCamera(event.mouseButton.x - mouse_last_pos.x,
-                                            event.mouseButton.y - mouse_last_pos.y);
+                    handler.RotateCurCamera(event.mouseButton.y - mouse_last_pos.y, event.mouseButton.x - mouse_last_pos.xw);
                 }
             }
             if (event.type == sf::Event::MouseWheelScrolled) {
