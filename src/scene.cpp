@@ -38,9 +38,13 @@ void Scene::DrawFigures() {
     cout << "figure draw time " << end.tv_sec - start.tv_sec + (end.tv_nsec - start.tv_nsec) * 1e-9 << '\n';
     glm::vec3 zero = adapt_coords(cameras[cur_camera], {0, 0, 0}, scene->getSize().x,
                                   scene->getSize().y),
-            crater = adapt_coords(cameras[cur_camera], {52, 41, 38}, scene->getSize().x,
+            crater = adapt_coords(cameras[cur_camera], {53, 38, 38}, scene->getSize().x,
                                   scene->getSize().y);
-    glmv a_zero =
+    vector<sf::Vertex> p(2);
+    p[0] = sf::Vertex(sf::Vector2f (zero.x, scene->getSize().y-zero.y), sf::Color::Red);
+    p[1] = sf::Vertex(sf::Vector2f (crater.x, scene->getSize().y-crater.y), sf::Color::Red);
+
+    scene->draw(p.data(), 2, sf::Lines);
 }
 
 const figure &Scene::AddFigure(const figure &f) {
@@ -186,7 +190,6 @@ void Scene::DrawSmoke() {
 
 void
 Scene::AddSmoke(int fig_width, int fig_height) {
-    52, 41, 38
     ash = smoke(fig_width / VOX_SIZE * VOX_SIZE, fig_height / VOX_SIZE * VOX_SIZE,
                 {}, {0, 0}, 0.1f, 100, 10000.f, 5.f);
 }
