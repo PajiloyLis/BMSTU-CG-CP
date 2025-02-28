@@ -140,17 +140,7 @@ void Scene::DrawSmoke() {
 //                    adapted_triangle.vertices[1] = a_vec001,
 //                    adapted_triangle.vertices[2] = a_vec010;
 //
-//                    glm::vec3 a = vec010 - vec000,
-//                            b = vec110 - vec000;
-//                    glm::vec3 v_n = glm::cross(a, b);
-//                    v_n = glm::normalize(v_n);
-//                    adapted_triangle.n = v_n;
-//#ifndef GL
-//                    adapted_triangle.draw(*scene, zbuffer);
-//#else
-//                    scene->draw(sf::VertexArray{sf::Vertex{sf::Vector2f(adapted_triangle.vertices[0].x, height - adapted_triangle.vertices[0].y),
-//                                  sf::Color(255, 250, 250)}})
-//#endif
+//
 
                     //bottom
                     quad[0] = sf::Vertex(sf::Vector2f(a_vec000.x, a_vec000.y), colors[0]);
