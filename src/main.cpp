@@ -23,8 +23,7 @@ signed main(int argc, char *argv[]) {
         MainWindow window;
         QObject::connect(window.findChild<QPushButton *>("load_model_button"), &QPushButton::clicked, &window,
                          &MainWindow::LoadModelActionTriggered);
-        QObject::connect(&window, &
-    sf_window.setMouseCursorGrabbed(false);MainWindow::ModelPathFetched, &handler, &TaskHandler::LoadModel);
+        QObject::connect(&window, &MainWindow::ModelPathFetched, &handler, &TaskHandler::LoadModel);
         QObject::connect(window.findChild<QSlider *>("wind_speed_slider"), &QSlider::sliderReleased, &window,
                          &MainWindow::WindChanged);
         QObject::connect(window.findChild<QSlider *>("wind_angle_slider"), &QSlider::sliderReleased, &window,
