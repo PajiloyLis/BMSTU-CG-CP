@@ -187,7 +187,6 @@ void smoke::update() {
                 }
             }
         }
-
     }
     ++frames_counter;
     vel_step(u, v, w, v_prev, u_prev, w_prev, VISC, dt);
