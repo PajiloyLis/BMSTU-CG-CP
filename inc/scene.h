@@ -44,6 +44,7 @@ public:
 
     vector<float> zbuffer;
 
+    bool running;
 private:
     sf::RenderTarget *scene;
     float width, height;

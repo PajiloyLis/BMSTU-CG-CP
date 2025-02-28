@@ -9,7 +9,7 @@ void TaskHandler::SetScene(const Scene &scene_to_set) {
 void TaskHandler::DrawScene() {
     scene.ClearScene();
 
-//    scene.DrawFigures();
+    scene.DrawFigures();
     scene.DrawSmoke();
 }
 
@@ -21,7 +21,8 @@ void TaskHandler::LoadModel(const string &filepath) {
     // Add mount
     figure f = scene.AddFigure(figure(read_stl(filepath)));
     // Add smoke
-    scene.AddSmoke(static_cast<int>(ceil(max(f.max_y-f.min_y, f.max_x-f.min_x))), static_cast<int>(3*ceil(f.max_z-f.min_z)));
+    scene.AddSmoke(static_cast<int>(ceil(max(f.max_y - f.min_y, f.max_x - f.min_x))),
+                   static_cast<int>(3 * ceil(f.max_z - f.min_z)));
 }
 
 vector<triangle> TaskHandler::read_stl(const string &filename) {
@@ -108,10 +109,15 @@ void TaskHandler::MoveCamera(const Camera_Movement &move, const float &delta_tim
 void TaskHandler::ScaleCamera(float &k) {
     scene.ScaleCamera(k);
 }
+
 void TaskHandler::UpdateWind(int speed, int angle) {
     scene.UpdateWind({cos(M_PI / 180. * (180 - angle)) * speed / 20., sin(M_PI / 180. * (180 - angle)) * speed / 20.});
 }
 
 void TaskHandler::UpdateSimSpeed(int x) {
     scene.UpdateSimSpeed(0.05f * x);
+}
+
+void TaskHandler::SetSimStarted() {
+    scene.running ^= 1;
 }

@@ -33,11 +33,8 @@ signed main(int argc, char *argv[]) {
         QObject::connect(window.findChild<QSlider *>("sim_speed_slider"), &QSlider::sliderReleased, &window,
                          &MainWindow::SimulationSpeedChanged);
         QObject::connect(&window, &MainWindow::SimulationSpeedSettingsFetched, &handler, &TaskHandler::UpdateSimSpeed);
-        QObject::connect(window.findChild<QPushButton *>("simulation_start_button"), &QPushButton::clicked, &window,
-                         &MainWindow::StartButtonHandler);
         window.show();
-        if (app.exec() != 100)
-            exit(EXIT_FAILURE);
+        app.exec();
     }
 
     handler.AddCamera(camera({150, 50, 10}));

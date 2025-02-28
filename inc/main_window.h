@@ -41,17 +41,12 @@ signals:
 
 public slots:
 
-    void StartButtonHandler();
-
     void WindChanged();
 
     void SimulationSpeedChanged();
 
     void LoadModelActionTriggered();
 
-private:
-
-    int returnValue;
 };
 
 #endif

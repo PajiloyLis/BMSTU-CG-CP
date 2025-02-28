@@ -25,7 +25,3 @@ void MainWindow::SimulationSpeedChanged() {
     emit SimulationSpeedSettingsFetched(x);
 }
 
-void MainWindow::StartButtonHandler() {
-    QApplication::exit(100);
-    this->close();
-}
