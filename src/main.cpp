@@ -13,7 +13,8 @@ using namespace sf;
 signed main(int argc, char *argv[]) {
 
     sf::RenderWindow sf_window(sf::VideoMode(1850, 1016), "kek");
-    sf_window.setFramerateLimit(10);
+    sf_window.setFramerateLimit(5);
+    sf_window.setVisible(false);
     TaskHandler handler;
 
     handler.SetScene(Scene(&sf_window));
@@ -22,7 +23,8 @@ signed main(int argc, char *argv[]) {
         MainWindow window;
         QObject::connect(window.findChild<QPushButton *>("load_model_button"), &QPushButton::clicked, &window,
                          &MainWindow::LoadModelActionTriggered);
-        QObject::connect(&window, &MainWindow::ModelPathFetched, &handler, &TaskHandler::LoadModel);
+        QObject::connect(&window, &
+    sf_window.setMouseCursorGrabbed(false);MainWindow::ModelPathFetched, &handler, &TaskHandler::LoadModel);
         QObject::connect(window.findChild<QSlider *>("wind_speed_slider"), &QSlider::sliderReleased, &window,
                          &MainWindow::WindChanged);
         QObject::connect(window.findChild<QSlider *>("wind_angle_slider"), &QSlider::sliderReleased, &window,
@@ -42,10 +44,12 @@ signed main(int argc, char *argv[]) {
 
     bool mouse_pressed = false;
     sf::Vector2f mouse_last_pos(0, 0);
+    sf_window.setVisible(true);
     while (sf_window.isOpen()) {
         sf::Event event;
-        if (sf_window.pollEvent(event)) {
-            cout<<event.type<<'\n';
+//        cout<<sf_window.hasFocus()<<'\n';
+        if (sf_window.pollEvent(event) && sf_window.hasFocus()) {
+//            cout<<event.type<<'\n';
             if (event.type == sf::Event::Closed)
                 sf_window.close();
             if (event.type == sf::Event::KeyPressed) {
