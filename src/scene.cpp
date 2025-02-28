@@ -116,7 +116,7 @@ void Scene::DrawSmoke() {
                             vec110 = vec000 + glm::vec3{VOX_SIZE, VOX_SIZE, 0},
                             vec111 = vec000 + glm::vec3{VOX_SIZE, VOX_SIZE, VOX_SIZE};
 
-                    glm::vec3 a_vec000 = adapt_coords(cameras[cur_camera], vec000, this->width, this->height),
+                    glm::vec3 a_vec000 = adapt_coords(cameras[cur_camera], vec000, this->width, this->height);
                             a_vec001 = adapt_coords(cameras[cur_camera], vec001, this->width, this->height),
                             a_vec010 = adapt_coords(cameras[cur_camera], vec010, this->width, this->height),
                             a_vec011 = adapt_coords(cameras[cur_camera], vec011, this->width, this->height),
