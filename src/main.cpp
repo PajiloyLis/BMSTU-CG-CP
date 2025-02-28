@@ -106,15 +106,14 @@ signed main(int argc, char *argv[]) {
                 if (event.mouseWheelScroll.wheel == sf::Mouse::VerticalWheel) {
                     handler.ScaleCamera(event.mouseWheelScroll.delta);
 
-                    handler.DrawScene();
-                    sf_window.display();
+//                    handler.DrawScene();
+//                    sf_window.display();
                     drawn = true;
                 }
             }
         }
-        if (!drawn) {
-            handler.DrawScene();
-            sf_window.display();
-        }
+        handler.DrawScene();
+        sf_window.display();
+
     }
 }

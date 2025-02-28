@@ -14,7 +14,7 @@
 #include <SFML/Graphics.hpp>
 #include <operations.h>
 
-//#define GL
+#define GL
 
 using namespace std;
 
