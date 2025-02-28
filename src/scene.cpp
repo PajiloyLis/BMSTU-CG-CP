@@ -137,26 +137,59 @@ void Scene::DrawSmoke() {
                     triangle adapted_triangle;
 
                     adapted_triangle.vertices[0] = a_vec000,
-                    adapted_triangle.vertices[1] = a_vec001,
+                    adapted_triangle.vertices[1] = a_vec010,
                     adapted_triangle.vertices[2] = a_vec010;
 
-                    adapted_triangle.draw(*scene, zbuffer, light_ray, , sf::RenderStates())
+                    adapted_triangle.draw(*scene, zbuffer, light_ray, {colors[0], colors[2], colors[6]});
+
+
+                    adapted_triangle.vertices[0] = a_vec000,
+                    adapted_triangle.vertices[1] = a_vec010,
+                    adapted_triangle.vertices[2] = a_vec100;
+
+                    adapted_triangle.draw(*scene, zbuffer, light_ray, {colors[0], colors[2], colors[4]});
 
                     //bottom
-                    quad[0] = sf::Vertex(sf::Vector2f(a_vec000.x, a_vec000.y), colors[0]);
-                    quad[1] = sf::Vertex(sf::Vector2f(a_vec010.x, a_vec010.y), colors[2]);
-                    quad[2] = sf::Vertex(sf::Vector2f(a_vec110.x, a_vec110.y), colors[6]);
-                    quad[3] = sf::Vertex(sf::Vector2f(a_vec100.x, a_vec100.y), colors[4]);
+//                    quad[0] = sf::Vertex(sf::Vector2f(a_vec000.x, a_vec000.y), colors[0]);
+//                    quad[1] = sf::Vertex(sf::Vector2f(a_vec010.x, a_vec010.y), colors[2]);
+//                    quad[2] = sf::Vertex(sf::Vector2f(a_vec110.x, a_vec110.y), colors[6]);
+//                    quad[3] = sf::Vertex(sf::Vector2f(a_vec100.x, a_vec100.y), colors[4]);
+//
+//                    scene->draw(quad);
 
-                    scene->draw(quad);
+                    adapted_triangle.vertices[0] = a_vec001,
+                    adapted_triangle.vertices[1] = a_vec011,
+                    adapted_triangle.vertices[2] = a_vec111;
+
+                    adapted_triangle.draw(*scene, zbuffer, light_ray, {colors[1], colors[3], colors[7]});
+
+
+                    adapted_triangle.vertices[0] = a_vec001,
+                    adapted_triangle.vertices[1] = a_vec011,
+                    adapted_triangle.vertices[2] = a_vec101;
+
+                    adapted_triangle.draw(*scene, zbuffer, light_ray, {colors[1], colors[3], colors[5]});
 
                     // up
-                    quad[0] = sf::Vertex(sf::Vector2f(a_vec001.x, a_vec001.y), colors[1]);
-                    quad[1] = sf::Vertex(sf::Vector2f(a_vec011.x, a_vec011.y), colors[3]);
-                    quad[2] = sf::Vertex(sf::Vector2f(a_vec111.x, a_vec111.y), colors[7]);
-                    quad[3] = sf::Vertex(sf::Vector2f(a_vec101.x, a_vec101.y), colors[5]);
+//                    quad[0] = sf::Vertex(sf::Vector2f(a_vec001.x, a_vec001.y), colors[1]);
+//                    quad[1] = sf::Vertex(sf::Vector2f(a_vec011.x, a_vec011.y), colors[3]);
+//                    quad[2] = sf::Vertex(sf::Vector2f(a_vec111.x, a_vec111.y), colors[7]);
+//                    quad[3] = sf::Vertex(sf::Vector2f(a_vec101.x, a_vec101.y), colors[5]);
+//
+//                    scene->draw(quad);
 
-                    scene->draw(quad);
+                    adapted_triangle.vertices[0] = a_vec001,
+                    adapted_triangle.vertices[1] = a_vec011,
+                    adapted_triangle.vertices[2] = a_vec111;
+
+                    adapted_triangle.draw(*scene, zbuffer, light_ray, {colors[1], colors[3], colors[7]});
+
+
+                    adapted_triangle.vertices[0] = a_vec001,
+                    adapted_triangle.vertices[1] = a_vec011,
+                    adapted_triangle.vertices[2] = a_vec101;
+
+                    adapted_triangle.draw(*scene, zbuffer, light_ray, {colors[1], colors[3], colors[5]});
 
                     // front
                     quad[0] = sf::Vertex(sf::Vector2f(a_vec100.x, a_vec100.y), colors[4]);
