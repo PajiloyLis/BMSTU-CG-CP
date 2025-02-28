@@ -1262,6 +1262,18 @@
 			"value" : "[/usr/lib/x86_64-linux-gnu/libxkbcommon.so][/usr/include][v1.4.0(0.5.0)]"
 		},
 		{
+			"name" : "GL",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "No help, variable specified on the command line."
+				}
+			],
+			"type" : "UNINITIALIZED",
+			"value" : "0"
+		},
+		{
 			"name" : "HAVE_STDATOMIC",
 			"properties" : 
 			[
