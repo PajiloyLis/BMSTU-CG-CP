@@ -87,5 +87,4 @@ void triangle::draw(sf::RenderTarget &target, vector<float> &zbuffer, sf::Render
     z_buffer(vertices, target, {static_cast<Uint8>(255 * intensity), static_cast<Uint8>(250 * intensity),
                               static_cast<Uint8>(250 * intensity)}, zbuffer);
 //        this->draw(&points_to_render[0], points_to_render.size(), sf::Triangles);
-
 }

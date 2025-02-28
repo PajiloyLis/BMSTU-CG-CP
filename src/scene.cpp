@@ -12,13 +12,13 @@ Scene::Scene(sf::RenderTarget *scene)
     this->scene = scene;
     this->width = scene->getSize().x;
     this->height = scene->getSize().y;
-    zbuffer.resize((this->height) * (this->width), SCREEN_DEPTH);
+    zbuffer.resize((this->height) * (this->width), -SCREEN_DEPTH);
 }
 
 void Scene::ClearScene() {
     scene->clear(sf::Color(0x87CEEB));
     zbuffer.resize(0);
-    zbuffer.resize((this->height) * (this->width), SCREEN_DEPTH);
+    zbuffer.resize((this->height) * (this->width), -SCREEN_DEPTH);
 }
 
 void Scene::DrawFigures() {
