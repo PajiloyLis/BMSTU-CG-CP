@@ -86,11 +86,11 @@ public:
         }
         if (direction == LEFT) {
 //            model = glm::translate(glm::mat4(1.f), Right);
-            Position -= Right * velocity;
+            Position += Right * velocity;
         }
         if (direction == RIGHT) {
 //            model = glm::translate(glm::mat4(1.f), -Right);
-            Position += Right * velocity;
+            Position -= Right * velocity;
         }
         cout << "camera moved \npos " << Position.x << " " << Position.y << " " << Position.z << "\npov " << Front.x
              << " " << Front.y << " " << Front.z << '\n';
