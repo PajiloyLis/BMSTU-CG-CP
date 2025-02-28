@@ -85,12 +85,11 @@ triangle::draw(sf::RenderTarget &target, vector<float> &zbuffer, const glm::vec3
     float intensity = glm::dot(light, n);
     sf::Color color(static_cast<Uint8>(255 * intensity), static_cast<Uint8>(250 * intensity),
                     static_cast<Uint8>(250 * intensity));
-//#ifndef GL
+#ifndef GL
     z_buffer(vertices, target, color, zbuffer);
-//#else
-//    sf::VertexArray to_draw(sf::Triangles, 3);
-//    to_draw[0] =
-//    target->draw()
-//#endif
-//        this->draw(&points_to_render[0], points_to_render.size(), sf::Triangles);
+#else
+    sf::VertexArray to_draw(sf::Triangles, 3);
+    to_draw[0] = sf::Vertex(vertices[0]
+    target->draw()
+#endif
 }

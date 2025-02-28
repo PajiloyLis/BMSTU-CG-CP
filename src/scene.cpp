@@ -34,6 +34,9 @@ void Scene::DrawFigures() {
             for (int i = 0; i < t.vertices.size(); ++i)
                 adapted[i] = adapt_coords(cameras[cur_camera], t.vertices[i], width, height);
             triangle adapted_triangle(t.n, adapted);
+            adapted_triangle.vertices[0].y = height - adapted_triangle.vertices[0].y,
+            adapted_triangle.vertices[1].y = height - adapted_triangle.vertices[1].y,
+            adapted_triangle.vertices[2].y = height - adapted_triangle.vertices[2].y;
             adapted_triangle.draw(*scene, zbuffer, light_ray);
         }
     clock_gettime(CLOCK_MONOTONIC, &end);
@@ -127,6 +130,7 @@ void Scene::DrawSmoke() {
 
 
                     sf::VertexArray quad(sf::Quads, 4);
+
 //                    triangle adapted_triangle;
 //
 //                    adapted_triangle.vertices[0] = a_vec000,
