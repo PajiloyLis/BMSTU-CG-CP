@@ -39,7 +39,7 @@ signed main(int argc, char *argv[]) {
             exit(EXIT_FAILURE);
     }
 
-    handler.AddCamera(camera({200, 50, 10}));
+    handler.AddCamera(camera({150, 50, 10}));
 
     bool mouse_pressed = false;
     sf::Vector2f mouse_last_pos(0, 0);
@@ -47,7 +47,7 @@ signed main(int argc, char *argv[]) {
     while (sf_window.isOpen()) {
         sf::Event event;
 //        cout<<sf_window.hasFocus()<<'\n';
-        if (sf_window.pollEvent(event) && sf_window.hasFocus()) {
+        while (sf_window.pollEvent(event)) {
 //            cout<<event.type<<'\n';
             if (event.type == sf::Event::Closed)
                 sf_window.close();
