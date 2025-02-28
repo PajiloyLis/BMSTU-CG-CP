@@ -14,7 +14,7 @@
 using namespace std;
 using namespace sf;
 
-void z_buffer(array<glm::vec3, 3> points, sf::RenderTarget &image, sf::Color color, vector<float> &z_buffer);
+void z_buffer(array<glm::vec3, 3> points, sf::RenderTarget &image, const vector<sf::Color> &colors, vector<float> &z_buffer);
 
 glm::vec3 adapt_coords(const camera &c, const glm::vec3 &point, const float &scene_width, const float &scene_height);
 

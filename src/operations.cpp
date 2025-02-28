@@ -1,6 +1,6 @@
 #include "operations.h"
 
-void z_buffer(array<glm::vec3, 3> points, sf::RenderTarget &image, sf::Color color, vector<float> &z_buffer) {
+void z_buffer(array<glm::vec3, 3> points, sf::RenderTarget &image, const vector<sf::Color> &colors, vector<float> &z_buffer) {
     if (abs(points[0].y - points[1].y) < 1e-5 && abs(points[1].y - points[2].y) < 1e-5) return;
     glm::vec<3, int, glm::defaultp> t0(ceil(points[0].x), ceil(points[0].y), ceil(points[0].z)),
             t1(ceil(points[1].x), ceil(points[1].y), ceil(points[1].z)),
@@ -25,7 +25,7 @@ void z_buffer(array<glm::vec3, 3> points, sf::RenderTarget &image, sf::Color col
             int idx = round(P.x + P.y * image.getSize().x);
             if (idx >= 0 && idx < z_buffer.size() && z_buffer[idx] < P.z) {
                 z_buffer[idx] = P.z;
-                image.draw(vector<sf::Vertex>(1, sf::Vertex(sf::Vector2f(P.x, image.getSize().y - P.y), color)).data(),
+                image.draw(vector<sf::Vertex>(1, sf::Vertex(sf::Vector2f(P.x, image.getSize().y - P.y), colors)).data(),
                            1,
                            sf::Points);
             }

@@ -84,7 +84,7 @@ void
 triangle::draw(sf::RenderTarget &target, vector<float> &zbuffer, const glm::vec3 &light, const vector<sf::Color> &colors,
                sf::RenderStates states) const {
 #ifndef GL
-    z_buffer(vertices, target, color, zbuffer);
+    z_buffer(vertices, target, colors, zbuffer);
 #else
     sf::VertexArray to_draw(sf::Triangles, 3);
     for (int i = 0; i < 3; ++i) {
