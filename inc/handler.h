@@ -27,7 +27,9 @@ public slots:
 
 public:
 
-    void SetSimStarted();
+    void ChangeSimState();
+
+    void PauseSim();
 
     void SetScene(const Scene &scene_to_set);
 

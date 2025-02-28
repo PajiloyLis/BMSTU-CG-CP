@@ -118,6 +118,10 @@ void TaskHandler::UpdateSimSpeed(int x) {
     scene.UpdateSimSpeed(0.05f * x);
 }
 
-void TaskHandler::SetSimStarted() {
+void TaskHandler::ChangeSimState() {
     scene.running ^= 1;
+}
+
+void TaskHandler::PauseSim() {
+    scene.running = false;
 }

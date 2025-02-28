@@ -23,8 +23,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_MainWindow_t {
-    const uint offsetsAndSize[28];
-    char stringdata0[190];
+    const uint offsetsAndSize[26];
+    char stringdata0[171];
 };
 #define QT_MOC_LITERAL(ofs, len) \
     uint(offsetof(qt_meta_stringdata_MainWindow_t, stringdata0) + ofs), len 
@@ -40,17 +40,16 @@ QT_MOC_LITERAL(66, 5), // "speed"
 QT_MOC_LITERAL(72, 5), // "angle"
 QT_MOC_LITERAL(78, 30), // "SimulationSpeedSettingsFetched"
 QT_MOC_LITERAL(109, 1), // "x"
-QT_MOC_LITERAL(111, 18), // "StartButtonHandler"
-QT_MOC_LITERAL(130, 11), // "WindChanged"
-QT_MOC_LITERAL(142, 22), // "SimulationSpeedChanged"
-QT_MOC_LITERAL(165, 24) // "LoadModelActionTriggered"
+QT_MOC_LITERAL(111, 11), // "WindChanged"
+QT_MOC_LITERAL(123, 22), // "SimulationSpeedChanged"
+QT_MOC_LITERAL(146, 24) // "LoadModelActionTriggered"
 
     },
     "MainWindow\0ModelPathFetched\0\0std::string\0"
     "path\0WindSettingsFetched\0speed\0angle\0"
     "SimulationSpeedSettingsFetched\0x\0"
-    "StartButtonHandler\0WindChanged\0"
-    "SimulationSpeedChanged\0LoadModelActionTriggered"
+    "WindChanged\0SimulationSpeedChanged\0"
+    "LoadModelActionTriggered"
 };
 #undef QT_MOC_LITERAL
 
@@ -60,7 +59,7 @@ static const uint qt_meta_data_MainWindow[] = {
       10,       // revision
        0,       // classname
        0,    0, // classinfo
-       7,   14, // methods
+       6,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -68,15 +67,14 @@ static const uint qt_meta_data_MainWindow[] = {
        3,       // signalCount
 
  // signals: name, argc, parameters, tag, flags, initial metatype offsets
-       1,    1,   56,    2, 0x06,    1 /* Public */,
-       5,    2,   59,    2, 0x06,    3 /* Public */,
-       8,    1,   64,    2, 0x06,    6 /* Public */,
+       1,    1,   50,    2, 0x06,    1 /* Public */,
+       5,    2,   53,    2, 0x06,    3 /* Public */,
+       8,    1,   58,    2, 0x06,    6 /* Public */,
 
  // slots: name, argc, parameters, tag, flags, initial metatype offsets
-      10,    0,   67,    2, 0x0a,    8 /* Public */,
-      11,    0,   68,    2, 0x0a,    9 /* Public */,
-      12,    0,   69,    2, 0x0a,   10 /* Public */,
-      13,    0,   70,    2, 0x0a,   11 /* Public */,
+      10,    0,   61,    2, 0x0a,    8 /* Public */,
+      11,    0,   62,    2, 0x0a,    9 /* Public */,
+      12,    0,   63,    2, 0x0a,   10 /* Public */,
 
  // signals: parameters
     QMetaType::Void, 0x80000000 | 3,    4,
@@ -84,7 +82,6 @@ static const uint qt_meta_data_MainWindow[] = {
     QMetaType::Void, QMetaType::Int,    9,
 
  // slots: parameters
-    QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
@@ -101,10 +98,9 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 0: _t->ModelPathFetched((*reinterpret_cast< std::add_pointer_t<std::string>>(_a[1]))); break;
         case 1: _t->WindSettingsFetched((*reinterpret_cast< std::add_pointer_t<int>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<int>>(_a[2]))); break;
         case 2: _t->SimulationSpeedSettingsFetched((*reinterpret_cast< std::add_pointer_t<int>>(_a[1]))); break;
-        case 3: _t->StartButtonHandler(); break;
-        case 4: _t->WindChanged(); break;
-        case 5: _t->SimulationSpeedChanged(); break;
-        case 6: _t->LoadModelActionTriggered(); break;
+        case 3: _t->WindChanged(); break;
+        case 4: _t->SimulationSpeedChanged(); break;
+        case 5: _t->LoadModelActionTriggered(); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
@@ -141,7 +137,7 @@ const QMetaObject MainWindow::staticMetaObject = { {
     nullptr,
 qt_incomplete_metaTypeArray<qt_meta_stringdata_MainWindow_t
 , QtPrivate::TypeAndForceComplete<MainWindow, std::true_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<const std::string &, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<const int &, std::false_type>, QtPrivate::TypeAndForceComplete<const int &, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<const int &, std::false_type>
-, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>
+, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>
 
 
 >,
@@ -168,13 +164,13 @@ int MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 7)
+        if (_id < 6)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 7;
+        _id -= 6;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 7)
+        if (_id < 6)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 7;
+        _id -= 6;
     }
     return _id;
 }
