@@ -3,9 +3,6 @@
 #include <SFML/Graphics/Image.hpp>
 #include "map_prepare.h"
 #include <cmath>
-//#include "textured_figure.h"
-//#include "my_vec3f.h"
-//#include "operations.h"
 #include <cstdlib>
 
 using namespace std;
