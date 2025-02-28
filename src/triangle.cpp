@@ -1,5 +1,5 @@
 #include "triangle.h"
-
+#define GL
 const glm::vec3 light_ray = glm::vec3(0, 0, 1);
 
 triangle::triangle(const glm::vec3 &normal, const array<glm::vec3, 3> &points) {
@@ -84,7 +84,12 @@ void triangle::rotate(const rotate_t &rotate_data) {
 
 void triangle::draw(sf::RenderTarget &target, vector<float> &zbuffer, sf::RenderStates states) const {
     float intensity = glm::dot(light_ray, n);
-    z_buffer(vertices, target, {static_cast<Uint8>(255 * intensity), static_cast<Uint8>(250 * intensity),
-                              static_cast<Uint8>(250 * intensity)}, zbuffer);
+    sf::Color color(static_cast<Uint8>(255 * intensity), static_cast<Uint8>(250 * intensity),
+                    static_cast<Uint8>(250 * intensity));
+#ifndef GL
+    z_buffer(vertices, target, color, zbuffer);
+#else
+    target->draw
+#endif
 //        this->draw(&points_to_render[0], points_to_render.size(), sf::Triangles);
 }

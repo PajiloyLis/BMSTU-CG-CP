@@ -2,8 +2,6 @@
 
 #define SCREEN_DEPTH 256*256*256
 
-#define GL
-
 Scene::Scene() : figures() {
     scene = nullptr;
     width = height = 0;
@@ -34,11 +32,7 @@ void Scene::DrawFigures() {
             for (int i = 0; i < t.vertices.size(); ++i)
                 adapted[i] = adapt_coords(cameras[cur_camera], t.vertices[i], width, height);
             triangle adapted_triangle(t.n, adapted);
-#ifndef GL
             adapted_triangle.draw(*scene, zbuffer);
-#else
-            scene->draw()
-#endif
         }
     clock_gettime(CLOCK_MONOTONIC, &end);
     cout << "figure draw time " << end.tv_sec - start.tv_sec + (end.tv_nsec - start.tv_nsec) * 1e-9 << '\n';
@@ -145,16 +139,13 @@ void Scene::DrawSmoke() {
                     adapted_triangle.vertices[0] = a_vec000,
                     adapted_triangle.vertices[1] = a_vec001,
                     adapted_triangle.vertices[2] = a_vec010;
-#ifndef GL
+
                     glm::vec3 a = vec010 - vec000,
                             b = vec110 - vec000;
                     glm::vec3 v_n = glm::cross(a, b);
                     v_n = glm::normalize(v_n);
                     adapted_triangle.n = v_n;
-#else
-                    scene->draw(adapted_triangle.vertices.data(), 3, sf::Triangles);
-#endif
-
+                    
                     //bottom
                     quad[0] = sf::Vertex(sf::Vector2f(a_vec000.x, a_vec000.y), colors[0]);
                     quad[1] = sf::Vertex(sf::Vector2f(a_vec010.x, a_vec010.y), colors[2]);
