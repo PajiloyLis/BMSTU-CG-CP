@@ -135,7 +135,15 @@ void Scene::DrawSmoke() {
 
                     sf::VertexArray quad(sf::Quads, 4);
                     triangle adapted_triangle;
-                    adapted_triangle.vertices[0]
+
+                    adapted_triangle.vertices[0] = a_vec000,
+                    adapted_triangle.vertices[1] = a_vec001,
+                    adapted_triangle.vertices[2] = a_vec010;
+
+                    glm::vec3 a = adapted_triangle.vertices[1] - adapted_triangle.vertices[0],
+                            b = adapted_triangle.vertices[2] - adapted_triangle.vertices[0];
+                    glm::vec3 v_n = glm::cross(a, b);
+                    v_n = glm::normalize(v_n);
 
                     //bottom
                     quad[0] = sf::Vertex(sf::Vector2f(a_vec000.x, a_vec000.y), colors[0]);
