@@ -23,7 +23,7 @@ void z_buffer(array<glm::vec3, 3> points, sf::RenderTarget &image, sf::Color col
             float phi = B.x == A.x ? 1. : (float) (j - A.x) / (float) (B.x - A.x);
             glm::vec<3, int, glm::defaultp> P = glm::vec3(A) + glm::vec3(B - A) * phi;
             int idx = P.x + P.y * image.getSize().x;
-            if (z_buffer[idx] < P.z) {
+            if (idx>=0 && idx <z_buffer.size() && z_buffer[idx] < P.z) {
                 z_buffer[idx] = P.z;
                 image.draw(vector<sf::Vertex>(1, sf::Vertex(sf::Vector2f(P.x, image.getSize().y - P.y), color)).data(),
                            1,
