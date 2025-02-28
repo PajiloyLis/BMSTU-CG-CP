@@ -18,3 +18,11 @@
 3	10689	1740785685623191105	CMakeFiles/cp_cg.dir/src/main_window.cpp.o	997e5f20ac2423ac
 2	10740	1740785685675191105	CMakeFiles/cp_cg.dir/src/main.cpp.o	71a5baf26554772b
 3	10898	1740785685832191104	CMakeFiles/cp_cg.dir/src/scene.cpp.o	7fe202a06816ae09
+7	4614	1740786191593187712	CMakeFiles/cp_cg.dir/src/operations.cpp.o	8aa0d76241e9f2b2
+9	4617	1740786191596187712	CMakeFiles/cp_cg.dir/src/smoke.cpp.o	ea594c2e63e0915
+7	4677	1740786191658187712	CMakeFiles/cp_cg.dir/src/figure.cpp.o	7b5450b4530622d8
+11	8195	1740786195175187688	CMakeFiles/cp_cg.dir/moc_handler.cpp.o	d2980fbf4f933ce9
+9	8667	1740786195648187685	CMakeFiles/cp_cg.dir/moc_main_window.cpp.o	ee5172bb601c1b03
+8667	9125	1740786196102187682	cp_cg	ee08bd00b727f5c6
+3	2135	1740786226721187477	CMakeFiles/cp_cg.dir/src/operations.cpp.o	8aa0d76241e9f2b2
+2135	3081	1740786227658187471	cp_cg	ee08bd00b727f5c6
