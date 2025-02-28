@@ -8,7 +8,7 @@ void TaskHandler::SetScene(const Scene &scene_to_set) {
 
 void TaskHandler::DrawScene() {
     scene.ClearScene();
-    scene.DrawFigures();
+//    scene.DrawFigures();
     scene.DrawSmoke();
 }
 
