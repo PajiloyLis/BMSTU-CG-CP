@@ -14,6 +14,7 @@ using namespace sf;
 signed main(int argc, char *argv[]) {
 
     sf::RenderWindow sf_window(sf::VideoMode(1850, 1016), "kek");
+    glEnable(GL_DEPTH_TEST);
     sf_window.setFramerateLimit(5);
     sf_window.setVisible(false);
     TaskHandler handler;
