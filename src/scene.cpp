@@ -190,6 +190,7 @@ void Scene::DrawSmoke() {
 
 void
 Scene::AddSmoke(int fig_width, int fig_height) {
+    cout<<
     ash = smoke(fig_width, fig_height,
                 {53, 38, 36}, {0, 0}, 0.1f, 100, 10000.f, 5.f);
 }
