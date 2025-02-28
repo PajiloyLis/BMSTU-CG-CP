@@ -134,6 +134,8 @@ void Scene::DrawSmoke() {
 
 
                     sf::VertexArray quad(sf::Quads, 4);
+                    triangle adapted_triangle;
+                    adapted_triangle.vertices[0]
 
                     //bottom
                     quad[0] = sf::Vertex(sf::Vector2f(a_vec000.x, a_vec000.y), colors[0]);
