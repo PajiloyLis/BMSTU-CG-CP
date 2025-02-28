@@ -1,9 +1,9 @@
 #include "operations.h"
 
 void z_buffer(array<glm::vec3, 3> points, sf::RenderTarget &image, sf::Color color, vector<float> &z_buffer) {
-    glm::vec<3, int, glm::defaultp> t0(ceil(points[0].x), ceil(points[0].y), ceil(points[0].z)),
-            t1(ceil(points[1].x), ceil(points[1].y), ceil(points[1].z)),
-            t2(ceil(points[2].x), ceil(points[2].y), ceil(points[2].z));
+    glm::vec<3, int, glm::defaultp> t0(round(points[0].x), round(points[0].y), round(points[0].z)),
+            t1(round(points[1].x), round(points[1].y), round(points[1].z)),
+            t2(round(points[2].x), round(points[2].y), round(points[2].z));
     if (t0.y == t1.y && t1.z == t2.z) return;
     if (t0.y > t1.y) std::swap(t0, t1);
     if (t0.y > t2.y) std::swap(t0, t2);
