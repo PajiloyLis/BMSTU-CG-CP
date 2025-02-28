@@ -14,7 +14,12 @@ using namespace sf;
 #include "main_window.h"
 
 signed main(int argc, char *argv[]) {
+
+    sf::RenderWindow sf_window(sf::VideoMode(1850, 1016), "kek");
+
     TaskHandler handler;
+
+    handler.SetScene(Scene(&sf_window));
     {
         QApplication app(argc, argv);
         MainWindow window;
@@ -32,56 +37,20 @@ signed main(int argc, char *argv[]) {
         QObject::connect(window.findChild<QPushButton *>("simulation_start_button"), &QPushButton::clicked, &window,
                          &MainWindow::StartButtonHandler);
         window.show();
-        app.exec();
+        if(app.exec()!=100)
+            exit(EXIT_FAILURE);
     }
-
-////    Color snow(255, 0, 0), mount_1(10, 12, 23), mount_2(25, 26, 33);
-////    textured_figure mountain(read_stl("./prepared_srtm/klyuchevskaya.STL"));
-//////    Texture texture;
-//////    if (!texture.loadFromFile("./textures/snow_rock_2.jpg"))
-//////        throw exception();
-////    my_vec3f figure_center = mountain.get_center();
-////    array<float, 3> size = mountain.get_size();
-////    float delta = std::max(size[0], std::max(size[1], size[2]));
-////    cout << delta << '\n';
-    sf::RenderWindow window(sf::VideoMode(1850, 1016), "kek");
-////    sf::Vector2u screen_size = window.getSize();
-////    cout << screen_size.x << " " << screen_size.y << '\n';
-////    unsigned x_center = screen_size.x / 2, y_center = screen_size.y / 2;
-////    float k = (delta == size[2] ? screen_size.y / delta : screen_size.x / delta);
-////    for (auto &triangle: mountain.getTriangles()) {
-////        for (auto &j: triangle.getT().getVertices()) {
-////            const_cast<my_vec3f &>(j).setZ(j.getZ() * k);
-////            const_cast<my_vec3f &>(j).setY(j.getY() * k);
-////            const_cast<my_vec3f &>(j).setX(j.getX() * k);
-////        }
-////    }
-////    figure_center.setX(figure_center.getX() * k);
-////    figure_center.setY(figure_center.getY() * k);
-////    figure_center.setZ(figure_center.getZ() * k);
-////    mountain.setCenter(figure_center);
-////    mountain.addTexture(texture);
-////    array<sf::Vertex, 3> triangle;
-////    my_vec3f light_ray = normalize(my_vec3f(1, 0, 0));
-////    my_vec3f cam = normalize(my_vec3f(1, 0, 0));
-////    int index;
-////    Image image;
-////    image.create(screen_size.x, screen_size.y, Color(0x87CEEB));
-////
-////    vector<float> zbuffer(screen_size.x * screen_size.y, std::numeric_limits<float>::min());
-
-    handler.SetScene(Scene(&window));
 
     handler.AddCamera(camera({200, 50, 10}));
 
     bool mouse_pressed = false;
     sf::Vector2f mouse_last_pos(0, 0);
-    while (window.isOpen()) {
+    while (sf_window.isOpen()) {
         sf::Event event;
 
-        while (window.pollEvent(event)) {
+        while (sf_window.pollEvent(event)) {
             if (event.type == sf::Event::Closed)
-                window.close();
+                sf_window.close();
             if (event.type == sf::Event::KeyPressed) {
                 if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
                     handler.MoveCamera(LEFT, 0.f);
@@ -99,7 +68,7 @@ signed main(int argc, char *argv[]) {
                 }
             }
             if (event.type == sf::Event::MouseMoved) {
-                if (event.mouseButton.button == sf::Mouse::Left) {
+                if (event.mouseButton.button == sf::Mouse::Left && mouse_pressed) {
                     handler.RotateCurCamera(event.mouseButton.x - mouse_last_pos.x,
                                             event.mouseButton.y - mouse_last_pos.y);
                     mouse_last_pos = {static_cast<float>(event.mouseButton.x), static_cast<float>(event.mouseButton.y)};

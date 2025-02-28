@@ -31,6 +31,7 @@ add_executable(cp_cg
         inc/main_window.h
         inc/cp_cg_ui.h
         src/scene.cpp
+        inc/handler.h
         src/handler.cpp
         src/figure.cpp
         inc/figure.h
@@ -39,9 +40,9 @@ add_executable(cp_cg
         src/conversions.cpp
         src/smoke.cpp
         inc/smoke.h
-#        moc_main_window.cpp
-#        moc_handler.cpp
-#        moc_predefs.h
+        moc_main_window.cpp
+        moc_handler.cpp
+        moc_predefs.h
 )
 
 target_link_libraries(cp_cg PUBLIC
