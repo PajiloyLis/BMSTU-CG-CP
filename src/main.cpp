@@ -36,13 +36,13 @@ signed main(int argc, char *argv[]) {
         QObject::connect(window.findChild<QPushButton *>("simulation_start_button"), &QPushButton::clicked, &window,
                          &MainWindow::StartButtonHandler);
         window.show();
-        if(app.exec()!=100)
+        if (app.exec() != 100)
             exit(EXIT_FAILURE);
     }
 
     handler.AddCamera(camera({150, 50, 10}));
 
-    bool mouse_pressed = false;
+    bool mouse_pressed = false, drawn = false;
     sf::Vector2f mouse_last_pos(0, 0);
     sf_window.setVisible(true);
     while (sf_window.isOpen()) {
@@ -61,32 +61,52 @@ signed main(int argc, char *argv[]) {
                     handler.MoveCamera(FORWARD, 0.f);
                 else if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
                     handler.MoveCamera(BACKWARD, 0.f);
+                handler.DrawScene();
+                sf_window.display();
+                drawn = true;
             }
             if (event.type == sf::Event::MouseButtonPressed) {
                 if (event.mouseButton.button == sf::Mouse::Left) {
                     mouse_pressed = true;
                     mouse_last_pos = {static_cast<float>(event.mouseButton.x), static_cast<float>(event.mouseButton.y)};
+                    drawn = false;
                 }
             }
             if (event.type == sf::Event::MouseMoved) {
                 if (event.mouseButton.button == sf::Mouse::Left && mouse_pressed) {
-                    handler.RotateCurCamera(event.mouseButton.y - mouse_last_pos.y, event.mouseButton.x - mouse_last_pos.x);
+                    handler.RotateCurCamera(event.mouseButton.y - mouse_last_pos.y,
+                                            event.mouseButton.x - mouse_last_pos.x);
                     mouse_last_pos = {static_cast<float>(event.mouseButton.x), static_cast<float>(event.mouseButton.y)};
+
+                    handler.DrawScene();
+                    sf_window.display();
+                    drawn = true;
                 }
             }
             if (event.type == sf::Event::MouseButtonReleased) {
                 if (event.mouseButton.button == sf::Mouse::Left) {
                     mouse_pressed = false;
-                    handler.RotateCurCamera(event.mouseButton.y - mouse_last_pos.y, event.mouseButton.x - mouse_last_pos.x);
+                    handler.RotateCurCamera(event.mouseButton.y - mouse_last_pos.y,
+                                            event.mouseButton.x - mouse_last_pos.x);
+
+                    handler.DrawScene();
+                    sf_window.display();
+                    drawn = true;
                 }
             }
             if (event.type == sf::Event::MouseWheelScrolled) {
                 if (event.mouseWheelScroll.wheel == sf::Mouse::VerticalWheel) {
                     handler.ScaleCamera(event.mouseWheelScroll.delta);
+
+                    handler.DrawScene();
+                    sf_window.display();
+                    drawn = true;
                 }
             }
         }
-        handler.DrawScene();
-        sf_window.display();
+        if (!drawn) {
+            handler.DrawScene();
+            sf_window.display();
+        }
     }
 }
