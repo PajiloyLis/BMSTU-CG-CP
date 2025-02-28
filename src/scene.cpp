@@ -5,6 +5,7 @@
 Scene::Scene() : figures() {
     scene = nullptr;
     width = height = 0;
+    running = false;
 }
 
 Scene::Scene(sf::RenderTarget *scene)
@@ -13,6 +14,7 @@ Scene::Scene(sf::RenderTarget *scene)
     this->width = scene->getSize().x;
     this->height = scene->getSize().y;
     zbuffer.resize((this->height) * (this->width), -SCREEN_DEPTH);
+    running = false;
 }
 
 void Scene::ClearScene() {
@@ -110,12 +112,12 @@ void Scene::DrawSmoke() {
 
                     a_vec000.y = scene->getSize().y - a_vec000.y,
                     a_vec001.y = scene->getSize().y - a_vec001.y,
-                    a_vec000.y = scene->getSize().y - a_vec000.y,
-                    a_vec000.y = scene->getSize().y - a_vec000.y,
-                    a_vec000.y = scene->getSize().y - a_vec000.y,
-                    a_vec000.y = scene->getSize().y - a_vec000.y,
-                    a_vec000.y = scene->getSize().y - a_vec000.y,
-                    a_vec000.y = scene->getSize().y - a_vec000.y;
+                    a_vec010.y = scene->getSize().y - a_vec010.y,
+                    a_vec011.y = scene->getSize().y - a_vec011.y,
+                    a_vec100.y = scene->getSize().y - a_vec100.y,
+                    a_vec101.y = scene->getSize().y - a_vec101.y,
+                    a_vec110.y = scene->getSize().y - a_vec110.y,
+                    a_vec111.y = scene->getSize().y - a_vec111.y;
 
 
                     sf::VertexArray quad(sf::Quads, 4);
