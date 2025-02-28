@@ -13,6 +13,7 @@ using namespace sf;
 signed main(int argc, char *argv[]) {
 
     sf::RenderWindow sf_window(sf::VideoMode(1850, 1016), "kek");
+    sf_window.setFramerateLimit(10);
     TaskHandler handler;
 
     handler.SetScene(Scene(&sf_window));
@@ -44,6 +45,7 @@ signed main(int argc, char *argv[]) {
     while (sf_window.isOpen()) {
         sf::Event event;
         if (sf_window.pollEvent(event)) {
+            cout<<event.type<<'\n';
             if (event.type == sf::Event::Closed)
                 sf_window.close();
             if (event.type == sf::Event::KeyPressed) {
