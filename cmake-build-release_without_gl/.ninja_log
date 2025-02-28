@@ -1,0 +1,15 @@
+# ninja log v5
+0	19	1740785269632193895	cp_cg_autogen/timestamp	da6d3dc1dbe2bff2
+0	19	1740785269632193895	/home/ivan/Study/CompG/cp_cg/cmake-build-release_without_gl/cp_cg_autogen/timestamp	da6d3dc1dbe2bff2
+19	5382	1740785274996193859	CMakeFiles/cp_cg.dir/src/operations.cpp.o	8aa0d76241e9f2b2
+20	5912	1740785275525193855	CMakeFiles/cp_cg.dir/src/triangle.cpp.o	2a79a8e4160403cb
+5915	8680	1740785278296193837	CMakeFiles/cp_cg.dir/src/camera.cpp.o	b6324394894adf53
+8681	10017	1740785279633193828	CMakeFiles/cp_cg.dir/src/conversions.cpp.o	9eb86ffe06bad0c
+5389	10215	1740785279830193826	CMakeFiles/cp_cg.dir/src/figure.cpp.o	7b5450b4530622d8
+27	11856	1740785281470193815	CMakeFiles/cp_cg.dir/src/handler.cpp.o	d9f322c76daa520c
+21	12095	1740785281709193814	CMakeFiles/cp_cg.dir/src/main_window.cpp.o	997e5f20ac2423ac
+3	3582	1740785359525193292	CMakeFiles/cp_cg.dir/src/figure.cpp.o	7b5450b4530622d8
+2	7887	1740785363829193263	CMakeFiles/cp_cg.dir/src/handler.cpp.o	d9f322c76daa520c
+1	8274	1740785364216193260	CMakeFiles/cp_cg.dir/src/main.cpp.o	71a5baf26554772b
+2	8275	1740785364218193260	CMakeFiles/cp_cg.dir/src/scene.cpp.o	7fe202a06816ae09
+2	8578	1740785364521193258	CMakeFiles/cp_cg.dir/src/main_window.cpp.o	997e5f20ac2423ac

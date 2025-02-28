@@ -1,7 +1,6 @@
 #include <SFML/Window.hpp>
 #include <SFML/Graphics.hpp>
 #include <SFML/Graphics/Image.hpp>
-#include "map_prepare.h"
 #include <cmath>
 #include <cstdlib>
 
