@@ -18,7 +18,7 @@
 \contentsline {subsection}{\numberline {1.5.1}Модель Ламберта}{9}{subsection.1.5.1}%
 \contentsline {subsection}{\numberline {1.5.2}Модель Фонга}{10}{subsection.1.5.2}%
 \contentsline {section}{\numberline {1.6}Алгоритмы построения теней}{11}{section.1.6}%
-\contentsline {section}{\numberline {1.7}Алгоритм для визуализации поведение газов}{11}{section.1.7}%
+\contentsline {section}{\numberline {1.7}Алгоритм для визуализации поведения газов}{11}{section.1.7}%
 \contentsline {chapter}{\numberline {2}Конструкторский раздел}{14}{chapter.2}%
 \contentsline {section}{\numberline {2.1}Описание структур данных}{14}{section.2.1}%
 \contentsline {section}{\numberline {2.2}Общий алгоритм }{14}{section.2.2}%
