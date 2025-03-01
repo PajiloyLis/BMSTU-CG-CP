@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2025.1.27)  1 MAR 2025 13:31
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2025.1.27)  1 MAR 2025 13:36
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1489,30 +1489,27 @@ n: found PDF version <1.7>, but at most version <1.5> allowed
 File: assets/img/z-bufer.pdf Graphic file (type pdf)
 <use assets/img/z-bufer.pdf, page 1>
 Package pdftex.def Info: assets/img/z-bufer.pdf , page1 used on input line 12.
-(pdftex.def)             Requested size: 483.69687pt x 1090.48595pt.
+(pdftex.def)             Requested size: 290.22107pt x 654.29616pt.
 [14
 
 
 
 
 ]
-Overfull \vbox (386.2501pt too high) has occurred while \output is active []
-
-
-[15 <./assets/img/z-bufer.pdf>]
 
 pdfTeX warning: /usr/bin/pdflatex (file ./assets/img/wind_alg.pdf): PDF inclusi
 on: found PDF version <1.7>, but at most version <1.5> allowed
-<assets/img/wind_alg.pdf, id=296, page=1, 312.20638pt x 391.4625pt>
+<assets/img/wind_alg.pdf, id=283, page=1, 312.20638pt x 391.4625pt>
 File: assets/img/wind_alg.pdf Graphic file (type pdf)
 <use assets/img/wind_alg.pdf, page 1>
 Package pdftex.def Info: assets/img/wind_alg.pdf , page1 used on input line 20.
 
 (pdftex.def)             Requested size: 483.69687pt x 606.52167pt.
-) [16 <./assets/img/wind_alg.pdf>] [17]
+[15 <./assets/img/z-bufer.pdf>]) [16 <./assets/img/wind_alg.pdf>] [17]
 \openout2 = `51-biblio.aux'.
 
- (./51-biblio.tex
+
+(./51-biblio.tex
 Underfull \hbox (badness 10000) in paragraph at lines 12--13
 []\T2A/cmr/m/n/14.4 Большая ки-тай-ская эн-цик-ло-пе-дия // URL:
  []
