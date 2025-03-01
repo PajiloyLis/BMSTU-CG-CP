@@ -10,6 +10,8 @@
 #include "operations.h"
 #include "triangle.h"
 
+#define SCREEN_DEPTH 256*256*256
+
 class Scene {
 public:
     Scene();

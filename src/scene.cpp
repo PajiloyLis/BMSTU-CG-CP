@@ -1,6 +1,5 @@
 #include "scene.h"
 
-#define SCREEN_DEPTH 256*256*256
 
 const glm::vec3 light_ray = glm::vec3(0, 0, 1);
 
