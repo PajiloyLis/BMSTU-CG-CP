@@ -81,10 +81,10 @@ void triangle::rotate(const rotate_t &rotate_data) {
 }
 
 void
-triangle::draw(sf::RenderTarget &target, vector<float> &zbuffer, const glm::vec3 &light, const vector<sf::Color> &colors,
+triangle::draw(sf::RenderTarget &target, vector<float> &zbuffer, const glm::vec3 &light, const sf::Color &color,
                sf::RenderStates states) const {
 #ifndef GL
-    z_buffer(vertices, target, colors, zbuffer);
+    z_buffer(vertices, target, color, zbuffer);
 #else
 //    cout<<"GL"<<'\n';
     sf::VertexArray to_draw(sf::Triangles, 3);
