@@ -102,7 +102,7 @@ void z_buffer(array<glm::vec3, 3> points, sf::RenderTarget &image, const vector<
 //        }
 //    }
     int minX = std::max(0, static_cast<int>(std::min({points[0].x, points[1].x, points[2].x})));
-    int maxX = std::min(screenWidth - 1, static_cast<int>(std::max({points[0].x, points[1].x, points[2].x})));
+    int maxX = std::min(image.getSize().x - 1, static_cast<unsigned int>(std::max({points[0].x, points[1].x, points[2].x})));
     int minY = std::max(0, static_cast<int>(std::min({points[0].y, points[1].y, points[2].y})));
     int maxY = std::min(screenHeight - 1, static_cast<int>(std::max({points[0].y, points[1].y, points[2].y})));
 
@@ -127,9 +127,12 @@ void z_buffer(array<glm::vec3, 3> points, sf::RenderTarget &image, const vector<
                 color.g = static_cast<sf::Uint8>(alpha * colors[0].g + beta * colors[1].g + gamma * colors[2].g);
                 color.b = static_cast<sf::Uint8>(alpha * colors[0].b + beta * colors[1].b + gamma * colors[2].b);
 
-                int idx = static_cast<int>(round(p.x + ));
+                int idx = static_cast<int>(round(p.x + image.getSize().x*p.y));
                 // Добавляем пиксель в список
-                if(depth<z_)
+                if(depth<z_buffer[idx])
+                {
+
+                }
             }
         }
     }
