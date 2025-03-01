@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2025.1.27)  1 MAR 2025 10:13
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2025.1.27)  1 MAR 2025 10:42
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1477,11 +1477,11 @@ LaTeX Font Warning: Font shape `T2A/cmr/bx/n' in size <16> not available
 
 
 
-] [7] [8] [9] [10]
+] [7] [8] [9] [10] [11]
 ! Undefined control sequence.
 <argument> \partial \bm 
                         {u}
-l.90 \frac{\partial \bm{u}}{\partial t}
+l.93 \frac{\partial \bm{u}}{\partial t}
                                         = -(\bm{u} \cdot \nabla) \bm{u} + \n...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -1490,7 +1490,7 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 ! Undefined control sequence.
-l.90 \frac{\partial \bm{u}}{\partial t} = -(\bm
+l.93 \frac{\partial \bm{u}}{\partial t} = -(\bm
                                                {u} \cdot \nabla) \bm{u} + \n...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -1499,7 +1499,7 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 ! Undefined control sequence.
-l.90 ...}{\partial t} = -(\bm{u} \cdot \nabla) \bm
+l.93 ...}{\partial t} = -(\bm{u} \cdot \nabla) \bm
                                                   {u} + \nu \nabla^2 \bm{u} ...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -1508,7 +1508,7 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 ! Undefined control sequence.
-l.90 ...u} \cdot \nabla) \bm{u} + \nu \nabla^2 \bm
+l.93 ...u} \cdot \nabla) \bm{u} + \nu \nabla^2 \bm
                                                   {u} + \bm{f}
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -1517,7 +1517,7 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 ! Undefined control sequence.
-l.90 ...\nabla) \bm{u} + \nu \nabla^2 \bm{u} + \bm
+l.93 ...\nabla) \bm{u} + \nu \nabla^2 \bm{u} + \bm
                                                   {f}
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -1525,9 +1525,8 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-[11]
 ! Undefined control sequence.
-l.94 	\item \(\bm
+l.97 	\item \(\bm
                  {u}\) — вектор скорости жидкости и...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -1538,7 +1537,7 @@ and I'll forget about whatever was undefined.
 ! Undefined control sequence.
 <argument> \partial \bm 
                         {u}
-l.95 	\item \(\frac{\partial \bm{u}}{\partial t}
+l.98 	\item \(\frac{\partial \bm{u}}{\partial t}
                                                 \) — изменение с...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -1547,7 +1546,7 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 ! Undefined control sequence.
-l.96 	\item \((\bm
+l.99 	\item \((\bm
                   {u} \cdot \nabla) \bm{u}\) — нелинейный чле...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -1556,7 +1555,7 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 ! Undefined control sequence.
-l.96 	\item \((\bm{u} \cdot \nabla) \bm
+l.99 	\item \((\bm{u} \cdot \nabla) \bm
                                        {u}\) — нелинейный чле...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -1565,8 +1564,8 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 ! Undefined control sequence.
-l.98 	\item \(\nu \nabla^2 \bm
-                              {u}\) — вязкость (диффузия),
+l.101 	\item \(\nu \nabla^2 \bm
+                               {u}\) — вязкость (диффузия),
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
@@ -1574,8 +1573,8 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 ! Undefined control sequence.
-l.99 	\item \(\bm
-                 {f}\) — внешние силы (например, гра...
+l.102 	\item \(\bm
+                  {f}\) — внешние силы (например, гр�...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
@@ -1583,7 +1582,7 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 ! Undefined control sequence.
-l.103 \frac{\partial \rho}{\partial t} = -(\bm
+l.106 \frac{\partial \rho}{\partial t} = -(\bm
                                               {u} \cdot \nabla) \rho + \kapp...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -1592,7 +1591,7 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 ! Undefined control sequence.
-l.107 	\item \(\rho_d(\bm
+l.110 	\item \(\rho_d(\bm
                          {x}, t)\) — плотность дыма в точ...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -1601,7 +1600,7 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 ! Undefined control sequence.
-l.107 ...тность дыма в точке \(\bm
+l.110 ...тность дыма в точке \(\bm
                                                   {x}\) в момент вр...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -1610,7 +1609,7 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 ! Undefined control sequence.
-l.108 	\item \((\bm
+l.111 	\item \((\bm
                    {u} \cdot \nabla) \rho_d\) — изменение пло�...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -1761,9 +1760,6 @@ LaTeX Font Warning: Size substitutions with differences
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
 Package rerunfilecheck Info: File `report.out' has not changed.
 (rerunfilecheck)             Checksum: DC5369B4CEE1CBCF66F2817269A75D14;7931.
  ) 
@@ -1786,9 +1782,9 @@ ive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/te
 xmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dis
 t/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts
 /type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on report.pdf (29 pages, 770556 bytes).
+Output written on report.pdf (29 pages, 770988 bytes).
 PDF statistics:
- 957 PDF objects out of 1000 (max. 8388607)
+ 958 PDF objects out of 1000 (max. 8388607)
  547 compressed objects within 6 object streams
  161 named destinations out of 1000 (max. 500000)
  346 words of extra memory for PDF output out of 10000 (max. 10000000)
