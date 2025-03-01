@@ -3,9 +3,9 @@
 void z_buffer(array<glm::vec3, 3> points, sf::RenderTarget &image, const vector<sf::Color> &colors,
               vector<float> &z_buffer) {
     if (abs(points[0].y - points[1].y) < 1e-5 && abs(points[1].y - points[2].y) < 1e-5) return;
-    glm::vec<3, int, glm::defaultp> t0(ceil(points[0].x), ceil(points[0].y), ceil(points[0].z)),
-            t1(ceil(points[1].x), ceil(points[1].y), ceil(points[1].z)),
-            t2(ceil(points[2].x), ceil(points[2].y), ceil(points[2].z));
+    glm::vec<3, int, glm::defaultp> t0(round(points[0].x), round(points[0].y), round(points[0].z)),
+            t1(round(points[1].x), round(points[1].y), round(points[1].z)),
+            t2(round(points[2].x), round(points[2].y), round(points[2].z));
     if (t0.y > t1.y) std::swap(t0, t1);
     if (t0.y > t2.y) std::swap(t0, t2);
     if (t1.y > t2.y) std::swap(t1, t2);
@@ -24,23 +24,22 @@ void z_buffer(array<glm::vec3, 3> points, sf::RenderTarget &image, const vector<
             float phi = B.x == A.x ? 1. : (float) (j - A.x) / (float) (B.x - A.x);
             glm::vec3 P = glm::vec3(A) + glm::vec3(B - A) * phi;
 
-            glm::vec3 barycentric = glm::vec3(
-                    ((t1.y - t2.y) * (j - t2.x) + (t2.x - t1.x) * (P.y - t2.y)) /
-                    ((t1.y - t2.y) * (t0.x - t2.x) + (t2.x - t1.x) * (t0.y - t2.y)),
-                    ((t2.y - t0.y) * (j - t2.x) + (t0.x - t2.x) * (P.y - t2.y)) /
-                    ((t1.y - t2.y) * (t0.x - t2.x) + (t2.x - t1.x) * (t0.y - t2.y)),
-                    1.0f - barycentric.x - barycentric.y);
-
-            sf::Color color;
-            color.r = static_cast<sf::Uint8>(barycentric.x * colors[0].r + barycentric.y * colors[1].r +
-                                             barycentric.z * colors[2].r);
-            color.g = static_cast<sf::Uint8>(barycentric.x * colors[0].g + barycentric.y * colors[1].g +
-                                             barycentric.z * colors[2].g);
-            color.b = static_cast<sf::Uint8>(barycentric.x * colors[0].b + barycentric.y * colors[1].b +
-                                             barycentric.z * colors[2].b);
-
             int idx = round(P.x + P.y * image.getSize().x);
             if (idx >= 0 && idx < z_buffer.size() && z_buffer[idx] < P.z) {
+                glm::vec3 barycentric = glm::vec3(
+                        ((t1.y - t2.y) * (j - t2.x) + (t2.x - t1.x) * (P.y - t2.y)) /
+                        ((t1.y - t2.y) * (t0.x - t2.x) + (t2.x - t1.x) * (t0.y - t2.y)),
+                        ((t2.y - t0.y) * (j - t2.x) + (t0.x - t2.x) * (P.y - t2.y)) /
+                        ((t1.y - t2.y) * (t0.x - t2.x) + (t2.x - t1.x) * (t0.y - t2.y)),
+                        1.0f - barycentric.x - barycentric.y);
+
+                sf::Color color;
+                color.r = static_cast<sf::Uint8>(barycentric.x * colors[0].r + barycentric.y * colors[1].r +
+                                                 barycentric.z * colors[2].r);
+                color.g = static_cast<sf::Uint8>(barycentric.x * colors[0].g + barycentric.y * colors[1].g +
+                                                 barycentric.z * colors[2].g);
+                color.b = static_cast<sf::Uint8>(barycentric.x * colors[0].b + barycentric.y * colors[1].b +
+                                                 barycentric.z * colors[2].b);
                 z_buffer[idx] = P.z;
                 image.draw(vector<sf::Vertex>(1, sf::Vertex(sf::Vector2f(P.x, P.y), color)).data(),
                            1,
