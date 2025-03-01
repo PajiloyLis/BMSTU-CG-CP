@@ -20,8 +20,12 @@ Scene::Scene(sf::RenderTarget *scene)
 
 void Scene::ClearScene() {
     scene->clear(sf::Color(0x87CEEB));
+#ifndef GL
     zbuffer.resize(0);
     zbuffer.resize((this->height) * (this->width), -SCREEN_DEPTH);
+#else
+    glClear(GL_DEPTH_BUFFER_BIT);
+#endif
 }
 
 void Scene::DrawFigures() {
