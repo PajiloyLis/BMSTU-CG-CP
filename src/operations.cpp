@@ -121,11 +121,15 @@ void z_buffer(array<glm::vec3, 3> points, sf::RenderTarget &image, const vector<
             // Если точка внутри треугольника
             if (alpha >= 0 && beta >= 0 && gamma >= 0) {
                 // Интерполируем глубину и цвет
-                float depth = alpha * triangle.v0.position.z + beta * triangle.v1.position.z + gamma * triangle.v2.position.z;
-                glm::vec3 color = alpha * triangle.v0.color + beta * triangle.v1.color + gamma * triangle.v2.color;
+                float depth = alpha * points[0].z + beta * points[1].z + gamma * points[2].z;
+                sf::Color color;
+                color.r = static_cast<sf::Uint8>(alpha * colors[0].r + beta * colors[1].r + gamma * colors[2].r);
+                color.g = static_cast<sf::Uint8>(alpha * colors[0].g + beta * colors[1].g + gamma * colors[2].g);
+                color.b = static_cast<sf::Uint8>(alpha * colors[0].b + beta * colors[1].b + gamma * colors[2].b);
 
+                int idx = static_cast<int>(round(p.x + ));
                 // Добавляем пиксель в список
-                pixels.push_back({p, depth, color});
+                if(depth<z_)
             }
         }
     }
