@@ -77,7 +77,6 @@ void Scene::DrawSmoke() {
     timespec start, end, start1, end1;
     clock_gettime(CLOCK_MONOTONIC, &start);
     if (running) {
-        cout << "WELL IT MUST UPDATED RIGHT NOW, BUT WTF\n";
         ash.update();
     }
     for (int i = ash.height; i >= 1; --i) {
