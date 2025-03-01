@@ -24,4 +24,5 @@
 \contentsline {section}{\numberline {2.2}Общий алгоритм }{14}{section.2.2}%
 \contentsline {section}{\numberline {2.3}Схемы алгоритм визуализации трехмерной схемы}{14}{section.2.3}%
 \contentsline {subsection}{\numberline {2.3.1}Алгоритм z-буффер}{14}{subsection.2.3.1}%
+\contentsline {subsection}{\numberline {2.3.2}Алгоритм поведения газов}{16}{subsection.2.3.2}%
 \contentsline {chapter}{СПИСОК ИСПОЛЬЗОВАННЫХ ИСТОЧНИКОВ}{18}{figure.caption.2}%
