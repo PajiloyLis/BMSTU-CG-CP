@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2025.1.27)  1 MAR 2025 14:33
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2025.1.27)  1 MAR 2025 17:24
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1485,7 +1485,7 @@ LaTeX Font Warning: Font shape `T2A/cmr/bx/n' in size <16> not available
 
 pdfTeX warning: /usr/bin/pdflatex (file ./assets/img/z-bufer.pdf): PDF inclusio
 n: found PDF version <1.7>, but at most version <1.5> allowed
-<assets/img/z-bufer.pdf, id=280, page=1, 334.3692pt x 753.77606pt>
+<assets/img/z-bufer.pdf, id=279, page=1, 334.3692pt x 753.77606pt>
 File: assets/img/z-bufer.pdf Graphic file (type pdf)
 <use assets/img/z-bufer.pdf, page 1>
 Package pdftex.def Info: assets/img/z-bufer.pdf , page1 used on input line 12.
@@ -1499,18 +1499,27 @@ Package pdftex.def Info: assets/img/z-bufer.pdf , page1 used on input line 12.
 
 pdfTeX warning: /usr/bin/pdflatex (file ./assets/img/Naive_stocks.pdf): PDF inc
 lusion: found PDF version <1.7>, but at most version <1.5> allowed
-<assets/img/Naive_stocks.pdf, id=289, page=1, 179.7114pt x 313.17pt>
+<assets/img/Naive_stocks.pdf, id=288, page=1, 179.7114pt x 313.17pt>
 File: assets/img/Naive_stocks.pdf Graphic file (type pdf)
 <use assets/img/Naive_stocks.pdf, page 1>
 Package pdftex.def Info: assets/img/Naive_stocks.pdf , page1 used on input line
  22.
 (pdftex.def)             Requested size: 338.58632pt x 590.10243pt.
-[15 <./assets/img/z-bufer.pdf>]
+[15 <./assets/img/z-bufer.pdf>] [16 <./assets/img/Naive_stocks.pdf>]
 
-LaTeX Warning: Reference `fig:dens_step' on page 16 undefined on input line 27.
+pdfTeX warning: /usr/bin/pdflatex (file ./assets/img/dens_step.pdf): PDF inclus
+ion: found PDF version <1.7>, but at most version <1.5> allowed
+<assets/img/dens_step.pdf, id=317, page=1, 127.4361pt x 298.23419pt>
+File: assets/img/dens_step.pdf Graphic file (type pdf)
+<use assets/img/dens_step.pdf, page 1>
+Package pdftex.def Info: assets/img/dens_step.pdf , page1 used on input line 31
+.
+(pdftex.def)             Requested size: 314.40001pt x 735.9453pt.
+[17]
+Overfull \vbox (31.70946pt too high) has occurred while \output is active []
 
 
-[16 <./assets/img/Naive_stocks.pdf>]) [17]
+[18 <./assets/img/dens_step.pdf>]) [19]
 \openout2 = `51-biblio.aux'.
 
  (./51-biblio.tex
@@ -1524,7 +1533,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 12--13
 ра-ще-
  []
 
-) [18
+) [20
 
 
 
@@ -1549,23 +1558,14 @@ LaTeX Font Warning: Size substitutions with differences
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
-
-LaTeX Warning: There were undefined references.
-
-
-Package rerunfilecheck Warning: File `report.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `report.out':
-(rerunfilecheck)             Before: 05C5B3209547F5ACFD944807CC86A975;6433
-(rerunfilecheck)             After:  124D908902C2098731BAE45AD7D56189;6169.
+Package rerunfilecheck Info: File `report.out' has not changed.
+(rerunfilecheck)             Checksum: F3ABBF37387891A03190EB6EC452E908;6169.
  ) 
 Here is how much of TeX's memory you used:
- 52266 strings out of 479648
- 1282253 string characters out of 11636115
- 13894413 words of memory out of 24000000
- 69430 multiletter control sequences out of 15000+600000
+ 52276 strings out of 479648
+ 1282504 string characters out of 11636115
+ 13894552 words of memory out of 24000000
+ 69436 multiletter control sequences out of 15000+600000
  478962 words of font info for 49 fonts, out of 12000000 for 9000
  475 hyphenation exceptions out of 8191
  106i,17n,108p,2076b,609s stack positions out of 5000i,500n,10000p,12000000b,80000s
@@ -1578,10 +1578,10 @@ texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texliv
 e/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf
 -dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/f
 onts/type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on report.pdf (17 pages, 552751 bytes).
+Output written on report.pdf (19 pages, 578638 bytes).
 PDF statistics:
- 613 PDF objects out of 1000 (max. 8388607)
- 328 compressed objects within 4 object streams
- 60 named destinations out of 1000 (max. 500000)
- 259 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 633 PDF objects out of 1000 (max. 8388607)
+ 344 compressed objects within 4 object streams
+ 63 named destinations out of 1000 (max. 500000)
+ 264 words of extra memory for PDF output out of 10000 (max. 10000000)
 
