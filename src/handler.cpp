@@ -9,7 +9,7 @@ void TaskHandler::SetScene(const Scene &scene_to_set) {
 void TaskHandler::DrawScene() {
     scene.ClearScene();
     scene.DrawFigures();
-    scene.DrawSmoke();
+    scene.DrawSmo   ke();
 }
 
 void TaskHandler::ClearScene() {
