@@ -64,6 +64,54 @@ vector<vector<vector<float>>> &v_, vector<vector<vector<float>>> &w_, float d, f
 }
 \end{lstlisting}
 
+В листинге~\ref{lst:vel_step} представлена функция обновления поля скорости.
+
+\begin{lstlisting}[caption={Функция обновления поля скорости},label={lst:vel_step}]
+void smoke::vel_step(vector<vector<vector<float>>> &u_, vector<vector<vector<float>>> &v_, vector<vector<vector<float>>> &w_, vector<vector<vector<float>>> &v0, vector<vector<vector<float>>> &u0, vector<vector<vector<float>>> &w0, float visc, float d) {
+	add_source(u_, u0, d);
+	add_source(v_, v0, d);
+	add_source(w_, w0, d);
+	u0.swap(u_);
+	diffuse(1, u_, u0, visc, d);
+	v0.swap(v_);
+	diffuse(2, v_, v0, visc, d);
+	w0.swap(w_);
+	diffuse(3, w_, w0, visc, d);
+	project(u_, v_, w_, u0, v0);
+	u0.swap(u_);
+	v0.swap(v_);
+	w0.swap(w_);
+	advect(1, u_, u0, u0, v0, w0, d);
+	advect(2, v_, v0, u0, v0, w0, d);
+	advect(3, w_, w0, u0, v0, w0, d);
+	project(u_, v_, w_, u0, v0);
+}
+\end{lstlisting}
+
+В листинге~\ref{lst:advect} 
+
+\begin{lstlisting}[caption={Функция вычисления адвекции},label={lst:advect}]
+	void smoke::vel_step(vector<vector<vector<float>>> &u_, vector<vector<vector<float>>> &v_, vector<vector<vector<float>>> &w_, vector<vector<vector<float>>> &v0, vector<vector<vector<float>>> &u0, vector<vector<vector<float>>> &w0, float visc, float d) {
+		add_source(u_, u0, d);
+		add_source(v_, v0, d);
+		add_source(w_, w0, d);
+		u0.swap(u_);
+		diffuse(1, u_, u0, visc, d);
+		v0.swap(v_);
+		diffuse(2, v_, v0, visc, d);
+		w0.swap(w_);
+		diffuse(3, w_, w0, visc, d);
+		project(u_, v_, w_, u0, v0);
+		u0.swap(u_);
+		v0.swap(v_);
+		w0.swap(w_);
+		advect(1, u_, u0, u0, v0, w0, d);
+		advect(2, v_, v0, u0, v0, w0, d);
+		advect(3, w_, w0, u0, v0, w0, d);
+		project(u_, v_, w_, u0, v0);
+	}
+\end{lstlisting}
+
 \section{Модульное тестирование}
 
 Для модульного тестирования был использован XUnit. Тестировались критически важные функции. Покрытие составило 20,4\%. В листинге ~\ref{lst:test_voxels} приведен пример тестов для функции отрисовки вокселей.
