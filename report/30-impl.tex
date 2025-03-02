@@ -88,28 +88,63 @@ void smoke::vel_step(vector<vector<vector<float>>> &u_, vector<vector<vector<flo
 }
 \end{lstlisting}
 
-В листинге~\ref{lst:advect} 
-
+В листинге~\ref{lst:advect} представлена функция вычисления адвекции.
+\clearpage
 \begin{lstlisting}[caption={Функция вычисления адвекции},label={lst:advect}]
-	void smoke::vel_step(vector<vector<vector<float>>> &u_, vector<vector<vector<float>>> &v_, vector<vector<vector<float>>> &w_, vector<vector<vector<float>>> &v0, vector<vector<vector<float>>> &u0, vector<vector<vector<float>>> &w0, float visc, float d) {
-		add_source(u_, u0, d);
-		add_source(v_, v0, d);
-		add_source(w_, w0, d);
-		u0.swap(u_);
-		diffuse(1, u_, u0, visc, d);
-		v0.swap(v_);
-		diffuse(2, v_, v0, visc, d);
-		w0.swap(w_);
-		diffuse(3, w_, w0, visc, d);
-		project(u_, v_, w_, u0, v0);
-		u0.swap(u_);
-		v0.swap(v_);
-		w0.swap(w_);
-		advect(1, u_, u0, u0, v0, w0, d);
-		advect(2, v_, v0, u0, v0, w0, d);
-		advect(3, w_, w0, u0, v0, w0, d);
-		project(u_, v_, w_, u0, v0);
+void smoke::advect(int b, vector<vector<vector<float>>> &d, vector<vector<vector<float>>> &d0, vector<vector<vector<float>>> &u_, vector<vector<vector<float>>> &v_, vector<vector<vector<float>>> &w_, float dt_) {
+	int i, j, i0, j0, k0, i1, j1, k1;
+	float x, y, z, s0, t0, s1, t1, dt0, u1, u0;
+	dt0 = dt_ * max(height, width);
+	#pragma omp parallel for
+	for (i = 1; i <= height; i++) {
+		for (j = 1; j <= height; j++) {
+			for (int k = 1; k <= width; ++k) {
+				x = i - dt0 * w_[i][j][k];
+				y = j - dt0 * u_[i][j][k];
+				z = k - dt0 * v_[i][j][k];
+				if (x < 1.5f) x = 1.5f;
+				if (x > height - 0.5f) x = height - 0.5f;
+				i0 = (int) x;
+				i1 = i0 + 1;
+				if (y < 1.5f) y = 1.5f;
+				if (y > height - 0.5f) y = height - 0.5f;
+				j0 = (int) y;
+				j1 = j0 + 1;
+				if (z < 1.5f) z = 1.5f;
+				if (z > width - 0.5f) z = width - 0.5f;
+				k0 = (int) z;
+				k1 = k0 + 1;
+				s1 = x - i0;
+				s0 = 1 - s1;
+				t1 = y - j0;
+				t0 = 1 - t1;
+				u1 = z - k0;
+				u0 = 1 - u1;
+				d[i][j][k] = s0 * (t0 * u0 * d0[i0][j0][k0] + t1 * u0 * d0[i0][j1][k0] + t0 * u1 * d0[i0][j0][k1] + t1 * u1 * d0[i0][j1][k1]) + s1 * (t0 * u0 * d0[i1][j0][k0] + t1 * u0 * d0[i1][j1][k0] + t0 * u1 * d0[i1][j0][k1] + t1 * u1 * d0[i1][j1][k1]);
+			}
+		}
 	}
+	set_bnd(b, d);
+}
+\end{lstlisting}
+
+В листинге~\ref{lst:lin_solve} представлена функция решения СЛАУ алгоритмом на основе метода Гаусса---Зейделя.
+
+\begin{lstlisting}[caption={Функция решения СЛАУ},label={lst:lin_solve}]
+void smoke::lin_solve(int b, vector<vector<vector<float>>> &x, vector<vector<vector<float>>> &x0, float a, float c) {
+	int i, j, iter;
+	for (iter = 0; iter < 5; iter++) {
+		for (i = 1; i <= height; i++) {
+			for (j = 1; j <= height; j++) {
+				for (int k = 1; k <= width; ++k) {
+					x[i][j][k] = (x0[i][j][k] + a * (x[i - 1][j][k] + x[i + 1][j][k] + x[i][j - 1][k] + x[i][j + 1][k] + x[i][j][k - 1] + x[i][j][k + 1])) / c;
+					
+				}
+			}
+		}
+		set_bnd(b, x);
+	}
+}
 \end{lstlisting}
 
 \section{Модульное тестирование}
