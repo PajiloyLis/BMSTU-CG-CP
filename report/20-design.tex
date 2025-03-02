@@ -2,12 +2,12 @@
 В конструкторской части разработано программное обеспечение, а также формально описаны применяемые алгоритмы.
 
 \section{Схемы алгоритмов визуализации трехмерной сцены}
-\subsection{Алгоритм z-буффер}
-На рисунке~\ref{fig:z_buf} представлена схема алгоритма z-буфера.
+\subsection{Алгоритм, использующий z-буфер}
+На рисунке~\ref{fig:z_buf} представлена схема алгоритма с использованием z-буфера.
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.6\textwidth, page=1]{assets/img/z-bufer.pdf}   
-	\caption{Схема алгоритма z-буфера}
+	\caption{Схема алгоритма с использованием z-буфера}
 	\label{fig:z_buf}
 \end{figure}
 
@@ -66,6 +66,15 @@
 	\label{fig:diffuse}
 \end{figure}
 
+На рисунке~\ref{fig:advect} представлена схема алгоритма вычисления адвекции и самоадвекции для распределение плотности и поля скорости соответственно.
+
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1.0\textwidth,page=1]{assets/img/advect.pdf}
+	\caption{Схема алгоритма вычисления адвекции}
+	\label{fig:advect}
+\end{figure}
 
 
 \section*{Вывод}
