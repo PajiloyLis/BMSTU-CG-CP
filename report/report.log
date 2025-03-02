@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2025.1.27)  3 MAR 2025 00:59
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2025.1.27)  3 MAR 2025 01:31
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -2746,10 +2746,17 @@ File: assets/img/pie.png Graphic file (type png)
 <use assets/img/pie.png>
 Package pdftex.def Info: assets/img/pie.png  used on input line 52.
 (pdftex.def)             Requested size: 483.69687pt x 266.95691pt.
-) [31 <./assets/img/pie.png>]
+ [31 <./assets/img/pie.png>]
+<assets/img/pie_parallel.png, id=644, 774.0117pt x 426.393pt>
+File: assets/img/pie_parallel.png Graphic file (type png)
+<use assets/img/pie_parallel.png>
+Package pdftex.def Info: assets/img/pie_parallel.png  used on input line 78.
+(pdftex.def)             Requested size: 483.69687pt x 266.46243pt.
+) [32 <./assets/img/pie_parallel.png>]
 \openout2 = `50-conclusion.aux'.
 
- (./50-conclusion.tex) [32
+
+(./50-conclusion.tex) [33
 
 
 
@@ -2757,18 +2764,18 @@ Package pdftex.def Info: assets/img/pie.png  used on input line 52.
 \openout2 = `51-biblio.aux'.
 
  (./51-biblio.tex
-Underfull \hbox (badness 1264) in paragraph at lines 10--12
-[]\T2A/Tempora-TLF/m/n/12 Никулин, Е.А. Ком-пью-тер-ная гео-мет-рия и ал-го-рит
--мы ма-шин-ной гра-фи-ки. ^^U С.Пб:
+Underfull \hbox (badness 10000) in paragraph at lines 12--13
+[]\T2A/Tempora-TLF/m/n/12 Qt documentation [Элек-трон-ный ре-сурс] // URL: []$\
+T2A/cmtt/m/n/12 https : / / doc . qt . io / qt-[]6 /
  []
 
 
-Overfull \hbox (22.61398pt too wide) in paragraph at lines 12--13
-[]\T2A/Tempora-TLF/m/n/12 Большая ки-тай-ская эн-цик-ло-пе-дия // URL: https://
-www.zgbk.com/ecph/words?SiteID=1&ID=153502
+Underfull \hbox (badness 3930) in paragraph at lines 13--14
+[]\T2A/Tempora-TLF/m/n/12 SFML documentation [Элек-трон-ный ре-сурс] // URL: []
+$\T2A/cmtt/m/n/12 https : / / www . sfml-[]dev . org /
  []
 
-) [33
+) [34
 
 
 
@@ -2781,29 +2788,30 @@ AED: lastpage setting LastPage
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
 Package rerunfilecheck Info: File `report.out' has not changed.
-(rerunfilecheck)             Checksum: A3A70754723F7B0C06D82280D051D644;7511.
+(rerunfilecheck)             Checksum: 533F079304745AC232B2D909CF797B3B;7511.
  ) 
 Here is how much of TeX's memory you used:
- 44424 strings out of 479648
- 952366 string characters out of 11636115
+ 44435 strings out of 479648
+ 952650 string characters out of 11636115
  13457066 words of memory out of 24000000
- 61352 multiletter control sequences out of 15000+600000
- 511742 words of font info for 76 fonts, out of 12000000 for 9000
+ 61360 multiletter control sequences out of 15000+600000
+ 512052 words of font info for 77 fonts, out of 12000000 for 9000
  475 hyphenation exceptions out of 8191
  106i,17n,108p,2071b,1390s stack positions out of 5000i,500n,10000p,12000000b,80000s
- </home/ivan/.texlive2021/texmf-var/fonts/pk/ljfour/lh/lh-t2a/latt1095.600pk>
-{/usr/share/texlive/texmf-dist/fonts/enc/dvips/tempora/t2a-tempora.enc}</usr/sh
-are/texlive/texmf-dist/fonts/type1/public/tempora/Tempora-Bold.pfb></usr/share/
-texlive/texmf-dist/fonts/type1/public/tempora/Tempora-Regular.pfb></usr/share/t
-exlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive
-/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-
-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fo
-nts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type
-1/public/amsfonts/cm/cmsy10.pfb>
-Output written on report.pdf (32 pages, 1202452 bytes).
+ </home/ivan/.texlive2021/texmf-var/fonts/pk/ljfour/lh/lh-t2a/latt1200.600pk>
+ </home/ivan/.texlive2021/texmf-var/fonts/pk/ljfour/lh/lh-t2a/latt1095.600pk>{/
+usr/share/texlive/texmf-dist/fonts/enc/dvips/tempora/t2a-tempora.enc}</usr/shar
+e/texlive/texmf-dist/fonts/type1/public/tempora/Tempora-Bold.pfb></usr/share/te
+xlive/texmf-dist/fonts/type1/public/tempora/Tempora-Regular.pfb></usr/share/tex
+live/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/t
+exmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-di
+st/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/font
+s/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/
+public/amsfonts/cm/cmsy10.pfb>
+Output written on report.pdf (33 pages, 1255256 bytes).
 PDF statistics:
- 793 PDF objects out of 1000 (max. 8388607)
- 626 compressed objects within 7 object streams
- 204 named destinations out of 1000 (max. 500000)
- 357 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 838 PDF objects out of 1000 (max. 8388607)
+ 642 compressed objects within 7 object streams
+ 205 named destinations out of 1000 (max. 500000)
+ 362 words of extra memory for PDF output out of 10000 (max. 10000000)
 
