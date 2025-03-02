@@ -15,7 +15,7 @@ void z_buffer(array<glm::vec3, 3> points, sf::RenderTarget &image, const sf::Col
         int segment_height = second_half ? t2.y - t1.y : t1.y - t0.y;
         float alpha = (float) i / total_height;
         float beta = (float) (i - (second_half ? t1.y - t0.y : 0)) /
-                     segment_height; // be careful: with above conditions no division by zero here
+                     segment_height;
         glm::vec3 A = glm::vec3(t0) + glm::vec3(t2 - t0) * alpha;
         glm::vec3 B = (second_half ? glm::vec3(t1) + glm::vec3(t2 - t1) * beta :
                        glm::vec3(t0) + glm::vec3(t1 - t0) * beta);

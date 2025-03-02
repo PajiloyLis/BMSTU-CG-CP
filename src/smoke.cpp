@@ -10,6 +10,8 @@ ofstream out;
 
 timespec start, stop, eq_start, eq_stop;
 
+float lin_solve_time = 0;
+
 
 void smoke::add_source(vector<vector<vector<float>>> &x, vector<vector<vector<float>>> &s, float d) {
 #pragma omp parallel for
@@ -54,6 +56,7 @@ void smoke::diffuse(int b, vector<vector<vector<float>>> &x, vector<vector<vecto
     clock_gettime(CLOCK_MONOTONIC, &eq_start);
     lin_solve(b, x, x0, a, 1 + 6 * a);
     clock_gettime(CLOCK_MONOTONIC, &eq_stop);
+    lin_solve_time += eq_stop.tv_sec - eq_start.tv_sec + (eq_stop.tv_nsec - eq_start.tv_nsec) * 1e-9;
 }
 
 void smoke::advect(int b, vector<vector<vector<float>>> &d, vector<vector<vector<float>>> &d0,
@@ -170,6 +173,7 @@ smoke::vel_step(vector<vector<vector<float>>> &u_, vector<vector<vector<float>>>
     add_source(w_, w0, d);
     clock_gettime(CLOCK_MONOTONIC, &stop);
     out << stop.tv_sec - start.tv_sec + (stop.tv_nsec - start.tv_nsec) * 1e-9 << ",";
+    lin_solve_time = 0;
     clock_gettime(CLOCK_MONOTONIC, &start);
     u0.swap(u_);
     diffuse(1, u_, u0, visc, d);
@@ -178,9 +182,9 @@ smoke::vel_step(vector<vector<vector<float>>> &u_, vector<vector<vector<float>>>
     w0.swap(w_);
     diffuse(3, w_, w0, visc, d);
     clock_gettime(CLOCK_MONOTONIC, &stop);
-    out << (stop.tv_sec - start.tv_sec) - (eq_stop.tv_sec - eq_start.tv_sec) +
-           (stop.tv_nsec - start.tv_nsec - eq_stop.tv_nsec + eq_start.tv_nsec) * 1e-9 << ",";
-    out << eq_stop.tv_sec - eq_start.tv_sec + (eq_stop.tv_nsec - eq_start.tv_nsec) * 1e-9 << ',';
+    out << (stop.tv_sec - start.tv_sec) +
+           (stop.tv_nsec - start.tv_nsec) * 1e-9 - lin_solve_time << ",";
+    out << lin_solve_time << ',';
     project(u_, v_, w_, u0, v0);
     u0.swap(u_);
     v0.swap(v_);

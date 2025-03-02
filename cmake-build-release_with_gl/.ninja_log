@@ -14,3 +14,6 @@
 3	2008	1740925203937158707	CMakeFiles/cp_cg.dir/src/smoke.cpp.o	bc1fd7f9c9454c99
 8	10587	1740903951207939997	CMakeFiles/cp_cg.dir/src/main.cpp.o	185e4b70798bcf6a
 7	6494	1740922238356267727	CMakeFiles/cp_cg.dir/src/scene.cpp.o	f075af4fcd141132
+2	1867	1740926527093110065	CMakeFiles/cp_cg.dir/src/operations.cpp.o	7851f5f475a52f1b
+2	2380	1740926527606110047	CMakeFiles/cp_cg.dir/src/smoke.cpp.o	bc1fd7f9c9454c99
+2380	2916	1740926528138110027	cp_cg	ee08bd00b727f5c6
