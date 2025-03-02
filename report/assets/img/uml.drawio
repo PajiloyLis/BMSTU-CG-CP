@@ -1,0 +1,81 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/24.7.17 Chrome/128.0.6613.36 Electron/32.0.1 Safari/537.36" version="24.7.17">
+  <diagram name="Page-1" id="e7e014a7-5840-1c2e-5031-d8a46d1fe8dd">
+    <mxGraphModel dx="5066" dy="2409" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="826" background="none" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="dZ47QzNAhBsY7-dk2HAc-41" value="Обработчик задач" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="270" y="60" width="260" height="230" as="geometry" />
+        </mxCell>
+        <mxCell id="dZ47QzNAhBsY7-dk2HAc-42" value="+ сцена: Сцена" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="dZ47QzNAhBsY7-dk2HAc-41">
+          <mxGeometry y="26" width="260" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="dZ47QzNAhBsY7-dk2HAc-43" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" vertex="1" parent="dZ47QzNAhBsY7-dk2HAc-41">
+          <mxGeometry y="52" width="260" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="dZ47QzNAhBsY7-dk2HAc-44" value="+ Обновить дым (Скорость, Угол)&lt;div&gt;+ Обновить частоту симуляции (Частота)&lt;/div&gt;&lt;div&gt;+ Загрузить модель (Путь к файлу модели)&lt;/div&gt;&lt;div&gt;+ Изменить состояние симуляции ()&lt;/div&gt;&lt;div&gt;+ Вызвать меню ()&lt;br&gt;+ Повернуть камеру( Изменение Ox, Изменение Oy)&lt;/div&gt;&lt;div&gt;+ Подвинуть камеру (Направление смещения)&lt;/div&gt;&lt;div&gt;+ Масштабировать (Коэффициент изображения)&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="dZ47QzNAhBsY7-dk2HAc-41">
+          <mxGeometry y="60" width="260" height="170" as="geometry" />
+        </mxCell>
+        <mxCell id="dZ47QzNAhBsY7-dk2HAc-49" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=diamond;endFill=1;entryX=0.509;entryY=1;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="dZ47QzNAhBsY7-dk2HAc-45" target="dZ47QzNAhBsY7-dk2HAc-44">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="dZ47QzNAhBsY7-dk2HAc-45" value="Сцена" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="180" y="370" width="320" height="280" as="geometry" />
+        </mxCell>
+        <mxCell id="dZ47QzNAhBsY7-dk2HAc-46" value="+ ширина: float&lt;div&gt;+ высота: float&lt;/div&gt;&lt;div&gt;+ фигуры: vector&amp;lt;Фигура&amp;gt;&lt;/div&gt;&lt;div&gt;+ пепел: Дым&lt;/div&gt;&lt;div&gt;+ камера: Камера&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="dZ47QzNAhBsY7-dk2HAc-45">
+          <mxGeometry y="26" width="320" height="84" as="geometry" />
+        </mxCell>
+        <mxCell id="dZ47QzNAhBsY7-dk2HAc-47" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" vertex="1" parent="dZ47QzNAhBsY7-dk2HAc-45">
+          <mxGeometry y="110" width="320" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="dZ47QzNAhBsY7-dk2HAc-48" value="+ Отрисовать фигуру ()&lt;div&gt;+ Отрисовать дым ()&lt;/div&gt;&lt;div&gt;+ Очистить сцену ()&lt;/div&gt;&lt;div&gt;+&amp;nbsp;&lt;span style=&quot;background-color: initial;&quot;&gt;Повернуть камеру( Изменение Ox, Изменение Oy)&lt;/span&gt;&lt;/div&gt;&lt;div&gt;+ Подвинуть камеру (Направление смещения)&lt;/div&gt;&lt;div&gt;+ Масштабировать (Коэффициент изображения)&lt;/div&gt;&lt;div&gt;+ Обновить дым (vec2)&lt;div&gt;+ Обновить частоту симуляции (Частота)&lt;/div&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="dZ47QzNAhBsY7-dk2HAc-45">
+          <mxGeometry y="118" width="320" height="162" as="geometry" />
+        </mxCell>
+        <mxCell id="dZ47QzNAhBsY7-dk2HAc-59" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=diamond;endFill=0;" edge="1" parent="1" source="dZ47QzNAhBsY7-dk2HAc-55" target="dZ47QzNAhBsY7-dk2HAc-48">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="dZ47QzNAhBsY7-dk2HAc-55" value="Фигура" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;fillColor=none;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="70" y="740" width="250" height="52" as="geometry" />
+        </mxCell>
+        <mxCell id="dZ47QzNAhBsY7-dk2HAc-56" value="+ треугольники: vector&amp;lt;Треуголник&amp;gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="dZ47QzNAhBsY7-dk2HAc-55">
+          <mxGeometry y="26" width="250" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="dZ47QzNAhBsY7-dk2HAc-66" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=diamond;endFill=1;" edge="1" parent="1" source="dZ47QzNAhBsY7-dk2HAc-60" target="dZ47QzNAhBsY7-dk2HAc-48">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="dZ47QzNAhBsY7-dk2HAc-60" value="Камера" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="460" y="680" width="320" height="250" as="geometry" />
+        </mxCell>
+        <mxCell id="dZ47QzNAhBsY7-dk2HAc-61" value="+ позиция: vec3&lt;div&gt;+ направление взгляда: vec3&lt;/div&gt;&lt;div&gt;+ направление вверх: vec3&lt;/div&gt;&lt;div&gt;+ направление вправо: vec3&lt;/div&gt;&lt;div&gt;+ глобальное направление вверх: vec3&lt;/div&gt;&lt;div&gt;+ рыскание: float&lt;/div&gt;&lt;div&gt;+ тангаж: float&lt;/div&gt;&lt;div&gt;+ приближение: float&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="dZ47QzNAhBsY7-dk2HAc-60">
+          <mxGeometry y="26" width="320" height="124" as="geometry" />
+        </mxCell>
+        <mxCell id="dZ47QzNAhBsY7-dk2HAc-62" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" vertex="1" parent="dZ47QzNAhBsY7-dk2HAc-60">
+          <mxGeometry y="150" width="320" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="dZ47QzNAhBsY7-dk2HAc-63" value="+ camLookAt (): mat4&lt;div&gt;+ Перспектива (): mat4&lt;/div&gt;&lt;div&gt;+ Переместить (Направление перемещения)&lt;/div&gt;&lt;div&gt;+ Повернуть (Угол по Ox, угол по Oy)&lt;/div&gt;&lt;div&gt;+ Масштабировать (Коэффициент масштабирования)&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="dZ47QzNAhBsY7-dk2HAc-60">
+          <mxGeometry y="158" width="320" height="92" as="geometry" />
+        </mxCell>
+        <mxCell id="dZ47QzNAhBsY7-dk2HAc-71" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.582;entryY=1.008;entryDx=0;entryDy=0;entryPerimeter=0;endArrow=diamond;endFill=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" edge="1" parent="1" source="dZ47QzNAhBsY7-dk2HAc-67" target="dZ47QzNAhBsY7-dk2HAc-48">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="195" y="810" />
+              <mxPoint x="366" y="810" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="dZ47QzNAhBsY7-dk2HAc-67" value="Дым" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-20" y="880" width="430" height="390" as="geometry" />
+        </mxCell>
+        <mxCell id="dZ47QzNAhBsY7-dk2HAc-68" value="+ ширина: int&lt;div&gt;+ высота: int&lt;/div&gt;&lt;div&gt;+ глубина: int&lt;/div&gt;&lt;div&gt;+ временной интервал: float&lt;/div&gt;&lt;div&gt;+ начальная плотность: float&lt;/div&gt;&lt;div&gt;+ начальная скорость: float&lt;/div&gt;&lt;div&gt;+ источники дыма: vector&amp;lt;vec3&amp;gt;&lt;/div&gt;&lt;div&gt;+ ветер: vec2&lt;/div&gt;&lt;div&gt;+ поле скорости по Ox: vector&amp;lt;vector&amp;lt;float&amp;gt;&amp;gt;&lt;/div&gt;&lt;div&gt;+ поле скорости по Oy: vector&amp;lt;vector&amp;lt;float&amp;gt;&amp;gt;&lt;/div&gt;&lt;div&gt;+ поле скорости по Oz: vector&amp;lt;vector&amp;lt;float&amp;gt;&amp;gt;&lt;/div&gt;&lt;div&gt;+ предыдущее поле скорости по Ox: vector&amp;lt;vector&amp;lt;float&amp;gt;&amp;gt;&lt;/div&gt;&lt;div&gt;+ предыдущее поле скорости по Oy: vector&amp;lt;vector&amp;lt;float&amp;gt;&amp;gt;&lt;/div&gt;&lt;div&gt;+ предыдушее поле скорости по Oz: vector&amp;lt;vector&amp;lt;float&amp;gt;&amp;gt;&lt;/div&gt;&lt;div&gt;+ распределение плотности: &amp;lt;vector&amp;lt;vector&amp;lt;vector&amp;lt;float&amp;gt;&amp;gt;&amp;gt;&lt;/div&gt;&lt;div&gt;+ предыдущее распределение плотности: vector&amp;lt;vector&amp;lt;vector&amp;lt;float&amp;gt;&amp;gt;&amp;gt;&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="dZ47QzNAhBsY7-dk2HAc-67">
+          <mxGeometry y="26" width="430" height="244" as="geometry" />
+        </mxCell>
+        <mxCell id="dZ47QzNAhBsY7-dk2HAc-69" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" vertex="1" parent="dZ47QzNAhBsY7-dk2HAc-67">
+          <mxGeometry y="270" width="430" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="dZ47QzNAhBsY7-dk2HAc-70" value="+ Обновить состояние ()&lt;div&gt;+ Обновить плотность ()&lt;/div&gt;&lt;div&gt;+ Обновить скорость ()&lt;br&gt;+ Добавить источники ()&lt;/div&gt;&lt;div&gt;+ Установить граничные условия ()&lt;/div&gt;&lt;div&gt;+ Вычислить диффузию ()&lt;/div&gt;&lt;div&gt;+ Вычислить адвекцию ()&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="dZ47QzNAhBsY7-dk2HAc-67">
+          <mxGeometry y="278" width="430" height="112" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

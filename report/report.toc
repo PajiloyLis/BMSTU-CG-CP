@@ -23,4 +23,5 @@
 \contentsline {section}{\numberline {2.1}Схемы алгоритмов визуализации трехмерной сцены}{14}{section.2.1}%
 \contentsline {subsection}{\numberline {2.1.1}Алгоритм, использующий z-буфер}{14}{subsection.2.1.1}%
 \contentsline {subsection}{\numberline {2.1.2}Алгоритм поведения газов}{16}{subsection.2.1.2}%
-\contentsline {chapter}{СПИСОК ИСПОЛЬЗОВАННЫХ ИСТОЧНИКОВ}{23}{figure.caption.8}%
+\contentsline {section}{\numberline {2.2}Диаграмма классов}{22}{section.2.2}%
+\contentsline {chapter}{СПИСОК ИСПОЛЬЗОВАННЫХ ИСТОЧНИКОВ}{25}{figure.caption.9}%
