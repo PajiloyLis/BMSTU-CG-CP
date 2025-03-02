@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2025.1.27)  2 MAR 2025 12:13
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2025.1.27)  2 MAR 2025 12:43
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1525,8 +1525,18 @@ File: assets/img/velocity_step.pdf Graphic file (type pdf)
 Package pdftex.def Info: assets/img/velocity_step.pdf , page1 used on input lin
 e 40.
 (pdftex.def)             Requested size: 483.69687pt x 597.46991pt.
-[17 <./assets/img/dens_step.pdf>]) [18 <./assets/img/velocity_step.pdf>]
-[19]
+[17 <./assets/img/dens_step.pdf>]
+
+pdfTeX warning: /usr/bin/pdflatex (file ./assets/img/add_source.pdf): PDF inclu
+sion: found PDF version <1.7>, but at most version <1.5> allowed
+<assets/img/add_source.pdf, id=336, page=1, 183.8067pt x 481.8pt>
+File: assets/img/add_source.pdf Graphic file (type pdf)
+<use assets/img/add_source.pdf, page 1>
+Package pdftex.def Info: assets/img/add_source.pdf , page1 used on input line 4
+9.
+(pdftex.def)             Requested size: 241.84843pt x 633.97095pt.
+[18 <./assets/img/velocity_step.pdf>]) [19 <./assets/img/add_source.pdf>]
+[20]
 \openout2 = `51-biblio.aux'.
 
  (./51-biblio.tex
@@ -1540,7 +1550,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 12--13
 ра-ще-
  []
 
-) [20
+) [21
 
 
 
@@ -1566,13 +1576,13 @@ LaTeX Font Warning: Size substitutions with differences
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
 Package rerunfilecheck Info: File `report.out' has not changed.
-(rerunfilecheck)             Checksum: C1B317B1217C60A407A7B4378359C4EA;6168.
+(rerunfilecheck)             Checksum: D42D40E257926C094AE0BF9DBC36166C;6168.
  ) 
 Here is how much of TeX's memory you used:
- 52285 strings out of 479648
- 1282793 string characters out of 11636115
- 13894691 words of memory out of 24000000
- 69443 multiletter control sequences out of 15000+600000
+ 52295 strings out of 479648
+ 1283057 string characters out of 11636115
+ 13894830 words of memory out of 24000000
+ 69450 multiletter control sequences out of 15000+600000
  478962 words of font info for 49 fonts, out of 12000000 for 9000
  475 hyphenation exceptions out of 8191
  106i,17n,108p,2071b,609s stack positions out of 5000i,500n,10000p,12000000b,80000s
@@ -1585,10 +1595,10 @@ texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texliv
 e/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf
 -dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/f
 onts/type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on report.pdf (19 pages, 605952 bytes).
+Output written on report.pdf (20 pages, 633178 bytes).
 PDF statistics:
- 644 PDF objects out of 1000 (max. 8388607)
- 353 compressed objects within 4 object streams
- 64 named destinations out of 1000 (max. 500000)
- 269 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 659 PDF objects out of 1000 (max. 8388607)
+ 365 compressed objects within 4 object streams
+ 66 named destinations out of 1000 (max. 500000)
+ 274 words of extra memory for PDF output out of 10000 (max. 10000000)
 
