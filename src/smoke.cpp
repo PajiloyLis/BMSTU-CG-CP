@@ -153,7 +153,6 @@ smoke::dens_step(vector<vector<vector<float>>> &x, vector<vector<vector<float>>>
     out << (stop.tv_sec - start.tv_sec) - (eq_stop.tv_sec - eq_start.tv_sec) +
            (stop.tv_nsec - start.tv_nsec - eq_stop.tv_nsec + eq_start.tv_nsec) * 1e-9 << ",";
     out << eq_stop.tv_sec - eq_start.tv_sec + (eq_stop.tv_nsec - eq_start.tv_nsec) * 1e-9 << ',';
-    out << stop.tv_sec - start.tv_sec + (stop.tv_nsec - start.tv_nsec) * 1e-9 << ",";
     x0.swap(x);
     clock_gettime(CLOCK_MONOTONIC, &start);
     advect(0, x, x0, u_, v_, w_, d);
