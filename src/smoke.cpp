@@ -3,6 +3,12 @@
 //
 
 #include "smoke.h"
+#include <fstream>
+#include <ctime>
+
+ofstream out;
+
+timespec start, stop;
 
 
 void smoke::add_source(vector<vector<vector<float>>> &x, vector<vector<vector<float>>> &s, float d) {
@@ -146,9 +152,12 @@ void
 smoke::vel_step(vector<vector<vector<float>>> &u_, vector<vector<vector<float>>> &v_, vector<vector<vector<float>>> &w_,
                 vector<vector<vector<float>>> &v0, vector<vector<vector<float>>> &u0, vector<vector<vector<float>>> &w0,
                 float visc, float d) {
+    clock_gettime(CLOCK_MONOTONIC, &start);
     add_source(u_, u0, d);
     add_source(v_, v0, d);
     add_source(w_, w0, d);
+    clock_gettime(CLOCK_MONOTONIC, &stop);
+    out << stop.tv_sec - start.tv_sec + (stop.tv_nsec - start.tv_nsec) * 1e-9 << ",";
     u0.swap(u_);
     diffuse(1, u_, u0, visc, d);
     v0.swap(v_);
@@ -166,6 +175,7 @@ smoke::vel_step(vector<vector<vector<float>>> &u_, vector<vector<vector<float>>>
 }
 
 void smoke::update() {
+    out.open("time.csv", ios_base::app);
 #pragma omp parallel for
     for (int i = 0; i < height + 2; ++i) {
         for (int j = 0; j < height + 2; ++j) {
@@ -191,6 +201,7 @@ void smoke::update() {
     ++frames_counter;
     vel_step(u, v, w, v_prev, u_prev, w_prev, VISC, dt);
     dens_step(dens, dens_prev, u, v, w, dt, DIFF_COEF);
+    out.close();
 }
 
 
