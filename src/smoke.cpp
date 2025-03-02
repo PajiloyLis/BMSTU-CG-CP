@@ -44,7 +44,7 @@ void smoke::lin_solve(int b, vector<vector<vector<float>>> &x, vector<vector<vec
 }
 
 void smoke::diffuse(int b, vector<vector<vector<float>>> &x, vector<vector<vector<float>>> &x0, float diff, float d) {
-    float a = dt * diff * height * height * width;
+    float a = d * diff * height * height * width;
     lin_solve(b, x, x0, a, 1 + 6 * a);
 }
 
