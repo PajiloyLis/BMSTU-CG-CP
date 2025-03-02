@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2025.1.27)  3 MAR 2025 00:29
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2025.1.27)  3 MAR 2025 00:34
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -2735,11 +2735,6 @@ LaTeX Font Info:    Font shape `T2A/cmtt/bx/n' in size <10.95> not available
 
  (./40-research.tex
 {\cyrillictext \CYRG \cyrl \cyra \cyrv \cyra } 4.
-
-Overfull \hbox (15.08705pt too wide) in paragraph at lines 35--45
- [][] 
- []
-
 [30
 
 
@@ -2799,7 +2794,7 @@ exlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive
 dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fo
 nts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type
 1/public/amsfonts/cm/cmsy10.pfb>
-Output written on report.pdf (32 pages, 1157646 bytes).
+Output written on report.pdf (32 pages, 1158016 bytes).
 PDF statistics:
  787 PDF objects out of 1000 (max. 8388607)
  622 compressed objects within 7 object streams
