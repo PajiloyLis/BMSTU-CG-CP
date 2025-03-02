@@ -14,7 +14,7 @@ float lin_solve_time = 0;
 
 
 void smoke::add_source(vector<vector<vector<float>>> &x, vector<vector<vector<float>>> &s, float d) {
-// #pragma omp parallel for
+#pragma omp parallel for
     for (int i = 0; i < x.size(); ++i) {
         for (int j = 0; j < x[i].size(); ++j) {
             for (int k = 0; k < x[i][j].size(); ++k) {
@@ -26,7 +26,7 @@ void smoke::add_source(vector<vector<vector<float>>> &x, vector<vector<vector<fl
 
 void smoke::set_bnd(int b, vector<vector<vector<float>>> &x) {
     int i;
-// #pragma omp parallel for
+#pragma omp parallel for
     for (i = 1; i <= height; i++) {
         for (int j = 0; j <= width; ++j) {
             x[height + 1][i][j] = b == 3 ? -x[height][i][j] : x[height][i][j];
@@ -36,7 +36,7 @@ void smoke::set_bnd(int b, vector<vector<vector<float>>> &x) {
 
 void smoke::lin_solve(int b, vector<vector<vector<float>>> &x, vector<vector<vector<float>>> &x0, float a, float c) {
     int i, j, iter;
-
+#pragma omp parallel for
     for (iter = 0; iter < 5; iter++) {
         for (i = 1; i <= height; i++) {
             for (j = 1; j <= height; j++) {
@@ -67,7 +67,7 @@ void smoke::advect(int b, vector<vector<vector<float>>> &d, vector<vector<vector
     float x, y, z, s0, t0, s1, t1, dt0, u1, u0;
 
     dt0 = dt_ * max(height, width);
-// #pragma omp parallel for
+#pragma omp parallel for
     for (i = 1; i <= height; i++) {
         for (j = 1; j <= height; j++) {
             for (int k = 1; k <= width; ++k) {
@@ -112,7 +112,7 @@ void
 smoke::project(vector<vector<vector<float>>> &u_, vector<vector<vector<float>>> &v_, vector<vector<vector<float>>> &w_,
                vector<vector<vector<float>>> &p, vector<vector<vector<float>>> &div) {
     int i, j;
-// #pragma omp parallel for
+#pragma omp parallel for
     for (i = 1; i <= height; i++) {
         for (j = 1; j <= height; j++) {
             for (int k = 1; k <= width; ++k) {
@@ -128,7 +128,7 @@ smoke::project(vector<vector<vector<float>>> &u_, vector<vector<vector<float>>> 
     set_bnd(0, p);
 
     lin_solve(0, p, div, 1, 6);
-// #pragma omp parallel for
+#pragma omp parallel for
     for (i = 1; i <= height; i++) {
         for (j = 1; j <= height; j++) {
             for (int k = 1; k <= width; ++k) {
@@ -149,18 +149,18 @@ smoke::dens_step(vector<vector<vector<float>>> &x, vector<vector<vector<float>>>
     clock_gettime(CLOCK_MONOTONIC, &start);
     add_source(x, x0, d);
     clock_gettime(CLOCK_MONOTONIC, &stop);
-     out << stop.tv_sec - start.tv_sec + (stop.tv_nsec - start.tv_nsec) * 1e-9 << ",";
+    // out << stop.tv_sec - start.tv_sec + (stop.tv_nsec - start.tv_nsec) * 1e-9 << ",";
     x0.swap(x);
     clock_gettime(CLOCK_MONOTONIC, &start);
     diffuse(0, x, x0, diff, d);
-     out << (stop.tv_sec - start.tv_sec) - (eq_stop.tv_sec - eq_start.tv_sec) +
-           (stop.tv_nsec - start.tv_nsec - eq_stop.tv_nsec + eq_start.tv_nsec) * 1e-9 << ",";
-     out << eq_stop.tv_sec - eq_start.tv_sec + (eq_stop.tv_nsec - eq_start.tv_nsec) * 1e-9 << ',';
+    // out << (stop.tv_sec - start.tv_sec) - (eq_stop.tv_sec - eq_start.tv_sec) +
+         //  (stop.tv_nsec - start.tv_nsec - eq_stop.tv_nsec + eq_start.tv_nsec) * 1e-9 << ",";
+    // out << eq_stop.tv_sec - eq_start.tv_sec + (eq_stop.tv_nsec - eq_start.tv_nsec) * 1e-9 << ',';
     x0.swap(x);
     clock_gettime(CLOCK_MONOTONIC, &start);
     advect(0, x, x0, u_, v_, w_, d);
     clock_gettime(CLOCK_MONOTONIC, &stop);
-     out << stop.tv_sec - start.tv_sec + (stop.tv_nsec - start.tv_nsec) * 1e-9 << "\n";
+    // out << stop.tv_sec - start.tv_sec + (stop.tv_nsec - start.tv_nsec) * 1e-9 << "\n";
 }
 
 void
@@ -172,7 +172,7 @@ smoke::vel_step(vector<vector<vector<float>>> &u_, vector<vector<vector<float>>>
     add_source(v_, v0, d);
     add_source(w_, w0, d);
     clock_gettime(CLOCK_MONOTONIC, &stop);
-     out << stop.tv_sec - start.tv_sec + (stop.tv_nsec - start.tv_nsec) * 1e-9 << ",";
+    // out << stop.tv_sec - start.tv_sec + (stop.tv_nsec - start.tv_nsec) * 1e-9 << ",";
     lin_solve_time = 0;
     clock_gettime(CLOCK_MONOTONIC, &start);
     u0.swap(u_);
@@ -182,9 +182,9 @@ smoke::vel_step(vector<vector<vector<float>>> &u_, vector<vector<vector<float>>>
     w0.swap(w_);
     diffuse(3, w_, w0, visc, d);
     clock_gettime(CLOCK_MONOTONIC, &stop);
-     out << (stop.tv_sec - start.tv_sec) +
-           (stop.tv_nsec - start.tv_nsec) * 1e-9 - lin_solve_time << ",";
-     out << lin_solve_time << ',';
+    // out << (stop.tv_sec - start.tv_sec) +
+       //    (stop.tv_nsec - start.tv_nsec) * 1e-9 - lin_solve_time << ",";
+    // out << lin_solve_time << ',';
     project(u_, v_, w_, u0, v0);
     u0.swap(u_);
     v0.swap(v_);
@@ -194,13 +194,13 @@ smoke::vel_step(vector<vector<vector<float>>> &u_, vector<vector<vector<float>>>
     advect(2, v_, v0, u0, v0, w0, d);
     advect(3, w_, w0, u0, v0, w0, d);
     clock_gettime(CLOCK_MONOTONIC, &stop);
-     out << stop.tv_sec - start.tv_sec + (stop.tv_nsec - start.tv_nsec) * 1e-9 << ",";
+    // out << stop.tv_sec - start.tv_sec + (stop.tv_nsec - start.tv_nsec) * 1e-9 << ",";
     project(u_, v_, w_, u0, v0);
 }
 
 void smoke::update() {
-     out.open("time.csv", ios_base::app);
-// #pragma omp parallel for
+    // out.open("time.csv", ios_base::app);
+#pragma omp parallel for
     for (int i = 0; i < height + 2; ++i) {
         for (int j = 0; j < height + 2; ++j) {
             for (int k = 0; k < width + 2; ++k) {
@@ -225,7 +225,7 @@ void smoke::update() {
     ++frames_counter;
     vel_step(u, v, w, v_prev, u_prev, w_prev, VISC, dt);
     dens_step(dens, dens_prev, u, v, w, dt, DIFF_COEF);
-     out.close();
+    // out.close();
 }
 
 
