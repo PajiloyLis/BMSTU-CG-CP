@@ -8,7 +8,7 @@
 
 ofstream out;
 
-timespec start, stop;
+timespec start, stop, eq_start, eq_stop;
 
 
 void smoke::add_source(vector<vector<vector<float>>> &x, vector<vector<vector<float>>> &s, float d) {
@@ -51,7 +51,9 @@ void smoke::lin_solve(int b, vector<vector<vector<float>>> &x, vector<vector<vec
 
 void smoke::diffuse(int b, vector<vector<vector<float>>> &x, vector<vector<vector<float>>> &x0, float diff, float d) {
     float a = d * diff * height * height * width;
+    clock_gettime(CLOCK_MONOTONIC, &eq_start);
     lin_solve(b, x, x0, a, 1 + 6 * a);
+    clock_gettime(CLOCK_MONOTONIC, &eq_stop);
 }
 
 void smoke::advect(int b, vector<vector<vector<float>>> &d, vector<vector<vector<float>>> &d0,
@@ -141,11 +143,22 @@ smoke::project(vector<vector<vector<float>>> &u_, vector<vector<vector<float>>> 
 void
 smoke::dens_step(vector<vector<vector<float>>> &x, vector<vector<vector<float>>> &x0, vector<vector<vector<float>>> &u_,
                  vector<vector<vector<float>>> &v_, vector<vector<vector<float>>> &w_, float d, float diff) {
+    clock_gettime(CLOCK_MONOTONIC, &start);
     add_source(x, x0, d);
+    clock_gettime(CLOCK_MONOTONIC, &stop);
+    out << stop.tv_sec - start.tv_sec + (stop.tv_nsec - start.tv_nsec) * 1e-9 << ",";
     x0.swap(x);
+    clock_gettime(CLOCK_MONOTONIC, &start);
     diffuse(0, x, x0, diff, d);
+    out << (stop.tv_sec - start.tv_sec) - (eq_stop.tv_sec - eq_start.tv_sec) +
+           (stop.tv_nsec - start.tv_nsec - eq_stop.tv_nsec + eq_start.tv_nsec) * 1e-9 << ",";
+    out << eq_stop.tv_sec - eq_start.tv_sec + (eq_stop.tv_nsec - eq_start.tv_nsec) * 1e-9 << ',';
+    out << stop.tv_sec - start.tv_sec + (stop.tv_nsec - start.tv_nsec) * 1e-9 << ",";
     x0.swap(x);
+    clock_gettime(CLOCK_MONOTONIC, &start);
     advect(0, x, x0, u_, v_, w_, d);
+    clock_gettime(CLOCK_MONOTONIC, &stop);
+    out << stop.tv_sec - start.tv_sec + (stop.tv_nsec - start.tv_nsec) * 1e-9 << "\n";
 }
 
 void
@@ -158,19 +171,27 @@ smoke::vel_step(vector<vector<vector<float>>> &u_, vector<vector<vector<float>>>
     add_source(w_, w0, d);
     clock_gettime(CLOCK_MONOTONIC, &stop);
     out << stop.tv_sec - start.tv_sec + (stop.tv_nsec - start.tv_nsec) * 1e-9 << ",";
+    clock_gettime(CLOCK_MONOTONIC, &start);
     u0.swap(u_);
     diffuse(1, u_, u0, visc, d);
     v0.swap(v_);
     diffuse(2, v_, v0, visc, d);
     w0.swap(w_);
     diffuse(3, w_, w0, visc, d);
+    clock_gettime(CLOCK_MONOTONIC, &stop);
+    out << (stop.tv_sec - start.tv_sec) - (eq_stop.tv_sec - eq_start.tv_sec) +
+           (stop.tv_nsec - start.tv_nsec - eq_stop.tv_nsec + eq_start.tv_nsec) * 1e-9 << ",";
+    out << eq_stop.tv_sec - eq_start.tv_sec + (eq_stop.tv_nsec - eq_start.tv_nsec) * 1e-9 << ',';
     project(u_, v_, w_, u0, v0);
     u0.swap(u_);
     v0.swap(v_);
     w0.swap(w_);
+    clock_gettime(CLOCK_MONOTONIC, &start);
     advect(1, u_, u0, u0, v0, w0, d);
     advect(2, v_, v0, u0, v0, w0, d);
     advect(3, w_, w0, u0, v0, w0, d);
+    clock_gettime(CLOCK_MONOTONIC, &stop);
+    out << stop.tv_sec - start.tv_sec + (stop.tv_nsec - start.tv_nsec) * 1e-9 << ",";
     project(u_, v_, w_, u0, v0);
 }
 
