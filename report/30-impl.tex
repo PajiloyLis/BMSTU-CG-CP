@@ -9,7 +9,7 @@
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=1.0\textwidth, page=1]{assets/img/interface.png}   
+	\includegraphics[width=0.8\textwidth, page=1]{assets/img/interface.png}   
 	\caption{Интерфейс программы.}
 	\label{fig:interface}
 \end{figure}
@@ -50,7 +50,18 @@ vector<float> &z_buffer) {
 		}
 	}
 }
+\end{lstlisting}
 
+В листинге~\ref{lst:dens_step} приведена функция обновления распределения плотности газа.
+\begin{lstlisting}[caption={Функция обновления распределения плотности дыма},label={lst:dens_step}]
+void smoke::dens_step(vector<vector<vector<float>>> &x, vector<vector<vector<float>>> &x0, vector<vector<vector<float>>> &u_,
+vector<vector<vector<float>>> &v_, vector<vector<vector<float>>> &w_, float d, float diff) {
+	add_source(x, x0, d);
+	x0.swap(x);
+	diffuse(0, x, x0, diff, d);
+	x0.swap(x);
+	advect(0, x, x0, u_, v_, w_, d);
+}
 \end{lstlisting}
 
 \section{Модульное тестирование}

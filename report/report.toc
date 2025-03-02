@@ -28,4 +28,4 @@
 \contentsline {section}{\numberline {3.1}Графический интерфейс программы}{24}{section.3.1}%
 \contentsline {section}{\numberline {3.2}Реализация алгоритмов}{25}{section.3.2}%
 \contentsline {section}{\numberline {3.3}Модульное тестирование}{27}{section.3.3}%
-\contentsline {chapter}{СПИСОК ИСПОЛЬЗОВАННЫХ ИСТОЧНИКОВ}{30}{lstnumber.3.2.41}%
+\contentsline {chapter}{СПИСОК ИСПОЛЬЗОВАННЫХ ИСТОЧНИКОВ}{30}{lstnumber.3.3.41}%
