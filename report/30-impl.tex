@@ -96,8 +96,8 @@ void smoke::advect(int b, vector<vector<vector<float>>> &d, vector<vector<vector
 	float x, y, z, s0, t0, s1, t1, dt0, u1, u0;
 	dt0 = dt_ * max(height, width);
 	#pragma omp parallel for
-	for (i = 1; i <= height; i++) {
-		for (j = 1; j <= height; j++) {
+	for (i = 1; i <= height; i++) 
+		for (j = 1; j <= height; j++) 
 			for (int k = 1; k <= width; ++k) {
 				x = i - dt0 * w_[i][j][k];
 				y = j - dt0 * u_[i][j][k];
@@ -122,8 +122,6 @@ void smoke::advect(int b, vector<vector<vector<float>>> &d, vector<vector<vector
 				u0 = 1 - u1;
 				d[i][j][k] = s0 * (t0 * u0 * d0[i0][j0][k0] + t1 * u0 * d0[i0][j1][k0] + t0 * u1 * d0[i0][j0][k1] + t1 * u1 * d0[i0][j1][k1]) + s1 * (t0 * u0 * d0[i1][j0][k0] + t1 * u0 * d0[i1][j1][k0] + t0 * u1 * d0[i1][j0][k1] + t1 * u1 * d0[i1][j1][k1]);
 			}
-		}
-	}
 	set_bnd(b, d);
 }
 \end{lstlisting}
@@ -147,53 +145,5 @@ void smoke::lin_solve(int b, vector<vector<vector<float>>> &x, vector<vector<vec
 }
 \end{lstlisting}
 
-\section{Модульное тестирование}
-
-Для модульного тестирования был использован XUnit. Тестировались критически важные функции. Покрытие составило 20,4\%. В листинге ~\ref{lst:test_voxels} приведен пример тестов для функции отрисовки вокселей.
-\newpage
-\begin{lstlisting}[caption={Тест для функций отрисовки вокселей},label={lst:test_voxels}]
-
-public class VoxelGeneratorTests
-{
-[Fact]
-public void ModelVoxel_Initialization_CorrectCenters()
-{
-	var bounds = new Rect3D(0, 0, 0, 10, 10, 10);
-	var voxel = new VoxelGenerator.ModelVoxel(bounds, 1);
-	
-	Assert.Equal(new Point3D(5, 5, 5), voxel.OriginalCenter);
-	Assert.Equal(new Point3D(5, 5, 5), voxel.CurrentCenter);
-}
-[Fact]
-public void TransformContainedModels_AppliesCorrectTransformation()
-{
-	var bounds = new Rect3D(0, 0, 0, 10, 10, 10);
-	var voxel = new VoxelGenerator.ModelVoxel(bounds, 1);
-	var model = new GeometryModel3D();
-	voxel.ContainedModels.Add(model);
-	
-	voxel.CurrentCenter = new Point3D(10, 10, 10);
-	voxel.TransformContainedModels();
-	
-	Assert.IsType<TranslateTransform3D>(model.Transform);
-}
-[Fact]
-public void UpdateVoxelPhysics_ChangesVoxelVelocity()
-{
-	var voxel = new VoxelGenerator.ModelVoxel(new Rect3D(0, 0, 0, 10, 10, 10), 1)
-	{
-		SpringStiffness = 0.1,
-		SpringDamping = 0.9
-	};
-	List<VoxelGenerator.ModelVoxel> voxels = new() { voxel };
-	Vector3D windForce = new(1, 0, 0);
-	
-	VoxelGenerator.UpdateVoxelPhysics(voxels, windForce, 0.1, false);
-	
-	Assert.NotEqual(new Vector3D(0, 0, 0), voxel.Velocity);
-}
-
-\end{lstlisting}
-
 \section*{Вывод}
-В данном разделе были выбраны средства реализации программного обеспечения, были проведены модульные тесты, все тесты пройдены успешно. Покрытие программы модульными тестами составило 20.4\%.
+В данном разделе были выбраны средства и проведена реализация программного обеспечения.

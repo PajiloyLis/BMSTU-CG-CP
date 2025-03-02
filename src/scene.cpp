@@ -41,8 +41,8 @@ void Scene::DrawFigures() {
             adapted_triangle.vertices[1].y = height - adapted_triangle.vertices[1].y,
             adapted_triangle.vertices[2].y = height - adapted_triangle.vertices[2].y;
             float intensity = glm::dot(light_ray, t.n);
-            sf::Color color(static_cast<sf::Uint8>(44 * intensity), static_cast<sf::Uint8>(45 * intensity),
-                            static_cast<sf::Uint8>(60 * intensity));
+            sf::Color color(static_cast<sf::Uint8>(255 * intensity), static_cast<sf::Uint8>(250 * intensity),
+                            static_cast<sf::Uint8>(250 * intensity));
             adapted_triangle.draw(*scene, zbuffer, light_ray, color, sf::RenderStates());
         }
     clock_gettime(CLOCK_MONOTONIC, &end);
