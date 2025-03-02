@@ -30,7 +30,7 @@ void Scene::ClearScene() {
 
 void Scene::DrawFigures() {
     timespec start, end, start1, end1;
-    clock_gettime(CLOCK_MONOTONIC, &start);
+//    clock_gettime(CLOCK_MONOTONIC, &start);
     for (auto &figure: figures)
         for (auto &t: figure.triangles) {
             array<glm::vec3, 3> adapted;
@@ -45,8 +45,8 @@ void Scene::DrawFigures() {
                             static_cast<sf::Uint8>(250 * intensity));
             adapted_triangle.draw(*scene, zbuffer, light_ray, color, sf::RenderStates());
         }
-    clock_gettime(CLOCK_MONOTONIC, &end);
-    cout << "figure draw time " << end.tv_sec - start.tv_sec + (end.tv_nsec - start.tv_nsec) * 1e-9 << '\n';
+//    clock_gettime(CLOCK_MONOTONIC, &end);
+//    cout << "figure draw time " << end.tv_sec - start.tv_sec + (end.tv_nsec - start.tv_nsec) * 1e-9 << '\n';
 }
 
 const figure &Scene::AddFigure(const figure &f) {
@@ -75,7 +75,7 @@ void Scene::MoveCamera(const Camera_Movement &move, const float &delta_time) {
 
 void Scene::DrawSmoke() {
     timespec start, end, start1, end1;
-    clock_gettime(CLOCK_MONOTONIC, &start);
+//    clock_gettime(CLOCK_MONOTONIC, &start);
     if (running) {
         ash.update();
     }
@@ -267,8 +267,8 @@ void Scene::DrawSmoke() {
             }
         }
     }
-    clock_gettime(CLOCK_MONOTONIC, &end);
-    cout << "smoke draw time" << end.tv_sec - start.tv_sec + (end.tv_nsec - start.tv_nsec) * 1e-9 << '\n';
+//    clock_gettime(CLOCK_MONOTONIC, &end);
+//    cout << "smoke draw time" << end.tv_sec - start.tv_sec + (end.tv_nsec - start.tv_nsec) * 1e-9 << '\n';
 //    glm::vec3 zero = adapt_coords(cameras[cur_camera], {0, 0, 0}, scene->getSize().x,
 //                                  scene->getSize().y),
 //            x_line = adapt_coords(cameras[cur_camera], {ash.height, 0, 0}, scene->getSize().x,
