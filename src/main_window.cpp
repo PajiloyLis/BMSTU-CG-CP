@@ -14,7 +14,7 @@ void MainWindow::LoadModelActionTriggered() {
         label->setText("Модель не загружена");
         return;
     }
-    if(!model_loaded) {
+    if (!file_path.empty()) {
         model_loaded = true;
         label->setText(file_path.c_str());
         emit ModelPathFetched(file_path);
@@ -25,16 +25,19 @@ void MainWindow::WindChanged() {
     auto speed_slider = this->findChild<QSlider *>("wind_speed_slider");
     int speed = speed_slider->value();
     auto label = this->findChild<QLabel *>("wind_speed_label");
-    label ->setText(to_string(speed).c_str());
+    label->setText(to_string(speed).c_str());
     auto angle_slider = this->findChild<QSlider *>("wind_angle_slider");
     int angle = angle_slider->value();
-    label =
+    label = this->findChild<QLabel *>("wind_angle_label");
+    label->setText(to_string(angle).c_str());
     emit WindSettingsFetched(speed, angle);
 }
 
 void MainWindow::SimulationSpeedChanged() {
     auto sim_speed_slider = this->findChild<QSlider *>("sim_speed_slider");
     int x = sim_speed_slider->value();
+    auto label = this->findChild<QLabel *>("sim_speed_label");
+    label->setText((string("X") + to_string(x)).c_str());
     emit SimulationSpeedSettingsFetched(x);
 }
 
