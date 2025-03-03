@@ -42,7 +42,11 @@ void MainWindow::SimulationSpeedChanged() {
 }
 
 void MainWindow::VisualizationStart() {
-    QApplication::exit(VIS_START);
-    this->close();
+    if (model_loaded) {
+        QApplication::exit(VIS_START);
+        this->close();
+    } else {
+        this->findChild<QLabel *>("loaded_model_name")->setStyleSheet("color: red;")
+    }
 }
 

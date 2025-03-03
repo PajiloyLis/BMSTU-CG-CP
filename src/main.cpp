@@ -42,7 +42,7 @@ signed main(int argc, char *argv[]) {
     handler.AddCamera(camera({150, 50, 10}));
     bool model_loaded = false;
     int rc = activate_settings_window(argc, argv, handler, model_loaded);
-
+    if(rc != VIS_START)
 
     bool mouse_pressed = false, drawn = false;
     sf::Vector2f mouse_last_pos(0, 0);

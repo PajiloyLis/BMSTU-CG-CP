@@ -438,19 +438,17 @@ handler.o: src/handler.cpp inc/handler.h \
 		inc/figure.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o handler.o src/handler.cpp
 
-main.o: src/main.cpp inc/map_prepare.h \
-		inc/my_vec3f.h \
-		inc/conversions.h \
-		inc/triangle.h \
-		inc/operations.h \
-		inc/camera.h \
-		inc/textured_triangle.h \
-		inc/main_window.h \
+main.o: src/main.cpp inc/main_window.h \
 		inc/qdialogs.h \
 		inc/QSFML.h \
+		inc/triangle.h \
+		inc/conversions.h \
+		inc/operations.h \
+		inc/camera.h \
 		inc/smoke.h \
 		inc/handler.h \
 		inc/textured_figure.h \
+		inc/textured_triangle.h \
 		inc/scene.h \
 		inc/figure.h \
 		inc/cp_cg_ui.h
