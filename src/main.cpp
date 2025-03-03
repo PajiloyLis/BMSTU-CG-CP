@@ -24,7 +24,8 @@ int activate_settings_window(int argc, char **argv, TaskHandler &handler, bool &
     QObject::connect(window.findChild<QSlider *>("sim_speed_slider"), &QSlider::sliderReleased, &window,
                      &MainWindow::SimulationSpeedChanged);
     QObject::connect(&window, &MainWindow::SimulationSpeedSettingsFetched, &handler, &TaskHandler::UpdateSimSpeed);
-    QObject::connect(window.findChild<QPushButton *>("simulation_start_button"), &QPushButton::clicked, &window, )
+    QObject::connect(window.findChild<QPushButton *>("simulation_start_button"), &QPushButton::clicked, &window,
+                     &window.VisualizationStart);
     window.show();
     return app.exec();
 }

@@ -8,6 +8,12 @@ MainWindow::MainWindow() : QMainWindow() {
 
 void MainWindow::LoadModelActionTriggered() {
     string file_path = QFileDialog::getOpenFileName(nullptr, "Выберите STL файл", ".", "*.STL").toStdString();
+    auto label = this->findChild<QLabel *>("loaded_model_name");
+    if(file_path.empty()) {
+        label->setText("")
+        return;
+    }
+
     emit ModelPathFetched(file_path);
 }
 
@@ -23,5 +29,10 @@ void MainWindow::SimulationSpeedChanged() {
     auto sim_speed_slider = this->findChild<QSlider *>("sim_speed_slider");
     int x = sim_speed_slider->value();
     emit SimulationSpeedSettingsFetched(x);
+}
+
+void MainWindow::VisualizationStart() {
+    QApplication::exit(VIS_START);
+    this->close();
 }
 

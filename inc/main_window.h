@@ -22,6 +22,8 @@
 #include "cp_cg_ui.h"
 #include "scene.h"
 
+#define VIS_START 100
+
 class MainWindow : public QMainWindow {
 
     Q_OBJECT
