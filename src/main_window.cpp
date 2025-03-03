@@ -15,6 +15,7 @@ void MainWindow::LoadModelActionTriggered() {
         return;
     }
     if (!file_path.empty()) {
+        this->findChild<QLabel *>("loaded_model_name")->setStyleSheet("color: black;");
         model_loaded = true;
         label->setText(file_path.c_str());
         emit ModelPathFetched(file_path);
@@ -46,7 +47,7 @@ void MainWindow::VisualizationStart() {
         QApplication::exit(VIS_START);
         this->close();
     } else {
-        this->findChild<QLabel *>("loaded_model_name")->setStyleSheet("color: red;")
+        this->findChild<QLabel *>("loaded_model_name")->setStyleSheet("color: red;");
     }
 }
 

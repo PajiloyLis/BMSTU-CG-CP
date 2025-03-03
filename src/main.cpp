@@ -10,7 +10,7 @@ using namespace sf;
 
 #include "main_window.h"
 
-int activate_settings_window(int argc, char **argv, TaskHandler &handler, bool &model_loaded) {
+int activate_settings_window(int argc, char **argv, TaskHandler &handler) {
     QApplication app(argc, argv);
     MainWindow window;
     QObject::connect(window.findChild<QPushButton *>("load_model_button"), &QPushButton::clicked, &window,
@@ -25,7 +25,7 @@ int activate_settings_window(int argc, char **argv, TaskHandler &handler, bool &
                      &MainWindow::SimulationSpeedChanged);
     QObject::connect(&window, &MainWindow::SimulationSpeedSettingsFetched, &handler, &TaskHandler::UpdateSimSpeed);
     QObject::connect(window.findChild<QPushButton *>("simulation_start_button"), &QPushButton::clicked, &window,
-                     &window.VisualizationStart);
+                     &MainWindow::VisualizationStart);
     window.show();
     return app.exec();
 }
@@ -40,10 +40,9 @@ signed main(int argc, char *argv[]) {
     TaskHandler handler;
     handler.SetScene(Scene(&sf_window));
     handler.AddCamera(camera({150, 50, 10}));
-    bool model_loaded = false;
-    int rc = activate_settings_window(argc, argv, handler, model_loaded);
+    int rc = activate_settings_window(argc, argv, handler);
     if(rc != VIS_START)
-
+        return 0;
     bool mouse_pressed = false, drawn = false;
     sf::Vector2f mouse_last_pos(0, 0);
     sf_window.setVisible(true);
@@ -75,6 +74,8 @@ signed main(int argc, char *argv[]) {
                     handler.ChangeSimState();
                 } else if (event.key.code == sf::Keyboard::Escape) {
                     handler.PauseSim();
+                    int rc = activate_settings_window(argc, argv, handler);
+
                 }
                 drawn = true;
             }
