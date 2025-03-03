@@ -5,7 +5,7 @@
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
         <mxCell id="dZ47QzNAhBsY7-dk2HAc-41" value="Обработчик задач" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="270" y="110" width="260" height="230" as="geometry" />
+          <mxGeometry x="270" y="60" width="260" height="230" as="geometry" />
         </mxCell>
         <mxCell id="dZ47QzNAhBsY7-dk2HAc-42" value="+ сцена: Сцена" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="dZ47QzNAhBsY7-dk2HAc-41" vertex="1">
           <mxGeometry y="26" width="260" height="26" as="geometry" />
@@ -58,13 +58,14 @@
         <mxCell id="dZ47QzNAhBsY7-dk2HAc-71" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.582;entryY=1.008;entryDx=0;entryDy=0;entryPerimeter=0;endArrow=diamond;endFill=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" parent="1" source="dZ47QzNAhBsY7-dk2HAc-67" target="dZ47QzNAhBsY7-dk2HAc-48" edge="1">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
-              <mxPoint x="275" y="670" />
-              <mxPoint x="366" y="670" />
+              <mxPoint x="195" y="730" />
+              <mxPoint x="195" y="690" />
+              <mxPoint x="366" y="690" />
             </Array>
           </mxGeometry>
         </mxCell>
         <mxCell id="dZ47QzNAhBsY7-dk2HAc-67" value="Дым" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="60" y="690" width="430" height="390" as="geometry" />
+          <mxGeometry x="60" y="730" width="430" height="390" as="geometry" />
         </mxCell>
         <mxCell id="dZ47QzNAhBsY7-dk2HAc-68" value="+ ширина: int&lt;div&gt;+ высота: int&lt;/div&gt;&lt;div&gt;+ глубина: int&lt;/div&gt;&lt;div&gt;+ временной интервал: float&lt;/div&gt;&lt;div&gt;+ начальная плотность: float&lt;/div&gt;&lt;div&gt;+ начальная скорость: float&lt;/div&gt;&lt;div&gt;+ источники дыма: vector&amp;lt;vec3&amp;gt;&lt;/div&gt;&lt;div&gt;+ ветер: vec2&lt;/div&gt;&lt;div&gt;+ поле скорости по Ox: vector&amp;lt;vector&amp;lt;float&amp;gt;&amp;gt;&lt;/div&gt;&lt;div&gt;+ поле скорости по Oy: vector&amp;lt;vector&amp;lt;float&amp;gt;&amp;gt;&lt;/div&gt;&lt;div&gt;+ поле скорости по Oz: vector&amp;lt;vector&amp;lt;float&amp;gt;&amp;gt;&lt;/div&gt;&lt;div&gt;+ предыдущее поле скорости по Ox: vector&amp;lt;vector&amp;lt;float&amp;gt;&amp;gt;&lt;/div&gt;&lt;div&gt;+ предыдущее поле скорости по Oy: vector&amp;lt;vector&amp;lt;float&amp;gt;&amp;gt;&lt;/div&gt;&lt;div&gt;+ предыдушее поле скорости по Oz: vector&amp;lt;vector&amp;lt;float&amp;gt;&amp;gt;&lt;/div&gt;&lt;div&gt;+ распределение плотности: &amp;lt;vector&amp;lt;vector&amp;lt;vector&amp;lt;float&amp;gt;&amp;gt;&amp;gt;&lt;/div&gt;&lt;div&gt;+ предыдущее распределение плотности: vector&amp;lt;vector&amp;lt;vector&amp;lt;float&amp;gt;&amp;gt;&amp;gt;&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="dZ47QzNAhBsY7-dk2HAc-67" vertex="1">
           <mxGeometry y="26" width="430" height="244" as="geometry" />
