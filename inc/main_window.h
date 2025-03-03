@@ -51,6 +51,9 @@ public slots:
 
     void VisualizationStart();
 
+private:
+    bool model_loaded;
+
 };
 
 #endif

@@ -17,6 +17,7 @@ void TaskHandler::ClearScene() {
 }
 
 void TaskHandler::LoadModel(const string &filepath) {
+    ClearScene();
     // Add mount
     figure f = scene.AddFigure(figure(read_stl(filepath)));
     // Add smoke
