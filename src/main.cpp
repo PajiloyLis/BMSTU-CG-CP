@@ -10,7 +10,7 @@ using namespace sf;
 
 #include "main_window.h"
 
-int activate_settings_window(TaskHandler &handler) {
+int activate_settings_window(TaskHandler &handler, bool &model_loaded) {
     handler.SetScene(Scene(&sf_window));
 
     QApplication app(argc, argv);
@@ -27,7 +27,7 @@ int activate_settings_window(TaskHandler &handler) {
                      &MainWindow::SimulationSpeedChanged);
     QObject::connect(&window, &MainWindow::SimulationSpeedSettingsFetched, &handler, &TaskHandler::UpdateSimSpeed);
     window.show();
-    app.exec();
+    return app.exec();
 }
 
 signed main(int argc, char *argv[]) {
@@ -39,7 +39,8 @@ signed main(int argc, char *argv[]) {
     sf_window.setVisible(false);
     TaskHandler handler;
     handler.AddCamera(camera({150, 50, 10}));
-
+    bool model_loaded = false;
+    int rc = activate_settings_window(handler, model_loaded);
 
     bool mouse_pressed = false, drawn = false;
     sf::Vector2f mouse_last_pos(0, 0);
