@@ -10,8 +10,8 @@ using namespace sf;
 
 #include "main_window.h"
 
-int activate_settings_window(TaskHandler &handler, bool &model_loaded) {
-    QApplication app;
+int activate_settings_window(int argc, char **argv, TaskHandler &handler, bool &model_loaded) {
+    QApplication app(argc, argv);
     MainWindow window;
     QObject::connect(window.findChild<QPushButton *>("load_model_button"), &QPushButton::clicked, &window,
                      &MainWindow::LoadModelActionTriggered);
@@ -24,6 +24,7 @@ int activate_settings_window(TaskHandler &handler, bool &model_loaded) {
     QObject::connect(window.findChild<QSlider *>("sim_speed_slider"), &QSlider::sliderReleased, &window,
                      &MainWindow::SimulationSpeedChanged);
     QObject::connect(&window, &MainWindow::SimulationSpeedSettingsFetched, &handler, &TaskHandler::UpdateSimSpeed);
+    QObject::connect(window.findChild<QPushButton *>("simulation_start_button"), &QPushButton::clicked, &window, )
     window.show();
     return app.exec();
 }
@@ -39,7 +40,7 @@ signed main(int argc, char *argv[]) {
     handler.SetScene(Scene(&sf_window));
     handler.AddCamera(camera({150, 50, 10}));
     bool model_loaded = false;
-    int rc = activate_settings_window(handler, model_loaded);
+    int rc = activate_settings_window(argc, argv, handler, model_loaded);
 
 
     bool mouse_pressed = false, drawn = false;

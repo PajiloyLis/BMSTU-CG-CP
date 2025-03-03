@@ -47,6 +47,8 @@ public slots:
 
     void LoadModelActionTriggered();
 
+    void VisualizationStart();
+
 };
 
 #endif
