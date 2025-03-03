@@ -10,34 +10,36 @@ using namespace sf;
 
 #include "main_window.h"
 
+int activate_settings_window(TaskHandler &handler) {
+    handler.SetScene(Scene(&sf_window));
+
+    QApplication app(argc, argv);
+    MainWindow window;
+    QObject::connect(window.findChild<QPushButton *>("load_model_button"), &QPushButton::clicked, &window,
+                     &MainWindow::LoadModelActionTriggered);
+    QObject::connect(&window, &MainWindow::ModelPathFetched, &handler, &TaskHandler::LoadModel);
+    QObject::connect(window.findChild<QSlider *>("wind_speed_slider"), &QSlider::sliderReleased, &window,
+                     &MainWindow::WindChanged);
+    QObject::connect(window.findChild<QSlider *>("wind_angle_slider"), &QSlider::sliderReleased, &window,
+                     &MainWindow::WindChanged);
+    QObject::connect(&window, &MainWindow::WindSettingsFetched, &handler, &TaskHandler::UpdateWind);
+    QObject::connect(window.findChild<QSlider *>("sim_speed_slider"), &QSlider::sliderReleased, &window,
+                     &MainWindow::SimulationSpeedChanged);
+    QObject::connect(&window, &MainWindow::SimulationSpeedSettingsFetched, &handler, &TaskHandler::UpdateSimSpeed);
+    window.show();
+    app.exec();
+}
+
 signed main(int argc, char *argv[]) {
 
-    sf::RenderWindow sf_window(sf::VideoMode(1850, 1016), "kek", sf::Style::Default, sf::ContextSettings(24, 8, 0, 3, 3));
+    sf::RenderWindow sf_window(sf::VideoMode(1850, 1016), "kek", sf::Style::Default,
+                               sf::ContextSettings(24, 8, 0, 3, 3));
     glEnable(GL_DEPTH_TEST);
     sf_window.setFramerateLimit(5);
     sf_window.setVisible(false);
     TaskHandler handler;
-
-    handler.SetScene(Scene(&sf_window));
-    {
-        QApplication app(argc, argv);
-        MainWindow window;
-        QObject::connect(window.findChild<QPushButton *>("load_model_button"), &QPushButton::clicked, &window,
-                         &MainWindow::LoadModelActionTriggered);
-        QObject::connect(&window, &MainWindow::ModelPathFetched, &handler, &TaskHandler::LoadModel);
-        QObject::connect(window.findChild<QSlider *>("wind_speed_slider"), &QSlider::sliderReleased, &window,
-                         &MainWindow::WindChanged);
-        QObject::connect(window.findChild<QSlider *>("wind_angle_slider"), &QSlider::sliderReleased, &window,
-                         &MainWindow::WindChanged);
-        QObject::connect(&window, &MainWindow::WindSettingsFetched, &handler, &TaskHandler::UpdateWind);
-        QObject::connect(window.findChild<QSlider *>("sim_speed_slider"), &QSlider::sliderReleased, &window,
-                         &MainWindow::SimulationSpeedChanged);
-        QObject::connect(&window, &MainWindow::SimulationSpeedSettingsFetched, &handler, &TaskHandler::UpdateSimSpeed);
-        window.show();
-        app.exec();
-    }
-
     handler.AddCamera(camera({150, 50, 10}));
+
 
     bool mouse_pressed = false, drawn = false;
     sf::Vector2f mouse_last_pos(0, 0);
