@@ -55,22 +55,22 @@ void smoke::set_bnd(int b, vector<vector<vector<float>>> &x) {
         x[i][height + 1][width + 1] = 1.0 / 2.0 * (x[i][height][width + 1] + x[i][height + 1][width]);
     }
 
-    for (i = 1; i <= N; i++) {
-        x[IX(0, i, 0)] = 1.0 / 2.0 * (x[IX(1, i, 0)] + x[IX(0, i, 1)]);
-        x[IX(M + 1, i, 0)] = 1.0 / 2.0 * (x[IX(M, i, 0)] + x[IX(M + 1, i, 1)]);
-        x[IX(0, i, O + 1)] = 1.0 / 2.0 * (x[IX(0, i, O)] + x[IX(1, i, O + 1)]);
-        x[IX(M + 1, i, O + 1)] = 1.0 / 2.0 * (x[IX(M, i, O + 1)] + x[IX(M + 1, i, O)]);
+    for (int i = 1; i <= height; i++) {
+        x[0][i][0] = 1.0 / 2.0 * (x[1][i][0] + x[0][i][1]);
+        x[height + 1][i][0] = 1.0 / 2.0 * (x[height][i][0] + x[width + 1][i][1]);
+        x[0][i][width + 1] = 1.0 / 2.0 * (x[0][i][width] + x[1][i][width + 1]);
+        x[height + 1][i][width + 1] = 1.0 / 2.0 * (x[height][i][width + 1] + x[height + 1][i][width]);
     }
 
-    for (i = 1; i <= O; i++) {
-        x[IX(0, 0, i)] = 1.0 / 2.0 * (x[IX(0, 1, i)] + x[IX(1, 0, i)]);
-        x[IX(0, N + 1, i)] = 1.0 / 2.0 * (x[IX(0, N, i)] + x[IX(1, N + 1, i)]);
-        x[IX(M + 1, 0, i)] = 1.0 / 2.0 * (x[IX(M, 0, i)] + x[IX(M + 1, 1, i)]);
-        x[IX(M + 1, N + 1, i)] = 1.0 / 2.0 * (x[IX(M + 1, N, i)] + x[IX(M, N + 1, i)]);
+    for (int i = 1; i <= width; i++) {
+        x[0][0][i] = 1.0 / 2.0 * (x[0][1][i] + x[1][0][i]);
+        x[0][height + 1][i] = 1.0 / 2.0 * (x[0][height][i] + x[1][height + 1][i]);
+        x[height + 1][0][i] = 1.0 / 2.0 * (x[height][0][i] + x[height + 1][1][i]);
+        x[height + 1][height + 1][i] = 1.0 / 2.0 * (x[height + 1][height][i] + x[height][height + 1][i]);
     }
 
     //setting corners
-    x[IX(0, 0, 0)] = 1.0 / 3.0 * (x[IX(1, 0, 0)] + x[IX(0, 1, 0)] + x[IX(0, 0, 1)]);
+    x[0, 0, 0)] = 1.0 / 3.0 * (x[IX(1, 0, 0)] + x[IX(0, 1, 0)] + x[IX(0, 0, 1)]);
     x[IX(0, N + 1, 0)] = 1.0 / 3.0 * (x[IX(1, N + 1, 0)] + x[IX(0, N, 0)] + x[IX(0, N + 1, 1)]);
 
     x[IX(M + 1, 0, 0)] = 1.0 / 3.0 * (x[IX(M, 0, 0)] + x[IX(M + 1, 1, 0)] + x[IX(M + 1, 0, 1)]);
