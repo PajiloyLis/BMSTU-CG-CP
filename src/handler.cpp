@@ -111,11 +111,11 @@ void TaskHandler::ScaleCamera(float &k) {
 }
 
 void TaskHandler::UpdateWind(int speed, int angle) {
-    scene.UpdateWind({cos(M_PI / 180. * (180 - angle)) * speed / 20., sin(M_PI / 180. * (180 - angle)) * speed / 20.});
+    scene.UpdateWind({cos(M_PI / 180. * (180 - angle)) * speed, sin(M_PI / 180. * (180 - angle)) * speed});
 }
 
 void TaskHandler::UpdateSimSpeed(int x) {
-    scene.UpdateSimSpeed(0.1f * x);
+    scene.UpdateSimSpeed(0.05f * x);
 }
 
 void TaskHandler::ChangeSimState() {
