@@ -111,7 +111,7 @@ void TaskHandler::ScaleCamera(float &k) {
 }
 
 void TaskHandler::UpdateWind(int speed, int angle) {
-    cout<<speed<<" "<<angle<<'\n';
+    cout<<"speed "<< speed<<" angle "<<angle<<'\n';
     scene.UpdateWind({cos(M_PI / 180. * (180 - angle)) * speed, sin(M_PI / 180. * (180 - angle)) * speed});
 }
 

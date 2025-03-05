@@ -70,19 +70,23 @@ void smoke::set_bnd(int b, vector<vector<vector<float>>> &x) {
     }
 
     //setting corners
-    x[0][0][0] = 1.0 / 3.0 * (x[1][ 0][ 0] + x[0][ 1][ 0] + x[0][ 0][ 1]);
-    x[0][ height + 1][ 0] = 1.0 / 3.0 * (x[1][ height + 1][ 0] + x[0][ height][ 0] + x[0][ height + 1][ 1]);
+    x[0][0][0] = 1.0 / 3.0 * (x[1][0][0] + x[0][1][0] + x[0][0][1]);
+    x[0][height + 1][0] = 1.0 / 3.0 * (x[1][height + 1][0] + x[0][height][0] + x[0][height + 1][1]);
 
-    x[height + 1][ 0][ 0] = 1.0 / 3.0 * (x[height][ 0][ 0] + x[height + 1][ 1][ 0] + x[height + 1][ 0][ 1]);
-    x[height + 1][ height + 1][ 0] = 1.0 / 3.0 * (x[height][ height + 1][ 0] + x[height + 1][ height][ 0] + x[height + 1][ height + 1][ 1]);
+    x[height + 1][0][0] = 1.0 / 3.0 * (x[height][0][0] + x[height + 1][1][0] + x[height + 1][0][1]);
+    x[height + 1][height + 1][0] =
+            1.0 / 3.0 * (x[height][height + 1][0] + x[height + 1][height][0] + x[height + 1][height + 1][1]);
 
-    x[0][ 0][ width + 1] = 1.0 / 3.0 * (x[1][ 0][ width + 1] + x[0][ 1][ width + 1] + x[0][ 0][ width]);
-    x[0][ height + 1][ width + 1] = 1.0 / 3.0 * (x[1][ height + 1][ width + 1] + x[0][ height][ width + 1] + x[0][ height + 1][ width]);
+    x[0][0][width + 1] = 1.0 / 3.0 * (x[1][0][width + 1] + x[0][1][width + 1] + x[0][0][width]);
+    x[0][height + 1][width + 1] =
+            1.0 / 3.0 * (x[1][height + 1][width + 1] + x[0][height][width + 1] + x[0][height + 1][width]);
 
-    x[height + 1][ 0][ width + 1] = 1.0 / 3.0 * (x[height][ 0][ width + 1] + x[height + 1][ 1][ width + 1] + x[height + 1][ 0][ width]);
-    x[height + 1][ height + 1][ width + 1] = 1.0 / 3.0 * (x[height][ height + 1][ width + 1] + x[height + 1][ height][ width + 1] + x[height + 1][ height + 1][ width]);
+    x[height + 1][0][width + 1] =
+            1.0 / 3.0 * (x[height][0][width + 1] + x[height + 1][1][width + 1] + x[height + 1][0][width]);
+    x[height + 1][height + 1][width + 1] = 1.0 / 3.0 *
+                                           (x[height][height + 1][width + 1] + x[height + 1][height][width + 1] +
+                                            x[height + 1][height + 1][width]);
 }
-
 
 
 void smoke::lin_solve(int b, vector<vector<vector<float>>> &x, vector<vector<vector<float>>> &x0, float a, float c) {
@@ -291,17 +295,19 @@ smoke::smoke(int grid_width, int grid_height, const glm::vec3 &crater, const glm
         dens(height + 2, vector<vector<float>>(height + 2, vector<float>(width + 2, 0.f))),
         dens_prev(height + 2, vector<vector<float>>(height + 2, vector<float>(width + 2, 0.f))),
         total_frames(frames_count), frames_counter(0), intensity(intensity_), v_initial(vertical_speed) {
-    
+    float max_v_vel = 0, max_u_vel = 0;
 #pragma omp parallel for
     for (int i = 0; i < height + 2; ++i) {
         for (int j = 0; j < height + 2; ++j) {
             for (int k = 0; k < width + 2; ++k) {
                 u_prev[i][j][k] = (i > 0 ? log(static_cast<float>(i)) * wind.y : 0.f);
                 v_prev[i][j][k] = (i > 0 ? log(static_cast<float>(i)) * wind.x : 0.f);
+                max_v_vel = max(max_v_vel, v_prev[i][j][k]), max_u_vel = max(max_u_vel, u_prev[i][j][k]);
                 w_prev[i][j][k] = -0.001;
             }
         }
     }
+    cout<<"max v " << max_v_vel<<" max u "<<max_u_vel<<'\n';
 }
 
 
