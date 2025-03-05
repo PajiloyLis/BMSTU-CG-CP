@@ -39,16 +39,16 @@ void smoke::set_bnd(int b, vector<vector<vector<float>>> &x) {
     for (int i = 1; i <= height; ++i) {
         for (int j = 1; j <= height; ++j) {
             float tmp = x[i][j][0];
-            x[i][j][0] = (b == 1 ? x[i][j][width + 1] : x[i][j][1]);
-            x[i][j][width + 1] = (b == 1 ? tmp : x[i][j][width]);
+            x[i][j][0] = (b == 2 ? x[i][j][width + 1] : x[i][j][1]);
+            x[i][j][width + 1] = (b == 2 ? tmp : x[i][j][width]);
         }
     }
     //front-back face
     for (int i = 1; i <= height; ++i) {
         for (int j = 1; j <= width; ++j) {
             float tmp = x[i][0][j];
-            x[i][0][j] = (b == 2 ? x[i][height + 1][j] : x[i][1][j]);
-            x[i][height + 1][j] = (b == 2 ? tmp : x[i][height][j]);
+            x[i][0][j] = (b == 1 ? x[i][height + 1][j] : x[i][1][j]);
+            x[i][height + 1][j] = (b == 1 ? tmp : x[i][height][j]);
         }
     }
     //edges

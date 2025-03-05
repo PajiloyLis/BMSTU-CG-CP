@@ -290,7 +290,7 @@ void
 Scene::AddSmoke(int fig_width, int fig_height) {
     cout << "width " << fig_width << " height " << fig_height << '\n';
     ash = smoke(fig_width, fig_height,
-                {53, 38, 36}, {0, 0}, 0.025f, 100, 10000.f, 70.f);
+                {53, 38, 36}, {0, 0}, 0.025f, 100, 10000.f, 20.f);
 }
 
 void Scene::UpdateWind(const glm::vec2 &wind) {
