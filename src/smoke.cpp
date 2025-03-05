@@ -300,7 +300,7 @@ void smoke::update() {
             }
         }
     }
-    cout << "max v " << max_v_vel << " max u " << max_u_vel << '\n';
+    cout << "max v " << max_v_vel << " max u " << max_u_vel << " max w "<<max_w_vel<<'\n';
     // out.close();
 }
 
