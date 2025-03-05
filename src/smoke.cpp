@@ -280,7 +280,7 @@ void smoke::update() {
     vel_step(u, v, w, v_prev, u_prev, w_prev, VISC, dt);
     dens_step(dens, dens_prev, u, v, w, dt, DIFF_COEF);
     float max_v_vel = 0, max_u_vel = 0;
-#pragma omp parallel for
+//#pragma omp parallel for
     for (int i = 1; i <= height; ++i) {
         for (int j = 1; j < height + 1; ++j) {
             for (int k = 1; k < width + 1; ++k) {
