@@ -291,6 +291,7 @@ smoke::smoke(int grid_width, int grid_height, const glm::vec3 &crater, const glm
         dens(height + 2, vector<vector<float>>(height + 2, vector<float>(width + 2, 0.f))),
         dens_prev(height + 2, vector<vector<float>>(height + 2, vector<float>(width + 2, 0.f))),
         total_frames(frames_count), frames_counter(0), intensity(intensity_), v_initial(vertical_speed) {
+    
 #pragma omp parallel for
     for (int i = 0; i < height + 2; ++i) {
         for (int j = 0; j < height + 2; ++j) {
