@@ -122,6 +122,11 @@ void Scene::DrawSmoke() {
                             a_vec110 = adapt_coords(cameras[cur_camera], vec110, this->width, this->height),
                             a_vec111 = adapt_coords(cameras[cur_camera], vec111, this->width, this->height);
 
+
+                    cout<<a_vec000.y << " " << a_vec001.y << " " << a_vec010.y << " " << a_vec011.y << " "
+                        << a_vec100.y << " " << a_vec101.y << " " << a_vec110.y << " " << a_vec111.y
+                        << '\n';
+
                     glm::vec3 adapted_crater = adapt_coords(cameras[cur_camera], ash.source, width, height);
 
                     a_vec000.y = scene->getSize().y + a_vec000.y - 2 * adapted_crater.y,
@@ -133,9 +138,9 @@ void Scene::DrawSmoke() {
                     a_vec110.y = scene->getSize().y + a_vec110.y - 2 * adapted_crater.y,
                     a_vec111.y = scene->getSize().y + a_vec111.y - 2 * adapted_crater.y;
 
-                    cout<<a_vec000.y << " " << a_vec001.y << " " << a_vec010.y << " " << a_vec011.y << " "
-                                      << a_vec100.y << " " << a_vec101.y << " " << a_vec110.y << " " << a_vec111.y
-                                      << '\n';
+//                    cout<<a_vec000.y << " " << a_vec001.y << " " << a_vec010.y << " " << a_vec011.y << " "
+//                                      << a_vec100.y << " " << a_vec101.y << " " << a_vec110.y << " " << a_vec111.y
+//                                      << '\n';
 
                     sf::VertexArray quad(sf::Quads, 4);
 
