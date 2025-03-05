@@ -47,20 +47,7 @@ public:
     smoke() = default;
 
     smoke(int grid_width, int grid_height, const glm::vec3 &crater, const glm::vec2 &wind_, float dt_, int frames_count,
-          float intensity_, float vertical_speed) :
-            width(grid_width / VOX_SIZE), height(grid_height / VOX_SIZE),
-            source({crater.x / VOX_SIZE, crater.y / VOX_SIZE, crater.z / VOX_SIZE}), wind(wind_), dt(dt_),
-            u(height + 2, vector<vector<float>>(height + 2, vector<float>(width + 2, 0.f))),
-            v(height + 2, vector<vector<float>>(height + 2, vector<float>(width + 2, 0.f))),
-            w(height + 2, vector<vector<float>>(height + 2, vector<float>(width + 2, 0.f))),
-            u_prev(height + 2, vector<vector<float>>(height + 2, vector<float>(width + 2, 0.f))),
-            v_prev(height + 2, vector<vector<float>>(height + 2, vector<float>(width + 2, 0.f))),
-            w_prev(height + 2, vector<vector<float>>(height + 2, vector<float>(width + 2, 0.f))),
-            dens(height + 2, vector<vector<float>>(height + 2, vector<float>(width + 2, 0.f))),
-            dens_prev(height + 2, vector<vector<float>>(height + 2, vector<float>(width + 2, 0.f))),
-            total_frames(frames_count), frames_counter(0), intensity(intensity_), v_initial(vertical_speed) {
-    }
-
+          float intensity_, float vertical_speed);
     void add_source(vector<vector<vector<float>>> &x, vector<vector<vector<float>>> &s, float d);
 
     void set_bnd(int b, vector<vector<vector<float>>> &x);

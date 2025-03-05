@@ -174,7 +174,7 @@ smoke::vel_step(vector<vector<vector<float>>> &u_, vector<vector<vector<float>>>
     // clock_gettime(CLOCK_MONOTONIC, &stop);
     // out << stop.tv_sec - start.tv_sec + (stop.tv_nsec - start.tv_nsec) * 1e-9 << ",";
     lin_solve_time = 0;
-     clock_gettime(CLOCK_MONOTONIC, &start);
+    clock_gettime(CLOCK_MONOTONIC, &start);
     u0.swap(u_);
     diffuse(1, u_, u0, visc, d);
     v0.swap(v_);
@@ -183,7 +183,7 @@ smoke::vel_step(vector<vector<vector<float>>> &u_, vector<vector<vector<float>>>
     diffuse(3, w_, w0, visc, d);
     // clock_gettime(CLOCK_MONOTONIC, &stop);
     // out << (stop.tv_sec - start.tv_sec) +
-        //   (stop.tv_nsec - start.tv_nsec) * 1e-9 - lin_solve_time << ",";
+    //   (stop.tv_nsec - start.tv_nsec) * 1e-9 - lin_solve_time << ",";
     // out << lin_solve_time << ',';
     project(u_, v_, w_, u0, v0);
     u0.swap(u_);
@@ -204,10 +204,8 @@ void smoke::update() {
     for (int i = 0; i < height + 2; ++i) {
         for (int j = 0; j < height + 2; ++j) {
             for (int k = 0; k < width + 2; ++k) {
-                u_prev[i][j][k] = (i > 0 ? log(static_cast<float>(i)) * wind.y : 0.f);
-                v_prev[i][j][k] = (i > 0 ? log(static_cast<float>(i)) * wind.x : 0.f);
+                u_prev[i][j][k] = v_prev[i][j][k] = 0;
                 w_prev[i][j][k] = -0.001;
-                v[i][j][k]=u[i][j][k] = 0;
                 dens_prev[i][j][k] = 0;
             }
         }
@@ -227,6 +225,31 @@ void smoke::update() {
     vel_step(u, v, w, v_prev, u_prev, w_prev, VISC, dt);
     dens_step(dens, dens_prev, u, v, w, dt, DIFF_COEF);
     // out.close();
+}
+
+smoke::smoke(int grid_width, int grid_height, const glm::vec3 &crater, const glm::vec2 &wind_, float dt_,
+             int frames_count, float intensity_, float vertical_speed) :
+        width(grid_width / VOX_SIZE), height(grid_height / VOX_SIZE),
+        source({crater.x / VOX_SIZE, crater.y / VOX_SIZE, crater.z / VOX_SIZE}), wind(wind_), dt(dt_),
+        u(height + 2, vector<vector<float>>(height + 2, vector<float>(width + 2, 0.f))),
+        v(height + 2, vector<vector<float>>(height + 2, vector<float>(width + 2, 0.f))),
+        w(height + 2, vector<vector<float>>(height + 2, vector<float>(width + 2, 0.f))),
+        u_prev(height + 2, vector<vector<float>>(height + 2, vector<float>(width + 2, 0.f))),
+        v_prev(height + 2, vector<vector<float>>(height + 2, vector<float>(width + 2, 0.f))),
+        w_prev(height + 2, vector<vector<float>>(height + 2, vector<float>(width + 2, 0.f))),
+        dens(height + 2, vector<vector<float>>(height + 2, vector<float>(width + 2, 0.f))),
+        dens_prev(height + 2, vector<vector<float>>(height + 2, vector<float>(width + 2, 0.f))),
+        total_frames(frames_count), frames_counter(0), intensity(intensity_), v_initial(vertical_speed) {
+#pragma omp parallel for
+    for (int i = 0; i < height + 2; ++i) {
+        for (int j = 0; j < height + 2; ++j) {
+            for (int k = 0; k < width + 2; ++k) {
+                u_prev[i][j][k] = (i > 0 ? log(static_cast<float>(i)) * wind.y : 0.f);
+                v_prev[i][j][k] = (i > 0 ? log(static_cast<float>(i)) * wind.x : 0.f);
+                w_prev[i][j][k] = -0.001;
+            }
+        }
+    }
 }
 
 
