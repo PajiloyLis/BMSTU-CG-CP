@@ -115,7 +115,7 @@ void TaskHandler::UpdateWind(int speed, int angle) {
 }
 
 void TaskHandler::UpdateSimSpeed(int x) {
-    scene.UpdateSimSpeed(0.05f * x);
+    scene.UpdateSimSpeed(0.1f * x);
 }
 
 void TaskHandler::ChangeSimState() {
