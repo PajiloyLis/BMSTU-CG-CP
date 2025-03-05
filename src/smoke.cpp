@@ -46,8 +46,9 @@ void smoke::set_bnd(int b, vector<vector<vector<float>>> &x) {
     //front-back face
     for (int i = 1; i <= height; ++i) {
         for (int j = 1; j <= width; ++j) {
+            float tmp = x[i][0][j];
             x[i][0][j] = (b == 2 ? x[i][height + 1][j] : x[i][1][j]);
-            x[i][height + 1][j] = (b == 2 ? x[i][0][j] : x[i][height][j]);
+            x[i][height + 1][j] = (b == 2 ? tmp: x[i][height][j]);
         }
     }
     //edges
@@ -283,8 +284,7 @@ void smoke::update() {
     for (int i = 0; i < height + 2; ++i) {
         for (int j = 0; j < height + 2; ++j) {
             for (int k = 0; k < width + 2; ++k) {
-                u_prev[i][j][k] = v_prev[i][j][k] = 0;
-                w_prev[i][j][k] = -0.5;
+                u_prev[i][j][k] = v_prev[i][j][k] = w_prev[i][j][k]=0;
                 dens_prev[i][j][k] = 0;
             }
         }
