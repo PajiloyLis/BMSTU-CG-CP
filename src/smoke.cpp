@@ -32,6 +32,8 @@ void smoke::set_bnd(int b, vector<vector<vector<float>>> &x) {
             x[height + 1][i][j] = b == 3 ? -x[height][i][j] : x[height][i][j];
         }
     }
+
+    for(int i = )
 }
 
 void smoke::lin_solve(int b, vector<vector<vector<float>>> &x, vector<vector<vector<float>>> &x0, float a, float c) {
