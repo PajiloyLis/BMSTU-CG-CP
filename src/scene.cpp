@@ -294,6 +294,7 @@ Scene::AddSmoke(int fig_width, int fig_height) {
 }
 
 void Scene::UpdateWind(const glm::vec2 &wind) {
+    cout<<wind.x<<" "<<wind.y<<'\n';
     ash.wind = wind;
     float max_v_vel = 0, max_u_vel = 0;
 #pragma omp parallel for
