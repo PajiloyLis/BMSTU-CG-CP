@@ -303,7 +303,7 @@ void Scene::UpdateWind(const glm::vec2 &wind) {
             for (int k = 0; k < ash.width + 2; ++k) {
                 ash.u_prev[i][j][k] = ash.wind.y;
                 ash.v_prev[i][j][k] = ash.wind.x;
-                max_v_vel = max(max_v_vel, ash.v_prev[i][j][k]), max_u_vel = max(max_u_vel, ash.u_prev[i][j][k]);
+                max_v_vel = max(max_v_vel, abs(ash.v_prev[i][j][k])), max_u_vel = max(max_u_vel, abs(ash.u_prev[i][j][k]));
                 ash.w_prev[i][j][k] = -0.001;
             }
         }
