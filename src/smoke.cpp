@@ -70,20 +70,20 @@ void smoke::set_bnd(int b, vector<vector<vector<float>>> &x) {
     }
 
     //setting corners
-    x[0, 0, 0)] = 1.0 / 3.0 * (x[IX(1, 0, 0)] + x[IX(0, 1, 0)] + x[IX(0, 0, 1)]);
-    x[IX(0, N + 1, 0)] = 1.0 / 3.0 * (x[IX(1, N + 1, 0)] + x[IX(0, N, 0)] + x[IX(0, N + 1, 1)]);
+    x[0][0][0] = 1.0 / 3.0 * (x[1][ 0][ 0] + x[0][ 1][ 0] + x[0][ 0][ 1]);
+    x[0][ height + 1][ 0] = 1.0 / 3.0 * (x[1][ height + 1][ 0] + x[0][ height][ 0] + x[0][ height + 1][ 1]);
 
-    x[IX(M + 1, 0, 0)] = 1.0 / 3.0 * (x[IX(M, 0, 0)] + x[IX(M + 1, 1, 0)] + x[IX(M + 1, 0, 1)]);
-    x[IX(M + 1, N + 1, 0)] = 1.0 / 3.0 * (x[IX(M, N + 1, 0)] + x[IX(M + 1, N, 0)] + x[IX(M + 1, N + 1, 1)]);
+    x[height + 1][ 0][ 0] = 1.0 / 3.0 * (x[height][ 0][ 0] + x[height + 1][ 1][ 0] + x[height + 1][ 0][ 1]);
+    x[height + 1][ height + 1][ 0] = 1.0 / 3.0 * (x[height][ height + 1][ 0] + x[height + 1][ height][ 0] + x[height + 1][ height + 1][ 1]);
 
-    x[IX(0, 0, O + 1)] = 1.0 / 3.0 * (x[IX(1, 0, O + 1)] + x[IX(0, 1, O + 1)] + x[IX(0, 0, O)]);
-    x[IX(0, N + 1, O + 1)] = 1.0 / 3.0 * (x[IX(1, N + 1, O + 1)] + x[IX(0, N, O + 1)] + x[IX(0, N + 1, O)]);
+    x[0][ 0][ width + 1] = 1.0 / 3.0 * (x[1][ 0][ width + 1] + x[0][ 1][ width + 1] + x[0][ 0][ width]);
+    x[0][ height + 1][ width + 1] = 1.0 / 3.0 * (x[1][ height + 1][ width + 1] + x[0][ height][ width + 1] + x[0][ height + 1][ width]);
 
-    x[IX(M + 1, 0, O + 1)] = 1.0 / 3.0 * (x[IX(M, 0, O + 1)] + x[IX(M + 1, 1, O + 1)] + x[IX(M + 1, 0, O)]);
-    x[IX(M + 1, N + 1, O + 1)] = 1.0 / 3.0 * (x[IX(M, N + 1, O + 1)] + x[IX(M + 1, N, O + 1)] + x[IX(M + 1, N + 1, O)]);
+    x[height + 1][ 0][ width + 1] = 1.0 / 3.0 * (x[height][ 0][ width + 1] + x[height + 1][ 1][ width + 1] + x[height + 1][ 0][ width]);
+    x[height + 1][ height + 1][ width + 1] = 1.0 / 3.0 * (x[height][ height + 1][ width + 1] + x[height + 1][ height][ width + 1] + x[height + 1][ height + 1][ width]);
 }
 
-}
+
 
 void smoke::lin_solve(int b, vector<vector<vector<float>>> &x, vector<vector<vector<float>>> &x0, float a, float c) {
     int i, j, iter;
