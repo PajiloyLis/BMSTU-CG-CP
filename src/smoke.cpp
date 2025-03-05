@@ -272,7 +272,7 @@ void smoke::update() {
             for (int j = static_cast<int>(source.x) - 1; j < static_cast<int>(source.x) + 2; ++j) {
                 for (int k = static_cast<int>(source.y) - 1;
                      k < static_cast<int>(source.y) + 2; ++k) {
-                    w_prev[i][j][k] -= v_initial;
+                    w_prev[i][j][k] = v_initial;
                 }
             }
         }
@@ -323,7 +323,7 @@ smoke::smoke(int grid_width, int grid_height, const glm::vec3 &crater, const glm
             for (int k = 0; k < width + 2; ++k) {
                 u_prev[i][j][k] = wind.y;
                 v_prev[i][j][k] = wind.x;
-                w_prev[i][j][k] = -0.5;
+                w_prev[i][j][k] = -1.;
             }
         }
     }
