@@ -129,18 +129,18 @@ void smoke::advect(int b, vector<vector<vector<float>>> &d, vector<vector<vector
                 x = i - dt0 * w_[i][j][k];
                 y = j - dt0 * u_[i][j][k];
                 z = k - dt0 * v_[i][j][k];
-                if (x < 1.5f) x = 1.5f;
-                if (x > height - 0.5f) x = height - 0.5f;
+                if (x < 0.5f) x = 0.5f;
+                if (x > height + 0.5f) x = height + 0.5f;
                 i0 = (int) x;
                 i1 = i0 + 1;
 
-                if (y < 1.5f) y = 1.5f;
-                if (y > height - 0.5f) y = height - 0.5f;
+                if (y < 0.5f) y = 0.5f;
+                if (y > height + 0.5f) y = height + 0.5f;
                 j0 = (int) y;
                 j1 = j0 + 1;
 
-                if (z < 1.5f) z = 1.5f;
-                if (z > width - 0.5f) z = width - 0.5f;
+                if (z < 0.5f) z = 0.5f;
+                if (z > width + 0.5f) z = width + 0.5f;
                 k0 = (int) z;
                 k1 = k0 + 1;
 
@@ -279,16 +279,16 @@ void smoke::update() {
             }
         }
     }
-    float max_v_vel = 0, max_u_vel = 0;
+//    float max_v_vel = 0, max_u_vel = 0;
 //#pragma omp parallel for
-    for (int i = 1; i <= height; ++i) {
-        for (int j = 1; j < height + 1; ++j) {
-            for (int k = 1; k < width + 1; ++k) {
-                max_v_vel = max(max_v_vel, abs(v[i][j][k])), max_u_vel = max(max_u_vel, abs(u[i][j][k]));
-            }
-        }
-    }
-    cout<<"max v " << max_v_vel<<" max u "<<max_u_vel<<'\n';
+//    for (int i = 1; i <= height; ++i) {
+//        for (int j = 1; j < height + 1; ++j) {
+//            for (int k = 1; k < width + 1; ++k) {
+//                max_v_vel = max(max_v_vel, abs(v[i][j][k])), max_u_vel = max(max_u_vel, abs(u[i][j][k]));
+//            }
+//        }
+//    }
+//    cout<<"max v " << max_v_vel<<" max u "<<max_u_vel<<'\n';
     // out.close();
 }
 
