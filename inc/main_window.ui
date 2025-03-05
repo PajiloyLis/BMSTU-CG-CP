@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>635</width>
+    <width>632</width>
     <height>761</height>
    </rect>
   </property>
@@ -171,7 +171,7 @@
         </sizepolicy>
        </property>
        <property name="text">
-        <string>Угловая высота источника света</string>
+        <string>Азимут источника света</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignCenter</set>
