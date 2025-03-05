@@ -123,9 +123,9 @@ void Scene::DrawSmoke() {
                             a_vec111 = adapt_coords(cameras[cur_camera], vec111, this->width, this->height);
 
 
-                    cout<<a_vec000.y << " " << a_vec001.y << " " << a_vec010.y << " " << a_vec011.y << " "
-                        << a_vec100.y << " " << a_vec101.y << " " << a_vec110.y << " " << a_vec111.y
-                        << '\n';
+//                    cout<<a_vec000.y << " " << a_vec001.y << " " << a_vec010.y << " " << a_vec011.y << " "
+//                        << a_vec100.y << " " << a_vec101.y << " " << a_vec110.y << " " << a_vec111.y
+//                        << '\n';
 
                     glm::vec3 adapted_crater = adapt_coords(cameras[cur_camera], ash.source, width, height);
 
