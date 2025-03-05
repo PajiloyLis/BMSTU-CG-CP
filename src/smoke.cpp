@@ -300,8 +300,8 @@ smoke::smoke(int grid_width, int grid_height, const glm::vec3 &crater, const glm
     for (int i = 0; i < height + 2; ++i) {
         for (int j = 0; j < height + 2; ++j) {
             for (int k = 0; k < width + 2; ++k) {
-                u_prev[i][j][k] = (i > 0 ? log(static_cast<float>(i)) * wind.y : 0.f);
-                v_prev[i][j][k] = (i > 0 ? log(static_cast<float>(i)) * wind.x : 0.f);
+                u_prev[i][j][k] = wind.y;
+                v_prev[i][j][k] = wind.x;
                 max_v_vel = max(max_v_vel, v_prev[i][j][k]), max_u_vel = max(max_u_vel, u_prev[i][j][k]);
                 w_prev[i][j][k] = -0.001;
             }

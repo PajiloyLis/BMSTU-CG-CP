@@ -295,6 +295,19 @@ Scene::AddSmoke(int fig_width, int fig_height) {
 
 void Scene::UpdateWind(const glm::vec2 &wind) {
     ash.wind = wind;
+    float max_v_vel = 0, max_u_vel = 0;
+#pragma omp parallel for
+    for (int i = 0; i < ash.height + 2; ++i) {
+        for (int j = 0; j < ash.height + 2; ++j) {
+            for (int k = 0; k < ash.width + 2; ++k) {
+                ash.u_prev[i][j][k] = ash.wind.y;
+                ash.v_prev[i][j][k] = ash.wind.x;
+                max_v_vel = max(max_v_vel, ash.v_prev[i][j][k]), max_u_vel = max(max_u_vel, ash.u_prev[i][j][k]);
+                ash.w_prev[i][j][k] = -0.001;
+            }
+        }
+    }
+    cout<<"max v " << max_v_vel<<" max u "<<max_u_vel<<'\n';
 }
 
 void Scene::UpdateSimSpeed(float sim_speed) {
