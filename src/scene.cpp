@@ -145,7 +145,7 @@ void Scene::DrawSmoke() {
                     sf::VertexArray quad(sf::Quads, 4);
 
 //                    triangle adapted_triangle{};
-
+//
 //                    adapted_triangle.vertices[0] = a_vec000,
 //                    adapted_triangle.vertices[1] = a_vec010,
 //                    adapted_triangle.vertices[2] = a_vec010;
@@ -159,7 +159,7 @@ void Scene::DrawSmoke() {
 //
 //                    adapted_triangle.draw(*scene, zbuffer, light_ray, {colors[0], colors[2], colors[4]});
 
-                    //bottom
+//                    bottom
                     quad[0] = sf::Vertex(sf::Vector2f(a_vec000.x, a_vec000.y), colors[0]);
                     quad[1] = sf::Vertex(sf::Vector2f(a_vec010.x, a_vec010.y), colors[2]);
                     quad[2] = sf::Vertex(sf::Vector2f(a_vec110.x, a_vec110.y), colors[6]);
