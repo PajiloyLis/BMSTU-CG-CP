@@ -47,7 +47,7 @@ void smoke::set_bnd(int b, vector<vector<vector<float>>> &x) {
             x[i][height + 1][j] = (b == 1 ? x[i][0][j] : x[i][height][j]);
         }
     }
-
+    //edges
     for (int i = 1; i <= height; i++) {
         x[i][0][0] = 1.0 / 2.0 * (x[i][1][0] + x[i][0][1]);
         x[i][height + 1][0] = 1.0 / 2.0 * (x[i][height + 1][0] + x[i][height + 1][1]);
@@ -288,6 +288,7 @@ void smoke::update() {
             }
         }
     }
+    cout<<"max v " << max_v_vel<<" max u "<<max_u_vel<<'\n';
     // out.close();
 }
 
