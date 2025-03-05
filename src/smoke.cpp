@@ -23,6 +23,7 @@ void smoke::add_source(vector<vector<vector<float>>> &x, vector<vector<vector<fl
         }
     }
 }
+
 //1 - x, 2 - y, 3-z
 //zxy
 void smoke::set_bnd(int b, vector<vector<vector<float>>> &x) {
@@ -33,11 +34,10 @@ void smoke::set_bnd(int b, vector<vector<vector<float>>> &x) {
         }
     }
     //left-right face
-    for(int i = 1; i <= height; ++i)
-    {
-        for(int j = 1; j <= height; ++j)
-        {
-            x[i][j][0] = (b == 2 ? x[i][j][width+1] : x[i][j][])
+    for (int i = 1; i <= height; ++i) {
+        for (int j = 1; j <= height; ++j) {
+            x[i][j][0] = (b == 2 ? x[i][j][width + 1] : x[i][j][1]);
+            x[i][j][width + 1] = (b == 2 ? x[i][j][0] : x[i][j][width]);
         }
     }
 }
