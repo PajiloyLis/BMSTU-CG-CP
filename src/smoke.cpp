@@ -40,12 +40,49 @@ void smoke::set_bnd(int b, vector<vector<vector<float>>> &x) {
             x[i][j][width + 1] = (b == 2 ? x[i][j][0] : x[i][j][width]);
         }
     }
+    //front-back face
     for (int i = 1; i <= height; ++i) {
         for (int j = 1; j <= width; ++j) {
             x[i][0][j] = (b == 1 ? x[i][height + 1][j] : x[i][1][j]);
             x[i][height + 1][j] = (b == 1 ? x[i][0][j] : x[i][height][j]);
         }
     }
+
+    for (int i = 1; i <= height; i++) {
+        x[i][0][0] = 1.0 / 2.0 * (x[i][1][0] + x[i][0][1]);
+        x[i][height + 1][0] = 1.0 / 2.0 * (x[i][height + 1][0] + x[i][height + 1][1]);
+        x[i][0][width + 1] = 1.0 / 2.0 * (x[i][0][width] + x[i][1][width + 1]);
+        x[i][height + 1][width + 1] = 1.0 / 2.0 * (x[i][height][width + 1] + x[i][height + 1][width]);
+    }
+
+    for (i = 1; i <= N; i++) {
+        x[IX(0, i, 0)] = 1.0 / 2.0 * (x[IX(1, i, 0)] + x[IX(0, i, 1)]);
+        x[IX(M + 1, i, 0)] = 1.0 / 2.0 * (x[IX(M, i, 0)] + x[IX(M + 1, i, 1)]);
+        x[IX(0, i, O + 1)] = 1.0 / 2.0 * (x[IX(0, i, O)] + x[IX(1, i, O + 1)]);
+        x[IX(M + 1, i, O + 1)] = 1.0 / 2.0 * (x[IX(M, i, O + 1)] + x[IX(M + 1, i, O)]);
+    }
+
+    for (i = 1; i <= O; i++) {
+        x[IX(0, 0, i)] = 1.0 / 2.0 * (x[IX(0, 1, i)] + x[IX(1, 0, i)]);
+        x[IX(0, N + 1, i)] = 1.0 / 2.0 * (x[IX(0, N, i)] + x[IX(1, N + 1, i)]);
+        x[IX(M + 1, 0, i)] = 1.0 / 2.0 * (x[IX(M, 0, i)] + x[IX(M + 1, 1, i)]);
+        x[IX(M + 1, N + 1, i)] = 1.0 / 2.0 * (x[IX(M + 1, N, i)] + x[IX(M, N + 1, i)]);
+    }
+
+    //setting corners
+    x[IX(0, 0, 0)] = 1.0 / 3.0 * (x[IX(1, 0, 0)] + x[IX(0, 1, 0)] + x[IX(0, 0, 1)]);
+    x[IX(0, N + 1, 0)] = 1.0 / 3.0 * (x[IX(1, N + 1, 0)] + x[IX(0, N, 0)] + x[IX(0, N + 1, 1)]);
+
+    x[IX(M + 1, 0, 0)] = 1.0 / 3.0 * (x[IX(M, 0, 0)] + x[IX(M + 1, 1, 0)] + x[IX(M + 1, 0, 1)]);
+    x[IX(M + 1, N + 1, 0)] = 1.0 / 3.0 * (x[IX(M, N + 1, 0)] + x[IX(M + 1, N, 0)] + x[IX(M + 1, N + 1, 1)]);
+
+    x[IX(0, 0, O + 1)] = 1.0 / 3.0 * (x[IX(1, 0, O + 1)] + x[IX(0, 1, O + 1)] + x[IX(0, 0, O)]);
+    x[IX(0, N + 1, O + 1)] = 1.0 / 3.0 * (x[IX(1, N + 1, O + 1)] + x[IX(0, N, O + 1)] + x[IX(0, N + 1, O)]);
+
+    x[IX(M + 1, 0, O + 1)] = 1.0 / 3.0 * (x[IX(M, 0, O + 1)] + x[IX(M + 1, 1, O + 1)] + x[IX(M + 1, 0, O)]);
+    x[IX(M + 1, N + 1, O + 1)] = 1.0 / 3.0 * (x[IX(M, N + 1, O + 1)] + x[IX(M + 1, N, O + 1)] + x[IX(M + 1, N + 1, O)]);
+}
+
 }
 
 void smoke::lin_solve(int b, vector<vector<vector<float>>> &x, vector<vector<vector<float>>> &x0, float a, float c) {
