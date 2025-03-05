@@ -120,7 +120,7 @@ public:
     }
 
     [[nodiscard]] glm::mat4 perspective() const {
-        return glm::perspective(glm::radians(Zoom), relation, 0.1f, 100.f);
+        return glm::perspective(glm::radians(Zoom), relation, 1.f, 500.f);
     }
 
     // processes input received from a mouse scroll-wheel event. Only requires input on the vertical wheel-axis

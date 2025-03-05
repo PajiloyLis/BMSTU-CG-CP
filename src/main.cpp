@@ -42,7 +42,7 @@ signed main(int argc, char *argv[]) {
     handler.AddCamera(camera({150, 50, 10}));
     int rc = activate_settings_window(argc, argv, handler);
     if(rc != VIS_START)
-        return 0;
+        exit(0);
     bool mouse_pressed = false, drawn = false;
     sf::Vector2f mouse_last_pos(0, 0);
     sf_window.setVisible(true);
