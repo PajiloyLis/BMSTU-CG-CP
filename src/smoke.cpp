@@ -289,18 +289,18 @@ void smoke::update() {
             }
         }
     }
-    float max_v_vel = 0, max_u_vel = 0, max_w_vel = 0;
-//#pragma omp parallel for
-    for (int i = 1; i <= height; ++i) {
-        for (int j = 1; j < height + 1; ++j) {
-            for (int k = 1; k < width + 1; ++k) {
-                max_v_vel = max(max_v_vel, abs(v[i][j][k])), max_u_vel = max(max_u_vel,
-                                                                             abs(u[i][j][k])), max_w_vel = max(
-                        max_w_vel, abs(w[i][j][k]));
-            }
-        }
-    }
-    cout << "max v " << max_v_vel << " max u " << max_u_vel << " max w "<<max_w_vel<<'\n';
+//    float max_v_vel = 0, max_u_vel = 0, max_w_vel = 0;
+////#pragma omp parallel for
+//    for (int i = 1; i <= height; ++i) {
+//        for (int j = 1; j < height + 1; ++j) {
+//            for (int k = 1; k < width + 1; ++k) {
+//                max_v_vel = max(max_v_vel, abs(v[i][j][k])), max_u_vel = max(max_u_vel,
+//                                                                             abs(u[i][j][k])), max_w_vel = max(
+//                        max_w_vel, abs(w[i][j][k]));
+//            }
+//        }
+//    }
+//    cout << "max v " << max_v_vel << " max u " << max_u_vel << " max w "<<max_w_vel<<'\n';
     // out.close();
 }
 
