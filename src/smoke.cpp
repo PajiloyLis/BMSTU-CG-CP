@@ -255,16 +255,6 @@ smoke::vel_step(vector<vector<vector<float>>> &u_, vector<vector<vector<float>>>
 
 void smoke::update() {
     // out.open("time_parallel.csv", ios_base::app);
-#pragma omp parallel for
-    for (int i = 0; i < height + 2; ++i) {
-        for (int j = 0; j < height + 2; ++j) {
-            for (int k = 0; k < width + 2; ++k) {
-                u_prev[i][j][k] = v_prev[i][j][k] = 0;
-                w_prev[i][j][k] = -0.001;
-                dens_prev[i][j][k] = 0;
-            }
-        }
-    }
     if (frames_counter < total_frames) {
         for (int i = static_cast<int>(source.z); i < static_cast<int>(source.z) + 1; ++i) {
             for (int j = static_cast<int>(source.x); j < static_cast<int>(source.x) + 1; ++j) {
@@ -279,8 +269,18 @@ void smoke::update() {
     ++frames_counter;
     vel_step(u, v, w, v_prev, u_prev, w_prev, VISC, dt);
     dens_step(dens, dens_prev, u, v, w, dt, DIFF_COEF);
+#pragma omp parallel for
+    for (int i = 0; i < height + 2; ++i) {
+        for (int j = 0; j < height + 2; ++j) {
+            for (int k = 0; k < width + 2; ++k) {
+                u_prev[i][j][k] = v_prev[i][j][k] = 0;
+                w_prev[i][j][k] = -0.001;
+                dens_prev[i][j][k] = 0;
+            }
+        }
+    }
     float max_v_vel = 0, max_u_vel = 0;
-//#pragma omp parallel for
+#pragma omp parallel for
     for (int i = 1; i <= height; ++i) {
         for (int j = 1; j < height + 1; ++j) {
             for (int k = 1; k < width + 1; ++k) {
