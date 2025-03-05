@@ -258,6 +258,7 @@
 		[ "/home/ivan/Study/CompG/cp_cg/inc/cp_cg_ui.h", "mU", "", null ],
 		[ "/home/ivan/Study/CompG/cp_cg/inc/figure.h", "mU", "", null ],
 		[ "/home/ivan/Study/CompG/cp_cg/inc/handler.h", "mU", "", null ],
+		[ "/home/ivan/Study/CompG/cp_cg/inc/light_bulb.h", "mU", "", null ],
 		[ "/home/ivan/Study/CompG/cp_cg/inc/main_window.h", "mU", "", null ],
 		[ "/home/ivan/Study/CompG/cp_cg/inc/operations.h", "mU", "", null ],
 		[ "/home/ivan/Study/CompG/cp_cg/inc/smoke.h", "mU", "", null ],
@@ -276,6 +277,7 @@
 	"SETTINGS_FILE" : "/home/ivan/Study/CompG/cp_cg/cmake-build-release_without_gl/CMakeFiles/cp_cg_autogen.dir/AutogenUsed.txt",
 	"SOURCES" : 
 	[
+		[ "/home/ivan/Study/CompG/cp_cg/inc/light_bulb.cpp", "mU", null ],
 		[ "/home/ivan/Study/CompG/cp_cg/moc_handler.cpp", "mU", null ],
 		[ "/home/ivan/Study/CompG/cp_cg/moc_main_window.cpp", "mU", null ],
 		[ "/home/ivan/Study/CompG/cp_cg/src/camera.cpp", "mU", null ],

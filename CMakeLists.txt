@@ -43,6 +43,8 @@ add_executable(cp_cg
         moc_main_window.cpp
         moc_handler.cpp
         moc_predefs.h
+        inc/light_bulb.cpp
+        inc/light_bulb.h
 )
 
 target_link_libraries(cp_cg PUBLIC
