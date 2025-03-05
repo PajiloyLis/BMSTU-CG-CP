@@ -23,7 +23,8 @@ void smoke::add_source(vector<vector<vector<float>>> &x, vector<vector<vector<fl
         }
     }
 }
-
+//1 - x, 2 - y, 3-z
+//zxy
 void smoke::set_bnd(int b, vector<vector<vector<float>>> &x) {
 #pragma omp parallel for
     for (int i = 1; i <= height; i++) {
@@ -31,8 +32,14 @@ void smoke::set_bnd(int b, vector<vector<vector<float>>> &x) {
             x[height + 1][i][j] = b == 3 ? -x[height][i][j] : x[height][i][j];
         }
     }
-
-    for(int i = 1)
+    //left-right face
+    for(int i = 1; i <= height; ++i)
+    {
+        for(int j = 1; j <= height; ++j)
+        {
+            x[i][j][0] = 
+        }
+    }
 }
 
 void smoke::lin_solve(int b, vector<vector<vector<float>>> &x, vector<vector<vector<float>>> &x0, float a, float c) {
