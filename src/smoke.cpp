@@ -200,17 +200,6 @@ smoke::vel_step(vector<vector<vector<float>>> &u_, vector<vector<vector<float>>>
 
 void smoke::update() {
     // out.open("time_parallel.csv", ios_base::app);
-#pragma omp parallel for
-    for (int i = 0; i < height + 2; ++i) {
-        for (int j = 0; j < height + 2; ++j) {
-            for (int k = 0; k < width + 2; ++k) {
-                u_prev[i][j][k] = (i > 0 ? log(static_cast<float>(i)) * wind.y : 0.f);
-                v_prev[i][j][k] = (i > 0 ? log(static_cast<float>(i)) * wind.x : 0.f);
-                w_prev[i][j][k] = -0.001;
-                dens_prev[i][j][k] = 0;
-            }
-        }
-    }
     if (frames_counter < total_frames) {
         for (int i = static_cast<int>(source.z); i < static_cast<int>(source.z) + 1; ++i) {
             for (int j = static_cast<int>(source.x); j < static_cast<int>(source.x) + 1; ++j) {
