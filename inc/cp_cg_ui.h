@@ -144,7 +144,7 @@ public:
         wind_speed_slider = new QSlider(gridLayoutWidget);
         wind_speed_slider->setObjectName(QString::fromUtf8("wind_speed_slider"));
         wind_speed_slider->setMinimum(0);
-        wind_speed_slider->setMaximum(25);
+        wind_speed_slider->setMaximum(35);
         wind_speed_slider->setSliderPosition(0);
         wind_speed_slider->setOrientation(Qt::Horizontal);
         wind_speed_slider->setTickPosition(QSlider::TicksBelow);
@@ -239,12 +239,12 @@ public:
         label_7->setText(QCoreApplication::translate("MainWindow", "360", nullptr));
         label_3->setText(QCoreApplication::translate("MainWindow", "35", nullptr));
         simulation_start_button->setText(QCoreApplication::translate("MainWindow", "\320\237\320\265\321\200\320\265\320\271\321\202\320\270 \320\272 \320\276\320\272\320\275\321\203 \320\262\320\270\320\267\321\203\320\260\320\273\320\270\320\267\320\260\321\206\320\270\320\270", nullptr));
-        wind_angle_label->setText(QCoreApplication::translate("MainWindow", "0 \302\260", nullptr));
+        wind_angle_label->setText(QCoreApplication::translate("MainWindow", "0", nullptr));
         load_model_button->setText(QCoreApplication::translate("MainWindow", "\320\227\320\260\320\263\321\200\321\203\320\267\320\270\321\202\321\214 \320\274\320\276\320\264\320\265\320\273\321\214", nullptr));
         label_6->setText(QCoreApplication::translate("MainWindow", "0", nullptr));
-        wind_speed_label->setText(QCoreApplication::translate("MainWindow", "0 \320\274/\321\201", nullptr));
+        wind_speed_label->setText(QCoreApplication::translate("MainWindow", "0", nullptr));
         label_5->setText(QCoreApplication::translate("MainWindow", "\320\227\320\260\320\264\320\260\321\202\321\214 \320\275\320\260\320\277\321\200\320\260\320\262\320\273\320\265\320\275\320\270\320\265 \320\262\320\265\321\202\321\200\320\260 (\320\260\320\267\320\270\320\274\321\203\321\202)", nullptr));
-        sim_speed_label->setText(QCoreApplication::translate("MainWindow", "X1", nullptr));
+        sim_speed_label->setText(QCoreApplication::translate("MainWindow", "1", nullptr));
         label->setText(QCoreApplication::translate("MainWindow", "\320\227\320\260\320\264\320\260\321\202\321\214 \321\201\320\272\320\276\321\200\320\276\321\201\321\202\321\214 \320\262\320\265\321\202\321\200\320\260 (\320\274/\321\201)", nullptr));
         loaded_model_name->setText(QCoreApplication::translate("MainWindow", "\320\234\320\276\320\264\320\265\320\273\321\214 \320\275\320\265 \320\267\320\260\320\263\321\200\321\203\320\266\320\265\320\275\320\260", nullptr));
     } // retranslateUi

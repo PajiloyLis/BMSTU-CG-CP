@@ -128,7 +128,7 @@
         </sizepolicy>
        </property>
        <property name="text">
-        <string>0 °</string>
+        <string>0</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignCenter</set>
@@ -141,7 +141,7 @@
         <number>0</number>
        </property>
        <property name="maximum">
-        <number>25</number>
+        <number>35</number>
        </property>
        <property name="sliderPosition">
         <number>0</number>
@@ -186,7 +186,7 @@
         </sizepolicy>
        </property>
        <property name="text">
-        <string>0 м/с</string>
+        <string>0</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignCenter</set>
@@ -218,7 +218,7 @@
         </sizepolicy>
        </property>
        <property name="text">
-        <string>X1</string>
+        <string>1</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignCenter</set>
