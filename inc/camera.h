@@ -83,6 +83,8 @@ public:
         if (direction == BACKWARD) {
 //            model = glm::translate(glm::mat4(1.f), Front);
             Position -= Up * velocity;
+            if (Position.z < 0)
+                Position.z = 0;
         }
         if (direction == LEFT) {
 //            model = glm::translate(glm::mat4(1.f), Right);
@@ -120,7 +122,7 @@ public:
     }
 
     [[nodiscard]] glm::mat4 perspective() const {
-        return glm::perspective(glm::radians(Zoom), relation, 100.f, 500.f);
+        return glm::perspective(glm::radians(Zoom), relation, 0.1f, 100.f);
     }
 
     // processes input received from a mouse scroll-wheel event. Only requires input on the vertical wheel-axis
