@@ -284,7 +284,7 @@ void smoke::update() {
     for (int i = 1; i <= height; ++i) {
         for (int j = 1; j < height + 1; ++j) {
             for (int k = 1; k < width + 1; ++k) {
-                max_v_vel = max(max_v_vel, v[i][j][k]), max_u_vel = max(max_u_vel, u[i][j][k]);
+                max_v_vel = max(max_v_vel, abs(v[i][j][k])), max_u_vel = max(max_u_vel, abs(u[i][j][k]));
             }
         }
     }
@@ -305,19 +305,16 @@ smoke::smoke(int grid_width, int grid_height, const glm::vec3 &crater, const glm
         dens(height + 2, vector<vector<float>>(height + 2, vector<float>(width + 2, 0.f))),
         dens_prev(height + 2, vector<vector<float>>(height + 2, vector<float>(width + 2, 0.f))),
         total_frames(frames_count), frames_counter(0), intensity(intensity_), v_initial(vertical_speed) {
-    float max_v_vel = 0, max_u_vel = 0;
 #pragma omp parallel for
     for (int i = 0; i < height + 2; ++i) {
         for (int j = 0; j < height + 2; ++j) {
             for (int k = 0; k < width + 2; ++k) {
                 u_prev[i][j][k] = wind.y;
                 v_prev[i][j][k] = wind.x;
-                max_v_vel = max(max_v_vel, v_prev[i][j][k]), max_u_vel = max(max_u_vel, u_prev[i][j][k]);
                 w_prev[i][j][k] = -0.001;
             }
         }
     }
-    cout<<"max v " << max_v_vel<<" max u "<<max_u_vel<<'\n';
 }
 
 
