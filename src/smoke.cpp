@@ -30,7 +30,7 @@ void smoke::set_bnd(int b, vector<vector<vector<float>>> &x) {
 #pragma omp parallel for
     for (int i = 1; i <= height; i++) {
         for (int j = 0; j <= width; ++j) {
-            float tmp = x[height+1][i][j];
+            float tmp = x[height + 1][i][j];
             x[height + 1][i][j] = b == 3 ? x[0][i][j] : x[height][i][j];
             x[0][i][j] = b == 3 ? tmp : x[1][i][j];
         }
@@ -48,7 +48,7 @@ void smoke::set_bnd(int b, vector<vector<vector<float>>> &x) {
         for (int j = 1; j <= width; ++j) {
             float tmp = x[i][0][j];
             x[i][0][j] = (b == 2 ? x[i][height + 1][j] : x[i][1][j]);
-            x[i][height + 1][j] = (b == 2 ? tmp: x[i][height][j]);
+            x[i][height + 1][j] = (b == 2 ? tmp : x[i][height][j]);
         }
     }
     //edges
@@ -268,7 +268,7 @@ void smoke::update() {
                 }
             }
         }
-        for (int i = static_cast<int>(source.z)-1; i < static_cast<int>(source.z) +2; ++i) {
+        for (int i = static_cast<int>(source.z) - 1; i < static_cast<int>(source.z) + 2; ++i) {
             for (int j = static_cast<int>(source.x) - 1; j < static_cast<int>(source.x) + 2; ++j) {
                 for (int k = static_cast<int>(source.y) - 1;
                      k < static_cast<int>(source.y) + 2; ++k) {
@@ -284,17 +284,19 @@ void smoke::update() {
     for (int i = 0; i < height + 2; ++i) {
         for (int j = 0; j < height + 2; ++j) {
             for (int k = 0; k < width + 2; ++k) {
-                u_prev[i][j][k] = v_prev[i][j][k] = w_prev[i][j][k]=0;
+                u_prev[i][j][k] = v_prev[i][j][k] = w_prev[i][j][k] = 0;
                 dens_prev[i][j][k] = 0;
             }
         }
     }
-    float max_v_vel = 0, max_u_vel = 0;
+    float max_v_vel = 0, max_u_vel = 0, max_w_vel = 0;
 //#pragma omp parallel for
     for (int i = 1; i <= height; ++i) {
         for (int j = 1; j < height + 1; ++j) {
             for (int k = 1; k < width + 1; ++k) {
-                max_v_vel = max(max_v_vel, abs(v[i][j][k])), max_u_vel = max(max_u_vel, abs(u[i][j][k]));
+                max_v_vel = max(max_v_vel, abs(v[i][j][k])), max_u_vel = max(max_u_vel,
+                                                                             abs(u[i][j][k])), max_w_vel = max(
+                        max_w_vel, abs(w[i][j][k]));
             }
         }
     }
@@ -321,7 +323,7 @@ smoke::smoke(int grid_width, int grid_height, const glm::vec3 &crater, const glm
             for (int k = 0; k < width + 2; ++k) {
                 u_prev[i][j][k] = wind.y;
                 v_prev[i][j][k] = wind.x;
-                w_prev[i][j][k] = -0.005;
+                w_prev[i][j][k] = -0.05;
             }
         }
     }
