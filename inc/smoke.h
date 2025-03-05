@@ -59,17 +59,6 @@ public:
             dens(height + 2, vector<vector<float>>(height + 2, vector<float>(width + 2, 0.f))),
             dens_prev(height + 2, vector<vector<float>>(height + 2, vector<float>(width + 2, 0.f))),
             total_frames(frames_count), frames_counter(0), intensity(intensity_), v_initial(vertical_speed) {
-#pragma omp parallel for
-        for (int i = 0; i < height + 2; ++i) {
-            for (int j = 0; j < height + 2; ++j) {
-                for (int k = 0; k < width + 2; ++k) {
-                    u_prev[i][j][k] = (i > 0 ? log(static_cast<float>(i)) * wind.y : 0.f);
-                    v_prev[i][j][k] = (i > 0 ? log(static_cast<float>(i)) * wind.x : 0.f);
-                    w_prev[i][j][k] = -0.001;
-                    dens_prev[i][j][k] = 0;
-                }
-            }
-        }
     }
 
     void add_source(vector<vector<vector<float>>> &x, vector<vector<vector<float>>> &s, float d);
