@@ -40,6 +40,12 @@ void smoke::set_bnd(int b, vector<vector<vector<float>>> &x) {
             x[i][j][width + 1] = (b == 2 ? x[i][j][0] : x[i][j][width]);
         }
     }
+    for (int i = 1; i <= height; ++i) {
+        for (int j = 1; j <= width; ++j) {
+            x[i][0][j] = (b == 1 ? x[i][height + 1][j] : x[i][1][j]);
+            x[i][height + 1][j] = (b == 1 ? x[i][0][j] : x[i][height][j]);
+        }
+    }
 }
 
 void smoke::lin_solve(int b, vector<vector<vector<float>>> &x, vector<vector<vector<float>>> &x0, float a, float c) {
