@@ -43,7 +43,7 @@ add_executable(cp_cg
         moc_main_window.cpp
         moc_handler.cpp
         moc_predefs.h
-        inc/light_bulb.cpp
+        src/light_bulb.cpp
         inc/light_bulb.h
 )
 

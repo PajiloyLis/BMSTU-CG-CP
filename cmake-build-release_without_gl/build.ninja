@@ -145,13 +145,13 @@ build CMakeFiles/cp_cg.dir/moc_handler.cpp.o: CXX_COMPILER__cp_cg_unscanned_Rele
   OBJECT_DIR = CMakeFiles/cp_cg.dir
   OBJECT_FILE_DIR = CMakeFiles/cp_cg.dir
 
-build CMakeFiles/cp_cg.dir/inc/light_bulb.cpp.o: CXX_COMPILER__cp_cg_unscanned_Release /home/ivan/Study/CompG/cp_cg/inc/light_bulb.cpp || cmake_object_order_depends_target_cp_cg
+build CMakeFiles/cp_cg.dir/src/light_bulb.cpp.o: CXX_COMPILER__cp_cg_unscanned_Release /home/ivan/Study/CompG/cp_cg/src/light_bulb.cpp || cmake_object_order_depends_target_cp_cg
   DEFINES = -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NO_DEBUG -DQT_WIDGETS_LIB
-  DEP_FILE = CMakeFiles/cp_cg.dir/inc/light_bulb.cpp.o.d
+  DEP_FILE = CMakeFiles/cp_cg.dir/src/light_bulb.cpp.o.d
   FLAGS = -O3 -DNDEBUG -std=gnu++20 -fdiagnostics-color=always -fPIC -fopenmp
   INCLUDES = -I/home/ivan/Study/CompG/cp_cg/./inc -I/home/ivan/Study/CompG/cp_cg/. -I/usr/include/x86_64-linux-gnu/qt6/QtCore -I/usr/include/x86_64-linux-gnu/qt6 -I/usr/lib/x86_64-linux-gnu/qt6/mkspecs/linux-g++ -I/usr/include/x86_64-linux-gnu/qt6/QtGui -I/usr/include/x86_64-linux-gnu/qt6/QtWidgets -isystem /home/ivan/Study/CompG/cp_cg/cmake-build-release_without_gl/cp_cg_autogen/include
   OBJECT_DIR = CMakeFiles/cp_cg.dir
-  OBJECT_FILE_DIR = CMakeFiles/cp_cg.dir/inc
+  OBJECT_FILE_DIR = CMakeFiles/cp_cg.dir/src
 
 
 # =============================================================================
@@ -161,7 +161,7 @@ build CMakeFiles/cp_cg.dir/inc/light_bulb.cpp.o: CXX_COMPILER__cp_cg_unscanned_R
 #############################################
 # Link the executable cp_cg
 
-build cp_cg: CXX_EXECUTABLE_LINKER__cp_cg_Release CMakeFiles/cp_cg.dir/src/main.cpp.o CMakeFiles/cp_cg.dir/src/operations.cpp.o CMakeFiles/cp_cg.dir/src/triangle.cpp.o CMakeFiles/cp_cg.dir/src/main_window.cpp.o CMakeFiles/cp_cg.dir/src/scene.cpp.o CMakeFiles/cp_cg.dir/src/handler.cpp.o CMakeFiles/cp_cg.dir/src/figure.cpp.o CMakeFiles/cp_cg.dir/src/camera.cpp.o CMakeFiles/cp_cg.dir/src/conversions.cpp.o CMakeFiles/cp_cg.dir/src/smoke.cpp.o CMakeFiles/cp_cg.dir/moc_main_window.cpp.o CMakeFiles/cp_cg.dir/moc_handler.cpp.o CMakeFiles/cp_cg.dir/inc/light_bulb.cpp.o | /usr/lib/x86_64-linux-gnu/libQt6Widgets.so.6.2.4 /usr/lib/x86_64-linux-gnu/libQt6Gui.so.6.2.4 /usr/lib/x86_64-linux-gnu/libQt6Core.so.6.2.4 /usr/lib/x86_64-linux-gnu/libGLX.so /usr/lib/x86_64-linux-gnu/libOpenGL.so /usr/lib/gcc/x86_64-linux-gnu/11/libgomp.so /usr/lib/x86_64-linux-gnu/libpthread.a || cp_cg_autogen cp_cg_autogen_timestamp_deps
+build cp_cg: CXX_EXECUTABLE_LINKER__cp_cg_Release CMakeFiles/cp_cg.dir/src/main.cpp.o CMakeFiles/cp_cg.dir/src/operations.cpp.o CMakeFiles/cp_cg.dir/src/triangle.cpp.o CMakeFiles/cp_cg.dir/src/main_window.cpp.o CMakeFiles/cp_cg.dir/src/scene.cpp.o CMakeFiles/cp_cg.dir/src/handler.cpp.o CMakeFiles/cp_cg.dir/src/figure.cpp.o CMakeFiles/cp_cg.dir/src/camera.cpp.o CMakeFiles/cp_cg.dir/src/conversions.cpp.o CMakeFiles/cp_cg.dir/src/smoke.cpp.o CMakeFiles/cp_cg.dir/moc_main_window.cpp.o CMakeFiles/cp_cg.dir/moc_handler.cpp.o CMakeFiles/cp_cg.dir/src/light_bulb.cpp.o | /usr/lib/x86_64-linux-gnu/libQt6Widgets.so.6.2.4 /usr/lib/x86_64-linux-gnu/libQt6Gui.so.6.2.4 /usr/lib/x86_64-linux-gnu/libQt6Core.so.6.2.4 /usr/lib/x86_64-linux-gnu/libGLX.so /usr/lib/x86_64-linux-gnu/libOpenGL.so /usr/lib/gcc/x86_64-linux-gnu/11/libgomp.so /usr/lib/x86_64-linux-gnu/libpthread.a || cp_cg_autogen cp_cg_autogen_timestamp_deps
   FLAGS = -O3 -DNDEBUG
   LINK_LIBRARIES = -lsfml-graphics  -lsfml-window  -lsfml-system  -lpthread  /usr/lib/x86_64-linux-gnu/libQt6Widgets.so.6.2.4  /usr/lib/x86_64-linux-gnu/libQt6Gui.so.6.2.4  /usr/lib/x86_64-linux-gnu/libQt6Core.so.6.2.4  /usr/lib/x86_64-linux-gnu/libGLX.so  /usr/lib/x86_64-linux-gnu/libOpenGL.so  /usr/lib/gcc/x86_64-linux-gnu/11/libgomp.so  /usr/lib/x86_64-linux-gnu/libpthread.a
   OBJECT_DIR = CMakeFiles/cp_cg.dir

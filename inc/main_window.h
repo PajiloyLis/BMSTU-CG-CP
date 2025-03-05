@@ -52,7 +52,9 @@ public slots:
     void VisualizationStart();
 
 private:
-    bool model_loaded;
+    static bool model_loaded;
+
+    static bool first_time;
 
 };
 

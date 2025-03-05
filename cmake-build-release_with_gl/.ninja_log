@@ -14,3 +14,8 @@
 21	1900	1740982915165174806	CMakeFiles/cp_cg.dir/src/smoke.cpp.o	bc1fd7f9c9454c99
 5	7555	1740995837171142549	CMakeFiles/cp_cg.dir/src/main.cpp.o	185e4b70798bcf6a
 42	35289	1740929365494005720	CMakeFiles/cp_cg.dir/src/scene.cpp.o	f075af4fcd141132
+6	1193	1741185794567460313	CMakeFiles/cp_cg.dir/src/light_bulb.cpp.o	280b648533ea18fa
+5	7205	1741185800578460092	CMakeFiles/cp_cg.dir/moc_main_window.cpp.o	c3fabe820835139b
+5	7704	1741185801077460074	CMakeFiles/cp_cg.dir/src/main.cpp.o	185e4b70798bcf6a
+4	5093	1741185819023459414	CMakeFiles/cp_cg.dir/src/main_window.cpp.o	a29fb9369ba4d1c5
+5093	5531	1741185819459459398	cp_cg	fb97f66b3af978f3

@@ -1,10 +1,12 @@
 #include "main_window.h"
 
+bool MainWindow::first_time = true;
+bool MainWindow::model_loaded = false;
+
 MainWindow::MainWindow() : QMainWindow() {
     std::setlocale(LC_ALL, "");
     Ui::MainWindow ui;
     ui.setupUi(this);
-    model_loaded = false;
 }
 
 void MainWindow::LoadModelActionTriggered() {
@@ -43,8 +45,9 @@ void MainWindow::SimulationSpeedChanged() {
 }
 
 void MainWindow::VisualizationStart() {
-    if (model_loaded) {
+    if (model_loaded || (!first_time && model_loaded)) {
         QApplication::exit(VIS_START);
+        first_time = false;
         this->close();
     } else {
         this->findChild<QLabel *>("loaded_model_name")->setStyleSheet("color: red;");

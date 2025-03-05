@@ -277,13 +277,13 @@
 	"SETTINGS_FILE" : "/home/ivan/Study/CompG/cp_cg/cmake-build-release_with_gl/CMakeFiles/cp_cg_autogen.dir/AutogenUsed.txt",
 	"SOURCES" : 
 	[
-		[ "/home/ivan/Study/CompG/cp_cg/inc/light_bulb.cpp", "mU", null ],
 		[ "/home/ivan/Study/CompG/cp_cg/moc_handler.cpp", "mU", null ],
 		[ "/home/ivan/Study/CompG/cp_cg/moc_main_window.cpp", "mU", null ],
 		[ "/home/ivan/Study/CompG/cp_cg/src/camera.cpp", "mU", null ],
 		[ "/home/ivan/Study/CompG/cp_cg/src/conversions.cpp", "mU", null ],
 		[ "/home/ivan/Study/CompG/cp_cg/src/figure.cpp", "mU", null ],
 		[ "/home/ivan/Study/CompG/cp_cg/src/handler.cpp", "mU", null ],
+		[ "/home/ivan/Study/CompG/cp_cg/src/light_bulb.cpp", "mU", null ],
 		[ "/home/ivan/Study/CompG/cp_cg/src/main.cpp", "mU", null ],
 		[ "/home/ivan/Study/CompG/cp_cg/src/main_window.cpp", "mU", null ],
 		[ "/home/ivan/Study/CompG/cp_cg/src/operations.cpp", "mU", null ],

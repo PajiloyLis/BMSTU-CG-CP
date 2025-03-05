@@ -281,7 +281,7 @@
 				{
 					"backtrace" : 0,
 					"isSystem" : true,
-					"path" : "/home/ivan/Study/CompG/cp_cg/cmake-build-release_with_gl/cp_cg_autogen/include"
+					"path" : "/home/ivan/Study/CompG/cp_cg/cmake-build-release_without_gl/cp_cg_autogen/include"
 				}
 			],
 			"language" : "CXX",
@@ -315,11 +315,11 @@
 	"dependencies" : 
 	[
 		{
-			"backtrace" : 0,
-			"id" : "cp_cg_autogen::@6890427a1f51a3e7e1df"
+			"id" : "cp_cg_autogen_timestamp_deps::@6890427a1f51a3e7e1df"
 		},
 		{
-			"id" : "cp_cg_autogen_timestamp_deps::@6890427a1f51a3e7e1df"
+			"backtrace" : 0,
+			"id" : "cp_cg_autogen::@6890427a1f51a3e7e1df"
 		}
 	],
 	"id" : "cp_cg::@6890427a1f51a3e7e1df",
@@ -580,7 +580,7 @@
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "inc/light_bulb.cpp",
+			"path" : "src/light_bulb.cpp",
 			"sourceGroupIndex" : 0
 		},
 		{
@@ -591,13 +591,13 @@
 		{
 			"backtrace" : 0,
 			"isGenerated" : true,
-			"path" : "cmake-build-release_with_gl/cp_cg_autogen/timestamp",
+			"path" : "cmake-build-release_without_gl/cp_cg_autogen/timestamp",
 			"sourceGroupIndex" : 2
 		},
 		{
 			"backtrace" : 0,
 			"isGenerated" : true,
-			"path" : "cmake-build-release_with_gl/cp_cg_autogen/timestamp.rule",
+			"path" : "cmake-build-release_without_gl/cp_cg_autogen/timestamp.rule",
 			"sourceGroupIndex" : 3
 		}
 	],
