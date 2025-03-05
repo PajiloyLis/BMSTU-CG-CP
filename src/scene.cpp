@@ -269,21 +269,21 @@ void Scene::DrawSmoke() {
     }
 //    clock_gettime(CLOCK_MONOTONIC, &end);
 //    cout << "smoke draw time" << end.tv_sec - start.tv_sec + (end.tv_nsec - start.tv_nsec) * 1e-9 << '\n';
-//    glm::vec3 zero = adapt_coords(cameras[cur_camera], {0, 0, 0}, scene->getSize().x,
-//                                  scene->getSize().y),
-//            x_line = adapt_coords(cameras[cur_camera], {ash.height, 0, 0}, scene->getSize().x,
-//                                  scene->getSize().y),
-//            y_line = adapt_coords(cameras[cur_camera], {0, ash.width, 0}, width, height),
-//            z_line = adapt_coords(cameras[cur_camera], {0, 0, ash.height}, width, height);
-//    vector<sf::Vertex> p(6);
-//    p[0] = sf::Vertex(sf::Vector2f(zero.x, scene->getSize().y - zero.y), sf::Color::Red);
-//    p[1] = sf::Vertex(sf::Vector2f(x_line.x, scene->getSize().y - x_line.y), sf::Color::Red),
-//    p[2] = sf::Vertex(sf::Vector2f(zero.x, scene->getSize().y - zero.y), sf::Color::Red),
-//    p[3] = sf::Vertex(sf::Vector2f(y_line.x, scene->getSize().y - y_line.y), sf::Color::Red),
-//    p[4] = sf::Vertex(sf::Vector2f(zero.x, scene->getSize().y - zero.y), sf::Color::Red),
-//    p[5] = sf::Vertex(sf::Vector2f(z_line.x, scene->getSize().y - z_line.y), sf::Color::Red),
-//
-//            scene->draw(p.data(), 6, sf::Lines);
+    glm::vec3 zero = adapt_coords(cameras[cur_camera], {53, 38, 0}, scene->getSize().x,
+                                  scene->getSize().y),
+            x_line = adapt_coords(cameras[cur_camera], {153, 38, 0}, scene->getSize().x,
+                                  scene->getSize().y),
+            y_line = adapt_coords(cameras[cur_camera], {53, 138, 0}, width, height),
+            z_line = adapt_coords(cameras[cur_camera], {53, 38, ash.height+50}, width, height);
+    vector<sf::Vertex> p(6);
+    p[0] = sf::Vertex(sf::Vector2f(zero.x, scene->getSize().y - zero.y), sf::Color::Red);
+    p[1] = sf::Vertex(sf::Vector2f(x_line.x, scene->getSize().y - x_line.y), sf::Color::Red),
+    p[2] = sf::Vertex(sf::Vector2f(zero.x, scene->getSize().y - zero.y), sf::Color::Red),
+    p[3] = sf::Vertex(sf::Vector2f(y_line.x, scene->getSize().y - y_line.y), sf::Color::Red),
+    p[4] = sf::Vertex(sf::Vector2f(zero.x, scene->getSize().y - zero.y), sf::Color::Red),
+    p[5] = sf::Vertex(sf::Vector2f(z_line.x, scene->getSize().y - z_line.y), sf::Color::Red),
+
+            scene->draw(p.data(), 6, sf::Lines);
 }
 
 void
