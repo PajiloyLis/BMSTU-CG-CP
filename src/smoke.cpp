@@ -204,8 +204,8 @@ void smoke::update() {
     for (int i = 0; i < height + 2; ++i) {
         for (int j = 0; j < height + 2; ++j) {
             for (int k = 0; k < width + 2; ++k) {
-                u_prev[i][j][k] = (i > 0 ? log(static_cast<float>(i)) * wind.y : 0.f);
-                v_prev[i][j][k] = (i > 0 ? log(static_cast<float>(i)) * wind.x : 0.f);
+                u_prev[i][j][k] = (i > 0 ? log(static_cast<float>(2*i)) * wind.y : 0.f);
+                v_prev[i][j][k] = (i > 0 ? log(static_cast<float>(2*i)) * wind.x : 0.f);
                 w_prev[i][j][k] = -0.001;
                 dens_prev[i][j][k] = 0;
             }
