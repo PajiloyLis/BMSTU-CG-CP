@@ -36,15 +36,15 @@ void smoke::set_bnd(int b, vector<vector<vector<float>>> &x) {
     //left-right face
     for (int i = 1; i <= height; ++i) {
         for (int j = 1; j <= height; ++j) {
-            x[i][j][0] = (b == 2 ? x[i][j][width + 1] : x[i][j][1]);
-            x[i][j][width + 1] = (b == 2 ? x[i][j][0] : x[i][j][width]);
+            x[i][j][0] = (b == 2 ? x[i][j][width] : x[i][j][1]);
+            x[i][j][width + 1] = (b == 2 ? x[i][j][1] : x[i][j][width]);
         }
     }
     //front-back face
     for (int i = 1; i <= height; ++i) {
         for (int j = 1; j <= width; ++j) {
-            x[i][0][j] = (b == 1 ? x[i][height + 1][j] : x[i][1][j]);
-            x[i][height + 1][j] = (b == 1 ? x[i][0][j] : x[i][height][j]);
+            x[i][0][j] = (b == 1 ? x[i][height][j] : x[i][1][j]);
+            x[i][height + 1][j] = (b == 1 ? x[i][1][j] : x[i][height][j]);
         }
     }
     //edges
@@ -279,16 +279,16 @@ void smoke::update() {
             }
         }
     }
-//    float max_v_vel = 0, max_u_vel = 0;
-//#pragma omp parallel for
-//    for (int i = 1; i <= height; ++i) {
-//        for (int j = 1; j < height + 1; ++j) {
-//            for (int k = 1; k < width + 1; ++k) {
-//                max_v_vel = max(max_v_vel, abs(v[i][j][k])), max_u_vel = max(max_u_vel, abs(u[i][j][k]));
-//            }
-//        }
-//    }
-//    cout<<"max v " << max_v_vel<<" max u "<<max_u_vel<<'\n';
+    float max_v_vel = 0, max_u_vel = 0;
+#pragma omp parallel for
+    for (int i = 1; i <= height; ++i) {
+        for (int j = 1; j < height + 1; ++j) {
+            for (int k = 1; k < width + 1; ++k) {
+                max_v_vel = max(max_v_vel, abs(v[i][j][k])), max_u_vel = max(max_u_vel, abs(u[i][j][k]));
+            }
+        }
+    }
+    cout<<"max v " << max_v_vel<<" max u "<<max_u_vel<<'\n';
     // out.close();
 }
 
