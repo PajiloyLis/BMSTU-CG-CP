@@ -5,9 +5,13 @@
 #ifndef CP_CG_LIGHT_BULB_H
 #define CP_CG_LIGHT_BULB_H
 
+#include <glm/glm.hpp>
 
 class light_bulb {
-
+public:
+    const int ratio = 500;
+    glm::vec3 ray_direction;
+    light_bulb(const glm::vec3 &ray);
 };
 
 
