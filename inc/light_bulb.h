@@ -11,8 +11,8 @@ class light_bulb {
 public:
     const int ratio = 500;
     glm::vec3 ray_direction;
-    glm::gl
-    light_bulb(const glm::vec3 &ray);
+    glm::vec2 pos;
+    light_bulb(const glm::vec2 &position);
 };
 
 
