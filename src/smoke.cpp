@@ -37,7 +37,7 @@ void smoke::set_bnd(int b, vector<vector<vector<float>>> &x) {
     {
         for(int j = 1; j <= height; ++j)
         {
-            x[i][j][0] = 
+            x[i][j][0] = (b == 2 ? x[i][j][width+1] : x[i][j][])
         }
     }
 }
