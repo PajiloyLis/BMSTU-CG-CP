@@ -174,7 +174,7 @@ smoke::vel_step(vector<vector<vector<float>>> &u_, vector<vector<vector<float>>>
     // clock_gettime(CLOCK_MONOTONIC, &stop);
     // out << stop.tv_sec - start.tv_sec + (stop.tv_nsec - start.tv_nsec) * 1e-9 << ",";
     lin_solve_time = 0;
-    // clock_gettime(CLOCK_MONOTONIC, &start);
+     clock_gettime(CLOCK_MONOTONIC, &start);
     u0.swap(u_);
     diffuse(1, u_, u0, visc, d);
     v0.swap(v_);
@@ -200,7 +200,7 @@ smoke::vel_step(vector<vector<vector<float>>> &u_, vector<vector<vector<float>>>
 
 void smoke::update() {
     // out.open("time_parallel.csv", ios_base::app);
-//#pragma omp parallel for
+#pragma omp parallel for
     for (int i = 0; i < height + 2; ++i) {
         for (int j = 0; j < height + 2; ++j) {
             for (int k = 0; k < width + 2; ++k) {
