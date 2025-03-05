@@ -133,6 +133,10 @@ void Scene::DrawSmoke() {
                     a_vec110.y = scene->getSize().y + a_vec110.y - 2 * adapted_crater.y,
                     a_vec111.y = scene->getSize().y + a_vec111.y - 2 * adapted_crater.y;
 
+                    cout<<a_vec000.y << " " << a_vec001.y << " " << a_vec010.y << " " << a_vec011.y << " "
+                                      << a_vec100.y << " " << a_vec101.y << " " << a_vec110.y << " " << a_vec111.y
+                                      << '\n';
+
                     sf::VertexArray quad(sf::Quads, 4);
 
 //                    triangle adapted_triangle{};
@@ -294,7 +298,7 @@ Scene::AddSmoke(int fig_width, int fig_height) {
 
 void Scene::UpdateWind(const glm::vec2 &wind) {
     ash.wind = wind;
-    cout<<"x "<<wind.x<<" y "<<wind.y<<'\n';
+    cout << "x " << wind.x << " y " << wind.y << '\n';
 #pragma omp parallel for
     for (int i = 0; i < ash.height + 2; ++i) {
         for (int j = 0; j < ash.height + 2; ++j) {
