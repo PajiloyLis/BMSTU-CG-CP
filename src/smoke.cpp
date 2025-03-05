@@ -30,14 +30,17 @@ void smoke::set_bnd(int b, vector<vector<vector<float>>> &x) {
 #pragma omp parallel for
     for (int i = 1; i <= height; i++) {
         for (int j = 0; j <= width; ++j) {
-            x[height + 1][i][j] = b == 3 ? -x[height][i][j] : x[height][i][j];
+            float tmp = x[height+1][i][j];
+            x[height + 1][i][j] = b == 3 ? x[0][i][j] : x[height][i][j];
+            x[0][i][j] = b == 3 ? tmp : x[1][i][j];
         }
     }
     //left-right face
     for (int i = 1; i <= height; ++i) {
         for (int j = 1; j <= height; ++j) {
+            float tmp = x[i][j][0];
             x[i][j][0] = (b == 1 ? x[i][j][width + 1] : x[i][j][1]);
-            x[i][j][width + 1] = (b == 1 ? x[i][j][0] : x[i][j][width]);
+            x[i][j][width + 1] = (b == 1 ? tmp : x[i][j][width]);
         }
     }
     //front-back face
@@ -281,7 +284,7 @@ void smoke::update() {
         for (int j = 0; j < height + 2; ++j) {
             for (int k = 0; k < width + 2; ++k) {
                 u_prev[i][j][k] = v_prev[i][j][k] = 0;
-                w_prev[i][j][k] = -0.001;
+                w_prev[i][j][k] = -0.5;
                 dens_prev[i][j][k] = 0;
             }
         }
