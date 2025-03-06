@@ -51,6 +51,8 @@ public:
 
     vector<float> zbuffer;
 
+    void SetLightRay(const glm::vec3 &center);
+
     bool running;
 private:
     sf::RenderTarget *scene;

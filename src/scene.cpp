@@ -342,3 +342,7 @@ void Scene::DrawLight() {
 void Scene::UpdateLight(const glm::vec2 &new_light) {
     light = {new_light};
 }
+
+void SetLightRay(const glm::vec3 &center) {
+    light.ray_direction = glm::normalize(center - light.pos);
+}
