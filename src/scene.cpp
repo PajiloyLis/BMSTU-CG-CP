@@ -55,7 +55,10 @@ void Scene::DrawFigures() {
             adapted_triangle.draw(*scene, zbuffer, color);
             scene->draw(vector<sf::Vertex>{
                                 sf::Vertex(sf::Vector2f(adapted_centroid.x, height - adapted_centroid.y), sf::Color::Green),
-                                sf::Vertex(sf::Vector2f(adapted_normal.x, height - adapted_normal.y), sf::Color::Green)}.data(), 2,
+                                sf::Vertex(sf::Vector2f(adapted_normal.x, height - adapted_normal.y), sf::Color::Green),
+                                sf::Vertex(sf::Vector2f(adapted_centroid.x, height - adapted_normal.y), sf::Color::Red),
+                                sf::Vertex(sf::Vector2f(adapted_light_pos.x, height - adapted_light_pos.y), sf::Color::Red)}.data(),
+                        4,
                         sf::Lines);
         }
 //    clock_gettime(CLOCK_MONOTONIC, &end);
