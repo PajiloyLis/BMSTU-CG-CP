@@ -24,6 +24,7 @@ void TaskHandler::LoadModel(const string &filepath) {
     // Add smoke
     scene.AddSmoke(static_cast<int>(ceil(max(f.max_y - f.min_y, f.max_x - f.min_x))),
                    static_cast<int>(3 * ceil(f.max_z - f.min_z)));
+    scene.SetLightRay({(f.max_x - f.min_x) / 2, (f.max_y - f.min_y) / 2, 0});
 }
 
 vector<triangle> TaskHandler::read_stl(const string &filename) {
