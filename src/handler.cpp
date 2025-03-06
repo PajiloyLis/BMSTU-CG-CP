@@ -80,8 +80,8 @@ vector<triangle> TaskHandler::read_stl(const string &filename) {
         for (auto &triangle: triangles) {
             vertices = triangle.getVertices();
             glm::vec3 a = vertices[1] - vertices[0], b = vertices[2] - vertices[0];
-            glm::vec3 median_base = (vertices[1] + vertices[2]) / 2.f, centroid =
-                    (median_base - vertices[0]) / 3.f * 2.f;
+//            glm::vec3 median_base = (vertices[1] + vertices[2]) / 2.f, centroid =
+//                    (median_base - vertices[0]) / 3.f * 2.f;
             glm::vec3 v_n = glm::cross(a, b);
             v_n = glm::normalize(v_n);
             triangle.setN(v_n);
@@ -94,25 +94,25 @@ vector<triangle> TaskHandler::read_stl(const string &filename) {
         out.seekp(0, ios_base::end);
         out.close();
     }
-    ofstream out;
-    out.open("kluchevskaya_normals.bin", ios_base::out);
-    for (int i = 0; i < triangles.size(); ++i) {
-        glm::vec3 n_0, n_1, n_2;
-        n_0 = n_1 = n_2 = triangles[i].n;
-        for (int j = 0; j < triangles.size(); ++j) {
-            if (i != j) {
-                if (triangles[i].vertices[0] == triangles[j].vertices[0] ||
-                    triangles[i].vertices[0] == triangles[j].vertices[1] ||
-                    triangles[i].vertices[0] == triangles[j].vertices[2])
-                    n_0 += triangles[j].n;
-                if (triangles[i].vertices[1] == triangles[j].vertices[0] ||
-                    triangles[i].vertices[1] == triangles[j].vertices[1] ||
-                    triangles[i].vertices[1] == triangles[j].vertices[2])
-                    n_1 += triangles[j].n;
-
-            }
-        }
-    }
+//    ofstream out;
+//    out.open("kluchevskaya_normals.bin", ios_base::out);
+//    for (int i = 0; i < triangles.size(); ++i) {
+//        glm::vec3 n_0, n_1, n_2;
+//        n_0 = n_1 = n_2 = triangles[i].n;
+//        for (int j = 0; j < triangles.size(); ++j) {
+//            if (i != j) {
+//                if (triangles[i].vertices[0] == triangles[j].vertices[0] ||
+//                    triangles[i].vertices[0] == triangles[j].vertices[1] ||
+//                    triangles[i].vertices[0] == triangles[j].vertices[2])
+//                    n_0 += triangles[j].n;
+//                if (triangles[i].vertices[1] == triangles[j].vertices[0] ||
+//                    triangles[i].vertices[1] == triangles[j].vertices[1] ||
+//                    triangles[i].vertices[1] == triangles[j].vertices[2])
+//                    n_1 += triangles[j].n;
+//
+//            }
+//        }
+//    }
     return triangles;
 }
 

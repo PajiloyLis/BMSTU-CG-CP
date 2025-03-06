@@ -37,10 +37,10 @@ void Scene::DrawFigures() {
         for (auto &t: figure.triangles) {
             array<glm::vec3, 3> adapted;
             glm::vec3 median_base = (t.vertices[0] + t.vertices[1]) * 0.5f;
-            glm::vec3 centroid = (t.vertices[2] - median_base) / 3.f * 2.f;
+            glm::vec3 centroid = (median_base - t.vertices[2]) / 3.f * 2.f + t.vertices[2];
 
-//            glm::vec3 adapted_centroid = adapt_coords(cameras[cur_camera], centroid, width, height),
-//                    adapted_normal = adapt_coords(cameras[cur_camera], centroid + t.n, width, height);
+            glm::vec3 adapted_centroid = adapt_coords(cameras[cur_camera], centroid, width, height),
+                    adapted_normal = adapt_coords(cameras[cur_camera], centroid + t.n, width, height);
 
             for (int i = 0; i < t.vertices.size(); ++i)
                 adapted[i] = adapt_coords(cameras[cur_camera], t.vertices[i], width, height);
@@ -52,10 +52,10 @@ void Scene::DrawFigures() {
             sf::Color color(static_cast<sf::Uint8>(255 * intensity), static_cast<sf::Uint8>(255 * intensity),
                             static_cast<sf::Uint8>(255 * intensity));
             adapted_triangle.draw(*scene, zbuffer, color);
-//            scene->draw(vector<sf::Vertex>{
-//                                sf::Vertex(sf::Vector2f(adapted_centroid.x, height - adapted_centroid.y), sf::Color::Green),
-//                                sf::Vertex(sf::Vector2f(adapted_normal.x, height - adapted_normal.y), sf::Color::Green)}.data(), 2,
-//                        sf::Lines);
+            scene->draw(vector<sf::Vertex>{
+                                sf::Vertex(sf::Vector2f(adapted_centroid.x, height - adapted_centroid.y), sf::Color::Green),
+                                sf::Vertex(sf::Vector2f(adapted_normal.x, height - adapted_normal.y), sf::Color::Green)}.data(), 2,
+                        sf::Lines);
         }
 //    clock_gettime(CLOCK_MONOTONIC, &end);
 //    cout << "figure draw time " << end.tv_sec - start.tv_sec + (end.tv_nsec - start.tv_nsec) * 1e-9 << '\n';
