@@ -37,6 +37,11 @@ void Scene::DrawFigures() {
         for (auto &t: figure.triangles) {
             array<glm::vec3, 3> adapted;
             glm::vec3 median_base = (t.vertices[0] + t.vertices[1]) * 0.5f;
+            glm::vec3 centroid = (t.vertices[2] - median_base) / 3.f * 2.f;
+            glm::vec3 normal = centroid + t.n;
+            glm::vec3 adapted_centroid = adapt_coords(cameras[cur_camera], centroid, width,
+                                                      height), adapted_normal = adapt_coords(cameras[cur_camera],
+                                                                                             normal, width, height);
             
             for (int i = 0; i < t.vertices.size(); ++i)
                 adapted[i] = adapt_coords(cameras[cur_camera], t.vertices[i], width, height);
