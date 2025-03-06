@@ -36,6 +36,8 @@ void Scene::DrawFigures() {
     for (auto &figure: figures)
         for (auto &t: figure.triangles) {
             array<glm::vec3, 3> adapted;
+            glm::vec3 median_base = (t.vertices[0] + t.vertices[1]) * 0.5f;
+            
             for (int i = 0; i < t.vertices.size(); ++i)
                 adapted[i] = adapt_coords(cameras[cur_camera], t.vertices[i], width, height);
             triangle adapted_triangle(t.n, adapted);
