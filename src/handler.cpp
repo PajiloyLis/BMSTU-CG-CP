@@ -103,7 +103,11 @@ vector<triangle> TaskHandler::read_stl(const string &filename) {
                     triangles[i].vertices[0] == triangles[j].vertices[1] ||
                     triangles[i].vertices[0] == triangles[j].vertices[2])
                     n_0 += triangles[j].n;
-                if(triangles[i].vertices[1] == triangles[j].vertices[0] || )
+                if(triangles[i].vertices[1] == triangles[j].vertices[0] ||
+                        triangles[i].vertices[1] == triangles[j].vertices[1]||
+                        triangles[i].vertices[1] == triangles[j].vertices[2])
+                    n_1 += triangles[j].n;
+                
             }
         }
     }
