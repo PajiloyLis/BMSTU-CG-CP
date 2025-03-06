@@ -80,6 +80,8 @@ vector<triangle> TaskHandler::read_stl(const string &filename) {
         for (auto &triangle: triangles) {
             vertices = triangle.getVertices();
             glm::vec3 a = vertices[1] - vertices[0], b = vertices[2] - vertices[0];
+            glm::vec3 median_base = (vertices[1] + vertices[2]) / 2.f, centroid =
+                    (median_base - vertices[0]) / 3.f * 2.f;
             glm::vec3 v_n = glm::cross(a, b);
             v_n = glm::normalize(v_n);
             triangle.setN(v_n);
@@ -103,11 +105,11 @@ vector<triangle> TaskHandler::read_stl(const string &filename) {
                     triangles[i].vertices[0] == triangles[j].vertices[1] ||
                     triangles[i].vertices[0] == triangles[j].vertices[2])
                     n_0 += triangles[j].n;
-                if(triangles[i].vertices[1] == triangles[j].vertices[0] ||
-                        triangles[i].vertices[1] == triangles[j].vertices[1]||
-                        triangles[i].vertices[1] == triangles[j].vertices[2])
+                if (triangles[i].vertices[1] == triangles[j].vertices[0] ||
+                    triangles[i].vertices[1] == triangles[j].vertices[1] ||
+                    triangles[i].vertices[1] == triangles[j].vertices[2])
                     n_1 += triangles[j].n;
-                
+
             }
         }
     }
