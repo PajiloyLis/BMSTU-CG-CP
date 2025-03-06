@@ -9,6 +9,7 @@
 #include "smoke.h"
 #include "operations.h"
 #include "triangle.h"
+#include "light_bulb.h"
 
 #define SCREEN_DEPTH 256*256*256
 
@@ -54,6 +55,7 @@ private:
     smoke ash;
     vector<camera> cameras;
     int cur_camera;
+    light_bulb light;
 };
 
 #endif
