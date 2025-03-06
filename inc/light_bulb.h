@@ -9,7 +9,7 @@
 
 class light_bulb {
 public:
-    static const int ratio = 500;
+    static const int ratio = 300;
     glm::vec3 ray_direction;
     glm::vec3 pos;
     light_bulb(const glm::vec2 &position);
