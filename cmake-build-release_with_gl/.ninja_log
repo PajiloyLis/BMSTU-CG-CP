@@ -32,3 +32,14 @@
 2	4966	1741225587569997447	CMakeFiles/cp_cg.dir/moc_handler.cpp.o	93499184d1da2a90
 2	5703	1741225588306997420	CMakeFiles/cp_cg.dir/moc_main_window.cpp.o	c3fabe820835139b
 5703	6169	1741225588769997403	cp_cg	fb97f66b3af978f3
+3	3745	1741250596264993226	CMakeFiles/cp_cg.dir/src/triangle.cpp.o	d9a104fc79ed12ef
+3	3967	1741250596485993218	CMakeFiles/cp_cg.dir/src/operations.cpp.o	7851f5f475a52f1b
+3967	6484	1741250599002993126	CMakeFiles/cp_cg.dir/src/camera.cpp.o	78e51ff9356889f1
+3746	7723	1741250600240993080	CMakeFiles/cp_cg.dir/src/figure.cpp.o	7908c64052f3fbea
+4	9571	1741250602088993012	CMakeFiles/cp_cg.dir/src/handler.cpp.o	e2e3a2732c3988a9
+4	10416	1741250602934992981	CMakeFiles/cp_cg.dir/src/scene.cpp.o	f075af4fcd141132
+2	12297	1741250604815992912	CMakeFiles/cp_cg.dir/src/main.cpp.o	185e4b70798bcf6a
+3	12382	1741250604900992909	CMakeFiles/cp_cg.dir/src/main_window.cpp.o	a29fb9369ba4d1c5
+7723	14529	1741250607047992830	CMakeFiles/cp_cg.dir/moc_handler.cpp.o	93499184d1da2a90
+6484	14732	1741250607251992822	CMakeFiles/cp_cg.dir/moc_main_window.cpp.o	c3fabe820835139b
+14732	15182	1741250607697992806	cp_cg	fb97f66b3af978f3
