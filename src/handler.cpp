@@ -93,7 +93,14 @@ vector<triangle> TaskHandler::read_stl(const string &filename) {
         out.close();
     }
     ofstream out;
-    out.open("kluchevskaya")
+    out.open("kluchevskaya_normals.bin", ios_base::out);
+    for(int i = 0; i < triangles.size(); ++i)
+    {
+        for(int j = 0; j < triangles.size(); ++j)
+        {
+
+        }
+    }
     return triangles;
 }
 
