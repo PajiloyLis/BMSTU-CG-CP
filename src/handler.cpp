@@ -94,11 +94,17 @@ vector<triangle> TaskHandler::read_stl(const string &filename) {
     }
     ofstream out;
     out.open("kluchevskaya_normals.bin", ios_base::out);
-    for(int i = 0; i < triangles.size(); ++i)
-    {
-        for(int j = 0; j < triangles.size(); ++j)
-        {
-
+    for (int i = 0; i < triangles.size(); ++i) {
+        glm::vec3 n_0, n_1, n_2;
+        n_0 = n_1 = n_2 = triangles[i].n;
+        for (int j = 0; j < triangles.size(); ++j) {
+            if (i != j) {
+                if (triangles[i].vertices[0] == triangles[j].vertices[0] ||
+                    triangles[i].vertices[0] == triangles[j].vertices[1] ||
+                    triangles[i].vertices[0] == triangles[j].vertices[2])
+                    n_0 += triangles[j].n;
+                if(triangles[i].vertices[1] == triangles[j].vertices[0] || )
+            }
         }
     }
     return triangles;
