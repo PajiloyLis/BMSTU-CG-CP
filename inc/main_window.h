@@ -51,7 +51,7 @@ public slots:
 
     void VisualizationStart();
 
-
+    void LightChanged();
 
 private:
     static bool model_loaded;

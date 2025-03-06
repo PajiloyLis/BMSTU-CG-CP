@@ -54,3 +54,7 @@ void MainWindow::VisualizationStart() {
     }
 }
 
+void MainWindow::LightChanged() {
+    this->findChild<QSlider *>()
+}
+
