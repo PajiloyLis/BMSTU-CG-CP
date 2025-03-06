@@ -31,8 +31,9 @@ void Scene::ClearScene() {
 }
 
 void Scene::DrawFigures() {
-    timespec start, end, start1, end1;
+//    timespec start, end, start1, end1;
 //    clock_gettime(CLOCK_MONOTONIC, &start);
+    glm::vec3 adapted_light_pos = adapt_coords(cameras[cur_camera], light.pos, width, height);
     for (auto &figure: figures)
         for (auto &t: figure.triangles) {
             array<glm::vec3, 3> adapted;
