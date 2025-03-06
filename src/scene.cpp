@@ -324,8 +324,8 @@ void Scene::UpdateSimSpeed(float sim_speed) {
 void Scene::DrawLight() {
     glm::vec3 light_pos = adapt_coords(cameras[cur_camera], light.pos, width, height);
     cout << light_pos.x << " " << height - light_pos.y - 3 << '\n';
-    sf::CircleShape sun(6);
-    sun.setPosition(light_pos.x - 6, height - light_pos.y - 6);
+    sf::CircleShape sun(20);
+    sun.setPosition(light_pos.x - 20, height - light_pos.y - 20);
     sun.setFillColor({255, 234, 174});
     sun.setOutlineThickness(3);
     sun.setOutlineColor({255, 234, 174, 128});
