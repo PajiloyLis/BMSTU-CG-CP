@@ -320,3 +320,7 @@ void Scene::UpdateWind(const glm::vec2 &wind) {
 void Scene::UpdateSimSpeed(float sim_speed) {
     ash.dt = sim_speed;
 }
+
+void Scene::DrawLight() {
+
+}

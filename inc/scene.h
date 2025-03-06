@@ -27,6 +27,8 @@ public:
 
     void AddSmoke(int fig_width, int fig_height);
 
+    void DrawLight();
+
     void ClearScene();
 
     void AddCamera(const camera &c);
