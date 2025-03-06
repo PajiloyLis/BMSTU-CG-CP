@@ -92,6 +92,8 @@ vector<triangle> TaskHandler::read_stl(const string &filename) {
         out.seekp(0, ios_base::end);
         out.close();
     }
+    ofstream out;
+    out.open("kluchevskaya")
     return triangles;
 }
 
