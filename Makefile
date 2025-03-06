@@ -61,7 +61,8 @@ SOURCES       = src/conversions.cpp \
 		src/scene.cpp \
 		src/triangle.cpp \
 		src/camera.cpp \
-		src/smoke.cpp moc_handler.cpp \
+		src/smoke.cpp \
+		src/light_bulb.cpp moc_handler.cpp \
 		moc_main_window.cpp
 OBJECTS       = conversions.o \
 		figure.o \
@@ -73,6 +74,7 @@ OBJECTS       = conversions.o \
 		triangle.o \
 		camera.o \
 		smoke.o \
+		light_bulb.o \
 		moc_handler.o \
 		moc_main_window.o
 DIST          = /usr/lib/x86_64-linux-gnu/qt6/mkspecs/features/spec_pre.prf \
@@ -149,7 +151,8 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt6/mkspecs/features/spec_pre.prf \
 		inc/scene.h \
 		inc/triangle.h \
 		inc/camera.h \
-		inc/smoke.h src/conversions.cpp \
+		inc/smoke.h \
+		inc/light_bulb.h src/conversions.cpp \
 		src/figure.cpp \
 		src/handler.cpp \
 		src/main.cpp \
@@ -158,7 +161,8 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt6/mkspecs/features/spec_pre.prf \
 		src/scene.cpp \
 		src/triangle.cpp \
 		src/camera.cpp \
-		src/smoke.cpp
+		src/smoke.cpp \
+		src/light_bulb.cpp
 QMAKE_TARGET  = cp
 DESTDIR       = 
 TARGET        = cp
@@ -324,8 +328,8 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents /usr/lib/x86_64-linux-gnu/qt6/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents inc/conversions.h inc/cp_cg_ui.h inc/figure.h inc/handler.h inc/main_window.h inc/operations.h inc/scene.h inc/triangle.h inc/camera.h inc/smoke.h $(DISTDIR)/
-	$(COPY_FILE) --parents src/conversions.cpp src/figure.cpp src/handler.cpp src/main.cpp src/main_window.cpp src/operations.cpp src/scene.cpp src/triangle.cpp src/camera.cpp src/smoke.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents inc/conversions.h inc/cp_cg_ui.h inc/figure.h inc/handler.h inc/main_window.h inc/operations.h inc/scene.h inc/triangle.h inc/camera.h inc/smoke.h inc/light_bulb.h $(DISTDIR)/
+	$(COPY_FILE) --parents src/conversions.cpp src/figure.cpp src/handler.cpp src/main.cpp src/main_window.cpp src/operations.cpp src/scene.cpp src/triangle.cpp src/camera.cpp src/smoke.cpp src/light_bulb.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents inc/main_window.ui $(DISTDIR)/
 
 
@@ -372,6 +376,7 @@ moc_handler.cpp: inc/handler.h \
 		inc/QSFML.h \
 		inc/smoke.h \
 		inc/figure.h \
+		inc/light_bulb.h \
 		moc_predefs.h \
 		/usr/lib/qt6/libexec/moc
 	/usr/lib/qt6/libexec/moc $(DEFINES) --include /home/ivan/Study/CompG/cp_cg/moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt6/mkspecs/linux-g++ -I/home/ivan/Study/CompG/cp_cg -I/usr/include -I/home/ivan/Study/CompG/cp_cg/inc -I/usr/include/x86_64-linux-gnu/qt6 -I/usr/include/x86_64-linux-gnu/qt6/QtWidgets -I/usr/include/x86_64-linux-gnu/qt6/QtGui -I/usr/include/x86_64-linux-gnu/qt6/QtCore -I/usr/include/c++/11 -I/usr/include/x86_64-linux-gnu/c++/11 -I/usr/include/c++/11/backward -I/usr/lib/gcc/x86_64-linux-gnu/11/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include inc/handler.h -o moc_handler.cpp
@@ -389,6 +394,7 @@ moc_main_window.cpp: inc/main_window.h \
 		inc/textured_triangle.h \
 		inc/scene.h \
 		inc/figure.h \
+		inc/light_bulb.h \
 		inc/cp_cg_ui.h \
 		moc_predefs.h \
 		/usr/lib/qt6/libexec/moc
@@ -435,7 +441,8 @@ handler.o: src/handler.cpp inc/handler.h \
 		inc/scene.h \
 		inc/QSFML.h \
 		inc/smoke.h \
-		inc/figure.h
+		inc/figure.h \
+		inc/light_bulb.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o handler.o src/handler.cpp
 
 main.o: src/main.cpp inc/main_window.h \
@@ -451,6 +458,7 @@ main.o: src/main.cpp inc/main_window.h \
 		inc/textured_triangle.h \
 		inc/scene.h \
 		inc/figure.h \
+		inc/light_bulb.h \
 		inc/cp_cg_ui.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o src/main.cpp
 
@@ -467,6 +475,7 @@ main_window.o: src/main_window.cpp inc/main_window.h \
 		inc/textured_triangle.h \
 		inc/scene.h \
 		inc/figure.h \
+		inc/light_bulb.h \
 		inc/cp_cg_ui.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main_window.o src/main_window.cpp
 
@@ -484,7 +493,8 @@ scene.o: src/scene.cpp inc/scene.h \
 		inc/smoke.h \
 		inc/textured_figure.h \
 		inc/textured_triangle.h \
-		inc/figure.h
+		inc/figure.h \
+		inc/light_bulb.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o scene.o src/scene.cpp
 
 triangle.o: src/triangle.cpp inc/triangle.h \
@@ -499,6 +509,9 @@ camera.o: src/camera.cpp inc/camera.h \
 
 smoke.o: src/smoke.cpp inc/smoke.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o smoke.o src/smoke.cpp
+
+light_bulb.o: src/light_bulb.cpp inc/light_bulb.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o light_bulb.o src/light_bulb.cpp
 
 moc_handler.o: moc_handler.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_handler.o moc_handler.cpp

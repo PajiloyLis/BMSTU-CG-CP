@@ -26,6 +26,11 @@ int activate_settings_window(int argc, char **argv, TaskHandler &handler) {
     QObject::connect(&window, &MainWindow::SimulationSpeedSettingsFetched, &handler, &TaskHandler::UpdateSimSpeed);
     QObject::connect(window.findChild<QPushButton *>("simulation_start_button"), &QPushButton::clicked, &window,
                      &MainWindow::VisualizationStart);
+    QObject::connect(window.findChild<QSlider *>("light_height_slider"), &QSlider::sliderReleased, &window,
+                     &MainWindow::LightChanged);
+    QObject::connect(window.findChild<QSlider *>("light_azimuth_slider"), &QSlider::sliderReleased, &window,
+                     &MainWindow::LightChanged);
+    QObject::connect(&window, &MainWindow::LightSettingsFetched, &handler, &TaskHandler::UpdateLight);
     window.show();
     return app.exec();
 }
@@ -41,7 +46,7 @@ signed main(int argc, char *argv[]) {
     handler.SetScene(Scene(&sf_window));
     handler.AddCamera(camera({150, 50, 10}));
     int rc = activate_settings_window(argc, argv, handler);
-    if(rc != VIS_START)
+    if (rc != VIS_START)
         exit(0);
     bool mouse_pressed = false, drawn = false;
     sf::Vector2f mouse_last_pos(0, 0);

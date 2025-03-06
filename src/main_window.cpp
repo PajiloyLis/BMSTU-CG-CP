@@ -63,6 +63,6 @@ void MainWindow::LightChanged() {
     auto azimuth_label = this->findChild<QLabel *>("light_azimuth_label");
     int azimuth = azimuth_slider->value();
     azimuth_label->setText(to_string(azimuth).c_str());
-
+    emit LightSettingsFetched(height, azimuth);
 }
 

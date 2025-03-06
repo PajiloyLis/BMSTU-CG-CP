@@ -23,3 +23,9 @@
 3	11619	1741221901359132959	CMakeFiles/cp_cg.dir/src/main.cpp.o	185e4b70798bcf6a
 3	12097	1741221901837132942	CMakeFiles/cp_cg.dir/src/main_window.cpp.o	a29fb9369ba4d1c5
 12097	12578	1741221902315132924	cp_cg	fb97f66b3af978f3
+4	11162	1741225374190005292	CMakeFiles/cp_cg.dir/moc_handler.cpp.o	93499184d1da2a90
+3	12355	1741225375384005248	CMakeFiles/cp_cg.dir/src/scene.cpp.o	f075af4fcd141132
+4	12373	1741225375402005247	CMakeFiles/cp_cg.dir/src/handler.cpp.o	e2e3a2732c3988a9
+4	12549	1741225375578005241	CMakeFiles/cp_cg.dir/moc_main_window.cpp.o	c3fabe820835139b
+3	12862	1741225375892005229	CMakeFiles/cp_cg.dir/src/main.cpp.o	185e4b70798bcf6a
+3	13255	1741225376284005215	CMakeFiles/cp_cg.dir/src/main_window.cpp.o	a29fb9369ba4d1c5
