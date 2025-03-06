@@ -55,6 +55,8 @@ void MainWindow::VisualizationStart() {
 }
 
 void MainWindow::LightChanged() {
-    this->findChild<QSlider *>()
+    auto height_slider = this->findChild<QSlider *>("light_height_slider");
+    auto height_label = this->findChild<QLabel *>("light_height_label");
+    int height = height_slider->
 }
 
