@@ -6,7 +6,7 @@
 Scene::Scene() : figures() {
     scene = nullptr;
     width = height = 0;
-    running = false;
+    running = false;    
     light = {{45, 0}};
 }
 
