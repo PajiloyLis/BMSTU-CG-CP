@@ -44,7 +44,7 @@ signed main(int argc, char *argv[]) {
     sf_window.setVisible(false);
     TaskHandler handler;
     handler.SetScene(Scene(&sf_window));
-    handler.AddCamera(camera({150, 50, 10}));
+    handler.AddCamera(camera({150, 50, 20}));
     int rc = activate_settings_window(argc, argv, handler);
     if (rc != VIS_START)
         exit(0);
