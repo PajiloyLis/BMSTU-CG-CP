@@ -10,3 +10,8 @@ light_bulb::light_bulb(const glm::vec2 &position) {
                                              ratio * sin(position.y * M_PI / 180),
                                              ratio * sin(position.x * M_PI / 180)) - glm::vec3(0, 0, 0));
 }
+
+light_bulb::light_bulb(const light_bulb &l) {
+    this->pos = l.pos;
+    this->ray_direction = l.ray_direction;
+}

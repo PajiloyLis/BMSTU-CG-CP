@@ -7,6 +7,7 @@ Scene::Scene() : figures() {
     scene = nullptr;
     width = height = 0;
     running = false;
+    light={{45, 45}};
 }
 
 Scene::Scene(sf::RenderTarget *scene)
@@ -16,6 +17,7 @@ Scene::Scene(sf::RenderTarget *scene)
     this->height = scene->getSize().y;
     zbuffer.resize((this->height) * (this->width), -SCREEN_DEPTH);
     running = false;
+    light={{45, 45}};
 }
 
 void Scene::ClearScene() {
