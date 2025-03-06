@@ -22,8 +22,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_TaskHandler_t {
-    const uint offsetsAndSize[20];
-    char stringdata0[79];
+    const uint offsetsAndSize[26];
+    char stringdata0[106];
 };
 #define QT_MOC_LITERAL(ofs, len) \
     uint(offsetof(qt_meta_stringdata_TaskHandler_t, stringdata0) + ofs), len 
@@ -38,12 +38,15 @@ QT_MOC_LITERAL(36, 14), // "UpdateSimSpeed"
 QT_MOC_LITERAL(51, 1), // "x"
 QT_MOC_LITERAL(53, 9), // "LoadModel"
 QT_MOC_LITERAL(63, 6), // "string"
-QT_MOC_LITERAL(70, 8) // "filepath"
+QT_MOC_LITERAL(70, 8), // "filepath"
+QT_MOC_LITERAL(79, 11), // "UpdateLight"
+QT_MOC_LITERAL(91, 6), // "height"
+QT_MOC_LITERAL(98, 7) // "azimuth"
 
     },
     "TaskHandler\0UpdateWind\0\0speed\0angle\0"
     "UpdateSimSpeed\0x\0LoadModel\0string\0"
-    "filepath"
+    "filepath\0UpdateLight\0height\0azimuth"
 };
 #undef QT_MOC_LITERAL
 
@@ -53,7 +56,7 @@ static const uint qt_meta_data_TaskHandler[] = {
       10,       // revision
        0,       // classname
        0,    0, // classinfo
-       3,   14, // methods
+       4,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -61,14 +64,16 @@ static const uint qt_meta_data_TaskHandler[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags, initial metatype offsets
-       1,    2,   32,    2, 0x0a,    1 /* Public */,
-       5,    1,   37,    2, 0x0a,    4 /* Public */,
-       7,    1,   40,    2, 0x0a,    6 /* Public */,
+       1,    2,   38,    2, 0x0a,    1 /* Public */,
+       5,    1,   43,    2, 0x0a,    4 /* Public */,
+       7,    1,   46,    2, 0x0a,    6 /* Public */,
+      10,    2,   49,    2, 0x0a,    8 /* Public */,
 
  // slots: parameters
     QMetaType::Void, QMetaType::Int, QMetaType::Int,    3,    4,
     QMetaType::Void, QMetaType::Int,    6,
     QMetaType::Void, 0x80000000 | 8,    9,
+    QMetaType::Void, QMetaType::Int, QMetaType::Int,   11,   12,
 
        0        // eod
 };
@@ -82,6 +87,7 @@ void TaskHandler::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id,
         case 0: _t->UpdateWind((*reinterpret_cast< std::add_pointer_t<int>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<int>>(_a[2]))); break;
         case 1: _t->UpdateSimSpeed((*reinterpret_cast< std::add_pointer_t<int>>(_a[1]))); break;
         case 2: _t->LoadModel((*reinterpret_cast< std::add_pointer_t<string>>(_a[1]))); break;
+        case 3: _t->UpdateLight((*reinterpret_cast< std::add_pointer_t<int>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<int>>(_a[2]))); break;
         default: ;
         }
     }
@@ -95,7 +101,7 @@ const QMetaObject TaskHandler::staticMetaObject = { {
     nullptr,
 qt_incomplete_metaTypeArray<qt_meta_stringdata_TaskHandler_t
 , QtPrivate::TypeAndForceComplete<TaskHandler, std::true_type>
-, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<const string &, std::false_type>
+, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<const string &, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<const int &, std::false_type>, QtPrivate::TypeAndForceComplete<const int &, std::false_type>
 
 
 >,
@@ -122,13 +128,13 @@ int TaskHandler::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 3)
+        if (_id < 4)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 3;
+        _id -= 4;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 3)
+        if (_id < 4)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 3;
+        _id -= 4;
     }
     return _id;
 }

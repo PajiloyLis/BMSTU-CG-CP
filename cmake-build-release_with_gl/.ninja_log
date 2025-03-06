@@ -29,3 +29,6 @@
 4	12549	1741225375578005241	CMakeFiles/cp_cg.dir/moc_main_window.cpp.o	c3fabe820835139b
 3	12862	1741225375892005229	CMakeFiles/cp_cg.dir/src/main.cpp.o	185e4b70798bcf6a
 3	13255	1741225376284005215	CMakeFiles/cp_cg.dir/src/main_window.cpp.o	a29fb9369ba4d1c5
+2	4966	1741225587569997447	CMakeFiles/cp_cg.dir/moc_handler.cpp.o	93499184d1da2a90
+2	5703	1741225588306997420	CMakeFiles/cp_cg.dir/moc_main_window.cpp.o	c3fabe820835139b
+5703	6169	1741225588769997403	cp_cg	fb97f66b3af978f3
