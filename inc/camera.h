@@ -113,7 +113,7 @@ public:
         return glm::perspective(glm::radians(Zoom), relation, 0.1f, 400.f);
     }
 
-    void scale(float yoffset) {
+    void scale(const float &yoffset) {
         Zoom -= (float) yoffset;
         if (Zoom < 1.0f)
             Zoom = 1.0f;

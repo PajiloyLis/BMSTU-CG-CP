@@ -41,7 +41,7 @@ public:
 
     void MoveCamera(const Camera_Movement &move, const float &delta_time);
 
-    void ScaleCamera(float &k);
+    void ScaleCamera(const float &k);
 
     void UpdateWind(const glm::vec2 &wind);
 

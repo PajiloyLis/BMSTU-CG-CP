@@ -129,7 +129,7 @@ void TaskHandler::MoveCamera(const Camera_Movement &move, const float &delta_tim
     scene.MoveCamera(move, delta_time);
 }
 
-void TaskHandler::ScaleCamera(float &k) {
+void TaskHandler::ScaleCamera(const float &k) {
     scene.ScaleCamera(k);
 }
 

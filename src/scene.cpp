@@ -33,7 +33,6 @@ void Scene::ClearScene() {
 void Scene::DrawFigures() {
 //    timespec start, end, start1, end1;
 //    clock_gettime(CLOCK_MONOTONIC, &start);
-    glm::vec3 adapted_light_pos = adapt_coords(cameras[cur_camera], light.pos, width, height);
     for (auto &figure: figures)
         for (auto &t: figure.triangles) {
             array<glm::vec3, 3> adapted;
@@ -41,7 +40,9 @@ void Scene::DrawFigures() {
             glm::vec3 centroid = (median_base - t.vertices[2]) / 3.f * 2.f + t.vertices[2];
 
             glm::vec3 adapted_centroid = adapt_coords(cameras[cur_camera], centroid, width, height),
-                    adapted_normal = adapt_coords(cameras[cur_camera], centroid + t.n, width, height);
+                    adapted_normal = adapt_coords(cameras[cur_camera], centroid + t.n, width, height),
+                    adapted_light_pos = adapt_coords(cameras[cur_camera], glm::normalize(light.pos - centroid), width,
+                                                     height);
 
             for (int i = 0; i < t.vertices.size(); ++i)
                 adapted[i] = adapt_coords(cameras[cur_camera], t.vertices[i], width, height);
@@ -80,7 +81,7 @@ void Scene::RotateCurCamera(const float &dx, const float &dy) {
     cameras[cur_camera].rotate(dx, -dy);
 }
 
-void Scene::ScaleCamera(float &k) {
+void Scene::ScaleCamera(const float &k) {
     cameras[cur_camera].scale(k);
 }
 

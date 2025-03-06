@@ -115,7 +115,7 @@ signed main(int argc, char *argv[]) {
             }
             if (event.type == sf::Event::MouseWheelScrolled) {
                 if (event.mouseWheelScroll.wheel == sf::Mouse::VerticalWheel) {
-                    handler.ScaleCamera(event.mouseWheelScroll.delta);
+                    handler.ScaleCamera(event.mouseWheelScroll.delta/10.f);
 
 //                    handler.DrawScene();
 //                    sf_window.display();
