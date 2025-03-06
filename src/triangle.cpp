@@ -81,8 +81,7 @@ void triangle::rotate(const rotate_t &rotate_data) {
 }
 
 void
-triangle::draw(sf::RenderTarget &target, vector<float> &zbuffer, const glm::vec3 &light, const sf::Color &color,
-               sf::RenderStates states) const {
+triangle::draw(sf::RenderTarget &target, vector<float> &zbuffer, const sf::Color &color) const {
 #ifndef GL
     z_buffer(vertices, target, color, zbuffer);
 #else

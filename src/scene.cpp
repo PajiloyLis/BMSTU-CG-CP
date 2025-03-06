@@ -45,7 +45,7 @@ void Scene::DrawFigures() {
             float intensity = glm::dot(light.ray_direction, t.n);
             sf::Color color(static_cast<sf::Uint8>(255 * intensity), static_cast<sf::Uint8>(250 * intensity),
                             static_cast<sf::Uint8>(250 * intensity));
-            adapted_triangle.draw(*scene, zbuffer, light_ray, color, sf::RenderStates());
+            adapted_triangle.draw(*scene, zbuffer, color);
         }
 //    clock_gettime(CLOCK_MONOTONIC, &end);
 //    cout << "figure draw time " << end.tv_sec - start.tv_sec + (end.tv_nsec - start.tv_nsec) * 1e-9 << '\n';
