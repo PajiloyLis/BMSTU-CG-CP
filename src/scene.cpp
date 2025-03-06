@@ -38,10 +38,8 @@ void Scene::DrawFigures() {
             array<glm::vec3, 3> adapted;
             glm::vec3 median_base = (t.vertices[0] + t.vertices[1]) * 0.5f;
             glm::vec3 centroid = (t.vertices[2] - median_base) / 3.f * 2.f;
-            glm::vec3 normal = centroid + t.n;
             glm::vec3 adapted_centroid = adapt_coords(cameras[cur_camera], centroid, width,
-                                                      height), adapted_normal = adapt_coords(cameras[cur_camera],
-                                                                                             normal, width, height);
+                                                      height), adapted_normal = adapted_centroid + t.n;
 
             for (int i = 0; i < t.vertices.size(); ++i)
                 adapted[i] = adapt_coords(cameras[cur_camera], t.vertices[i], width, height);
@@ -53,8 +51,9 @@ void Scene::DrawFigures() {
             sf::Color color(static_cast<sf::Uint8>(255 * intensity), static_cast<sf::Uint8>(250 * intensity),
                             static_cast<sf::Uint8>(250 * intensity));
             adapted_triangle.draw(*scene, zbuffer, color);
-            scene->draw(vector<sf::Vertex>{sf::Vertex(sf::Vector2f(adapted_centroid.x, height - adapted_centroid.y), sf::Color::Green),
-                         sf::Vertex(sf::Vector2f(adapted_normal.x, height - adapted_normal.y), sf::Color::Green)}.data(), 2,
+            scene->draw(vector<sf::Vertex>{
+                                sf::Vertex(sf::Vector2f(adapted_centroid.x, height - adapted_centroid.y), sf::Color::Green),
+                                sf::Vertex(sf::Vector2f(adapted_normal.x, height - adapted_normal.y), sf::Color::Green)}.data(), 2,
                         sf::Lines);
         }
 //    clock_gettime(CLOCK_MONOTONIC, &end);
@@ -333,7 +332,7 @@ void Scene::UpdateSimSpeed(float sim_speed) {
 
 void Scene::DrawLight() {
     glm::vec3 light_pos = adapt_coords(cameras[cur_camera], light.pos, width, height);
-    cout << light_pos.x << " " << height - light_pos.y - 3 << '\n';
+//    cout << light_pos.x << " " << height - light_pos.y - 3 << '\n';
     sf::CircleShape sun(20);
     sun.setPosition(light_pos.x - 20, height - light_pos.y - 20);
     sun.setFillColor({255, 234, 174});
