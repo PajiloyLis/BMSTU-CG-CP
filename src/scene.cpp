@@ -42,7 +42,7 @@ void Scene::DrawFigures() {
             glm::vec3 adapted_centroid = adapt_coords(cameras[cur_camera], centroid, width,
                                                       height), adapted_normal = adapt_coords(cameras[cur_camera],
                                                                                              normal, width, height);
-            
+
             for (int i = 0; i < t.vertices.size(); ++i)
                 adapted[i] = adapt_coords(cameras[cur_camera], t.vertices[i], width, height);
             triangle adapted_triangle(t.n, adapted);
@@ -53,6 +53,9 @@ void Scene::DrawFigures() {
             sf::Color color(static_cast<sf::Uint8>(255 * intensity), static_cast<sf::Uint8>(250 * intensity),
                             static_cast<sf::Uint8>(250 * intensity));
             adapted_triangle.draw(*scene, zbuffer, color);
+            scene->draw(vector<sf::Vertex>{sf::Vertex(sf::Vector2f(adapted_centroid.x, height - adapted_centroid.y), sf::Color::Green),
+                         sf::Vertex(sf::Vector2f(adapted_normal.x, height - adapted_normal.y), sf::Color::Green)}.data(), 2,
+                        sf::Lines);
         }
 //    clock_gettime(CLOCK_MONOTONIC, &end);
 //    cout << "figure draw time " << end.tv_sec - start.tv_sec + (end.tv_nsec - start.tv_nsec) * 1e-9 << '\n';
