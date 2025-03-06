@@ -112,8 +112,8 @@ void TaskHandler::ScaleCamera(float &k) {
 }
 
 void TaskHandler::UpdateWind(int speed, int angle) {
-    cout<<"speed "<< speed<<" angle "<<angle<<'\n';
-    scene.UpdateWind({cos(M_PI / 180. * (180 - angle)) * speed/5, sin(M_PI / 180. * (180 - angle)) * speed/5});
+    cout << "speed " << speed << " angle " << angle << '\n';
+    scene.UpdateWind({cos(M_PI / 180. * (180 - angle)) * speed / 5, sin(M_PI / 180. * (180 - angle)) * speed / 5});
 }
 
 void TaskHandler::UpdateSimSpeed(int x) {
@@ -126,4 +126,8 @@ void TaskHandler::ChangeSimState() {
 
 void TaskHandler::PauseSim() {
     scene.running = false;
+}
+
+void TaskHandler::UpdateLight(const int &height, const int &azimuth) {
+    scene.UpdateLight({height, azimuth});
 }

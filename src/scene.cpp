@@ -328,3 +328,7 @@ void Scene::DrawLight() {
     sun.setPosition(light_pos.x - 3, height - light_pos.y - 3);
     scene->draw(sun);
 }
+
+void Scene::UpdateLight(const glm::vec2 &new_light) {
+    light = {new_light};
+}

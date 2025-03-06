@@ -60,7 +60,7 @@ void MainWindow::LightChanged() {
     int height = height_slider->value();
     height_label->setText(to_string(height).c_str());
     auto azimuth_slider = this->findChild<QSlider *>("light_azimuth_slider");
-    auto azimuth_label = this->findChild<QLabel *>("light_height_label");
+    auto azimuth_label = this->findChild<QLabel *>("light_azimuth_label");
     int azimuth = azimuth_slider->value();
     azimuth_label->setText(to_string(azimuth).c_str());
 

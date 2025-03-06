@@ -41,6 +41,8 @@ signals:
 
     void SimulationSpeedSettingsFetched(const int &x);
 
+    void LightSettingsFetched(const int &height, const int &azimuth);
+
 public slots:
 
     void WindChanged();

@@ -25,6 +25,8 @@ public slots:
 
     void LoadModel(const string &filepath);
 
+    void UpdateLight(const int &height, const int &azimuth);
+
 public:
 
     void ChangeSimState();

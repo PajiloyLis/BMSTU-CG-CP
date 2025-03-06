@@ -47,6 +47,8 @@ public:
 
     void UpdateSimSpeed(float sim_speed);
 
+    void UpdateLight(const glm::vec2 &new_light);
+
     vector<float> zbuffer;
 
     bool running;
