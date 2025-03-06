@@ -74,7 +74,7 @@
      <item row="9" column="0">
       <widget class="QLabel" name="label_10">
        <property name="text">
-        <string>-90</string>
+        <string>0</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignCenter</set>
@@ -207,7 +207,7 @@
      <item row="9" column="1">
       <widget class="QSlider" name="light_height_slider">
        <property name="minimum">
-        <number>-90</number>
+        <number>0</number>
        </property>
        <property name="maximum">
         <number>90</number>

@@ -323,7 +323,8 @@ void Scene::UpdateSimSpeed(float sim_speed) {
 
 void Scene::DrawLight() {
     glm::vec3 light_pos = adapt_coords(cameras[cur_camera], light.pos, width, height);
+    cout << light_pos.x << " " << height - light_pos.y - 3 << '\n';
     sf::CircleShape sun(3);
-    sun.setPosition(light_pos.x-3, height - light_pos.y-3);
+    sun.setPosition(light_pos.x - 3, height - light_pos.y - 3);
     scene->draw(sun);
 }

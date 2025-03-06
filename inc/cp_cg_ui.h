@@ -181,7 +181,7 @@ public:
 
         light_height_slider = new QSlider(gridLayoutWidget);
         light_height_slider->setObjectName(QString::fromUtf8("light_height_slider"));
-        light_height_slider->setMinimum(-90);
+        light_height_slider->setMinimum(0);
         light_height_slider->setMaximum(90);
         light_height_slider->setSingleStep(1);
         light_height_slider->setPageStep(1);
@@ -282,7 +282,7 @@ public:
         set_wind_action->setText(QCoreApplication::translate("MainWindow", "\320\227\320\260\320\264\320\260\321\202\321\214 \320\262\320\265\321\202\320\265\321\200", nullptr));
         set_speed_action->setText(QCoreApplication::translate("MainWindow", "\320\227\320\260\320\264\320\260\321\202\321\214 \321\201\320\272\320\276\321\200\320\276\321\201\321\202\321\214 \321\201\320\270\320\274\321\203\320\273\321\217\321\206\320\270\320\270", nullptr));
         wind_angle_label->setText(QCoreApplication::translate("MainWindow", "0", nullptr));
-        label_10->setText(QCoreApplication::translate("MainWindow", "-90", nullptr));
+        label_10->setText(QCoreApplication::translate("MainWindow", "0", nullptr));
         label_2->setText(QCoreApplication::translate("MainWindow", "0", nullptr));
         label_6->setText(QCoreApplication::translate("MainWindow", "0", nullptr));
         label_11->setText(QCoreApplication::translate("MainWindow", "90", nullptr));
