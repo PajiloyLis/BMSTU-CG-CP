@@ -27,6 +27,7 @@ void smoke::add_source(vector<vector<vector<float>>> &x, vector<vector<vector<fl
 //1 - x, 2 - y, 3-z
 //zxy
 void smoke::set_bnd(int b, vector<vector<vector<float>>> &x) {
+    //top - bottom
 #pragma omp parallel for
     for (int i = 1; i <= height; i++) {
         for (int j = 0; j <= width; ++j) {
@@ -36,6 +37,7 @@ void smoke::set_bnd(int b, vector<vector<vector<float>>> &x) {
         }
     }
     //left-right face
+#pragma  omp parallel for
     for (int i = 1; i <= height; ++i) {
         for (int j = 1; j <= height; ++j) {
             float tmp = x[i][j][0];
@@ -44,6 +46,7 @@ void smoke::set_bnd(int b, vector<vector<vector<float>>> &x) {
         }
     }
     //front-back face
+#pragma  omp parallel for
     for (int i = 1; i <= height; ++i) {
         for (int j = 1; j <= width; ++j) {
             float tmp = x[i][0][j];
@@ -52,6 +55,7 @@ void smoke::set_bnd(int b, vector<vector<vector<float>>> &x) {
         }
     }
     //edges
+#pragma  omp parallel for
     for (int i = 1; i <= height; i++) {
         x[i][0][0] = 1.0 / 2.0 * (x[i][1][0] + x[i][0][1]);
         x[i][height + 1][0] = 1.0 / 2.0 * (x[i][height + 1][0] + x[i][height + 1][1]);
@@ -59,6 +63,7 @@ void smoke::set_bnd(int b, vector<vector<vector<float>>> &x) {
         x[i][height + 1][width + 1] = 1.0 / 2.0 * (x[i][height][width + 1] + x[i][height + 1][width]);
     }
 
+#pragma  omp parallel for
     for (int i = 1; i <= height; i++) {
         x[0][i][0] = 1.0 / 2.0 * (x[1][i][0] + x[0][i][1]);
         x[height + 1][i][0] = 1.0 / 2.0 * (x[height][i][0] + x[width + 1][i][1]);
@@ -66,6 +71,7 @@ void smoke::set_bnd(int b, vector<vector<vector<float>>> &x) {
         x[height + 1][i][width + 1] = 1.0 / 2.0 * (x[height][i][width + 1] + x[height + 1][i][width]);
     }
 
+#pragma  omp parallel for
     for (int i = 1; i <= width; i++) {
         x[0][0][i] = 1.0 / 2.0 * (x[0][1][i] + x[1][0][i]);
         x[0][height + 1][i] = 1.0 / 2.0 * (x[0][height][i] + x[1][height + 1][i]);
@@ -115,7 +121,7 @@ void smoke::diffuse(int b, vector<vector<vector<float>>> &x, vector<vector<vecto
     // clock_gettime(CLOCK_MONOTONIC, &eq_start);
     lin_solve(b, x, x0, a, 1 + 6 * a);
     // clock_gettime(CLOCK_MONOTONIC, &eq_stop);
-    lin_solve_time += eq_stop.tv_sec - eq_start.tv_sec + (eq_stop.tv_nsec - eq_start.tv_nsec) * 1e-9;
+//    lin_solve_time += eq_stop.tv_sec - eq_start.tv_sec + (eq_stop.tv_nsec - eq_start.tv_nsec) * 1e-9;
 }
 
 void smoke::advect(int b, vector<vector<vector<float>>> &d, vector<vector<vector<float>>> &d0,
