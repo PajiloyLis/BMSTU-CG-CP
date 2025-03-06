@@ -45,9 +45,9 @@ void Scene::DrawFigures() {
             adapted_triangle.vertices[0].y = height - adapted_triangle.vertices[0].y,
             adapted_triangle.vertices[1].y = height - adapted_triangle.vertices[1].y,
             adapted_triangle.vertices[2].y = height - adapted_triangle.vertices[2].y;
-            float intensity = glm::dot((light.pos - centroid), t.n);
-            sf::Color color(static_cast<sf::Uint8>(255 * intensity), static_cast<sf::Uint8>(250 * intensity),
-                            static_cast<sf::Uint8>(250 * intensity));
+            float intensity = glm::dot(glm::normalize(centroid- light.pos), t.n);
+            sf::Color color(static_cast<sf::Uint8>(255 * intensity), static_cast<sf::Uint8>(255 * intensity),
+                            static_cast<sf::Uint8>(255 * intensity));
             adapted_triangle.draw(*scene, zbuffer, color);
 //            scene->draw(vector<sf::Vertex>{
 //                                sf::Vertex(sf::Vector2f(adapted_centroid.x, height - adapted_centroid.y), sf::Color::Green),
