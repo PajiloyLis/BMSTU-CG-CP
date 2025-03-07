@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2025.1.27)  7 MAR 2025 13:59
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2025.1.27)  7 MAR 2025 14:01
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -2599,8 +2599,8 @@ LaTeX Font Info:    Font shape `T2A/Tempora-TLF/b/n' will be
 <assets/img/diffusion.png, id=307, 261.97874pt x 260.975pt>
 File: assets/img/diffusion.png Graphic file (type png)
 <use assets/img/diffusion.png>
-Package pdftex.def Info: assets/img/diffusion.png  used on input line 134.
-(pdftex.def)             Requested size: 241.84843pt x 240.9282pt.
+Package pdftex.def Info: assets/img/diffusion.png  used on input line 136.
+(pdftex.def)             Requested size: 193.47578pt x 192.74017pt.
 ) [12 <./assets/img/diffusion.png>]
 \openout2 = `20-design.aux'.
 
@@ -2827,7 +2827,7 @@ exmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-di
 st/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/font
 s/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/
 public/amsfonts/cm/cmsy10.pfb>
-Output written on report.pdf (33 pages, 1268225 bytes).
+Output written on report.pdf (33 pages, 1268227 bytes).
 PDF statistics:
  850 PDF objects out of 1000 (max. 8388607)
  652 compressed objects within 7 object streams
