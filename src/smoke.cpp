@@ -31,9 +31,9 @@ void smoke::set_bnd(int b, vector<vector<vector<float>>> &x) {
 #pragma omp parallel for
     for (int i = 1; i <= height; i++) {
         for (int j = 0; j <= width; ++j) {
-//            float tmp = x[height + 1][i][j];
-//            x[height + 1][i][j] = b == 3 ? x[0][i][j] : x[height][i][j];
-            x[0][i][j] = b == 3 ? -x[] : x[1][i][j];
+            float tmp = x[height + 1][i][j];
+            x[height + 1][i][j] = b == 3 ? x[0][i][j] : x[height][i][j];
+            x[0][i][j] = b == 3 ? tmp : x[1][i][j];
         }
     }
     //left-right face
