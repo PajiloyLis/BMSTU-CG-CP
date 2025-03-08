@@ -1,6 +1,6 @@
 <mxfile host="Electron" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/24.7.17 Chrome/128.0.6613.36 Electron/32.0.1 Safari/537.36" version="24.7.17">
   <diagram id="C5RBs43oDa-KdzZeNtuy" name="Page-1">
-    <mxGraphModel dx="310" dy="1361" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="1364" dy="2012" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="WIyWlLk6GJQsqaUBKTNV-0" />
         <mxCell id="WIyWlLk6GJQsqaUBKTNV-1" parent="WIyWlLk6GJQsqaUBKTNV-0" />
@@ -13,7 +13,7 @@
         <mxCell id="tKUsyt5CqzJrNAVabc9H-12" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="tKUsyt5CqzJrNAVabc9H-1" target="tKUsyt5CqzJrNAVabc9H-5" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="tKUsyt5CqzJrNAVabc9H-1" value="&lt;p style=&quot;line-height: 1&quot;&gt;Поле скорости, &lt;br&gt;поле скорости в предыдущий момент, распределнение плотности дыма, &lt;br&gt;предыдущее распределние плотности дыма,&lt;br&gt;&amp;nbsp;временной интервал&lt;br&gt;&lt;/p&gt;" style="shape=stencil(tZRtboQgEIZPw99GYXuAxrb3mMXZShbBAN1tb78jaLvWjzZWjQmZd/CZF0ZgovAVNMh4ZqBGJp4Z5yUEoIG0KgmHLIXXFOZ9DL5BGZJ4AafgqDFlfHD2jFdVhg6hTIVOhTYrXlj2RHPaVxTSGkMQZY0fZO7yBANl6NvsI8G68p+DqCF+jQFdZzKpjL/+HfvwuA8438nvENu739zvduCh43yvxm0GztdjRUHK3M8tiiPI85uz76acNHNSWkurraMwjbEW4yLrnuXFNNAevFGiT9f2gt+rnD5P0+ieoJW5I3zdCP9A/HBxWMFYQ5DaelzYSdJHmxnVmQ5S76zDX1qbrseFqrMTYulRhaimizwKNw==);whiteSpace=wrap;html=1;aspect=fixed;fontFamily=Helvetica;fontSize=10;spacingBottom=4;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+        <mxCell id="tKUsyt5CqzJrNAVabc9H-1" value="&lt;p style=&quot;line-height: 1&quot;&gt;Поле скорости, &lt;br&gt;поле скорости в предыдущий момент, распределнение плотности дыма, &lt;br&gt;предыдущее распределние плотности &lt;br&gt;дыма,&amp;nbsp;временной интервал&lt;br&gt;&lt;/p&gt;" style="shape=stencil(tZRtboQgEIZPw99GYXuAxrb3mMXZShbBAN1tb78jaLvWjzZWjQmZd/CZF0ZgovAVNMh4ZqBGJp4Z5yUEoIG0KgmHLIXXFOZ9DL5BGZJ4AafgqDFlfHD2jFdVhg6hTIVOhTYrXlj2RHPaVxTSGkMQZY0fZO7yBANl6NvsI8G68p+DqCF+jQFdZzKpjL/+HfvwuA8438nvENu739zvduCh43yvxm0GztdjRUHK3M8tiiPI85uz76acNHNSWkurraMwjbEW4yLrnuXFNNAevFGiT9f2gt+rnD5P0+ieoJW5I3zdCP9A/HBxWMFYQ5DaelzYSdJHmxnVmQ5S76zDX1qbrseFqrMTYulRhaimizwKNw==);whiteSpace=wrap;html=1;aspect=fixed;fontFamily=Helvetica;fontSize=10;spacingBottom=4;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
           <mxGeometry x="291" y="-1050" width="245" height="70" as="geometry" />
         </mxCell>
         <mxCell id="tKUsyt5CqzJrNAVabc9H-8" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontFamily=Helvetica;endArrow=none;endFill=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="tKUsyt5CqzJrNAVabc9H-5" target="tKUsyt5CqzJrNAVabc9H-7" edge="1">

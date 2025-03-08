@@ -1,6 +1,6 @@
 <mxfile host="Electron" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/24.7.17 Chrome/128.0.6613.36 Electron/32.0.1 Safari/537.36" version="24.7.17">
   <diagram id="C5RBs43oDa-KdzZeNtuy" name="Page-1">
-    <mxGraphModel dx="1585" dy="468" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="1801" dy="602" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="WIyWlLk6GJQsqaUBKTNV-0" />
         <mxCell id="WIyWlLk6GJQsqaUBKTNV-1" parent="WIyWlLk6GJQsqaUBKTNV-0" />
@@ -10,8 +10,8 @@
         <mxCell id="rQnEvrApPPzfNtwEVzKc-0" value="&lt;p style=&quot;line-height: 1 ; font-size: 10px&quot;&gt;Начало&lt;/p&gt;" style="shape=stencil(vZXxboMgEMafhj9dUNwDLG57j9NelRTBIKv27YegWdHq1s3OmJD7Dn/3nZyRsKytoEGSUAk1EvZKkiTHkku7WrHySkp92PkwnmJoGyyMF8+gOeQCfaY1Wp2w4wczIrisUHMzZNkboS92z3CzrFBSWghXsg0yV3kLAy7ts7T3sLH8JYgay6/RoB5NepUk7z/HPj0/Bhw/yG+Indzv7nc/cOg4ftTB7QaOf49lmVXWhptlORSnUqsPebhp5siFKJRQ2oZ+dbVIwuh4bTfTwPDhLRJTulZn/OpydizpJntCgC5WCWOkZ1l9CWMBusTIgqKjgDJ4m22H2CzlPoKet5FWBoaXGlTbtiu4vOo4vm34jo7nhPQPPdN/6fmuU3bTuxgip65Mrp1ZpfGbkfa/hY2qqxtc6UUFp/o/mBM+AQ==);whiteSpace=wrap;html=1;aspect=fixed;fontFamily=Helvetica;fontSize=10;spacingBottom=4;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
           <mxGeometry x="80" y="40" width="140" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="rQnEvrApPPzfNtwEVzKc-1" value="&lt;p style=&quot;line-height: 1; font-size: 8px;&quot;&gt;Буфер кадра (buffer)&lt;br&gt;Z - буфер (z_buffer)&lt;br&gt;Треугольник для отрисовки&lt;br&gt;Цвет треугольника (color)&lt;/p&gt;" style="shape=stencil(tZRtboQgEIZPw99GYXuAxrb3mMXZShbBAN1tb78jaLvWjzZWjQmZd/CZF0ZgovAVNMh4ZqBGJp4Z5yUEoIG0KgmHLIXXFOZ9DL5BGZJ4AafgqDFlfHD2jFdVhg6hTIVOhTYrXlj2RHPaVxTSGkMQZY0fZO7yBANl6NvsI8G68p+DqCF+jQFdZzKpjL/+HfvwuA8438nvENu739zvduCh43yvxm0GztdjRUHK3M8tiiPI85uz76acNHNSWkurraMwjbEW4yLrnuXFNNAevFGiT9f2gt+rnD5P0+ieoJW5I3zdCP9A/HBxWMFYQ5DaelzYSdJHmxnVmQ5S76zDX1qbrseFqrMTYulRhaimizwKNw==);whiteSpace=wrap;html=1;aspect=fixed;fontFamily=Helvetica;fontSize=10;spacingBottom=4;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
-          <mxGeometry x="87" y="112" width="126" height="36" as="geometry" />
+        <mxCell id="rQnEvrApPPzfNtwEVzKc-1" value="&lt;p style=&quot;line-height: 1;&quot;&gt;Буфер кадра (buffer)&lt;br&gt;Z - буфер (z_buffer)&lt;br&gt;Треугольник для отрисовки&lt;br&gt;Цвет треугольника (color)&lt;/p&gt;" style="shape=stencil(tZRtboQgEIZPw99GYXuAxrb3mMXZShbBAN1tb78jaLvWjzZWjQmZd/CZF0ZgovAVNMh4ZqBGJp4Z5yUEoIG0KgmHLIXXFOZ9DL5BGZJ4AafgqDFlfHD2jFdVhg6hTIVOhTYrXlj2RHPaVxTSGkMQZY0fZO7yBANl6NvsI8G68p+DqCF+jQFdZzKpjL/+HfvwuA8438nvENu739zvduCh43yvxm0GztdjRUHK3M8tiiPI85uz76acNHNSWkurraMwjbEW4yLrnuXFNNAevFGiT9f2gt+rnD5P0+ieoJW5I3zdCP9A/HBxWMFYQ5DaelzYSdJHmxnVmQ5S76zDX1qbrseFqrMTYulRhaimizwKNw==);whiteSpace=wrap;html=1;aspect=fixed;fontFamily=Helvetica;fontSize=10;spacingBottom=4;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="66.25" y="100" width="168" height="48" as="geometry" />
         </mxCell>
         <mxCell id="iKR6BXr1hHKQpsy8EKb4-1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=0;fontFamily=Helvetica;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="rQnEvrApPPzfNtwEVzKc-1" target="iKR6BXr1hHKQpsy8EKb4-0">
           <mxGeometry relative="1" as="geometry">
