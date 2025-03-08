@@ -3,20 +3,7 @@
 
 \section{Схемы алгоритмов визуализации трехмерной сцены}
 \subsection{Алгоритм, использующий z-буфер}
-На рисунках~\ref{fig:z_buf_2} представлена схема алгоритма с использованием z-буфера.
-%\begin{figure}[H]%
-%	\centering
-%	\includegraphics[width=0.6\textwidth, page=1]{assets/img/z-bufer.pdf}   
-%	\caption{Схема алгоритма с использованием z-буфера}
-%	\label{fig:z_buf_1}
-%\end{figure}
-
-%\begin{figure}[H]
-%	\centering
-%	\includegraphics[width=0.6\textwidth, page=1]{assets/img/z-bufer_2.pdf}   
-%	\caption{Схема алгоритма с использованием z-буфера}
-%	\label{fig:z_buf_2}
-%\end{figure}
+На рисунках~\ref{fig:z_buf_2} представлена схема алгоритма с использованием z-буфера. В алгоритме выполняется разложение треугольника в растр, после чего вычисляется глубина полученного пикселя. Вычисленная глубина сравнивается с записанной в z-буфере, в зависимости от результата может быть выполнено обновление z-буфера.  
 
 \begin{figure}[H]
 	\centering
@@ -39,7 +26,7 @@
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.8\textwidth, page=1]{assets/img/dens_step.pdf}   
+	\includegraphics[width=0.6\textwidth, page=1]{assets/img/dens_step.pdf}   
 	\caption{Схема алгоритма обновления распределения плотности дыма}
 	\label{fig:dens_step}
 \end{figure}
@@ -48,7 +35,7 @@
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.8\textwidth, page=1]{assets/img/velocity_step.pdf}   
+	\includegraphics[width=0.6\textwidth, page=1]{assets/img/velocity_step.pdf}   
 	\caption{Схема алгоритма обновления распределения плотности газа}
 	\label{fig:vel_step}
 \end{figure}
@@ -62,16 +49,12 @@
 	\label{fig:add_src}
 \end{figure}
 
-На рисунке~\ref{fig:lin_solve} представлена схема алгоритма решения СЛАУ, основанного на методе Гаусса---Зейделя.
+На рисунке~\ref{fig:diffuse} представлена схема алгоритма вычисления диффузии (рассеивания), используемого для обновления поля скорости и распределения плотности газа. В обоих случаях под диффузией предполагается обмен ячейки ограничивающего параллелепипеда плотностью или скоростью с соседними по граням ячейками. Пример для двумерной симуляции представлен на рисунке~\ref{fig:diffusion}. Для трехмерного случая вычисление нового распределения плотности сводится к решению системы уравнений вида~\ref{eq:diffusion}. Для решения СЛАУ применяется итеративный метод Гаусса-Зейделя, алгоритм которого представлен на рисунке~\ref{fig:lin_solve}.
 
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=1.0\textwidth,page=1]{assets/img/gauss-zeidel.pdf}
-	\caption{Схема алгоритма решения СЛАУ}
-	\label{fig:lin_solve}
-\end{figure}
-
-В обоих случаях под диффузией предполагается обмен ячейки ограничивающего параллелепипеда плотностью или скоростью с соседними по граням ячейками. Пример для двухмерной симуляции представлен на рисунке~\ref{fig:diffusion}.
+\begin{equation}
+	\label{eq:diffusion}
+	x0_{i,j} = x_{i,j} - D \cdot (x_{i-1,j}+x_{i+1,j}+x_{i,j-1}+x_{i,j+1}-6*x_{i,j})
+\end{equation}
 
 \begin{figure}[H]
 	\centering
@@ -80,15 +63,18 @@
 	\label{fig:diffusion}
 \end{figure}
 
-
-
-На рисунке~\ref{fig:diffuse} представлена схема алгоритма вычисления диффузии (рассеивания), используемого для обновления поля скорости и распределения плотности газа.
-
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=1.0\textwidth,page=1]{assets/img/diffuse.pdf}
 	\caption{Схема алгоритма вычисления диффузии (рассеивания)}
 	\label{fig:diffuse}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1.0\textwidth,page=1]{assets/img/gauss-zeidel.pdf}
+	\caption{Схема алгоритма решения СЛАУ}
+	\label{fig:lin_solve}
 \end{figure}
 
 На рисунке~\ref{fig:advect} представлена схема алгоритма вычисления адвекции и самоадвекции для распределение плотности и поля скорости соответственно.
