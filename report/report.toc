@@ -23,13 +23,13 @@
 \contentsline {section}{\numberline {2.1}Схемы алгоритмов визуализации трехмерной сцены}{13}{section.2.1}%
 \contentsline {subsection}{\numberline {2.1.1}Алгоритм, использующий z-буфер}{13}{subsection.2.1.1}%
 \contentsline {subsection}{\numberline {2.1.2}Алгоритм поведения газов}{14}{subsection.2.1.2}%
-\contentsline {section}{\numberline {2.2}Диаграмма классов}{24}{section.2.2}%
-\contentsline {chapter}{\numberline {3}Технологический раздел}{26}{chapter.3}%
-\contentsline {section}{\numberline {3.1}Графический интерфейс программы}{26}{section.3.1}%
-\contentsline {section}{\numberline {3.2}Реализация алгоритмов}{28}{section.3.2}%
-\contentsline {chapter}{\numberline {4}Исследовательский раздел}{33}{chapter.4}%
-\contentsline {section}{\numberline {4.1}Цель исследования}{33}{section.4.1}%
-\contentsline {section}{\numberline {4.2}Исследование}{33}{section.4.2}%
-\contentsline {chapter}{ЗАКЛЮЧЕНИЕ}{36}{figure.caption.18}%
-\contentsline {chapter}{СПИСОК ИСПОЛЬЗОВАННЫХ ИСТОЧНИКОВ}{37}{figure.caption.18}%
-\contentsline {chapter}{Приложение А}{38}{chapter*.19}%
+\contentsline {section}{\numberline {2.2}Диаграмма классов}{25}{section.2.2}%
+\contentsline {chapter}{\numberline {3}Технологический раздел}{27}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Графический интерфейс программы}{27}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Реализация алгоритмов}{29}{section.3.2}%
+\contentsline {chapter}{\numberline {4}Исследовательский раздел}{34}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Цель исследования}{34}{section.4.1}%
+\contentsline {section}{\numberline {4.2}Исследование}{34}{section.4.2}%
+\contentsline {chapter}{ЗАКЛЮЧЕНИЕ}{37}{figure.caption.19}%
+\contentsline {chapter}{СПИСОК ИСПОЛЬЗОВАННЫХ ИСТОЧНИКОВ}{38}{figure.caption.19}%
+\contentsline {chapter}{Приложение А}{39}{chapter*.20}%
