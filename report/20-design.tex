@@ -97,21 +97,32 @@
 	\item $\Delta t$~---~временной интервал.
 \end{itemize}
 
-Для каждой координаты полученной исходной точки определяется отрезок интерполяции с помощью формул~\ref{eq:advect_2}. 
+Для каждой координаты полученной исходной точки определяется отрезок интерполяции с помощью формул~\ref{eq:advect_2} (пример приведен для x-координаты). 
 \begin{equation}
 	\label{eq:advect_2}
-	\begin{matrix}[l]
+	\begin{matrix}
 		x_0 = \floor{x} \\
 		x_1 = x_0 + 1
 	\end{matrix}
 \end{equation}
-где x
+где:
+\begin{itemize}
+	\item $x$~---~x-координата вычисленной исходной точки;
+	\item $x_0$, $x_1$~---~границы отрезка интерполяции.
+\end{itemize}
 
-Далее определяются расстояния до границ отрезка интерполяции по формуле~\ref{eq:advect_3}
+Далее для каждой координаты определяются расстояния до границ отрезка интерполяции по формулам~\ref{eq:advect_3} (пример также приведен для x-координаты).
 \begin{equation}
 	\label{eq:advect_3}
-	k_{x1} = p_0
+	\begin{matrix}
+		k_{x0} = p_{0_x} - x_0 \\
+		k_{x1} = 1 - k_{x0}
+	\end{matrix}
 \end{equation}
+где:
+\begin{itemize}
+	\item $p_{x_0}$~---~
+\end{itemize}
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.4\textwidth,page=1]{assets/img/advect.png}
