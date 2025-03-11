@@ -125,6 +125,16 @@
 	\item $x_0$~---~нижняя граница отрезка интерполяции;
 	\item $k_{x0}$, $k_{x1}$~---~расстояния до нижней и верхней границ интерполяции соответственно.
 \end{itemize}
+
+Наконец проводим интерполяцию плотности в точке $p$ по формуле:
+\begin{equation}
+	\label{eq:advect4}
+	d_p = k_{x1} (k_{y1} k_{z1} * d0_{x_0, y_0, z_0} + k_{y0} k_{z1) d0_{x_0, y_1, z_0} + k_{y1} * k_{z0} * d0[i0][j0][k1] +
+	t1 * u1 * d0[i0][j1][k1]) + s1 * (t0 * u0 * d0[i1][j0][k0] +
+	t1 * u0 * d0[i1][j1][k0] +
+	t0 * u1 * d0[i1][j0][k1] +
+	t1 * u1 * d0[i1][j1][k1])
+\end{equation}
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.4\textwidth,page=1]{assets/img/advect.png}
