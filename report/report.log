@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2025.1.27)  11 MAR 2025 23:31
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2025.1.27)  11 MAR 2025 23:45
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -2656,10 +2656,10 @@ Package pdftex.def Info: assets/img/add_source.pdf , page1 used on input line 4
 7.
 (pdftex.def)             Requested size: 483.69687pt x 561.23099pt.
 [18 <./assets/img/add_source.pdf>]
-<assets/img/diffusion.png, id=400, 261.97874pt x 260.975pt>
+<assets/img/diffusion.png, id=398, 261.97874pt x 260.975pt>
 File: assets/img/diffusion.png Graphic file (type png)
 <use assets/img/diffusion.png>
-Package pdftex.def Info: assets/img/diffusion.png  used on input line 67.
+Package pdftex.def Info: assets/img/diffusion.png  used on input line 56.
 (pdftex.def)             Requested size: 193.47578pt x 192.74017pt.
 
 
@@ -2668,7 +2668,7 @@ n: found PDF version <1.7>, but at most version <1.5> allowed
 <assets/img/diffuse.pdf, id=402, page=1, 311.24278pt x 341.35529pt>
 File: assets/img/diffuse.pdf Graphic file (type pdf)
 <use assets/img/diffuse.pdf, page 1>
-Package pdftex.def Info: assets/img/diffuse.pdf , page1 used on input line 74.
+Package pdftex.def Info: assets/img/diffuse.pdf , page1 used on input line 76.
 (pdftex.def)             Requested size: 483.69687pt x 530.53278pt.
 [19 <./assets/img/diffusion.png>]
 
@@ -2678,13 +2678,13 @@ lusion: found PDF version <1.7>, but at most version <1.5> allowed
 File: assets/img/gauss-zeidel.pdf Graphic file (type pdf)
 <use assets/img/gauss-zeidel.pdf, page 1>
 Package pdftex.def Info: assets/img/gauss-zeidel.pdf , page1 used on input line
- 81.
+ 83.
 (pdftex.def)             Requested size: 483.69687pt x 624.97934pt.
 [20 <./assets/img/diffuse.pdf>] [21 <./assets/img/gauss-zeidel.pdf>]
 <assets/img/advect.png, id=445, 173.64874pt x 173.64874pt>
 File: assets/img/advect.png Graphic file (type png)
 <use assets/img/advect.png>
-Package pdftex.def Info: assets/img/advect.png  used on input line 90.
+Package pdftex.def Info: assets/img/advect.png  used on input line 92.
 (pdftex.def)             Requested size: 193.47578pt x 193.48369pt.
  [22 <./assets/img/advect.png>]
 
@@ -2693,13 +2693,13 @@ pdfTeX warning: /usr/bin/pdflatex (file ./assets/img/advect.pdf): PDF inclusion
 <assets/img/advect.pdf, id=458, page=1, 496.9767pt x 442.53331pt>
 File: assets/img/advect.pdf Graphic file (type pdf)
 <use assets/img/advect.pdf, page 1>
-Package pdftex.def Info: assets/img/advect.pdf , page1 used on input line 157.
+Package pdftex.def Info: assets/img/advect.pdf , page1 used on input line 159.
 (pdftex.def)             Requested size: 483.69687pt x 430.70859pt.
 [23]
 <assets/img/hodge.png, id=469, 634.37pt x 195.73125pt>
 File: assets/img/hodge.png Graphic file (type png)
 <use assets/img/hodge.png>
-Package pdftex.def Info: assets/img/hodge.png  used on input line 166.
+Package pdftex.def Info: assets/img/hodge.png  used on input line 168.
 (pdftex.def)             Requested size: 338.58632pt x 104.47176pt.
  [24 <./assets/img/advect.pdf>]
 
@@ -2708,7 +2708,7 @@ n: found PDF version <1.7>, but at most version <1.5> allowed
 <assets/img/project.pdf, id=490, page=1, 245.9589pt x 204.765pt>
 File: assets/img/project.pdf Graphic file (type pdf)
 <use assets/img/project.pdf, page 1>
-Package pdftex.def Info: assets/img/project.pdf , page1 used on input line 173.
+Package pdftex.def Info: assets/img/project.pdf , page1 used on input line 175.
 
 (pdftex.def)             Requested size: 483.69687pt x 402.71764pt.
 
@@ -2719,7 +2719,7 @@ ion: found PDF version <1.7>, but at most version <1.5> allowed
 File: assets/img/smoke_uml.pdf Graphic file (type pdf)
 <use assets/img/smoke_uml.pdf, page 1>
 Package pdftex.def Info: assets/img/smoke_uml.pdf , page1 used on input line 18
-4.
+6.
 (pdftex.def)             Requested size: 435.32422pt x 365.1638pt.
 [25 <./assets/img/hodge.png> <./assets/img/project.pdf>]) [26 <./assets/img/smo
 ke_uml.pdf>]
@@ -2848,7 +2848,7 @@ s/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1
 amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
 /cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cm
 sy8.pfb>
-Output written on report.pdf (38 pages, 1326585 bytes).
+Output written on report.pdf (38 pages, 1326596 bytes).
 PDF statistics:
  920 PDF objects out of 1000 (max. 8388607)
  705 compressed objects within 8 object streams
