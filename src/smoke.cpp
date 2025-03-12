@@ -188,7 +188,7 @@ smoke::project(vector<vector<vector<float>>> &u_, vector<vector<vector<float>>> 
                 p[i][j][k] = 0;
             }
         }
-    }   
+    }
     set_bnd(0, div);
     set_bnd(0, p);
 
